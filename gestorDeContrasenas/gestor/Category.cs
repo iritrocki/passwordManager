@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gestor;
+using System;
 
 namespace passwordManager
 {
@@ -11,7 +12,17 @@ namespace passwordManager
             name = v;
         }
 
-        public string name { get; set; }
+        public string name 
+        { 
+            get => name;
+            set
+            {
+                if (!this.validateName(value))
+                    throw new invalidCategoryNameException();
+                name = value;
+            }
+                
+        }
 
         public void update(Category c, string v)
         {
