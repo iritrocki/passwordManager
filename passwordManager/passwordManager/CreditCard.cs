@@ -1,20 +1,28 @@
-﻿using System;
-
-namespace passwordManager
+﻿namespace passwordManager
 {
     public class CreditCard
     {
-        public string name { 
+        public string name
+        {
             get => name;
-            set 
+            set
             {
                 if (!this.validateText(value))
                     throw new InvalidCreditCardNameException();
                 name = value;
-            } 
+            }
         }
-        public string company { get; set; }
-        public string number { 
+        public string company { 
+            get => company;
+            set
+            {
+                if (!this.validateText(value))
+                    throw new InvalidCreditCardCompanyException();
+                company = value;
+            }
+        }
+        public string number
+        {
             get => number;
             set
             {
@@ -22,26 +30,27 @@ namespace passwordManager
                     throw new InvalidCreditCardNumberException();
                 number = value;
             }
-            }
-        public string code { 
+        }
+        public string code
+        {
             get => code;
-            set 
+            set
             {
                 if (!this.validateCode(value))
                     throw new InvalidCreditCardCodeException();
                 code = value;
-            } 
+            }
         }
 
         public bool validateNumber(string number)
         {
             string[] subs = number.Split(' ');
             int caracteres = 0;
-            foreach(string s in subs)
+            foreach (string s in subs)
             {
                 caracteres += s.Length;
             }
-            if(caracteres == 16)
+            if (caracteres == 16)
                 return true;
             return false;
         }
@@ -55,7 +64,7 @@ namespace passwordManager
 
         public bool validateText(string v)
         {
-            if(v.Length >= 3 && v.Length <= 25)
+            if (v.Length >= 3 && v.Length <= 25)
                 return true;
             return false;
         }

@@ -11,7 +11,8 @@ namespace passwordManager
         {
             get { return message; }
         }
-        public InvalidCreditCardCodeException(){
+        public InvalidCreditCardCodeException()
+        {
             this.message = "El codigo de seguridad debe tener 3 o 4 digitos.";
         }
     }

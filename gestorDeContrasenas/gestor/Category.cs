@@ -1,5 +1,4 @@
-﻿using gestor;
-using System;
+﻿using System;
 
 namespace passwordManager
 {

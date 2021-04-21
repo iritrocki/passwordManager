@@ -3,7 +3,7 @@
 namespace passwordManager
 {
     [Serializable]
-    public class InvalidCreditCardCodeException : Exception
+    public class InvalidCreditCardNumberException : Exception
     {
         private string message;
 
@@ -11,8 +11,9 @@ namespace passwordManager
         {
             get { return message; }
         }
-        public InvalidCreditCardCodeException(){
-            this.message = "El codigo de seguridad debe tener 3 o 4 digitos.";
+        public InvalidCreditCardNumberException()
+        {
+            this.message = "El numero debe tener 16 digitos.";
         }
     }
 }
