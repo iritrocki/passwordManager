@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace passwordManager
+namespace passwordManager.Exceptions
 {
     [Serializable]
-    public class InvalidCreditCardCodeException : Exception
+    public class InvalidCreditCardCodeException : InvalidCreditCardException
     {
         private string message;
 

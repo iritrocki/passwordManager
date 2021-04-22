@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace passwordManager.Exceptions
 {
     [Serializable]
-    public class InvalidCreditCardNameException : InvalidCreditCardException
+    public abstract class InvalidCreditCardException : Exception
     {
         private string message;
-
         public override string Message
         {
             get { return message; }
         }
-        public InvalidCreditCardNameException()
+        public InvalidCreditCardException()
         {
-            this.message = "El nombre debe tener entre 3 y 25 caracteres.";
         }
     }
 }

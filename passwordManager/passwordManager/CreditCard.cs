@@ -1,6 +1,9 @@
-﻿namespace passwordManager
+﻿using passwordManager.Exceptions;
+using System;
+
+namespace passwordManager
 {
-    public class CreditCard
+    public class CreditCard : DataUnit
     {
         public string name
         {
@@ -42,6 +45,33 @@
             }
         }
 
+        public int expirationMonth { 
+            get => expirationMonth;
+            set 
+            {
+                if (!this.validateExpirationMonth(value))
+                    throw new InvalidCreditCardExpirationDateException();
+                expirationMonth = value;
+            }
+        }
+        public int expirationYear {
+            get => expirationYear;
+            set
+            {
+                if (!this.validateExpirationYear(value))
+                    throw new InvalidCreditCardExpirationDateException();
+                expirationYear = value;
+            }
+        }
+
+        public string notes { 
+            get => notes;
+            set {
+               if (!this.validateNotes(value))
+                    throw new InvalidCreditCardNotesException();
+                notes = value;
+            } }
+
         public bool validateNumber(string number)
         {
             string[] subs = number.Split(' ');
@@ -68,5 +98,28 @@
                 return true;
             return false;
         }
+
+        public bool validateExpirationYear(int year)
+        {
+            if(year > 1000 && year < 10000)
+                return true;
+            return false;
+        }
+
+        public bool validateExpirationMonth(int month)
+        {
+            if (month >= 1 && month <= 12)
+                return true;
+            return false;
+        }
+
+        public bool validateNotes(string note)
+        {
+            if (note.Length > 250)
+                return false;
+            return true;
+        }
+
+
     }
 }

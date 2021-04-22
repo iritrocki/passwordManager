@@ -1,4 +1,6 @@
-﻿namespace passwordManager
+﻿using passwordManager.Exceptions;
+
+namespace passwordManager
 {
     public class Category
     {

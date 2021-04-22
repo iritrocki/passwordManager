@@ -3,7 +3,7 @@
 namespace passwordManager.Exceptions
 {
     [Serializable]
-    public class InvalidCreditCardNameException : InvalidCreditCardException
+    public class InvalidCreditCardNotesException : InvalidCreditCardException
     {
         private string message;
 
@@ -11,9 +11,9 @@ namespace passwordManager.Exceptions
         {
             get { return message; }
         }
-        public InvalidCreditCardNameException()
+        public InvalidCreditCardNotesException()
         {
-            this.message = "El nombre debe tener entre 3 y 25 caracteres.";
+            this.message = "Las notas exceden los 250 caracteres permitidos.";
         }
     }
 }

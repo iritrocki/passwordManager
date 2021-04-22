@@ -3,7 +3,7 @@
 namespace passwordManager.Exceptions
 {
     [Serializable]
-    public class InvalidCreditCardNameException : InvalidCreditCardException
+    public class InvalidCreditCardExpirationDateException : InvalidCreditCardException
     {
         private string message;
 
@@ -11,9 +11,10 @@ namespace passwordManager.Exceptions
         {
             get { return message; }
         }
-        public InvalidCreditCardNameException()
+        public InvalidCreditCardExpirationDateException()
         {
-            this.message = "El nombre debe tener entre 3 y 25 caracteres.";
+            this.message = "La fecha de vencimiento no es valida.";
         }
+
     }
 }
