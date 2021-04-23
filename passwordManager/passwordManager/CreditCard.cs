@@ -5,74 +5,81 @@ namespace passwordManager
 {
     public class CreditCard : DataUnit
     {
-        public string name
+        private string _name;
+        private string _company;
+        private string _number;
+        private string _code;
+        private int _expirationMonth;
+        private int _expirationYear;
+        private string _notes;
+        public string Name
         {
-            get => name;
+            get { return this._name; }
             set
             {
-                if (!this.validateText(value))
+                if (!this.ValidateText(value))
                     throw new InvalidCreditCardNameException();
-                name = value;
+                this._name = value;
             }
         }
-        public string company { 
-            get => company;
+        public string Company {
+            get { return this._company; }
             set
             {
-                if (!this.validateText(value))
+                if (!this.ValidateText(value))
                     throw new InvalidCreditCardCompanyException();
-                company = value;
+                this._company = value;
             }
         }
-        public string number
+        public string Number
         {
-            get => number;
+            get { return this._number; }
             set
             {
-                if (!this.validateNumber(value))
+                if (!this.ValidateNumber(value))
                     throw new InvalidCreditCardNumberException();
-                number = value;
+                this._number = value;
             }
         }
-        public string code
+        public string Code
         {
-            get => code;
+            get {return this._code;}
             set
             {
-                if (!this.validateCode(value))
+                if (!this.ValidateCode(value))
                     throw new InvalidCreditCardCodeException();
-                code = value;
+                this._code = value;
             }
         }
 
-        public int expirationMonth { 
-            get => expirationMonth;
+        public int ExpirationMonth {
+            get { return this._expirationMonth; }
             set 
             {
-                if (!this.validateExpirationMonth(value))
+                if (!this.ValidateExpirationMonth(value))
                     throw new InvalidCreditCardExpirationDateException();
-                expirationMonth = value;
+                this._expirationMonth = value;
             }
         }
-        public int expirationYear {
-            get => expirationYear;
+        public int ExpirationYear {
+            get { return this._expirationYear; }
             set
             {
-                if (!this.validateExpirationYear(value))
+                if (!this.ValidateExpirationYear(value))
                     throw new InvalidCreditCardExpirationDateException();
-                expirationYear = value;
+                this._expirationYear = value;
             }
         }
 
-        public string notes { 
-            get => notes;
+        public string Notes {
+            get {return this._notes; }
             set {
-               if (!this.validateNotes(value))
+               if (!this.ValidateNotes(value))
                     throw new InvalidCreditCardNotesException();
-                notes = value;
+                this._notes = value;
             } }
 
-        public bool validateNumber(string number)
+        public bool ValidateNumber(string number)
         {
             string[] subs = number.Split(' ');
             int caracteres = 0;
@@ -85,35 +92,35 @@ namespace passwordManager
             return false;
         }
 
-        public bool validateCode(string code)
+        public bool ValidateCode(string code)
         {
             if (code.Length == 3 || code.Length == 4)
                 return true;
             return false;
         }
 
-        public bool validateText(string v)
+        public bool ValidateText(string v)
         {
             if (v.Length >= 3 && v.Length <= 25)
                 return true;
             return false;
         }
 
-        public bool validateExpirationYear(int year)
+        public bool ValidateExpirationYear(int year)
         {
             if(year > 1000 && year < 10000)
                 return true;
             return false;
         }
 
-        public bool validateExpirationMonth(int month)
+        public bool ValidateExpirationMonth(int month)
         {
             if (month >= 1 && month <= 12)
                 return true;
             return false;
         }
 
-        public bool validateNotes(string note)
+        public bool ValidateNotes(string note)
         {
             if (note.Length > 250)
                 return false;

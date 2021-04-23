@@ -9,7 +9,7 @@ namespace passwordManagerTest
     public class CategoryTest
     {
         [TestMethod]
-        public void createCategoryTest()
+        public void CreateCategoryTest()
         {
             Category c = new Category();
             Assert.IsNotNull(c);
@@ -19,32 +19,25 @@ namespace passwordManagerTest
         public void CreateCategoryWithNameTest()
         {
             Category c = new Category();
-            c.name = "Facultad";
-            Assert.AreEqual("Facultad", c.name);
+            c.Name = "Facultad";
+            Assert.AreEqual("Facultad", c.Name);
         }
 
         [TestMethod]
-        public void createCategoryWithParameterTest()
+        public void CreateCategoryWithParameterTest()
         {
             Category c = new Category("Facultad");
-            Assert.AreEqual("Facultad", c.name);
+            Assert.AreEqual("Facultad", c.Name);
         }
 
-        [TestMethod]
-        public void updateNameTest()
-        {
-            Category c = new Category();
-            c.name = "Facultad";
-            c.update(c, "Trabajo");
-            Assert.AreNotEqual("Facultad", c.name);
-        }
+        
 
         [TestMethod]
-        public void validateInvalidNameTest()
+        public void ValidateInvalidNameTest()
         {
             Category c = new Category();
             string unString = "ho";
-            Assert.IsFalse(c.validateName(unString));
+            Assert.IsFalse(c.ValidateName(unString));
         }
 
         [TestMethod]
@@ -52,7 +45,7 @@ namespace passwordManagerTest
         {
             Category c = new Category();
             string unString = "Ort";
-            Assert.IsTrue(c.validateName(unString));
+            Assert.IsTrue(c.ValidateName(unString));
         }
 
         [TestMethod]
@@ -60,7 +53,7 @@ namespace passwordManagerTest
         {
             Category c = new Category();
             string unString = "supercalifragilisticoespialidoso";
-            Assert.IsFalse(c.validateName(unString));
+            Assert.IsFalse(c.ValidateName(unString));
         }
 
 
@@ -69,7 +62,7 @@ namespace passwordManagerTest
         public void InvalidCategoryNameTest()
         {
             Category c = new Category();
-            c.name = "bp";
+            c.Name = "bp";
         }
     }
 }
