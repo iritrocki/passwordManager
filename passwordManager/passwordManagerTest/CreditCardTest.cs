@@ -18,32 +18,32 @@ namespace passwordManagerTest
         public void createNewCreditCardWithNameTest()
         {
             CreditCard c = new CreditCard();
-            c.name = "Visa Gold";
-            Assert.AreEqual("Visa Gold", c.name);
+            c.Name = "Visa Gold";
+            Assert.AreEqual("Visa Gold", c.Name);
         }
 
         [TestMethod]
         public void createNewCreditCardWithTypeTest()
         {
             CreditCard c = new CreditCard();
-            c.company = "Visa";
-            Assert.AreEqual("Visa", c.company);
+            c.Company = "Visa";
+            Assert.AreEqual("Visa", c.Company);
         }
 
         [TestMethod]
         public void createNewCreditCardWithNumberTest()
         {
             CreditCard c = new CreditCard();
-            c.number = "4551 7820 1874 4153";
-            Assert.AreEqual("4551 7820 1874 4153", c.number);
+            c.Number = "4551 7820 1874 4153";
+            Assert.AreEqual("4551 7820 1874 4153", c.Number);
         }
 
         [TestMethod]
         public void validateValidNumberTest()
         {
             CreditCard c = new CreditCard();
-            c.number = "4551 7820 1874 4153";
-            Assert.IsTrue(c.validateNumber("4551 7820 1874 4153"));
+            c.Number = "4551 7820 1874 4153";
+            Assert.IsTrue(c.ValidateNumber("4551 7820 1874 4153"));
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@ namespace passwordManagerTest
         {
             CreditCard c = new CreditCard();
             //c.number = "1874 4153";
-            Assert.IsFalse(c.validateNumber("1874 4153"));
+            Assert.IsFalse(c.ValidateNumber("1874 4153"));
         }
 
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
@@ -59,36 +59,36 @@ namespace passwordManagerTest
         public void invalidNumberTest()
         {
             CreditCard c = new CreditCard();
-            c.number = "9234 34";
+            c.Number = "9234 34";
         }
 
         [TestMethod]
         public void createNewCreditCardWithCodeTest()
         {
             CreditCard c = new CreditCard();
-            c.code = "492";
-            Assert.AreEqual("492", c.code);
+            c.Code = "492";
+            Assert.AreEqual("492", c.Code);
         }
 
         [TestMethod]
         public void validateValidCodeTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsTrue(c.validateCode("183"));
+            Assert.IsTrue(c.ValidateCode("183"));
         }
 
         [TestMethod]
         public void validateInvalidCodeTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsFalse(c.validateCode("19"));
+            Assert.IsFalse(c.ValidateCode("19"));
         }
 
         [TestMethod]
         public void ValidCodeFourDigitsTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsTrue(c.validateCode("1845"));
+            Assert.IsTrue(c.ValidateCode("1845"));
         }
 
         [ExpectedException(typeof(InvalidCreditCardCodeException))]
@@ -96,21 +96,21 @@ namespace passwordManagerTest
         public void TooLongCodeTest()
         {
             CreditCard c = new CreditCard();
-            c.code = "938475";
+            c.Code = "938475";
         }
 
         [TestMethod]
         public void tooShortNameTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsFalse(c.validateText("AE"));
+            Assert.IsFalse(c.ValidateText("AE"));
         }
 
         [TestMethod]
         public void validNameTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsTrue(c.validateText("Visa Gold"));
+            Assert.IsTrue(c.ValidateText("Visa Gold"));
         }
 
         [ExpectedException(typeof(InvalidCreditCardNameException))]
@@ -118,7 +118,7 @@ namespace passwordManagerTest
         public void invalidNameTest()
         {
             CreditCard c = new CreditCard();
-            c.name = "AE";
+            c.Name = "AE";
         }
 
         [ExpectedException(typeof(InvalidCreditCardCompanyException))]
@@ -126,51 +126,51 @@ namespace passwordManagerTest
         public void invalidCompanyTest()
         {
             CreditCard c = new CreditCard();
-            c.company = "AE";
+            c.Company = "AE";
         }
 
         [TestMethod]
         public void createNewCreditCardWithExpirationMonthTest()
         {
             CreditCard c = new CreditCard();
-            c.expirationMonth = 4;
-            Assert.AreEqual(4, c.expirationMonth);
+            c.ExpirationMonth = 4;
+            Assert.AreEqual(4, c.ExpirationMonth);
         }
 
         [TestMethod]
         public void createNewCreditCardWithExpirationYearTest()
         {
             CreditCard c = new CreditCard();
-            c.expirationYear = 2024;
-            Assert.AreEqual(2024, c.expirationYear);
+            c.ExpirationYear = 2024;
+            Assert.AreEqual(2024, c.ExpirationYear);
         }
 
         [TestMethod]
         public void validExpirationMonthTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsTrue(c.validateExpirationMonth(3));
+            Assert.IsTrue(c.ValidateExpirationMonth(3));
         }
 
         [TestMethod]
         public void invalidExpirationMonthTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsFalse(c.validateExpirationMonth(-5));
+            Assert.IsFalse(c.ValidateExpirationMonth(-5));
         }
 
         [TestMethod]
         public void validExpirationYearTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsTrue(c.validateExpirationYear(2024));
+            Assert.IsTrue(c.ValidateExpirationYear(2024));
         }
 
         [TestMethod]
         public void invalidExpirationYearTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsFalse(c.validateExpirationYear(20240));
+            Assert.IsFalse(c.ValidateExpirationYear(20240));
         }
 
         [ExpectedException(typeof(InvalidCreditCardExpirationDateException))]
@@ -178,7 +178,7 @@ namespace passwordManagerTest
         public void invalidMonthExpirationDateTest()
         {
             CreditCard c = new CreditCard();
-            c.expirationMonth = -2;
+            c.ExpirationMonth = -2;
         }
 
 
@@ -187,22 +187,22 @@ namespace passwordManagerTest
         public void invalidYearExpirationDateTest()
         {
             CreditCard c = new CreditCard();
-            c.expirationYear = 1;
+            c.ExpirationYear = 1;
         }
 
         [TestMethod]
         public void createNewCreditCardWithNotesTest()
         {
             CreditCard c = new CreditCard();
-            c.notes = "Limite 400k USD";
-            Assert.AreEqual("Limite 400k USD", c.notes);
+            c.Notes = "Limite 400k USD";
+            Assert.AreEqual("Limite 400k USD", c.Notes);
         }
 
         [TestMethod]
         public void validNotesTest()
         {
             CreditCard c = new CreditCard();
-            Assert.IsTrue(c.validateNotes(""));
+            Assert.IsTrue(c.ValidateNotes(""));
         }
 
         [TestMethod]
@@ -210,7 +210,7 @@ namespace passwordManagerTest
         {
             CreditCard c = new CreditCard();
             //El siguiente string contiene mas de 250 caracteres.
-            Assert.IsFalse(c.validateNotes("asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb"));
+            Assert.IsFalse(c.ValidateNotes("asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb"));
         }
 
         [ExpectedException(typeof(InvalidCreditCardNotesException))]
@@ -218,7 +218,7 @@ namespace passwordManagerTest
         public void TooLongNotesTest()
         {
             CreditCard c = new CreditCard();
-            c.notes = "asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb";
+            c.Notes = "asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb";
         }
         
         [TestMethod]

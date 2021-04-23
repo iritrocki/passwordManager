@@ -8,27 +8,22 @@ namespace passwordManager
 
         public Category(string v)
         {
-            name = v;
+            _name = v;
         }
-
-        public string name
+        private string _name;
+        public string Name
         {
-            get => name;
+            get { return this._name; }
             set
             {
-                if (!this.validateName(value))
+                if (!this.ValidateName(value))
                     throw new invalidCategoryNameException();
-                name = value;
+                this._name = value;
             }
 
         }
 
-        public void update(Category c, string v)
-        {
-            c.name = v;
-        }
-
-        public bool validateName(string unString)
+        public bool ValidateName(string unString)
         {
             if (unString.Length >= 3 && unString.Length <= 15)
                 return true;
