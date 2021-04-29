@@ -53,18 +53,10 @@ namespace passwordManagerTest
         public void AssignPasswordTest()
         {
             Account a = new Account();
-            Password p = new Password();
-            a.Password = p;
-            Assert.AreEqual(p, a.Password);
+            a.Password = "12345";
+            Assert.AreEqual("12345", a.Password);
         }
 
-        /*[TestMethod]
-        public void createPasswordTest()
-        {
-            Account a = new Account();
-            a.password = a.createPassword("1234893");
-            Assert.AreEqual("1234893", a.password.p);
-        }*/
 
         [TestMethod]
         public void AppropiatePasswordTest()
@@ -78,6 +70,14 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             Assert.IsFalse(a.ValidateUsernameAndPassword("000"));
+        }
+
+        [ExpectedException(typeof(InvalidAccountPasswordException))]
+        [TestMethod]
+        public void InvalidPasswordTest()
+        {
+            Account a = new Account();
+            a.Password = "1";
         }
 
         [TestMethod]
@@ -166,8 +166,340 @@ namespace passwordManagerTest
             a.category = cat;
             Assert.AreEqual(cat, a.category);
         }
-
         
 
+        [TestMethod]
+        public void RedPasswordClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "12345";
+            Assert.AreEqual(Account.Color.Red, a.Classification);
+        }
+
+        [TestMethod]
+        public void RedPasswordVersion2ClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "1Aa/t?e";
+            Assert.AreEqual(Account.Color.Red, a.Classification);
+        }
+
+        [TestMethod]
+        public void NotRedPasswordClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "1Aa/t?er";
+            Assert.AreNotEqual(Account.Color.Red, a.Classification);
+        }
+
+        [TestMethod]
+        public void OrangePasswordClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "1Aa/t?er";
+            Assert.AreEqual(Account.Color.Orange, a.Classification);
+        }
+
+        [TestMethod]
+        public void NotOrangePasswordClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "1Aa/t?er2345764";
+            Assert.AreNotEqual(Account.Color.Orange, a.Classification);
+        }
+
+        [TestMethod]
+        public void ContainsUpperCaseTest()
+        {
+            Account a = new Account();
+            Assert.IsTrue(a.ContainsUpperCase("1Aa/t?er2345764"));
+        }
+
+        [TestMethod]
+        public void NoUpperCaseTest()
+        {
+            Account a = new Account();
+            Assert.IsFalse(a.ContainsUpperCase("12a/t?er2345764"));
+        }
+
+        [TestMethod]
+        public void ContainsLowerCaseTest()
+        {
+            Account a = new Account();
+            Assert.IsTrue(a.ContainsLowerCase("1Aa/t?er2345764"));
+        }
+
+        [TestMethod]
+        public void NoLowerCaseTest()
+        {
+            Account a = new Account();
+            Assert.IsFalse(a.ContainsLowerCase("12A/T?ITR2345764"));
+        }
+
+        [TestMethod]
+        public void ContainsDigitsTest()
+        {
+            Account a = new Account();
+            Assert.IsTrue(a.ContainsDigits("1Aa/t?er2345764"));
+        }
+
+        [TestMethod]
+        public void NoDigitsTest()
+        {
+            Account a = new Account();
+            Assert.IsFalse(a.ContainsDigits("A/T?ITRksjdb"));
+        }
+
+        [TestMethod]
+        public void ContainsSpecialsTest()
+        {
+            Account a = new Account();
+            Assert.IsTrue(a.ContainsSpecials("1Aa/t?er2345764"));
+        }
+
+        [TestMethod]
+        public void NoSpecialsTest()
+        {
+            Account a = new Account();
+            Assert.IsFalse(a.ContainsSpecials("A3143TITRksjdb"));
+        }
+
+        [TestMethod]
+        public void YellowPasswordOnlyUpperCaseClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "ABSHDBKSJFBFVKSVJSDCJN";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordOnlyLowerCaseClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "ksjdvsjdnvnnvjfvsfjv";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordOnlyDigitsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "1234567890123434";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordOnlySpecialsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "????@#$%%&()<>:?//";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void LightGreenPasswordClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "djfheNSJVFjdbfbCDJFVJ";
+            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordLowerSpecialsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "jsdnkj////##@$$%";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordLowerDigitsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "jsdnkj31465768723";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordUpperDigitsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "JDCKJFJ31465768723";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordUpperSpecialsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "HBFSBSEJ#@$%^#^#$";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void YellowPasswordDigitsSpecialsClassificationTest()
+        {
+            Account a = new Account();
+            a.Password = "2345267823#@$%^#^#$";
+            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+        }
+
+        [TestMethod]
+        public void LightGreenPasswordLowerUpperDigitsTest()
+        {
+            Account a = new Account();
+            a.Password = "2345267823KJSDBKSkajkj";
+            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+        }
+
+        [TestMethod]
+        public void LightGreenPasswordLowerUpperSpecialsTest()
+        {
+            Account a = new Account();
+            a.Password = "@&$*@#(@(*KJSDBKSkajkj";
+            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+        }
+
+        [TestMethod]
+        public void LightGreenPasswordLowerDigitsSpecialsTest()
+        {
+            Account a = new Account();
+            a.Password = "@&$*@#(@(*32648748ajkj";
+            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+        }
+
+        [TestMethod]
+        public void LightGreenPasswordUpperDigitsSpecialsTest()
+        {
+            Account a = new Account();
+            a.Password = "@&$*@#(@(*KJSDBKS3456";
+            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+        }
+
+        [TestMethod]
+        public void DarkGreenPasswordTest()
+        {
+            Account a = new Account();
+            a.Password = "@&$(@(*KDBKksdjnkS36";
+            Assert.AreEqual(Account.Color.DarkGreen, a.Classification);
+        }
+
+        [TestMethod]
+        public void GeneratePasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, false, false, false);
+
+            Assert.IsNotNull(a.Password);
+        }
+
+        [TestMethod]
+        public void CorrectPasswordLengthTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, false, false, false);
+
+            Assert.AreEqual(12, a.Password.Length);
+        }
+
+        [TestMethod]
+        public void UpperCasePasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, false, false, false);
+
+            Assert.AreEqual(a.Password.ToUpper(), a.Password);
+        }
+
+        [TestMethod]
+        public void LowerCasePasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, false, true, false, false);
+
+            Assert.AreEqual(a.Password.ToLower(), a.Password);
+        }
+
+        [TestMethod]
+        public void LowerAndUpperCasePasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, true, false, false);
+
+            Assert.AreNotEqual(a.Password.ToLower(), a.Password);
+        }
+
+        [TestMethod]
+        public void ContainsDigitsPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, true, true, false);
+            Assert.IsTrue(a.ContainsDigits(a.Password));
+        }
+
+        [TestMethod]
+        public void ContainsSpecialsPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, true, false, true);
+            Assert.IsTrue(a.ContainsSpecials(a.Password));
+        }
+
+        [TestMethod]
+        public void DoesNotContainDigitsPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, true, false, false);
+            Assert.IsFalse(a.ContainsDigits(a.Password));
+        }
+
+        [TestMethod]
+        public void DoesNotContainSpecialsPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, true, false, false);
+            Assert.IsFalse(a.ContainsSpecials(a.Password));
+        }
+
+        [TestMethod]
+        public void ContainSpecialsDigitsPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, false, false, true, true);
+            Assert.IsTrue(a.ContainsSpecials(a.Password) && a.ContainsDigits(a.Password) && !a.ContainsUpperCase(a.Password) && !a.ContainsLowerCase(a.Password));
+        }
+
+        [TestMethod]
+        public void ContainSpecialsDigitsUpperPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, true, false, true, true);
+            Assert.IsTrue(a.ContainsSpecials(a.Password) && a.ContainsDigits(a.Password) && a.ContainsUpperCase(a.Password) && !a.ContainsLowerCase(a.Password));
+        }
+
+        [TestMethod]
+        public void ContainSpecialsDigitsLowerPasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, false, true, true, true);
+            Assert.IsTrue(a.ContainsSpecials(a.Password) && a.ContainsDigits(a.Password) && !a.ContainsUpperCase(a.Password) && a.ContainsLowerCase(a.Password));
+        }
+
+        [ExpectedException(typeof(InvalidAccountPasswordException))]
+        [TestMethod]
+        public void TooShortPasswordLengthTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(3, true, false, false, false);
+        }
+
+        [ExpectedException(typeof(InvalidSelectionForPasswordException))]
+        [TestMethod]
+        public void EverythingFalsePasswordTest()
+        {
+            Account a = new Account();
+            a.GeneratePassword(12, false, false, false, false);
+
+        }
     }
 }
