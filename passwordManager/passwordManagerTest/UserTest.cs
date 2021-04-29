@@ -27,6 +27,7 @@ namespace passwordManagerTest
             categories.Add(trabajo);
 
         }*/
+
         [TestMethod]
         public void CreateUserTest()
         {
@@ -112,7 +113,13 @@ namespace passwordManagerTest
         {
             User u = new User();
             Category c = new Category("Facultad");
-            Account a = new Account() { Username="JuanPe123", Note="", Site="Instagram", Modification=DateTime.Now, category=c};
+            Account a = new Account() {
+                Username = "JuanPe123",
+                Password = "kfjbvskSKS??",
+                Note="", 
+                Site="Instagram", 
+                Modification=DateTime.Now, 
+                category=c};
             u.Accounts.Add(a);
             Assert.AreEqual(1, u.Accounts.Count);
         }
@@ -122,10 +129,9 @@ namespace passwordManagerTest
         {
             User u = new User();
             Category c = new Category("Facultad");
-            //FALTA AGREGAR ACA PASSWOOOOOOORORDDDDDDDDD!!!!!! fIJARSE EN TODAS LAS PRUEBAS...
-            //ELIMINAR COMENTARIO DE ARRIBA ANTES DE ENTREGAR Y ESTE TAMBIEN
             Account a = new Account() { 
                 Username = "JuanPe123", 
+                Password = "12345678",
                 Note = "", 
                 Site = "Instagram", 
                 Modification = DateTime.Now, 
@@ -141,8 +147,9 @@ namespace passwordManagerTest
             User u = new User();
             Category c = new Category("Facultad");
             u.Categories.Add(c);
-            Account a = new Account() { 
-                Username = "JuanPe123", 
+            Account a = new Account() {
+                Username = "JuanPe123",
+                Password = "viuwbdkSVHSBD",
                 Note = "", 
                 Site = "Instagram", 
                 Modification = DateTime.Now, 
@@ -226,6 +233,24 @@ namespace passwordManagerTest
             };
             u.CreditCards.Add(cc);
             Assert.AreEqual(c, u.CreditCards[0].category);
+        }
+
+        [TestMethod]
+        public void SignInTest()
+        {
+            User u = new User();
+            u.MasterKey = "soyUnaMasterKey123";
+            u.SignIn("soyUnaMasterKey123");
+            Assert.IsTrue(u.Status);
+        }
+
+        [ExpectedException(typeof(InvalidMasterKeyException))]
+        [TestMethod]
+        public void WrongMasterKeyTest()
+        {
+            User u = new User();
+            u.MasterKey = "soyUnaMasterKey123";
+            u.SignIn("soyUnaMasterKey");
         }
 
     }
