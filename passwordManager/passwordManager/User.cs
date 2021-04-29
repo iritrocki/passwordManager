@@ -1,6 +1,10 @@
+
 ﻿using passwordManager.Exceptions;
 using System;
 using System.Collections.Generic;
+
+﻿using System.Collections.Generic;
+
 
 namespace passwordManager
 {
@@ -14,11 +18,14 @@ namespace passwordManager
             this.CreditCards = new List<CreditCard>();
         }
 
+
         public bool Status { get; private set; }
+
         public string MasterKey { get; set; }
         public List<Category> Categories { get; set; }
         public List<Account> Accounts { get; set; }
         public List<CreditCard> CreditCards { get; set; }
+
 
         public void SignIn(string input)
         {
@@ -31,5 +38,6 @@ namespace passwordManager
                 throw new InvalidMasterKeyException();
             }
         }
+
     }
 }
