@@ -10,7 +10,7 @@ using passwordManager.Exceptions;
 namespace passwordManagerTest
 {
     [TestClass]
-    public class accountTest
+    public class AccountTest
     {
         [TestMethod]
         public void CreateNewAccountTest()
