@@ -12,21 +12,6 @@ namespace passwordManagerTest
     [TestClass]
     public class UserTest
     {
-        /*[TestInitialize]
-        public void TestInitialize()
-        {
-            List<Category> categories = new List<Category>();
-            List<Account> accounts = new List<Account>();
-            List<CreditCard> creditCards = new List<CreditCard>();
-
-            Category facultad = new Category("Facultad");
-            Category trabajo = new Category("Trabajo");
-            Category personal = new Category("Personal");
-
-            categories.Add(facultad);
-            categories.Add(trabajo);
-
-        }*/
 
         [TestMethod]
         public void CreateUserTest()
@@ -70,19 +55,32 @@ namespace passwordManagerTest
         {
             User u = new User();
             Category c = new Category("Facultad");
-            u.Categories.Add(c);
+            u.TryAddCategory(c);
             Assert.AreEqual(1, u.Categories.Count);
         }
 
+        [ExpectedException(typeof(ExistentCategoryNameException))]
         [TestMethod]
-        public void RemoveCategoryTest()
+        public void TryAddRepeatedCategoryTest()
         {
             User u = new User();
             Category c = new Category("Facultad");
-            u.Categories.Add(c);
-            u.Categories.Remove(c);
-            Assert.AreEqual(0, u.Categories.Count);
+            u.TryAddCategory(c);
+            Category c2 = new Category("Facultad");
+            u.TryAddCategory(c2);
         }
+
+        [ExpectedException(typeof(ExistentCategoryNameException))]
+        [TestMethod]
+        public void TryAddRepeatedCategoryCaseInsensitiveTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            u.TryAddCategory(c);
+            Category c2 = new Category("facultad");
+            u.TryAddCategory(c2);
+        }
+
 
         [TestMethod]
         public void CheckCategoryNameTest()
@@ -109,7 +107,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void AddAccountTest()
+        public void TryAddAccountTest()
         {
             User u = new User();
             Category c = new Category("Facultad");
@@ -120,8 +118,63 @@ namespace passwordManagerTest
                 Site="Instagram", 
                 Modification=DateTime.Now, 
                 category=c};
-            u.Accounts.Add(a);
+            u.TryAddAccount(a);
             Assert.AreEqual(1, u.Accounts.Count);
+        }
+
+        [ExpectedException(typeof(InvalidAccountUsernameException))]
+        [TestMethod]
+        public void TryAddInvalidAccountTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            Account a = new Account()
+            {
+                Username = "Ju",
+                Password = "kfjbvskSKS??",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = c
+            };
+            u.TryAddAccount(a);
+        }
+
+        [TestMethod]
+        public void TryRemoveAccountTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "kfjbvskSKS??",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = c
+            };
+            u.TryAddAccount(a);
+            u.TryRemoveAccount(a);
+            Assert.AreEqual(0, u.Accounts.Count);
+        }
+
+        [ExpectedException(typeof(InexistentAccountException))]
+        [TestMethod]
+        public void TryRemoveInexistentAccountTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "kfjbvskSKS??",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = c
+            };
+            u.TryRemoveAccount(a);
         }
 
         [TestMethod]
@@ -175,7 +228,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void AddCreditCardTest()
+        public void TryAddCreditCardTest()
         {
             User u = new User();
             Category c = new Category("Facultad");
@@ -190,7 +243,7 @@ namespace passwordManagerTest
                 Notes = "Tarjeta sin limite",
                 category = c
             };
-            u.CreditCards.Add(cc);
+            u.TryAddCreditCard(cc);
             Assert.AreEqual(1, u.CreditCards.Count);
         }
 
@@ -251,6 +304,286 @@ namespace passwordManagerTest
             User u = new User();
             u.MasterKey = "soyUnaMasterKey123";
             u.SignIn("soyUnaMasterKey");
+        }
+
+        [TestMethod]
+        public void SignOutTest()
+        {
+            User u = new User();
+            u.MasterKey = "soyUnaMasterKey123";
+            u.SignIn("soyUnaMasterKey123");
+            u.SignOut();
+            Assert.IsFalse(u.Status);
+        }
+
+        [TestMethod]
+        public void SuccessfullyChangeMasterKeyTest()
+        {
+            User u = new User();
+            u.MasterKey = "soyUnaMasterKey123";
+            u.ChangeMasterKey("soyUnaMasterKey123", "holaSoyUnaNuevaContra");
+            Assert.AreEqual("holaSoyUnaNuevaContra", u.MasterKey);
+        }
+
+        [ExpectedException(typeof(InvalidMasterKeyException))]
+        [TestMethod]
+        public void UnsuccessfullyChangeMasterKeyTest()
+        {
+            User u = new User();
+            u.MasterKey = "soyUnaMasterKey123";
+            u.ChangeMasterKey("soyUnaMasterKey", "holaSoyUnaNuevaContra");
+        }
+
+        [TestMethod]
+        public void AccountColorCountInitializedTest()
+        {
+            User u = new User();
+            Assert.IsNotNull(u.ColorCount);
+        }
+
+        [TestMethod]
+        public void AccountColorCountLengthTest()
+        {
+            User u = new User();
+            Assert.AreEqual(5, u.ColorCount.Length);
+        }
+
+        [TestMethod]
+        public void AddAccountColorCountChangesTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            u.Categories.Add(c);
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "viuwbd",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            u.TryAddAccount(a);
+            Assert.AreEqual(1, u.ColorCount[(int)a.Classification]);
+        }
+
+        [TestMethod]
+        public void RemoveAccountColorCountChangesTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            u.Categories.Add(c);
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "vsjkdjfjsdhjf",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            u.TryAddAccount(a);
+            u.TryRemoveAccount(a);
+            Assert.AreEqual(0, u.ColorCount[(int)a.Classification]);
+        }
+
+        //FALTA BAJAR Y SUBIR COUNT DE COLORES CUANDO SE MODIFICA PASSWORD
+        
+        [TestMethod]
+        public void FilterByColorLengthTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            u.Categories.Add(c);
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "vsjkdjfjsdhjf",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            u.TryAddAccount(a);
+            Assert.AreEqual(1, u.FilterBy(a.Classification).Count());
+        }
+
+        [TestMethod]
+        public void FilterByColorAccountAddedTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            u.Categories.Add(c);
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "vsjkdjfjsdhjf",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            u.TryAddAccount(a);
+            Assert.AreEqual(a, u.FilterBy(a.Classification)[0]);
+        }
+
+        [TestMethod]
+        public void FilterByColorAccountNotAddedTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            u.Categories.Add(c);
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "vsjkdjfjsdhjf",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            u.TryAddAccount(a);
+            Assert.AreEqual(0, u.FilterBy(Account.Color.Red).Count());
+        }
+
+    }
+
+    [TestClass]
+    public class UserTestWithInitializedData
+    {
+        User u;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            
+            Category facultad = new Category("Facultad");
+            Category trabajo = new Category("Trabajo");
+            Category personal = new Category("Personal");
+
+            
+            Account instagram = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "vsjkdjfjsdhjf",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                category = personal
+            };
+
+            Account linkedIn = new Account()
+            {
+                Username = "JuanPerez",
+                Password = "Ekjdy2345",
+                Note = "Soy nuevo en linked in",
+                Site = "Linked In",
+                Modification = DateTime.Now,
+                category = personal
+            };
+
+            Account github = new Account()
+            {
+                Username = "JuanPerez123",
+                Note = "Github para el laburo",
+                Site = "github.com",
+                Modification = DateTime.Now,
+                category = trabajo
+            };
+            github.GeneratePassword(20, true, true, true, true);
+
+            Account github2 = new Account()
+            {
+                Username = "Juanchoperez",
+                Note = "Github para la facu",
+                Site = "github.com",
+                Modification = DateTime.Now,
+                category = facultad
+            };
+            github.GeneratePassword(12, true, true, false, false);
+
+            CreditCard itau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "827",
+                ExpirationMonth = 3,
+                ExpirationYear = 2023,
+                Notes = "Sin limite",
+                category = personal
+            };
+
+            CreditCard santander = new CreditCard()
+            {
+                Name = "Santander universidades",
+                Company = "Master Card",
+                Number = "4324 5342 5543 2345",
+                Code = "836",
+                ExpirationMonth = 4,
+                ExpirationYear = 2022,
+                Notes = "Limite 50k dolares",
+                category = trabajo
+            };
+
+            CreditCard americanExpress = new CreditCard()
+            {
+                Name = "American Platinum",
+                Company = "American Express",
+                Number = "8945 2948 0498 1289",
+                Code = "2393",
+                ExpirationMonth = 2,
+                ExpirationYear = 2025,
+                Notes = "Sin limite, para compras en el exterior",
+                category = personal
+            };
+
+            u = new User();
+            u.TryAddCategory(facultad);
+            u.TryAddCategory(trabajo);
+            u.TryAddCategory(personal);
+            u.TryAddAccount(github);
+            u.TryAddAccount(github2);
+            u.TryAddAccount(linkedIn);
+            u.TryAddAccount(instagram);
+            u.TryAddCreditCard(itau);
+            u.TryAddCreditCard(santander);
+            u.TryAddCreditCard(americanExpress);
+
+        }
+
+        [ExpectedException(typeof(ExistentAccountException))]
+        [TestMethod]
+        public void TryAddRepeatedAccountTest()
+        {
+            Account linkedIn = new Account()
+            {
+                Username = "JuanPerez",
+                Password = "juanpe2",
+                Note = "Soy nuevo en linked in",
+                Site = "Linked In",
+                Modification = DateTime.Now,
+                category = u.Categories[1]
+            };
+            u.TryAddAccount(linkedIn);
+        }
+
+        [ExpectedException(typeof(ExistentCreditCardException))]
+        [TestMethod]
+        public void TryAddRepeatedCreditCardTest()
+        {
+            CreditCard cc = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "8945 2948 0498 1289",
+                Code = "827",
+                ExpirationMonth = 3,
+                ExpirationYear = 2023,
+                Notes = "Limite 50k dolares",
+                category = u.Categories[0]
+            };
+            u.TryAddCreditCard(cc);
         }
 
 
