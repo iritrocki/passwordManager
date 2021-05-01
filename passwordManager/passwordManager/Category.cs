@@ -1,4 +1,5 @@
 ﻿using passwordManager.Exceptions;
+using System;
 
 namespace passwordManager
 {
@@ -28,6 +29,11 @@ namespace passwordManager
             if (unString.Length >= 3 && unString.Length <= 15)
                 return true;
             return false;
+        }
+
+        public void ModifyCategory(string newName)
+        {
+            this.Name = newName;
         }
     }
 }

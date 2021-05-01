@@ -116,6 +116,16 @@ namespace passwordManager
             return true;
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj as Account);
+        }
+
+        public bool Equals(Account a)
+        {
+            return this.Username == a.Username && this.Site == a.Site;
+        }
+
         public void GeneratePassword(int length, bool upper, bool lower, bool digits, bool specials)
         {
             if (upper || lower || digits || specials)
@@ -210,7 +220,16 @@ namespace passwordManager
             return false;
         }
 
+        public void ModifyAccount(Account newAccount)
+        {
+            this.Username = newAccount.Username;
+            this.Password = newAccount.Password;
+            this.Site = newAccount.Site;
+            this.Note = newAccount.Note;
+            this.Modification = DateTime.Now;
+        }
 
         
+
     }
 }
