@@ -127,6 +127,25 @@ namespace passwordManager
             return true;
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj as CreditCard);
+        }
 
+        public bool Equals(CreditCard c)
+        {
+            return this.Number == c.Number;
+        }
+
+        public void ModifyCreditCard(CreditCard newCreditCard)
+        {
+            this.Name = newCreditCard.Name;
+            this.Company = newCreditCard.Company;
+            this.Number = newCreditCard.Number;
+            this.Notes = newCreditCard.Notes;
+            this.ExpirationMonth = newCreditCard.ExpirationMonth;
+            this.ExpirationYear = newCreditCard.ExpirationYear;
+            this.Code = newCreditCard.Code;
+        }
     }
 }

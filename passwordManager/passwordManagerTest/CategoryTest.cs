@@ -41,7 +41,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validateValidNameTest()
+        public void ValidateValidNameTest()
         {
             Category c = new Category();
             string unString = "Ort";
@@ -49,7 +49,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validateLongerThanValidLengthTest()
+        public void ValidateLongerThanValidLengthTest()
         {
             Category c = new Category();
             string unString = "supercalifragilisticoespialidoso";
@@ -63,6 +63,30 @@ namespace passwordManagerTest
         {
             Category c = new Category();
             c.Name = "bp";
+        }
+
+        [TestMethod]
+        public void ModifyCategoryTest()
+        {
+            Category c = new Category("facultad");
+            c.ModifyCategory("Trabajo");
+            Assert.AreEqual("Trabajo", c.Name);
+        }
+
+        [ExpectedException(typeof(invalidCategoryNameException))]
+        [TestMethod]
+        public void TryModifyCategoryTest()
+        {
+            Category c = new Category("facultad");
+            c.ModifyCategory("MT");
+        }
+
+        [TestMethod]
+        public void ModifyCategoryChangeToUpperCaseTest()
+        {
+            Category c = new Category("facultad");
+            c.ModifyCategory("FACULTAD");
+            Assert.AreEqual("FACULTAD", c.Name);
         }
     }
 }

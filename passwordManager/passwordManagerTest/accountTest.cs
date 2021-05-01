@@ -501,5 +501,101 @@ namespace passwordManagerTest
             a.GeneratePassword(12, false, false, false, false);
 
         }
+
+        [TestMethod]
+        public void ModifyAccountTest()
+        {
+            Category c = new Category("facultad");
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "kfjbvskSKS??",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now
+            };
+
+            Account newAccount = new Account()
+            {
+                Username = "JuanPe1",
+                Note = "",
+                Site = "Instagram",
+            };
+            newAccount.GeneratePassword(6, true, true, true, true);
+            a.ModifyAccount(newAccount);
+            Assert.AreEqual("JuanPe1", a.Username);
+        }
+
+        [TestMethod]
+        public void ModifyAccountVersion2Test()
+        {
+            Category c = new Category("facultad");
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "kfjbvskSKS??",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now
+            };
+
+            Account newAccount = new Account()
+            {
+                Username = "JuanPe1",
+                Note = "",
+                Site = "Instagram",
+            };
+            newAccount.GeneratePassword(6, true, true, true, true);
+            a.ModifyAccount(newAccount);
+            Assert.AreNotEqual("kfjbvskSKS??", a.Password);
+        }
+
+        [ExpectedException(typeof(InvalidAccountPasswordException))]
+        [TestMethod]
+        public void ModifyAccountVersion3Test()
+        {
+            Category c = new Category("facultad");
+            Account a = new Account()
+            {
+                Username = "JuanPe123",
+                Password = "kfjbvskSKS??",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now
+            };
+
+            Account newAccount = new Account()
+            {
+                Username = "JuanPe1",
+                Password = "123",
+                Note = "",
+                Site = "Instagram",
+            };
+            a.ModifyAccount(newAccount);
+            Assert.AreNotEqual("kfjbvskSKS??", a.Password);
+        }
+
+        [TestMethod]
+        public void EqualAccountsTest() 
+        {
+            Account a1 = new Account()
+            {
+                Username = "JuanPe1",
+                Password = "1233278462",
+                Note = "",
+                Site = "Instagram",
+                Modification = DateTime.Now
+            };
+            Account a2 = new Account()
+            {
+                Username = "JuanPe1",
+                Password = "djhfkjsrhkjr",
+                Note = "New Account",
+                Site = "Instagram",
+                Modification = DateTime.Now
+            };
+            Assert.IsTrue(a1.Equals(a2));
+
+        }
     }
 }

@@ -55,34 +55,59 @@ namespace passwordManager
         {
             foreach(Category n in this.Categories)
             {
-                if(c.Name.ToUpper() == n.Name.ToUpper())
-                {
-                    throw new ExistentCategoryNameException();
-                }
+                CategoryComparison(c.Name, n.Name);
             }
             this.Categories.Add(c);
         }
 
-        public void TryAddAccount(Account a)
+
+        public void TryModifyCategory(Category toChange, string v)
         {
-            foreach(Account acc in this.Accounts)
+            foreach(Category c in this.Categories)
             {
-                if (acc.Site == a.Site && acc.Username == a.Username)
-                    throw new ExistentAccountException();
+                if(toChange != c)
+                {
+                    CategoryComparison(c.Name, v);
+                }
             }
-            this.Accounts.Add(a);
-            this.ColorCount[(int)a.Classification] ++;
+            toChange.ModifyCategory(v);
         }
 
-
-        public void TryAddCreditCard(CreditCard cc)
+        private static void CategoryComparison(String c, String n)
         {
-            foreach(CreditCard c in this.CreditCards)
+            if (c.ToUpper() == n.ToUpper())
             {
-                if(c.Number == cc.Number)
-                    throw new ExistentCreditCardException();
+                throw new ExistentCategoryNameException();
             }
-            this.CreditCards.Add(cc);
+        }
+
+        public void TryAddAccount(Account a)
+        {
+            foreach (Account acc in this.Accounts)
+            {
+                AccountsComparison(acc, a);
+
+            }
+            this.Accounts.Add(a);
+            this.ColorCount[(int)a.Classification]++;
+        }
+
+        public void TryModifyAccount(Account account, Account modificationAccount)
+        {
+            foreach (Account acc in this.Accounts)
+            {
+                if (account != acc)
+                {
+                    AccountsComparison(acc, modificationAccount);
+                }
+            }
+            account.ModifyAccount(modificationAccount);
+        }
+
+        private void AccountsComparison(Account a, Account b)
+        {
+            if (a.Equals(b))
+                throw new ExistentAccountException();
         }
 
         public void TryRemoveAccount(Account a)
@@ -96,6 +121,43 @@ namespace passwordManager
                 throw new InexistentAccountException();
         }
 
+        public void TryAddCreditCard(CreditCard cc)
+        {
+            foreach(CreditCard c in this.CreditCards)
+            {
+                CreditCardComparison(cc, c);
+            }
+            this.CreditCards.Add(cc);
+        }
+
+        
+
+        public void TryModifyCreditCard(CreditCard creditCard, CreditCard modifiedCreditCard)
+        {
+            foreach(CreditCard c in this.CreditCards)
+            {
+                if (c != creditCard)
+                    CreditCardComparison(c, modifiedCreditCard);
+            }
+            creditCard.ModifyCreditCard(modifiedCreditCard);
+        }
+
+        private static void CreditCardComparison(CreditCard cc, CreditCard c)
+        {
+            if (c.Equals(cc))
+                throw new ExistentCreditCardException();
+        }
+
+        public void TryRemoveCreditCard(CreditCard cc)
+        {
+            if (this.CreditCards.Contains(cc))
+            {
+                this.CreditCards.Remove(cc);
+            }
+            else
+                throw new InexistentCreditCardException();
+        }
+        
         public List<Account> FilterBy(Account.Color classification)
         {
             List<Account> filteredAccounts = new List<Account>();
@@ -106,5 +168,7 @@ namespace passwordManager
             }
             return filteredAccounts;
         }
+
+        
     }
 }

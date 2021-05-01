@@ -50,7 +50,6 @@ namespace passwordManagerTest
         public void validateInvalidNumberTest()
         {
             CreditCard c = new CreditCard();
-            //c.number = "1874 4153";
             Assert.IsFalse(c.ValidateNumber("1874 4153"));
         }
 
@@ -237,6 +236,130 @@ namespace passwordManagerTest
             Assert.AreEqual(cat, c.category);
         }
 
+        [TestMethod]
+        public void ModifyCreditCardTest()
+        {
+            Category facultad = new Category("facultad");
+            CreditCard itau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "827",
+                ExpirationMonth = 3,
+                ExpirationYear = 2020,
+                Notes = "Sin limite",
+                category = facultad
+            };
+
+            CreditCard newItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "123",
+                ExpirationMonth = 3,
+                ExpirationYear = 2024,
+                Notes = "Sin limite",
+                category = facultad
+            };
+            itau.ModifyCreditCard(newItau);
+            Assert.AreEqual("123", itau.Code);
+        }
+
+        [TestMethod]
+        public void ModifyAccountVersion2Test()
+        {
+            Category facultad = new Category("facultad");
+            CreditCard itau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "827",
+                ExpirationMonth = 3,
+                ExpirationYear = 2020,
+                Notes = "Sin limite",
+                category = facultad
+            };
+
+            CreditCard newItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "123",
+                ExpirationMonth = 3,
+                ExpirationYear = 2024,
+                Notes = "Sin limite",
+                category = facultad
+            };
+            itau.ModifyCreditCard(newItau);
+            Assert.AreEqual(2024, newItau.ExpirationYear);
+        }
+
+        [ExpectedException(typeof(InvalidCreditCardNumberException))]
+        [TestMethod]
+        public void ModifyAccountVersion3Test()
+        {
+            Category facultad = new Category("facultad");
+            CreditCard itau = new CreditCard()
+            {
+                Name = "Itau credito",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "123",
+                ExpirationMonth = 3,
+                ExpirationYear = 2024,
+                Notes = "Sin limite",
+                category = facultad
+            };
+
+            CreditCard newItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678",
+                Code = "123",
+                ExpirationMonth = 3,
+                ExpirationYear = 2024,
+                Notes = "Sin limite",
+                category = facultad
+            };
+            itau.ModifyCreditCard(newItau);
+            Assert.AreNotEqual("Itau volar", itau.Name);
+        }
+
+        [TestMethod]
+        public void EqualAccountsTest()
+        {
+            Category facultad = new Category("facultad");
+            CreditCard itau = new CreditCard()
+            {
+                Name = "Itau credito",
+                Company = "Master",
+                Number = "1234 5678 2345 5342",
+                Code = "275",
+                ExpirationMonth = 4,
+                ExpirationYear = 2020,
+                Notes = "",
+                category = facultad
+            };
+
+            CreditCard newItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "123",
+                ExpirationMonth = 3,
+                ExpirationYear = 2024,
+                Notes = "Sin limite",
+                category = facultad
+            };
+            Assert.IsTrue(itau.Equals(newItau));
+
+        }
     }
 
 }

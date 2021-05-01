@@ -289,6 +289,47 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
+        public void TryRemoveCreditCardTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            CreditCard cc = new CreditCard()
+            {
+                Name = "Visa Gold",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "854",
+                ExpirationMonth = 3,
+                ExpirationYear = 2022,
+                Notes = "Tarjeta sin limite",
+                category = c
+            };
+            u.TryAddCreditCard(cc);
+            u.TryRemoveCreditCard(cc);
+            Assert.AreEqual(0, u.CreditCards.Count);
+        }
+
+        [ExpectedException(typeof(InexistentCreditCardException))]
+        [TestMethod]
+        public void TryRemoveInexistentCreditCardTest()
+        {
+            User u = new User();
+            Category c = new Category("Facultad");
+            CreditCard cc = new CreditCard()
+            {
+                Name = "Visa Gold",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "854",
+                ExpirationMonth = 3,
+                ExpirationYear = 2022,
+                Notes = "Tarjeta sin limite",
+                category = c
+            };
+            u.TryRemoveCreditCard(cc);
+        }
+
+        [TestMethod]
         public void SignInTest()
         {
             User u = new User();
@@ -586,6 +627,122 @@ namespace passwordManagerTest
             u.TryAddCreditCard(cc);
         }
 
+        [TestMethod]
+        public void TryModifyAccountTest()
+        {
+            Account modificationAccount = new Account()
+            {
+                Username = "JuanPerez",
+                Password = "Ekjdy2345",
+                Note = "Tengo muchas fotos para subir a vsco",
+                Site = "VSCO",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            u.TryModifyAccount(u.Accounts[0], modificationAccount);
+            Assert.AreEqual("VSCO", u.Accounts[0].Site);
+
+        }
+
+        [TestMethod]
+        public void TryModifyAccountAddedToListTest()
+        {
+            Account modificationAccount = new Account()
+            {
+                Username = "JuanPerez",
+                Password = "Ekjdy2345",
+                Note = "Tengo muchas fotos para subir a vsco",
+                Site = "VSCO",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+            Account toChange = u.Accounts[0];
+            u.TryModifyAccount(u.Accounts[0], modificationAccount);
+            Assert.IsTrue(u.Accounts.Contains(toChange));
+
+        }
+
+        [ExpectedException(typeof(ExistentAccountException))]
+        [TestMethod]
+        public void TryModifyToRepeatedAccountTest()
+        {
+            Account modificationAccount = new Account()
+            {
+                Username = "JuanPerez",
+                Password = "Ekjdy2345",
+                Note = "Soy nuevo en linked in",
+                Site = "Linked In",
+                Modification = DateTime.Now,
+                category = u.Categories[0]
+            };
+
+            u.TryModifyAccount(u.Accounts[0], modificationAccount);
+
+        }
+
+        [TestMethod]
+        public void TryModifyCategoryTest()
+        {
+            u.TryModifyCategory(u.Categories[0], "Hobbies");
+            Assert.AreEqual("Hobbies", u.Categories[0].Name);
+
+        }
+
+        [TestMethod]
+        public void TryModifyCategoryAddedToListTest()
+        {
+            Category toChange = u.Categories[0];
+            u.TryModifyCategory(u.Categories[0], "Hobbies");
+            Assert.IsTrue(u.Categories.Contains(toChange));
+
+        }
+
+        [ExpectedException(typeof(ExistentCategoryNameException))]
+        [TestMethod]
+        public void TryModifyToRepeatedCategoryTest()
+        {
+            u.TryModifyCategory(u.Categories[0], "trabajo");
+
+        }
+
+
+        [TestMethod]
+        public void TryModifyCreditCardTest()
+        {
+            CreditCard modifiedItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Master Card",
+                Number = "3526 4827 2387 2873",
+                Code = "239",
+                ExpirationMonth = 5,
+                ExpirationYear = 2024,
+                Notes = "Limite 100k euros",
+                category = u.Categories[0]
+            };
+            u.TryModifyCreditCard(u.CreditCards[0], modifiedItau);
+            Assert.AreEqual("3526 4827 2387 2873", u.CreditCards[0].Number);
+
+        }
+
+
+        [ExpectedException(typeof(ExistentCreditCardException))]
+        [TestMethod]
+        public void TryModifyToRepeatedCreditCardTest()
+        {
+            CreditCard modifiedItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Master Card",
+                Number = "8945 2948 0498 1289",
+                Code = "239",
+                ExpirationMonth = 5,
+                ExpirationYear = 2024,
+                Notes = "Limite 100k euros",
+                category = u.Categories[0]
+            };
+            u.TryModifyCreditCard(u.CreditCards[0], modifiedItau);
+        }
 
     }
 }
