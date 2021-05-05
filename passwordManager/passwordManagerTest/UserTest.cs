@@ -117,7 +117,7 @@ namespace passwordManagerTest
                 Note="", 
                 Site="Instagram", 
                 Modification=DateTime.Now, 
-                category=c};
+                Category=c};
             u.TryAddAccount(a);
             Assert.AreEqual(1, u.Accounts.Count);
         }
@@ -135,7 +135,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = c
+                Category = c
             };
             u.TryAddAccount(a);
         }
@@ -152,7 +152,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = c
+                Category = c
             };
             u.TryAddAccount(a);
             u.TryRemoveAccount(a);
@@ -172,7 +172,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = c
+                Category = c
             };
             u.TryRemoveAccount(a);
         }
@@ -188,7 +188,7 @@ namespace passwordManagerTest
                 Note = "", 
                 Site = "Instagram", 
                 Modification = DateTime.Now, 
-                category = c 
+                Category = c 
             };
             u.Accounts.Add(a);
             Assert.AreEqual("Instagram", u.Accounts[0].Site);
@@ -206,10 +206,10 @@ namespace passwordManagerTest
                 Note = "", 
                 Site = "Instagram", 
                 Modification = DateTime.Now, 
-                category = u.Categories[0] 
+                Category = u.Categories[0] 
             };
             u.Accounts.Add(a);
-            Assert.AreEqual(c, u.Accounts[0].category);
+            Assert.AreEqual(c, u.Accounts[0].Category);
         }
 
         [TestMethod]
@@ -241,7 +241,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2022,
                 Notes = "Tarjeta sin limite",
-                category = c
+                Category = c
             };
             u.TryAddCreditCard(cc);
             Assert.AreEqual(1, u.CreditCards.Count);
@@ -261,7 +261,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2022,
                 Notes = "Tarjeta sin limite",
-                category = c
+                Category = c
             };
             u.CreditCards.Add(cc);
             Assert.AreEqual("854", u.CreditCards[0].Code);
@@ -282,10 +282,10 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2022,
                 Notes = "Tarjeta sin limite",
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.CreditCards.Add(cc);
-            Assert.AreEqual(c, u.CreditCards[0].category);
+            Assert.AreEqual(c, u.CreditCards[0].Category);
         }
 
         [TestMethod]
@@ -302,7 +302,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2022,
                 Notes = "Tarjeta sin limite",
-                category = c
+                Category = c
             };
             u.TryAddCreditCard(cc);
             u.TryRemoveCreditCard(cc);
@@ -324,7 +324,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2022,
                 Notes = "Tarjeta sin limite",
-                category = c
+                Category = c
             };
             u.TryRemoveCreditCard(cc);
         }
@@ -402,7 +402,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryAddAccount(a);
             Assert.AreEqual(1, u.ColorCount[(int)a.Classification]);
@@ -421,7 +421,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryAddAccount(a);
             u.TryRemoveAccount(a);
@@ -443,7 +443,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryAddAccount(a);
             Assert.AreEqual(1, u.FilterBy(a.Classification).Count());
@@ -462,7 +462,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryAddAccount(a);
             Assert.AreEqual(a, u.FilterBy(a.Classification)[0]);
@@ -481,7 +481,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryAddAccount(a);
             Assert.AreEqual(0, u.FilterBy(Account.Color.Red).Count());
@@ -510,7 +510,7 @@ namespace passwordManagerTest
                 Note = "",
                 Site = "Instagram",
                 Modification = DateTime.Now,
-                category = personal
+                Category = personal
             };
 
             Account linkedIn = new Account()
@@ -520,7 +520,7 @@ namespace passwordManagerTest
                 Note = "Soy nuevo en linked in",
                 Site = "Linked In",
                 Modification = DateTime.Now,
-                category = personal
+                Category = personal
             };
 
             Account github = new Account()
@@ -529,7 +529,7 @@ namespace passwordManagerTest
                 Note = "Github para el laburo",
                 Site = "github.com",
                 Modification = DateTime.Now,
-                category = trabajo
+                Category = trabajo
             };
             github.GeneratePassword(20, true, true, true, true);
 
@@ -539,7 +539,7 @@ namespace passwordManagerTest
                 Note = "Github para la facu",
                 Site = "github.com",
                 Modification = DateTime.Now,
-                category = facultad
+                Category = facultad
             };
             github.GeneratePassword(12, true, true, false, false);
 
@@ -552,7 +552,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2023,
                 Notes = "Sin limite",
-                category = personal
+                Category = personal
             };
 
             CreditCard santander = new CreditCard()
@@ -564,7 +564,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 4,
                 ExpirationYear = 2022,
                 Notes = "Limite 50k dolares",
-                category = trabajo
+                Category = trabajo
             };
 
             CreditCard americanExpress = new CreditCard()
@@ -576,7 +576,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 2,
                 ExpirationYear = 2025,
                 Notes = "Sin limite, para compras en el exterior",
-                category = personal
+                Category = personal
             };
 
             u = new User();
@@ -604,7 +604,7 @@ namespace passwordManagerTest
                 Note = "Soy nuevo en linked in",
                 Site = "Linked In",
                 Modification = DateTime.Now,
-                category = u.Categories[1]
+                Category = u.Categories[1]
             };
             u.TryAddAccount(linkedIn);
         }
@@ -622,7 +622,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2023,
                 Notes = "Limite 50k dolares",
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryAddCreditCard(cc);
         }
@@ -637,7 +637,7 @@ namespace passwordManagerTest
                 Note = "Tengo muchas fotos para subir a vsco",
                 Site = "VSCO",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryModifyAccount(u.Accounts[0], modificationAccount);
             Assert.AreEqual("VSCO", u.Accounts[0].Site);
@@ -654,7 +654,7 @@ namespace passwordManagerTest
                 Note = "Tengo muchas fotos para subir a vsco",
                 Site = "VSCO",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             Account toChange = u.Accounts[0];
             u.TryModifyAccount(u.Accounts[0], modificationAccount);
@@ -673,7 +673,7 @@ namespace passwordManagerTest
                 Note = "Soy nuevo en linked in",
                 Site = "Linked In",
                 Modification = DateTime.Now,
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
 
             u.TryModifyAccount(u.Accounts[0], modificationAccount);
@@ -718,7 +718,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 5,
                 ExpirationYear = 2024,
                 Notes = "Limite 100k euros",
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryModifyCreditCard(u.CreditCards[0], modifiedItau);
             Assert.AreEqual("3526 4827 2387 2873", u.CreditCards[0].Number);
@@ -739,7 +739,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 5,
                 ExpirationYear = 2024,
                 Notes = "Limite 100k euros",
-                category = u.Categories[0]
+                Category = u.Categories[0]
             };
             u.TryModifyCreditCard(u.CreditCards[0], modifiedItau);
         }

@@ -2,6 +2,6 @@
 {
     public abstract class DataUnit
     {
-        public Category category { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -229,7 +229,12 @@ namespace passwordManager
             this.Modification = DateTime.Now;
         }
 
-        
+        public override string ToString()
+        {
+            return string.Format("[{0}] [{1}] [{2}]", this.Category.Name, this.Site, this.Username);
+        }
+
+
 
     }
 }

@@ -163,8 +163,8 @@ namespace passwordManagerTest
         {
             Category cat = new Category("Trabajo");
             DataUnit a = new Account();
-            a.category = cat;
-            Assert.AreEqual(cat, a.category);
+            a.Category = cat;
+            Assert.AreEqual(cat, a.Category);
         }
         
 
@@ -596,6 +596,22 @@ namespace passwordManagerTest
             };
             Assert.IsTrue(a1.Equals(a2));
 
+        }
+
+        [TestMethod]
+        public void ToStringTest()
+        {
+            Category c = new Category("Facultad");
+            Account a2 = new Account()
+            {
+                Username = "JuanPe1",
+                Password = "djhfkjsrhkjr",
+                Note = "New Account",
+                Site = "Instagram",
+                Modification = DateTime.Now,
+                Category = c
+            };
+            Assert.AreEqual("[Facultad] [Instagram] [JuanPe1]", a2.ToString());
         }
     }
 }
