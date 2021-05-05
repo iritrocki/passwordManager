@@ -86,10 +86,20 @@ namespace passwordManager
             foreach (string s in subs)
             {
                 caracteres += s.Length;
+                foreach (char digit in s)
+                {
+                    if (NotADigit(digit))
+                        return false;
+                }
             }
-            if (caracteres == 16)
-                return true;
-            return false;
+            if (caracteres != 16)
+                return false;
+            return true;
+        }
+
+        private static bool NotADigit(char digit)
+        {
+            return !((int)digit >= 48 && (int)digit <= 57);
         }
 
         public bool ValidateCode(string code)
@@ -147,5 +157,11 @@ namespace passwordManager
             this.ExpirationYear = newCreditCard.ExpirationYear;
             this.Code = newCreditCard.Code;
         }
+
+        public override string ToString()
+        {
+            return string.Format("[{0}] [{1}] [{2}]", this.Name, this.Company, this.Number);
+        }
+
     }
 }

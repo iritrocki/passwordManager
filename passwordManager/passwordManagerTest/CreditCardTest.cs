@@ -8,14 +8,14 @@ namespace passwordManagerTest
     public class creditCardTest
     {
         [TestMethod]
-        public void createNewCreditCardTest()
+        public void CreateNewCreditCardTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsNotNull(c);
         }
 
         [TestMethod]
-        public void createNewCreditCardWithNameTest()
+        public void CreateNewCreditCardWithNameTest()
         {
             CreditCard c = new CreditCard();
             c.Name = "Visa Gold";
@@ -23,7 +23,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void createNewCreditCardWithTypeTest()
+        public void CreateNewCreditCardWithTypeTest()
         {
             CreditCard c = new CreditCard();
             c.Company = "Visa";
@@ -31,7 +31,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void createNewCreditCardWithNumberTest()
+        public void CreateNewCreditCardWithNumberTest()
         {
             CreditCard c = new CreditCard();
             c.Number = "4551 7820 1874 4153";
@@ -39,11 +39,18 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validateValidNumberTest()
+        public void ValidateValidNumberTest()
         {
             CreditCard c = new CreditCard();
-            c.Number = "4551 7820 1874 4153";
             Assert.IsTrue(c.ValidateNumber("4551 7820 1874 4153"));
+        }
+
+
+        [TestMethod]
+        public void ValidateInvalidNumberTest()
+        {
+            CreditCard c = new CreditCard();
+            Assert.IsFalse(c.ValidateNumber("4a51 7a20 18r4 4153"));
         }
 
         [TestMethod]
@@ -59,6 +66,14 @@ namespace passwordManagerTest
         {
             CreditCard c = new CreditCard();
             c.Number = "9234 34";
+        }
+
+        [ExpectedException(typeof(InvalidCreditCardNumberException))]
+        [TestMethod]
+        public void invalidNumberNotDigitsTest()
+        {
+            CreditCard c = new CreditCard();
+            c.Number = "a132 bdfd 2345 slf2";
         }
 
         [TestMethod]
@@ -232,8 +247,8 @@ namespace passwordManagerTest
         {
             Category cat = new Category("Trabajo");
             DataUnit c = new CreditCard();
-            c.category = cat;
-            Assert.AreEqual(cat, c.category);
+            c.Category = cat;
+            Assert.AreEqual(cat, c.Category);
         }
 
         [TestMethod]
@@ -249,7 +264,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2020,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
 
             CreditCard newItau = new CreditCard()
@@ -261,7 +276,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2024,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
             itau.ModifyCreditCard(newItau);
             Assert.AreEqual("123", itau.Code);
@@ -280,7 +295,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2020,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
 
             CreditCard newItau = new CreditCard()
@@ -292,7 +307,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2024,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
             itau.ModifyCreditCard(newItau);
             Assert.AreEqual(2024, newItau.ExpirationYear);
@@ -312,7 +327,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2024,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
 
             CreditCard newItau = new CreditCard()
@@ -324,7 +339,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2024,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
             itau.ModifyCreditCard(newItau);
             Assert.AreNotEqual("Itau volar", itau.Name);
@@ -343,7 +358,7 @@ namespace passwordManagerTest
                 ExpirationMonth = 4,
                 ExpirationYear = 2020,
                 Notes = "",
-                category = facultad
+                Category = facultad
             };
 
             CreditCard newItau = new CreditCard()
@@ -355,10 +370,26 @@ namespace passwordManagerTest
                 ExpirationMonth = 3,
                 ExpirationYear = 2024,
                 Notes = "Sin limite",
-                category = facultad
+                Category = facultad
             };
             Assert.IsTrue(itau.Equals(newItau));
 
+        }
+
+        [TestMethod]
+        public void ToStringTest()
+        {
+            CreditCard newItau = new CreditCard()
+            {
+                Name = "Itau volar",
+                Company = "Visa",
+                Number = "1234 5678 2345 5342",
+                Code = "123",
+                ExpirationMonth = 3,
+                ExpirationYear = 2024,
+                Notes = "Sin limite"
+            };
+            Assert.AreEqual("[Itau volar] [Visa] [1234 5678 2345 5342]", newItau.ToString());
         }
     }
 

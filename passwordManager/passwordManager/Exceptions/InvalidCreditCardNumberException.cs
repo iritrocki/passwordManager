@@ -13,7 +13,7 @@ namespace passwordManager.Exceptions
         }
         public InvalidCreditCardNumberException()
         {
-            this.message = "El numero debe tener 16 digitos.";
+            this.message = "Debe ingresar un numero de 16 digitos.";
         }
     }
 }
