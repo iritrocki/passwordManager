@@ -9,7 +9,7 @@ namespace passwordManager
 
         public Category(string v)
         {
-            _name = v;
+            this.Name = v;
         }
         private string _name;
         public string Name

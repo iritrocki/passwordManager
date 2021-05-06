@@ -17,7 +17,7 @@ namespace passwordManager
             this.ColorCount = new int[Enum.GetValues(typeof(Account.Color)).Length];
         }
 
-        public bool Status { get; private set; }
+        public bool Status { get; set; }
         public string MasterKey { get; set; }
         public List<Category> Categories { get; set; }
         public List<Account> Accounts { get; set; }
