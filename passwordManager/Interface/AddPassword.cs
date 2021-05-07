@@ -39,7 +39,6 @@ namespace Interface
 
             comboBoxCategories.DataSource = this.user.Categories;
             comboBoxCategories.DisplayMember = "Name";
-            /*comboBoxCreditCardCategory.Items.Add(string.Format("{0}",category.Name));*/
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -83,11 +82,20 @@ namespace Interface
 
         private void btnGeneratePassword_Click(object sender, EventArgs e)
         {
-            bool upper = checkBoxUpper.Checked;
-            bool lower = checkBoxLower.Checked;
-            bool digits = checkBoxDigits.Checked;
-            bool specials = checkBoxSpecials.Checked;
-            int length = (int)upDownLenght.Value;
+            try
+            {
+                bool upper = checkBoxUpper.Checked;
+                bool lower = checkBoxLower.Checked;
+                bool digits = checkBoxDigits.Checked;
+                bool specials = checkBoxSpecials.Checked;
+                int length = (int)upDownLenght.Value;
+                string generatedPassword = user.GeneratePassword(length, upper, lower, digits, specials);
+                txtPassword.Text = generatedPassword;
+            }
+            catch (InvalidSelectionForPasswordException exception)
+            {
+                lblError.Text = exception.Message;
+            }
 
         }
     }
