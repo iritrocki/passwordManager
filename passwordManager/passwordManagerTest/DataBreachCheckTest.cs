@@ -55,12 +55,12 @@ namespace passwordManagerTest
             Account github2 = new Account()
             {
                 Username = "Juanchoperez",
+                Password = "sjdkjsbsnd3278?",
                 Note = "Github para la facu",
                 Site = "github.com",
                 Modification = DateTime.Now,
                 Category = facultad
             };
-            github.GeneratePassword(12, true, true, false, false);
 
             CreditCard itau = new CreditCard()
             {

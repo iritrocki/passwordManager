@@ -384,123 +384,7 @@ namespace passwordManagerTest
             Assert.AreEqual(Account.Color.DarkGreen, a.Classification);
         }
 
-        [TestMethod]
-        public void GeneratePasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, false, false, false);
-
-            Assert.IsNotNull(a.Password);
-        }
-
-        [TestMethod]
-        public void CorrectPasswordLengthTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, false, false, false);
-
-            Assert.AreEqual(12, a.Password.Length);
-        }
-
-        [TestMethod]
-        public void UpperCasePasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, false, false, false);
-
-            Assert.AreEqual(a.Password.ToUpper(), a.Password);
-        }
-
-        [TestMethod]
-        public void LowerCasePasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, false, true, false, false);
-
-            Assert.AreEqual(a.Password.ToLower(), a.Password);
-        }
-
-        [TestMethod]
-        public void LowerAndUpperCasePasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, true, false, false);
-
-            Assert.AreNotEqual(a.Password.ToLower(), a.Password);
-        }
-
-        [TestMethod]
-        public void ContainsDigitsPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, true, true, false);
-            Assert.IsTrue(a.ContainsDigits(a.Password));
-        }
-
-        [TestMethod]
-        public void ContainsSpecialsPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, true, false, true);
-            Assert.IsTrue(a.ContainsSpecials(a.Password));
-        }
-
-        [TestMethod]
-        public void DoesNotContainDigitsPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, true, false, false);
-            Assert.IsFalse(a.ContainsDigits(a.Password));
-        }
-
-        [TestMethod]
-        public void DoesNotContainSpecialsPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, true, false, false);
-            Assert.IsFalse(a.ContainsSpecials(a.Password));
-        }
-
-        [TestMethod]
-        public void ContainSpecialsDigitsPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, false, false, true, true);
-            Assert.IsTrue(a.ContainsSpecials(a.Password) && a.ContainsDigits(a.Password) && !a.ContainsUpperCase(a.Password) && !a.ContainsLowerCase(a.Password));
-        }
-
-        [TestMethod]
-        public void ContainSpecialsDigitsUpperPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, true, false, true, true);
-            Assert.IsTrue(a.ContainsSpecials(a.Password) && a.ContainsDigits(a.Password) && a.ContainsUpperCase(a.Password) && !a.ContainsLowerCase(a.Password));
-        }
-
-        [TestMethod]
-        public void ContainSpecialsDigitsLowerPasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, false, true, true, true);
-            Assert.IsTrue(a.ContainsSpecials(a.Password) && a.ContainsDigits(a.Password) && !a.ContainsUpperCase(a.Password) && a.ContainsLowerCase(a.Password));
-        }
-
-        [ExpectedException(typeof(InvalidAccountPasswordException))]
-        [TestMethod]
-        public void TooShortPasswordLengthTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(3, true, false, false, false);
-        }
-
-        [ExpectedException(typeof(InvalidSelectionForPasswordException))]
-        [TestMethod]
-        public void EverythingFalsePasswordTest()
-        {
-            Account a = new Account();
-            a.GeneratePassword(12, false, false, false, false);
-
-        }
+        
 
         [TestMethod]
         public void ModifyAccountTest()
@@ -518,10 +402,10 @@ namespace passwordManagerTest
             Account newAccount = new Account()
             {
                 Username = "JuanPe1",
+                Password = "holaEstaEsunacontra",
                 Note = "",
                 Site = "Instagram",
             };
-            newAccount.GeneratePassword(6, true, true, true, true);
             a.ModifyAccount(newAccount);
             Assert.AreEqual("JuanPe1", a.Username);
         }
@@ -542,10 +426,10 @@ namespace passwordManagerTest
             Account newAccount = new Account()
             {
                 Username = "JuanPe1",
+                Password = "1234njkfd",
                 Note = "",
                 Site = "Instagram",
             };
-            newAccount.GeneratePassword(6, true, true, true, true);
             a.ModifyAccount(newAccount);
             Assert.AreNotEqual("kfjbvskSKS??", a.Password);
         }

@@ -487,6 +487,120 @@ namespace passwordManagerTest
             Assert.AreEqual(0, u.FilterBy(Account.Color.Red).Count());
         }
 
+
+        [TestMethod]
+        public void CorrectPasswordLengthTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, false, false, false);
+
+            Assert.AreEqual(12, password.Length);
+        }
+
+        [TestMethod]
+        public void UpperCasePasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, false, false, false);
+
+            Assert.AreEqual(password.ToUpper(), password);
+        }
+
+        [TestMethod]
+        public void LowerCasePasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, false, true, false, false);
+
+            Assert.AreEqual(password.ToLower(), password);
+        }
+
+        [TestMethod]
+        public void LowerAndUpperCasePasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, true, false, false);
+
+            Assert.AreNotEqual(password.ToLower(), password);
+        }
+
+        [TestMethod]
+        public void ContainsDigitsPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, true, true, false);
+            Assert.IsTrue(a.ContainsDigits(password));
+        }
+
+        [TestMethod]
+        public void ContainsSpecialsPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, true, false, true);
+            Assert.IsTrue(a.ContainsSpecials(password));
+        }
+
+        [TestMethod]
+        public void DoesNotContainDigitsPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, true, false, false);
+            Assert.IsFalse(a.ContainsDigits(password));
+        }
+
+        [TestMethod]
+        public void DoesNotContainSpecialsPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, true, false, false);
+            Assert.IsFalse(a.ContainsSpecials(password));
+        }
+
+        [TestMethod]
+        public void ContainSpecialsDigitsPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, false, false, true, true);
+            Assert.IsTrue(a.ContainsSpecials(password) && a.ContainsDigits(password) && !a.ContainsUpperCase(password) && !a.ContainsLowerCase(password));
+        }
+
+        [TestMethod]
+        public void ContainSpecialsDigitsUpperPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, true, false, true, true);
+            Assert.IsTrue(a.ContainsSpecials(password) && a.ContainsDigits(password) && a.ContainsUpperCase(password) && !a.ContainsLowerCase(password));
+        }
+
+        [TestMethod]
+        public void ContainSpecialsDigitsLowerPasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, false, true, true, true);
+            Assert.IsTrue(a.ContainsSpecials(password) && a.ContainsDigits(password) && !a.ContainsUpperCase(password) && a.ContainsLowerCase(password));
+        }
+
+        [ExpectedException(typeof(InvalidSelectionForPasswordException))]
+        [TestMethod]
+        public void EverythingFalsePasswordTest()
+        {
+            User u = new User();
+            Account a = new Account();
+            string password = u.GeneratePassword(12, false, false, false, false);
+
+        }
+
     }
 
     [TestClass]
@@ -526,22 +640,22 @@ namespace passwordManagerTest
             Account github = new Account()
             {
                 Username = "JuanPerez123",
+                Password = "fvjnwqj42kfn",
                 Note = "Github para el laburo",
                 Site = "github.com",
                 Modification = DateTime.Now,
                 Category = trabajo
             };
-            github.GeneratePassword(20, true, true, true, true);
 
             Account github2 = new Account()
             {
                 Username = "Juanchoperez",
+                Password = "DSVNsjfj?.>",
                 Note = "Github para la facu",
                 Site = "github.com",
                 Modification = DateTime.Now,
                 Category = facultad
             };
-            github.GeneratePassword(12, true, true, false, false);
 
             CreditCard itau = new CreditCard()
             {
@@ -580,16 +694,16 @@ namespace passwordManagerTest
             };
 
             u = new User();
-            u.TryAddCategory(facultad);
-            u.TryAddCategory(trabajo);
-            u.TryAddCategory(personal);
-            u.TryAddAccount(github);
-            u.TryAddAccount(github2);
-            u.TryAddAccount(linkedIn);
-            u.TryAddAccount(instagram);
-            u.TryAddCreditCard(itau);
-            u.TryAddCreditCard(santander);
-            u.TryAddCreditCard(americanExpress);
+            u.Categories.Add(facultad);
+            u.Categories.Add(trabajo);
+            u.Categories.Add(personal);
+            u.Accounts.Add(github);
+            u.Accounts.Add(github2);
+            u.Accounts.Add(linkedIn);
+            u.Accounts.Add(instagram);
+            u.CreditCards.Add(itau);
+            u.CreditCards.Add(santander);
+            u.CreditCards.Add(americanExpress);
 
         }
 
