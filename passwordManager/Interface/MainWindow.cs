@@ -22,14 +22,9 @@ namespace Interface
             this.user = u;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCategoryList_Click(object sender, EventArgs e)
         {
-            UserControl categoryList = new CategoryList(user);
+            UserControl categoryList = new CategoryList(user, pnlMainUserControl);
             pnlMainUserControl.Controls.Add(categoryList);
         }
 

@@ -14,10 +14,13 @@ namespace Interface
     public partial class CategoryList : UserControl
     {
         private User user;
-        public CategoryList(User u)
+        private Panel MainPanel;
+        public CategoryList(User u, Panel MainPanel)
         {
             InitializeComponent();
             this.user = u;
+            this.MainPanel = MainPanel;
+            lblError.Text = "";
             chargeListItems();
         }
 
@@ -26,23 +29,31 @@ namespace Interface
             foreach(Category c in user.Categories)
             {
                 ListViewItem listItem = new ListViewItem(string.Format("{0}", c.Name), 0);
+                listItem.Tag = c;
                 listViewCategoryList.Items.Add(listItem);
             }
         }
 
         private void btnAddNewCategory_Click(object sender, EventArgs e)
         {
-            CategoryEdit();
+            UserControl categoryEditWindow = new AddCategory(user);
+            this.MainPanel.Controls.Add(categoryEditWindow);
         }
 
         private void btnModifyCategory_Click(object sender, EventArgs e)
         {
-            CategoryEdit();
+            try
+            {
+                Category selectedItem = (Category)listViewCategoryList.SelectedItems[0].Tag;
+                UserControl categoryEditWindow = new AddCategory(user, selectedItem);
+                this.MainPanel.Controls.Add(categoryEditWindow);
+
+            }catch(Exception exc)
+            {
+                lblError.Text = "Debe seleccionar una categoría para modificar.";
+            }
+            
         }
 
-        public void CategoryEdit()
-        {
-            //Mostrar user control de edicion de categorias
-        }
     }
 }
