@@ -72,6 +72,21 @@
     <Compile Include="AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddCreditCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddCreditCard.Designer.cs">
+      <DependentUpon>AddCreditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreditCardList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreditCardList.Designer.cs">
+      <DependentUpon>CreditCardList.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreditCardList.resx">
+      <DependentUpon>CreditCardList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCreditCard.resx">
+      <DependentUpon>AddCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
