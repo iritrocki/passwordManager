@@ -3,7 +3,7 @@
 namespace passwordManager.Exceptions
 {
     [Serializable]
-    public class ExistentAccountException: Exception
+    public class ExistentAccountException: InvalidAccountException
     {
         private string message;
 

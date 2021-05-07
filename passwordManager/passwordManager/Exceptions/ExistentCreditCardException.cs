@@ -3,7 +3,7 @@
 namespace passwordManager.Exceptions
 {
     [Serializable]
-    public class ExistentCreditCardException: Exception
+    public class ExistentCreditCardException: InvalidCreditCardException
     {
         private string message;
 

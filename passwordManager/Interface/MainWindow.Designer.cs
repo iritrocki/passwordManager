@@ -49,7 +49,6 @@ namespace Interface
             this.btnPasswordList.TabIndex = 1;
             this.btnPasswordList.Text = "Listado de contraseñas";
             this.btnPasswordList.UseVisualStyleBackColor = true;
-            this.btnPasswordList.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnCreditCardList
             // 

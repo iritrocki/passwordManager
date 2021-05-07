@@ -33,6 +33,8 @@ namespace Interface
             this.listViewCategoryList = new System.Windows.Forms.ListView();
             this.btnAddNewCategory = new System.Windows.Forms.Button();
             this.btnModifyCategory = new System.Windows.Forms.Button();
+            this.cHdrCategories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCategoryList
@@ -47,12 +49,15 @@ namespace Interface
             // 
             // listViewCategoryList
             // 
+            this.listViewCategoryList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cHdrCategories});
             this.listViewCategoryList.HideSelection = false;
             this.listViewCategoryList.Location = new System.Drawing.Point(70, 94);
             this.listViewCategoryList.Name = "listViewCategoryList";
             this.listViewCategoryList.Size = new System.Drawing.Size(463, 252);
             this.listViewCategoryList.TabIndex = 1;
             this.listViewCategoryList.UseCompatibleStateImageBehavior = false;
+            this.listViewCategoryList.View = System.Windows.Forms.View.List;
             // 
             // btnAddNewCategory
             // 
@@ -76,10 +81,24 @@ namespace Interface
             this.btnModifyCategory.UseVisualStyleBackColor = true;
             this.btnModifyCategory.Click += new System.EventHandler(this.btnModifyCategory_Click);
             // 
+            // cHdrCategories
+            // 
+            this.cHdrCategories.Text = "Categorías";
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(266, 391);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.TabIndex = 4;
+            // 
             // CategoryList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnModifyCategory);
             this.Controls.Add(this.btnAddNewCategory);
             this.Controls.Add(this.listViewCategoryList);
@@ -97,5 +116,7 @@ namespace Interface
         private System.Windows.Forms.ListView listViewCategoryList;
         private System.Windows.Forms.Button btnAddNewCategory;
         private System.Windows.Forms.Button btnModifyCategory;
+        private System.Windows.Forms.ColumnHeader cHdrCategories;
+        private System.Windows.Forms.Label lblError;
     }
 }

@@ -87,6 +87,18 @@
     <EmbeddedResource Include="CreditCardList.resx">
       <DependentUpon>CreditCardList.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="PasswordList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PasswordList.Designer.cs">
+      <DependentUpon>PasswordList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddPassword.Designer.cs">
+      <DependentUpon>AddPassword.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordList.resx">
+      <DependentUpon>PasswordList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPassword.resx">
+      <DependentUpon>AddPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddCreditCard.resx">
       <DependentUpon>AddCreditCard.cs</DependentUpon>
