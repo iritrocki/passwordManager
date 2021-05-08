@@ -24,6 +24,7 @@ namespace Interface
 
         private void btnCategoryList_Click(object sender, EventArgs e)
         {
+            pnlMainUserControl.Controls.Clear();
             UserControl categoryList = new CategoryList(user, pnlMainUserControl);
             pnlMainUserControl.Controls.Add(categoryList);
         }
@@ -34,6 +35,20 @@ namespace Interface
             Form login = new Login(user);
             login.Show();
             this.Visible = false;
+        }
+
+        private void btnCreditCardList_Click(object sender, EventArgs e)
+        {
+            pnlMainUserControl.Controls.Clear();
+            UserControl creditCradList = new CreditCardList(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(creditCradList);
+        }
+
+        private void btnPasswordList_Click(object sender, EventArgs e)
+        {
+            pnlMainUserControl.Controls.Clear();
+            UserControl passwordList = new PasswordList(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(passwordList);
         }
     }
 }

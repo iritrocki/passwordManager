@@ -49,6 +49,7 @@ namespace Interface
             this.btnPasswordList.TabIndex = 1;
             this.btnPasswordList.Text = "Listado de contraseñas";
             this.btnPasswordList.UseVisualStyleBackColor = true;
+            this.btnPasswordList.Click += new System.EventHandler(this.btnPasswordList_Click);
             // 
             // btnCreditCardList
             // 
@@ -59,6 +60,7 @@ namespace Interface
             this.btnCreditCardList.TabIndex = 2;
             this.btnCreditCardList.Text = "Listado de tarjetas de crédito";
             this.btnCreditCardList.UseVisualStyleBackColor = true;
+            this.btnCreditCardList.Click += new System.EventHandler(this.btnCreditCardList_Click);
             // 
             // btnCategoryList
             // 
@@ -122,17 +124,17 @@ namespace Interface
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(10, 28);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(370, 38);
+            this.lblTitle.Size = new System.Drawing.Size(532, 55);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Gestor de contraseñas";
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(22F, 42F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 563);
             this.Controls.Add(this.lblTitle);
@@ -147,6 +149,7 @@ namespace Interface
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainWindow";
+            this.Text = "Gestor de contraseñas";
             this.ResumeLayout(false);
             this.PerformLayout();
 
