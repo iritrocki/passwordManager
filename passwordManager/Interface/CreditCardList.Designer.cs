@@ -45,7 +45,7 @@
             // 
             this.lblCreditCardList.AutoSize = true;
             this.lblCreditCardList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardList.Location = new System.Drawing.Point(51, 43);
+            this.lblCreditCardList.Location = new System.Drawing.Point(25, 35);
             this.lblCreditCardList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardList.Name = "lblCreditCardList";
             this.lblCreditCardList.Size = new System.Drawing.Size(163, 20);
@@ -56,7 +56,7 @@
             // 
             this.lblErrorCreditCard.AutoSize = true;
             this.lblErrorCreditCard.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorCreditCard.Location = new System.Drawing.Point(273, 356);
+            this.lblErrorCreditCard.Location = new System.Drawing.Point(26, 362);
             this.lblErrorCreditCard.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblErrorCreditCard.Name = "lblErrorCreditCard";
             this.lblErrorCreditCard.Size = new System.Drawing.Size(29, 13);
@@ -65,10 +65,10 @@
             // 
             // btnDeleteCreditCard
             // 
-            this.btnDeleteCreditCard.Location = new System.Drawing.Point(458, 388);
+            this.btnDeleteCreditCard.Location = new System.Drawing.Point(480, 388);
             this.btnDeleteCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteCreditCard.Name = "btnDeleteCreditCard";
-            this.btnDeleteCreditCard.Size = new System.Drawing.Size(87, 29);
+            this.btnDeleteCreditCard.Size = new System.Drawing.Size(98, 36);
             this.btnDeleteCreditCard.TabIndex = 3;
             this.btnDeleteCreditCard.Text = "Eliminar";
             this.btnDeleteCreditCard.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@
             // 
             // btnModifyCreditCard
             // 
-            this.btnModifyCreditCard.Location = new System.Drawing.Point(367, 388);
+            this.btnModifyCreditCard.Location = new System.Drawing.Point(378, 388);
             this.btnModifyCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnModifyCreditCard.Name = "btnModifyCreditCard";
-            this.btnModifyCreditCard.Size = new System.Drawing.Size(87, 29);
+            this.btnModifyCreditCard.Size = new System.Drawing.Size(98, 36);
             this.btnModifyCreditCard.TabIndex = 2;
             this.btnModifyCreditCard.Text = "Modificar";
             this.btnModifyCreditCard.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.btnAddCreditCard.Location = new System.Drawing.Point(276, 388);
             this.btnAddCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddCreditCard.Name = "btnAddCreditCard";
-            this.btnAddCreditCard.Size = new System.Drawing.Size(87, 29);
+            this.btnAddCreditCard.Size = new System.Drawing.Size(98, 36);
             this.btnAddCreditCard.TabIndex = 1;
             this.btnAddCreditCard.Text = "Agregar";
             this.btnAddCreditCard.UseVisualStyleBackColor = true;
@@ -104,11 +104,12 @@
             this.chCompany,
             this.chNumber,
             this.chExpiration});
+            this.listViewCreditCards.GridLines = true;
             this.listViewCreditCards.HideSelection = false;
-            this.listViewCreditCards.Location = new System.Drawing.Point(55, 89);
+            this.listViewCreditCards.Location = new System.Drawing.Point(29, 83);
             this.listViewCreditCards.Margin = new System.Windows.Forms.Padding(2);
             this.listViewCreditCards.Name = "listViewCreditCards";
-            this.listViewCreditCards.Size = new System.Drawing.Size(490, 252);
+            this.listViewCreditCards.Size = new System.Drawing.Size(549, 252);
             this.listViewCreditCards.TabIndex = 0;
             this.listViewCreditCards.UseCompatibleStateImageBehavior = false;
             this.listViewCreditCards.View = System.Windows.Forms.View.Details;
@@ -116,27 +117,27 @@
             // chCategory
             // 
             this.chCategory.Text = "Categoria";
-            this.chCategory.Width = 176;
+            this.chCategory.Width = 100;
             // 
             // chName
             // 
             this.chName.Text = "Nombre";
-            this.chName.Width = 208;
+            this.chName.Width = 100;
             // 
             // chCompany
             // 
             this.chCompany.Text = "Tipo";
-            this.chCompany.Width = 135;
+            this.chCompany.Width = 100;
             // 
             // chNumber
             // 
             this.chNumber.Text = "Tarjeta";
-            this.chNumber.Width = 253;
+            this.chNumber.Width = 100;
             // 
             // chExpiration
             // 
             this.chExpiration.Text = "Vencimiento";
-            this.chExpiration.Width = 141;
+            this.chExpiration.Width = 135;
             // 
             // CreditCardList
             // 

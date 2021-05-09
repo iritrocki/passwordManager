@@ -73,9 +73,9 @@ namespace Interface
             this.chLastMod});
             this.listViewPasswords.GridLines = true;
             this.listViewPasswords.HideSelection = false;
-            this.listViewPasswords.Location = new System.Drawing.Point(71, 92);
+            this.listViewPasswords.Location = new System.Drawing.Point(32, 92);
             this.listViewPasswords.Name = "listViewPasswords";
-            this.listViewPasswords.Size = new System.Drawing.Size(463, 252);
+            this.listViewPasswords.Size = new System.Drawing.Size(536, 252);
             this.listViewPasswords.TabIndex = 5;
             this.listViewPasswords.UseCompatibleStateImageBehavior = false;
             this.listViewPasswords.View = System.Windows.Forms.View.Details;
@@ -88,23 +88,23 @@ namespace Interface
             // chSite
             // 
             this.chSite.Text = "Sitio";
-            this.chSite.Width = 107;
+            this.chSite.Width = 100;
             // 
             // chUsername
             // 
             this.chUsername.Text = "Usuario";
-            this.chUsername.Width = 107;
+            this.chUsername.Width = 100;
             // 
             // chLastMod
             // 
             this.chLastMod.Text = "Última Modificación";
-            this.chLastMod.Width = 130;
+            this.chLastMod.Width = 179;
             // 
             // lblPasswordList
             // 
             this.lblPasswordList.AutoSize = true;
             this.lblPasswordList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordList.Location = new System.Drawing.Point(67, 44);
+            this.lblPasswordList.Location = new System.Drawing.Point(28, 40);
             this.lblPasswordList.Name = "lblPasswordList";
             this.lblPasswordList.Size = new System.Drawing.Size(200, 20);
             this.lblPasswordList.TabIndex = 4;
@@ -126,7 +126,7 @@ namespace Interface
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(256, 361);
+            this.lblError.Location = new System.Drawing.Point(29, 358);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(29, 13);
             this.lblError.TabIndex = 9;

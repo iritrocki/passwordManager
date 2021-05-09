@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public InvalidSelectionForPasswordException()
         {
-            this.message = "Debe seleccionar al menos un campo de condiciones para crear su contrasena";
+            this.message = "Debe seleccionar al menos un campo de condiciones";
         }
     }
 }

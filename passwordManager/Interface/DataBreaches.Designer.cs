@@ -65,9 +65,9 @@ namespace Interface
             // 
             // btnVerify
             // 
-            this.btnVerify.Location = new System.Drawing.Point(480, 372);
+            this.btnVerify.Location = new System.Drawing.Point(434, 372);
             this.btnVerify.Name = "btnVerify";
-            this.btnVerify.Size = new System.Drawing.Size(75, 23);
+            this.btnVerify.Size = new System.Drawing.Size(121, 34);
             this.btnVerify.TabIndex = 3;
             this.btnVerify.Text = "Verificar";
             this.btnVerify.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@ namespace Interface
             this.Controls.Add(this.txtDataBreaches);
             this.Controls.Add(this.lblExposedText);
             this.Controls.Add(this.lblDataBreaches);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DataBreaches";
             this.Size = new System.Drawing.Size(604, 446);
             this.ResumeLayout(false);

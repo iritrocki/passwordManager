@@ -78,10 +78,10 @@ namespace Interface
             this.pnlPasswordEdit.Controls.Add(this.lblNotes);
             this.pnlPasswordEdit.Controls.Add(this.lblPassword);
             this.pnlPasswordEdit.Controls.Add(this.lblUsername);
+            this.pnlPasswordEdit.Controls.Add(this.btnAccept);
             this.pnlPasswordEdit.Controls.Add(this.lblCategory);
             this.pnlPasswordEdit.Controls.Add(this.txtSite);
             this.pnlPasswordEdit.Controls.Add(this.lblSite);
-            this.pnlPasswordEdit.Controls.Add(this.btnAccept);
             this.pnlPasswordEdit.Location = new System.Drawing.Point(23, 80);
             this.pnlPasswordEdit.Name = "pnlPasswordEdit";
             this.pnlPasswordEdit.Size = new System.Drawing.Size(560, 315);
@@ -91,7 +91,7 @@ namespace Interface
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(13, 277);
+            this.lblError.Location = new System.Drawing.Point(13, 237);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(29, 13);
             this.lblError.TabIndex = 7;
@@ -110,14 +110,14 @@ namespace Interface
             this.pnlPasswordGenerator.Controls.Add(this.txtPassword);
             this.pnlPasswordGenerator.Location = new System.Drawing.Point(358, 8);
             this.pnlPasswordGenerator.Name = "pnlPasswordGenerator";
-            this.pnlPasswordGenerator.Size = new System.Drawing.Size(183, 202);
+            this.pnlPasswordGenerator.Size = new System.Drawing.Size(183, 216);
             this.pnlPasswordGenerator.TabIndex = 23;
             // 
             // btnGeneratePassword
             // 
-            this.btnGeneratePassword.Location = new System.Drawing.Point(96, 170);
+            this.btnGeneratePassword.Location = new System.Drawing.Point(65, 168);
             this.btnGeneratePassword.Name = "btnGeneratePassword";
-            this.btnGeneratePassword.Size = new System.Drawing.Size(75, 23);
+            this.btnGeneratePassword.Size = new System.Drawing.Size(109, 37);
             this.btnGeneratePassword.TabIndex = 24;
             this.btnGeneratePassword.Text = "Generar";
             this.btnGeneratePassword.UseVisualStyleBackColor = true;
@@ -273,9 +273,9 @@ namespace Interface
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(466, 277);
+            this.btnAccept.Location = new System.Drawing.Point(432, 264);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.Size = new System.Drawing.Size(109, 37);
             this.btnAccept.TabIndex = 7;
             this.btnAccept.Text = "Aceptar";
             this.btnAccept.UseVisualStyleBackColor = true;
