@@ -75,7 +75,10 @@ namespace Interface
                 {
                     lblCategoryError.Text = exc.Message;
                 }
-                throw;
+                else
+                {
+                    throw;
+                }
             }
         }
     }
