@@ -17,8 +17,8 @@ namespace Interface
         private Panel MainPanel;
         public CreditCardList(User u,Panel p)
         {
-            lblErrorCreditCard.Text = "";
             InitializeComponent();
+            lblErrorCreditCard.Text = "";
             this.user = u;
             this.MainPanel = p;
             ChargeCreditCardsToList();

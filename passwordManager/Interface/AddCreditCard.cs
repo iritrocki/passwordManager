@@ -20,17 +20,17 @@ namespace Interface
         private CreditCard modificationCreditCard;
         public AddCreditCard(User u)
         {
+            
+            InitializeComponent();
             lblCreditCardError.Text = "";
             this.user = u;
-            InitializeComponent();
             ChargeComboBox();
         }
         public AddCreditCard(User u, CreditCard creditCard)
         {
-
+            InitializeComponent();
             this.user = u;
             this.modificationCreditCard = creditCard;
-            InitializeComponent();
             ChargeComboBox();
         }
 

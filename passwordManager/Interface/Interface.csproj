@@ -84,6 +84,18 @@
     <Compile Include="CreditCardList.Designer.cs">
       <DependentUpon>CreditCardList.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataBreaches.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreaches.Designer.cs">
+      <DependentUpon>DataBreaches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBreachesResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachesResults.Designer.cs">
+      <DependentUpon>DataBreachesResults.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreditCardList.resx">
       <DependentUpon>CreditCardList.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +140,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddCreditCard.resx">
       <DependentUpon>AddCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreaches.resx">
+      <DependentUpon>DataBreaches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachesResults.resx">
+      <DependentUpon>DataBreachesResults.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
