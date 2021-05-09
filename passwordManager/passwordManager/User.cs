@@ -14,7 +14,7 @@ namespace passwordManager
             this.Categories = new List<Category>();
             this.Accounts = new List<Account>();
             this.CreditCards = new List<CreditCard>();
-            this.ColorCount = new int[Enum.GetValues(typeof(Account.Color)).Length];
+            this.ColorCount = new int[Enum.GetValues(typeof(ColorClassification)).Length];
         }
 
         public bool Status { get; set; }
@@ -87,7 +87,7 @@ namespace passwordManager
 
             }
             this.Accounts.Add(a);
-            this.ColorCount[(int)a.Classification]++;
+            this.ColorCount[(int)a.Classification-1]++;
         }
 
         public void TryModifyAccount(Account account, Account modificationAccount)
@@ -113,7 +113,7 @@ namespace passwordManager
             if (this.Accounts.Contains(a))
             {
                 this.Accounts.Remove(a);
-                this.ColorCount[(int)a.Classification]--;
+                this.ColorCount[(int)a.Classification-1]--;
             }
             else
                 throw new InexistentAccountException();
@@ -156,7 +156,7 @@ namespace passwordManager
                 throw new InexistentCreditCardException();
         }
         
-        public List<Account> FilterBy(Account.Color classification)
+        public List<Account> FilterBy(ColorClassification classification)
         {
             List<Account> filteredAccounts = new List<Account>();
             foreach(Account a in this.Accounts)

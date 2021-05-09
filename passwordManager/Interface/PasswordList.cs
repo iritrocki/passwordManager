@@ -15,12 +15,14 @@ namespace Interface
     {
         private User user;
         private Panel MainPanel;
-        public PasswordList(User u, Panel p)
+        private List<Account> accountsToShow;
+        public PasswordList(User u, Panel p,List<Account> accountList)
         {
             InitializeComponent();
             lblError.Text = "";
             this.user = u;
             this.MainPanel = p;
+            this.accountsToShow = accountList;
             chargePasswordsToList();
         }
 
@@ -30,7 +32,7 @@ namespace Interface
                 return x.Category.Name.CompareTo(y.Category.Name);
             });
             listViewPasswords.Items.Clear();
-            foreach(Account a in user.Accounts)
+            foreach(Account a in accountsToShow)
             {
                 string[] row = new string[] { a.Category.Name, a.Site, a.Username, a.Modification.ToString("dd/MM/yyyy") };
                 ListViewItem item = new ListViewItem(row);

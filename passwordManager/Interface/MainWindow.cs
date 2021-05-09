@@ -47,15 +47,23 @@ namespace Interface
         private void btnPasswordList_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl passwordList = new PasswordList(user, pnlMainUserControl);
+            UserControl passwordList = new PasswordList(user, pnlMainUserControl,user.Accounts);
             pnlMainUserControl.Controls.Add(passwordList);
         }
+
 
         private void btnCheckDataBreaches_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
             UserControl dataBreaches = new DataBreaches(user, pnlMainUserControl);
             pnlMainUserControl.Controls.Add(dataBreaches);
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnlMainUserControl.Controls.Clear();
+            UserControl passwordStrength = new PasswordStrength(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(passwordStrength);
+
         }
     }
 }
