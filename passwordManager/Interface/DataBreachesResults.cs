@@ -68,8 +68,8 @@ namespace Interface
         {
             Button btnModify = (Button)sender;
             Account modificationAccount = (Account)btnModify.Tag;
-            mainPanel.Controls.Clear();
-            AddPassword passwordModifier = new AddPassword(user, modificationAccount);
+            this.mainPanel.Controls.Clear();
+            AddPassword passwordModifier = new AddPassword(user, modificationAccount, this.mainPanel);
         }
     }
 }

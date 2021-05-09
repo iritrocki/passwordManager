@@ -37,7 +37,7 @@ namespace Interface
         private void btnAddNewCategory_Click(object sender, EventArgs e)
         {
             this.MainPanel.Controls.Clear();
-            UserControl categoryEditWindow = new AddCategory(user);
+            UserControl categoryEditWindow = new AddCategory(user, MainPanel);
             this.MainPanel.Controls.Add(categoryEditWindow);
         }
 
@@ -47,7 +47,7 @@ namespace Interface
             {
                 Category selectedItem = (Category)listViewCategoryList.SelectedItems[0].Tag;
                 this.MainPanel.Controls.Clear();
-                UserControl categoryEditWindow = new AddCategory(user, selectedItem);
+                UserControl categoryEditWindow = new AddCategory(user, selectedItem, MainPanel);
                 this.MainPanel.Controls.Add(categoryEditWindow);
 
             }catch(Exception exc)

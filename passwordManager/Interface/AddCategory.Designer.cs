@@ -42,7 +42,7 @@ namespace Interface
             // 
             this.lblCategoryTitle.AutoSize = true;
             this.lblCategoryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblCategoryTitle.Location = new System.Drawing.Point(105, 93);
+            this.lblCategoryTitle.Location = new System.Drawing.Point(63, 68);
             this.lblCategoryTitle.Name = "lblCategoryTitle";
             this.lblCategoryTitle.Size = new System.Drawing.Size(87, 20);
             this.lblCategoryTitle.TabIndex = 0;
@@ -50,9 +50,9 @@ namespace Interface
             // 
             // btnAcceptCategoryName
             // 
-            this.btnAcceptCategoryName.Location = new System.Drawing.Point(256, 136);
+            this.btnAcceptCategoryName.Location = new System.Drawing.Point(290, 137);
             this.btnAcceptCategoryName.Name = "btnAcceptCategoryName";
-            this.btnAcceptCategoryName.Size = new System.Drawing.Size(75, 23);
+            this.btnAcceptCategoryName.Size = new System.Drawing.Size(125, 35);
             this.btnAcceptCategoryName.TabIndex = 1;
             this.btnAcceptCategoryName.Text = "Aceptar";
             this.btnAcceptCategoryName.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@ namespace Interface
             // 
             this.lblCategoryName.AutoSize = true;
             this.lblCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblCategoryName.Location = new System.Drawing.Point(36, 50);
+            this.lblCategoryName.Location = new System.Drawing.Point(23, 48);
             this.lblCategoryName.Name = "lblCategoryName";
             this.lblCategoryName.Size = new System.Drawing.Size(62, 18);
             this.lblCategoryName.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace Interface
             // 
             // txtCategoryName
             // 
-            this.txtCategoryName.Location = new System.Drawing.Point(120, 48);
+            this.txtCategoryName.Location = new System.Drawing.Point(149, 48);
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(211, 20);
             this.txtCategoryName.TabIndex = 3;
@@ -82,19 +82,20 @@ namespace Interface
             this.pnlCategoryName.Controls.Add(this.txtCategoryName);
             this.pnlCategoryName.Controls.Add(this.lblCategoryName);
             this.pnlCategoryName.Controls.Add(this.btnAcceptCategoryName);
-            this.pnlCategoryName.Location = new System.Drawing.Point(109, 147);
+            this.pnlCategoryName.Location = new System.Drawing.Point(67, 147);
             this.pnlCategoryName.Name = "pnlCategoryName";
-            this.pnlCategoryName.Size = new System.Drawing.Size(374, 196);
+            this.pnlCategoryName.Size = new System.Drawing.Size(451, 196);
             this.pnlCategoryName.TabIndex = 4;
             // 
             // lblCategoryError
             // 
             this.lblCategoryError.AutoSize = true;
             this.lblCategoryError.ForeColor = System.Drawing.Color.Red;
-            this.lblCategoryError.Location = new System.Drawing.Point(39, 85);
+            this.lblCategoryError.Location = new System.Drawing.Point(13, 90);
             this.lblCategoryError.Name = "lblCategoryError";
-            this.lblCategoryError.Size = new System.Drawing.Size(0, 13);
+            this.lblCategoryError.Size = new System.Drawing.Size(29, 13);
             this.lblCategoryError.TabIndex = 4;
+            this.lblCategoryError.Text = "Error";
             // 
             // AddCategory
             // 

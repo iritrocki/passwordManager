@@ -97,6 +97,7 @@ namespace Interface
             this.btnCheckDataBreaches.TabIndex = 5;
             this.btnCheckDataBreaches.Text = "Chequear Data Breaches";
             this.btnCheckDataBreaches.UseVisualStyleBackColor = true;
+            this.btnCheckDataBreaches.Click += new System.EventHandler(this.btnCheckDataBreaches_Click);
             // 
             // btnChangeMasterKey
             // 

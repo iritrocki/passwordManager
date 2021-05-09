@@ -41,7 +41,7 @@ namespace Interface
 
         private void btnAddNewPassword_Click(object sender, EventArgs e)
         {
-            UserControl passwordEditWindow = new AddPassword(user);
+            UserControl passwordEditWindow = new AddPassword(user, this.MainPanel);
             this.MainPanel.Controls.Clear();
             this.MainPanel.Controls.Add(passwordEditWindow);
         }
@@ -64,7 +64,7 @@ namespace Interface
             try
             {
                 Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
-                UserControl passwordEditWindow = new AddPassword(user, selectedAccount);
+                UserControl passwordEditWindow = new AddPassword(user, selectedAccount, this.MainPanel);
                 this.MainPanel.Controls.Clear();
                 this.MainPanel.Controls.Add(passwordEditWindow);
 

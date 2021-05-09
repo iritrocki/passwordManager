@@ -50,5 +50,12 @@ namespace Interface
             UserControl passwordList = new PasswordList(user, pnlMainUserControl);
             pnlMainUserControl.Controls.Add(passwordList);
         }
+
+        private void btnCheckDataBreaches_Click(object sender, EventArgs e)
+        {
+            pnlMainUserControl.Controls.Clear();
+            UserControl dataBreaches = new DataBreaches(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(dataBreaches);
+        }
     }
 }
