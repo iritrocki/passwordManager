@@ -43,9 +43,10 @@ namespace Interface
             // btnPasswordList
             // 
             this.btnPasswordList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnPasswordList.Location = new System.Drawing.Point(17, 176);
+            this.btnPasswordList.Location = new System.Drawing.Point(14, 69);
+            this.btnPasswordList.Margin = new System.Windows.Forms.Padding(2);
             this.btnPasswordList.Name = "btnPasswordList";
-            this.btnPasswordList.Size = new System.Drawing.Size(193, 69);
+            this.btnPasswordList.Size = new System.Drawing.Size(146, 50);
             this.btnPasswordList.TabIndex = 1;
             this.btnPasswordList.Text = "Listado de contraseñas";
             this.btnPasswordList.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@ namespace Interface
             // btnCreditCardList
             // 
             this.btnCreditCardList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCreditCardList.Location = new System.Drawing.Point(17, 101);
+            this.btnCreditCardList.Location = new System.Drawing.Point(14, 146);
+            this.btnCreditCardList.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreditCardList.Name = "btnCreditCardList";
-            this.btnCreditCardList.Size = new System.Drawing.Size(193, 69);
+            this.btnCreditCardList.Size = new System.Drawing.Size(146, 50);
             this.btnCreditCardList.TabIndex = 2;
             this.btnCreditCardList.Text = "Listado de tarjetas de crédito";
             this.btnCreditCardList.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@ namespace Interface
             // btnCategoryList
             // 
             this.btnCategoryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCategoryList.Location = new System.Drawing.Point(17, 253);
+            this.btnCategoryList.Location = new System.Drawing.Point(14, 221);
+            this.btnCategoryList.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategoryList.Name = "btnCategoryList";
-            this.btnCategoryList.Size = new System.Drawing.Size(193, 69);
+            this.btnCategoryList.Size = new System.Drawing.Size(146, 50);
             this.btnCategoryList.TabIndex = 3;
             this.btnCategoryList.Text = "Listado de categorías";
             this.btnCategoryList.UseVisualStyleBackColor = true;
@@ -76,9 +79,10 @@ namespace Interface
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.Location = new System.Drawing.Point(17, 328);
+            this.button1.Location = new System.Drawing.Point(14, 299);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 69);
+            this.button1.Size = new System.Drawing.Size(146, 50);
             this.button1.TabIndex = 4;
             this.button1.Text = "Reporte de fortaleza de contraseñas";
             this.button1.UseVisualStyleBackColor = true;
@@ -86,9 +90,10 @@ namespace Interface
             // btnCheckDataBreaches
             // 
             this.btnCheckDataBreaches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCheckDataBreaches.Location = new System.Drawing.Point(17, 403);
+            this.btnCheckDataBreaches.Location = new System.Drawing.Point(14, 383);
+            this.btnCheckDataBreaches.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckDataBreaches.Name = "btnCheckDataBreaches";
-            this.btnCheckDataBreaches.Size = new System.Drawing.Size(193, 69);
+            this.btnCheckDataBreaches.Size = new System.Drawing.Size(146, 50);
             this.btnCheckDataBreaches.TabIndex = 5;
             this.btnCheckDataBreaches.Text = "Chequear Data Breaches";
             this.btnCheckDataBreaches.UseVisualStyleBackColor = true;
@@ -96,16 +101,18 @@ namespace Interface
             // btnChangeMasterKey
             // 
             this.btnChangeMasterKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnChangeMasterKey.Location = new System.Drawing.Point(17, 478);
+            this.btnChangeMasterKey.Location = new System.Drawing.Point(14, 465);
+            this.btnChangeMasterKey.Margin = new System.Windows.Forms.Padding(2);
             this.btnChangeMasterKey.Name = "btnChangeMasterKey";
-            this.btnChangeMasterKey.Size = new System.Drawing.Size(193, 69);
+            this.btnChangeMasterKey.Size = new System.Drawing.Size(146, 50);
             this.btnChangeMasterKey.TabIndex = 6;
             this.btnChangeMasterKey.Text = "Modificar clave maestra";
             this.btnChangeMasterKey.UseVisualStyleBackColor = true;
             // 
             // pnlMainUserControl
             // 
-            this.pnlMainUserControl.Location = new System.Drawing.Point(228, 101);
+            this.pnlMainUserControl.Location = new System.Drawing.Point(176, 69);
+            this.pnlMainUserControl.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMainUserControl.Name = "pnlMainUserControl";
             this.pnlMainUserControl.Size = new System.Drawing.Size(604, 446);
             this.pnlMainUserControl.TabIndex = 7;
@@ -113,9 +120,10 @@ namespace Interface
             // btnSignOut
             // 
             this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSignOut.Location = new System.Drawing.Point(702, 28);
+            this.btnSignOut.Location = new System.Drawing.Point(603, 19);
+            this.btnSignOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(130, 36);
+            this.btnSignOut.Size = new System.Drawing.Size(140, 29);
             this.btnSignOut.TabIndex = 8;
             this.btnSignOut.Text = "Cerrar sesión";
             this.btnSignOut.UseVisualStyleBackColor = true;
@@ -124,30 +132,28 @@ namespace Interface
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(10, 28);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(5, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(532, 55);
+            this.lblTitle.Size = new System.Drawing.Size(362, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Gestor de contraseñas";
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(22F, 42F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 563);
+            this.ClientSize = new System.Drawing.Size(793, 528);
+            this.Controls.Add(this.btnChangeMasterKey);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.pnlMainUserControl);
-            this.Controls.Add(this.btnChangeMasterKey);
             this.Controls.Add(this.btnCheckDataBreaches);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCategoryList);
             this.Controls.Add(this.btnCreditCardList);
             this.Controls.Add(this.btnPasswordList);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainWindow";
             this.Text = "Gestor de contraseñas";
             this.ResumeLayout(false);

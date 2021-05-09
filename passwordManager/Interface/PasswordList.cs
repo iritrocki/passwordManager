@@ -17,8 +17,8 @@ namespace Interface
         private Panel MainPanel;
         public PasswordList(User u, Panel p)
         {
-            lblError.Text = "";
             InitializeComponent();
+            lblError.Text = "";
             this.user = u;
             this.MainPanel = p;
             chargePasswordsToList();

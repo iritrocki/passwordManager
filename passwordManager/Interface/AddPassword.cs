@@ -19,17 +19,17 @@ namespace Interface
 
         public AddPassword(User u)
         {
-            this.user = u;
             InitializeComponent();
+            this.user = u;
             txtPassword.PasswordChar = '*';
             ChargeComboBox();
         }
 
         public AddPassword(User u, Account a)
         {
+            InitializeComponent();
             this.user = u;
             this.modificationAccount = a;
-            InitializeComponent();
             txtPassword.PasswordChar = '*';
             ChargeComboBox();
         }

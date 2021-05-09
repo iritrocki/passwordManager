@@ -48,13 +48,17 @@ namespace Interface
             {
                 Category newCategory = new Category(txtCategoryName.Text);
                 user.TryAddCategory(newCategory);
+                txtCategoryName.Text = "";
 
             }catch(Exception exc){
                 if(exc is invalidCategoryNameException || exc is ExistentCategoryNameException)
                 {
                     lblCategoryError.Text = exc.Message;
                 }
-                throw;
+                else
+                {
+                    throw;
+                }
             }
         }
 
@@ -63,6 +67,7 @@ namespace Interface
             try
             {
                 user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
+                txtCategoryName.Text = "";
             }
             catch (Exception exc)
             {

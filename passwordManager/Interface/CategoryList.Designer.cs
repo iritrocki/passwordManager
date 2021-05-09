@@ -31,19 +31,19 @@ namespace Interface
         {
             this.lblCategoryList = new System.Windows.Forms.Label();
             this.listViewCategoryList = new System.Windows.Forms.ListView();
+            this.cHdrCategories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddNewCategory = new System.Windows.Forms.Button();
             this.btnModifyCategory = new System.Windows.Forms.Button();
-            this.cHdrCategories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCategoryList
             // 
             this.lblCategoryList.AutoSize = true;
-            this.lblCategoryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryList.Location = new System.Drawing.Point(66, 60);
+            this.lblCategoryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoryList.Location = new System.Drawing.Point(66, 42);
             this.lblCategoryList.Name = "lblCategoryList";
-            this.lblCategoryList.Size = new System.Drawing.Size(164, 20);
+            this.lblCategoryList.Size = new System.Drawing.Size(185, 20);
             this.lblCategoryList.TabIndex = 0;
             this.lblCategoryList.Text = "Listado de Categorías";
             // 
@@ -57,7 +57,12 @@ namespace Interface
             this.listViewCategoryList.Size = new System.Drawing.Size(463, 252);
             this.listViewCategoryList.TabIndex = 1;
             this.listViewCategoryList.UseCompatibleStateImageBehavior = false;
-            this.listViewCategoryList.View = System.Windows.Forms.View.List;
+            this.listViewCategoryList.View = System.Windows.Forms.View.Details;
+            // 
+            // cHdrCategories
+            // 
+            this.cHdrCategories.Text = "Categorías";
+            this.cHdrCategories.Width = 912;
             // 
             // btnAddNewCategory
             // 
@@ -81,23 +86,19 @@ namespace Interface
             this.btnModifyCategory.UseVisualStyleBackColor = true;
             this.btnModifyCategory.Click += new System.EventHandler(this.btnModifyCategory_Click);
             // 
-            // cHdrCategories
-            // 
-            this.cHdrCategories.Text = "Categorías";
-            // 
             // lblError
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
             this.lblError.Location = new System.Drawing.Point(266, 391);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.Size = new System.Drawing.Size(29, 13);
             this.lblError.TabIndex = 4;
+            this.lblError.Text = "Error";
             // 
             // CategoryList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnModifyCategory);
             this.Controls.Add(this.btnAddNewCategory);
