@@ -51,7 +51,15 @@ namespace Interface
             pnlMainUserControl.Controls.Add(passwordList);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnCheckDataBreaches_Click(object sender, EventArgs e)
+        {
+            pnlMainUserControl.Controls.Clear();
+            UserControl dataBreaches = new DataBreaches(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(dataBreaches);
+        }
+
+        private void btnPasswordStrength_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
             UserControl passwordStrength = new PasswordStrength(user, pnlMainUserControl);

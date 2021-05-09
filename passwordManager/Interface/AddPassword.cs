@@ -16,21 +16,26 @@ namespace Interface
     {
         private User user;
         private Account modificationAccount;
+        private Panel mainPanel;
 
-        public AddPassword(User u)
+        public AddPassword(User u, Panel main)
         {
             InitializeComponent();
             this.user = u;
             txtPassword.PasswordChar = '*';
+            lblError.Text = "";
+            this.mainPanel = main;
             ChargeComboBox();
         }
 
-        public AddPassword(User u, Account a)
+        public AddPassword(User u, Account a, Panel main)
         {
             InitializeComponent();
             this.user = u;
             this.modificationAccount = a;
             txtPassword.PasswordChar = '*';
+            lblError.Text = "";
+            this.mainPanel = main;
             ChargeComboBox();
         }
 
@@ -54,6 +59,9 @@ namespace Interface
                 {
                     user.TryModifyAccount(this.modificationAccount, newAccount);
                 }
+                mainPanel.Controls.Clear();
+                UserControl passwordList = new PasswordList(user, mainPanel, user.Accounts);
+                mainPanel.Controls.Add(passwordList);
 
             }catch(InvalidAccountException exc)
             {
@@ -92,7 +100,7 @@ namespace Interface
                 string generatedPassword = user.GeneratePassword(length, upper, lower, digits, specials);
                 txtPassword.Text = generatedPassword;
             }
-            catch (InvalidSelectionForPasswordException exception)
+            catch (InvalidAccountException exception)
             {
                 lblError.Text = exception.Message;
             }

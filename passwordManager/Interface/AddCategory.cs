@@ -16,18 +16,23 @@ namespace Interface
     {
         private User user;
         private Category modificationCategory;
+        private Panel MainPanel;
 
-        public AddCategory(User u)
+        public AddCategory(User u, Panel main)
         {
             InitializeComponent();
             this.user = u;
+            this.MainPanel = main;
+            lblCategoryError.Text = "";
         }
 
-        public AddCategory(User u, Category m)
+        public AddCategory(User u, Category m, Panel main)
         {
             InitializeComponent();
             this.user = u;
             this.modificationCategory = m;
+            this.MainPanel = main;
+            lblCategoryError.Text = "";
         }
 
         private void btnAcceptCategoryName_Click(object sender, EventArgs e)
@@ -48,7 +53,9 @@ namespace Interface
             {
                 Category newCategory = new Category(txtCategoryName.Text);
                 user.TryAddCategory(newCategory);
-                txtCategoryName.Text = "";
+                this.MainPanel.Controls.Clear();
+                UserControl categoryList = new CategoryList(user, MainPanel);
+                this.MainPanel.Controls.Add(categoryList);
 
             }catch(Exception exc){
                 if(exc is invalidCategoryNameException || exc is ExistentCategoryNameException)
@@ -67,7 +74,9 @@ namespace Interface
             try
             {
                 user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
-                txtCategoryName.Text = "";
+                this.MainPanel.Controls.Clear();
+                UserControl categoryList = new CategoryList(user, MainPanel);
+                this.MainPanel.Controls.Add(categoryList);
             }
             catch (Exception exc)
             {

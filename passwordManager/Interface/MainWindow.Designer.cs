@@ -32,7 +32,7 @@ namespace Interface
             this.btnPasswordList = new System.Windows.Forms.Button();
             this.btnCreditCardList = new System.Windows.Forms.Button();
             this.btnCategoryList = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPasswordStrength = new System.Windows.Forms.Button();
             this.btnCheckDataBreaches = new System.Windows.Forms.Button();
             this.btnChangeMasterKey = new System.Windows.Forms.Button();
             this.pnlMainUserControl = new System.Windows.Forms.Panel();
@@ -76,17 +76,17 @@ namespace Interface
             this.btnCategoryList.UseVisualStyleBackColor = true;
             this.btnCategoryList.Click += new System.EventHandler(this.btnCategoryList_Click);
             // 
-            // button1
+            // btnPasswordStrength
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.Location = new System.Drawing.Point(14, 299);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Reporte de fortaleza de contraseñas";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPasswordStrength.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnPasswordStrength.Location = new System.Drawing.Point(14, 299);
+            this.btnPasswordStrength.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPasswordStrength.Name = "btnPasswordStrength";
+            this.btnPasswordStrength.Size = new System.Drawing.Size(146, 50);
+            this.btnPasswordStrength.TabIndex = 4;
+            this.btnPasswordStrength.Text = "Reporte de fortaleza de contraseñas";
+            this.btnPasswordStrength.UseVisualStyleBackColor = true;
+            this.btnPasswordStrength.Click += new System.EventHandler(this.btnPasswordStrength_Click);
             // 
             // btnCheckDataBreaches
             // 
@@ -98,6 +98,7 @@ namespace Interface
             this.btnCheckDataBreaches.TabIndex = 5;
             this.btnCheckDataBreaches.Text = "Chequear Data Breaches";
             this.btnCheckDataBreaches.UseVisualStyleBackColor = true;
+            this.btnCheckDataBreaches.Click += new System.EventHandler(this.btnCheckDataBreaches_Click);
             // 
             // btnChangeMasterKey
             // 
@@ -151,7 +152,7 @@ namespace Interface
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.pnlMainUserControl);
             this.Controls.Add(this.btnCheckDataBreaches);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPasswordStrength);
             this.Controls.Add(this.btnCategoryList);
             this.Controls.Add(this.btnCreditCardList);
             this.Controls.Add(this.btnPasswordList);
@@ -167,7 +168,7 @@ namespace Interface
         private System.Windows.Forms.Button btnPasswordList;
         private System.Windows.Forms.Button btnCreditCardList;
         private System.Windows.Forms.Button btnCategoryList;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPasswordStrength;
         private System.Windows.Forms.Button btnCheckDataBreaches;
         private System.Windows.Forms.Button btnChangeMasterKey;
         private System.Windows.Forms.Panel pnlMainUserControl;

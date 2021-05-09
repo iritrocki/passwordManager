@@ -51,6 +51,7 @@ namespace Interface
             // 
             this.listViewCategoryList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cHdrCategories});
+            this.listViewCategoryList.GridLines = true;
             this.listViewCategoryList.HideSelection = false;
             this.listViewCategoryList.Location = new System.Drawing.Point(70, 94);
             this.listViewCategoryList.Name = "listViewCategoryList";
