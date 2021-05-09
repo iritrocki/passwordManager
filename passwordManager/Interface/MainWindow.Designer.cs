@@ -110,6 +110,7 @@ namespace Interface
             this.btnChangeMasterKey.TabIndex = 6;
             this.btnChangeMasterKey.Text = "Modificar clave maestra";
             this.btnChangeMasterKey.UseVisualStyleBackColor = true;
+            this.btnChangeMasterKey.Click += new System.EventHandler(this.btnChangeMasterKey_Click);
             // 
             // pnlMainUserControl
             // 

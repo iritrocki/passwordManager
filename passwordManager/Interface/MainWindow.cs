@@ -65,5 +65,12 @@ namespace Interface
             UserControl passwordStrength = new PasswordStrength(user, pnlMainUserControl);
             pnlMainUserControl.Controls.Add(passwordStrength);
         }
+
+        private void btnChangeMasterKey_Click(object sender, EventArgs e)
+        {
+            pnlMainUserControl.Controls.Clear();
+            UserControl changeMasterkey = new ModifyMasterKey(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(changeMasterkey);
+        }
     }
 }
