@@ -173,7 +173,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "12345";
-            Assert.AreEqual(Account.Color.Red, a.Classification);
+            Assert.AreEqual(ColorClassification.Red, a.Classification);
         }
 
         [TestMethod]
@@ -181,7 +181,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "1Aa/t?e";
-            Assert.AreEqual(Account.Color.Red, a.Classification);
+            Assert.AreEqual(ColorClassification.Red, a.Classification);
         }
 
         [TestMethod]
@@ -189,7 +189,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "1Aa/t?er";
-            Assert.AreNotEqual(Account.Color.Red, a.Classification);
+            Assert.AreNotEqual(ColorClassification.Red, a.Classification);
         }
 
         [TestMethod]
@@ -197,7 +197,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "1Aa/t?er";
-            Assert.AreEqual(Account.Color.Orange, a.Classification);
+            Assert.AreEqual(ColorClassification.Orange, a.Classification);
         }
 
         [TestMethod]
@@ -205,7 +205,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "1Aa/t?er2345764";
-            Assert.AreNotEqual(Account.Color.Orange, a.Classification);
+            Assert.AreNotEqual(ColorClassification.Orange, a.Classification);
         }
 
         [TestMethod]
@@ -269,7 +269,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "ABSHDBKSJFBFVKSVJSDCJN";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -277,7 +277,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "ksjdvsjdnvnnvjfvsfjv";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -285,7 +285,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "1234567890123434";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -293,7 +293,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "????@#$%%&()<>:?//";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -301,7 +301,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "djfheNSJVFjdbfbCDJFVJ";
-            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+            Assert.AreEqual(ColorClassification.LightGreen, a.Classification);
         }
 
         [TestMethod]
@@ -309,7 +309,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "jsdnkj////##@$$%";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -317,7 +317,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "jsdnkj31465768723";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -325,7 +325,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "JDCKJFJ31465768723";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -333,7 +333,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "HBFSBSEJ#@$%^#^#$";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -341,7 +341,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "2345267823#@$%^#^#$";
-            Assert.AreEqual(Account.Color.Yellow, a.Classification);
+            Assert.AreEqual(ColorClassification.Yellow, a.Classification);
         }
 
         [TestMethod]
@@ -349,7 +349,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "2345267823KJSDBKSkajkj";
-            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+            Assert.AreEqual(ColorClassification.LightGreen, a.Classification);
         }
 
         [TestMethod]
@@ -357,7 +357,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "@&$*@#(@(*KJSDBKSkajkj";
-            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+            Assert.AreEqual(ColorClassification.LightGreen, a.Classification);
         }
 
         [TestMethod]
@@ -365,7 +365,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "@&$*@#(@(*32648748ajkj";
-            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+            Assert.AreEqual(ColorClassification.LightGreen, a.Classification);
         }
 
         [TestMethod]
@@ -373,7 +373,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "@&$*@#(@(*KJSDBKS3456";
-            Assert.AreEqual(Account.Color.LightGreen, a.Classification);
+            Assert.AreEqual(ColorClassification.LightGreen, a.Classification);
         }
 
         [TestMethod]
@@ -381,7 +381,7 @@ namespace passwordManagerTest
         {
             Account a = new Account();
             a.Password = "@&$(@(*KDBKksdjnkS36";
-            Assert.AreEqual(Account.Color.DarkGreen, a.Classification);
+            Assert.AreEqual(ColorClassification.DarkGreen, a.Classification);
         }
 
         

@@ -96,6 +96,12 @@
     <Compile Include="DataBreachesResults.Designer.cs">
       <DependentUpon>DataBreachesResults.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordStrength.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PasswordStrength.Designer.cs">
+      <DependentUpon>PasswordStrength.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreditCardList.resx">
       <DependentUpon>CreditCardList.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordStrength.resx">
+      <DependentUpon>PasswordStrength.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

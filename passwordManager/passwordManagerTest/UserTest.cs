@@ -405,7 +405,7 @@ namespace passwordManagerTest
                 Category = u.Categories[0]
             };
             u.TryAddAccount(a);
-            Assert.AreEqual(1, u.ColorCount[(int)a.Classification]);
+            Assert.AreEqual(1, u.ColorCount[(int)a.Classification-1]);
         }
 
         [TestMethod]
@@ -484,7 +484,7 @@ namespace passwordManagerTest
                 Category = u.Categories[0]
             };
             u.TryAddAccount(a);
-            Assert.AreEqual(0, u.FilterBy(Account.Color.Red).Count());
+            Assert.AreEqual(0, u.FilterBy(ColorClassification.Red).Count());
         }
 
 

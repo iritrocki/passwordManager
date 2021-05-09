@@ -5,16 +5,17 @@ using System.Linq;
 
 namespace passwordManager
 {
+    public enum ColorClassification
+    {
+        Red = 1,
+        Orange = 2,
+        Yellow = 3,
+        LightGreen = 4,
+        DarkGreen = 5
+    }
     public class Account : DataUnit
     {
-        public enum Color
-        {
-            Red = 1,
-            Orange = 2,
-            Yellow = 3,
-            LightGreen = 4,
-            DarkGreen = 5
-        }
+        
         private string _username;
         private string _password;
         private string _site;
@@ -43,23 +44,23 @@ namespace passwordManager
         private void ClassifyColor(string password)
         {
             if (password.Length < 8)
-                this.Classification = Color.Red;
+                this.Classification = ColorClassification.Red;
             else if (password.Length <= 14)
-                this.Classification = Color.Orange;
+                this.Classification = ColorClassification.Orange;
             else
             {
                 int cuantity = TypesOfCharacters(password);
                 if (cuantity == 1)
                 {
-                    this.Classification = Color.Yellow;
+                    this.Classification = ColorClassification.Yellow;
                 }
                 else if (cuantity == 2)
                 {
-                    if (this.ContainsLowerCase(password) && this.ContainsUpperCase(password)) this.Classification = Color.LightGreen;
-                    else this.Classification = Color.Yellow;
+                    if (this.ContainsLowerCase(password) && this.ContainsUpperCase(password)) this.Classification = ColorClassification.LightGreen;
+                    else this.Classification = ColorClassification.Yellow;
                 }
-                else if (cuantity == 3) this.Classification = Color.LightGreen;
-                else this.Classification = Color.DarkGreen;
+                else if (cuantity == 3) this.Classification = ColorClassification.LightGreen;
+                else this.Classification = ColorClassification.DarkGreen;
             }
 
         }
@@ -93,7 +94,7 @@ namespace passwordManager
             }
         }
         public DateTime Modification { get; set; }
-        public Color Classification { get; set; }
+        public ColorClassification Classification { get; set; }
 
         public bool ValidateUsernameAndPassword(string s)
         {
