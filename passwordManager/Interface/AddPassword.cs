@@ -60,7 +60,7 @@ namespace Interface
                     user.TryModifyAccount(this.modificationAccount, newAccount);
                 }
                 mainPanel.Controls.Clear();
-                UserControl passwordList = new PasswordList(user, mainPanel);
+                UserControl passwordList = new PasswordList(user, mainPanel, user.Accounts);
                 mainPanel.Controls.Add(passwordList);
 
             }catch(InvalidAccountException exc)
