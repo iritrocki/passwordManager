@@ -26,6 +26,9 @@ namespace Interface
 
         private void chargePasswordsToList()
         {
+            this.user.Accounts.Sort(delegate (Account x, Account y) {
+                return x.Category.Name.CompareTo(y.Category.Name);
+            });
             listViewPasswords.Items.Clear();
             foreach(Account a in user.Accounts)
             {

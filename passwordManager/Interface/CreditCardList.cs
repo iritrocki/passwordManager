@@ -26,6 +26,9 @@ namespace Interface
 
         public void ChargeCreditCardsToList()
         {
+            this.user.CreditCards.Sort(delegate (CreditCard x, CreditCard y) {
+                return x.Category.Name.CompareTo(y.Category.Name);
+            });
             listViewCreditCards.Items.Clear();
             foreach (CreditCard cc in user.CreditCards)
             {
