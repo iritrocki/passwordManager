@@ -108,12 +108,24 @@
     <Compile Include="PasswordStrength.Designer.cs">
       <DependentUpon>PasswordStrength.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModifyMasterKey.cs">
+    <Compile Include="DetailedPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailedPassword.Designer.cs">
+      <DependentUpon>DetailedPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedCreditCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailedCreditCard.Designer.cs">
+      <DependentUpon>DetailedCreditCard.cs</DependentUpon>
+    </Compile>
+    <!--<Compile Include="ModifyMasterKey.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ModifyMasterKey.Designer.cs">
       <DependentUpon>ModifyMasterKey.cs</DependentUpon>
-    </Compile>
+    </Compile>-->
     <EmbeddedResource Include="CreditCardList.resx">
       <DependentUpon>CreditCardList.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +141,9 @@
     <Compile Include="AddPassword.Designer.cs">
       <DependentUpon>AddPassword.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DetailedPassword.resx">
+      <DependentUpon>DetailedPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,9 +186,9 @@
     <EmbeddedResource Include="DataBreachesResults.resx">
       <DependentUpon>DataBreachesResults.cs</DependentUpon>
     </EmbeddedResource>
-    <!--<EmbeddedResource Include="ModifyMasterKey.resx">
-      <DependentUpon>ModifyMasterKey.cs</DependentUpon>
-    </EmbeddedResource>-->
+    <EmbeddedResource Include="DetailedCreditCard.resx">
+      <DependentUpon>DetailedCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

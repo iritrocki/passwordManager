@@ -47,10 +47,10 @@ namespace Interface
             this.lblNotes = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtSite = new System.Windows.Forms.TextBox();
             this.lblSite = new System.Windows.Forms.Label();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.pnlPasswordEdit.SuspendLayout();
             this.pnlPasswordGenerator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownLenght)).BeginInit();
@@ -240,9 +240,19 @@ namespace Interface
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.lblUsername.Location = new System.Drawing.Point(13, 101);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(77, 18);
+            this.lblUsername.Size = new System.Drawing.Size(60, 18);
             this.lblUsername.TabIndex = 11;
-            this.lblUsername.Text = "Username";
+            this.lblUsername.Text = "Usuario";
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Location = new System.Drawing.Point(432, 264);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(109, 37);
+            this.btnAccept.TabIndex = 7;
+            this.btnAccept.Text = "Aceptar";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // lblCategory
             // 
@@ -270,16 +280,6 @@ namespace Interface
             this.lblSite.Size = new System.Drawing.Size(37, 18);
             this.lblSite.TabIndex = 8;
             this.lblSite.Text = "Sitio";
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(432, 264);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(109, 37);
-            this.btnAccept.TabIndex = 7;
-            this.btnAccept.Text = "Aceptar";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // AddPassword
             // 

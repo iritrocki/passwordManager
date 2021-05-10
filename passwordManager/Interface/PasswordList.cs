@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using passwordManager;
 
@@ -16,6 +17,7 @@ namespace Interface
         private User user;
         private Panel MainPanel;
         private List<Account> accountsToShow;
+        private System.Windows.Forms.Timer timer;
         public PasswordList(User u, Panel p,List<Account> accountList)
         {
             InitializeComponent();
@@ -76,6 +78,37 @@ namespace Interface
             {
                 lblError.Text = "Debe seleccionar una contraseña para modificar.";
             }
+        }
+
+
+        
+
+        private void listViewPasswords_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
+                UserControl thirtySecondsPassword = new DetailedPassword(this.user, this.MainPanel, selectedAccount);
+                this.MainPanel.Controls.Clear();
+                timer = new System.Windows.Forms.Timer();
+                this.MainPanel.Controls.Add(thirtySecondsPassword);
+                timer.Interval = 5000;
+                timer.Tick += new EventHandler(timer_Event);
+                timer.Start();
+            }
+            catch (Exception)
+            {
+
+            }
+           
+        }
+        public void timer_Event(Object source, EventArgs e)
+        {
+            timer.Stop();
+            UserControl newPasswordList = new PasswordList(this.user, this.MainPanel, this.accountsToShow);
+            this.MainPanel.Controls.Clear();
+            this.MainPanel.Controls.Add(newPasswordList);
+
         }
     }
 }

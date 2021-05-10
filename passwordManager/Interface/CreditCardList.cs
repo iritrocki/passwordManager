@@ -15,6 +15,7 @@ namespace Interface
     {
         private User user;
         private Panel MainPanel;
+        private System.Windows.Forms.Timer timer;
         public CreditCardList(User u,Panel p)
         {
             InitializeComponent();
@@ -80,6 +81,38 @@ namespace Interface
             {
                 lblErrorCreditCard.Text = "Debe seleccionar una tarjeta para eliminarla";
             }
+        }
+        
+
+        private void listViewCreditCards_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                CreditCard selectedCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
+                UserControl thirtySecondsCard = new DetailedCreditCard(this.user, this.MainPanel, selectedCard);
+                this.MainPanel.Controls.Clear();
+                timer = new System.Windows.Forms.Timer();
+                this.MainPanel.Controls.Add(thirtySecondsCard);
+                timer.Interval = 5000;
+                timer.Tick += new EventHandler(timer_Event);
+                timer.Start();
+            }
+            catch (Exception)
+            {
+
+            }
+            
+        }
+
+        public void timer_Event(Object source, EventArgs e)
+        {
+            timer.Stop();
+            
+            UserControl newCreditCardList = new CreditCardList(this.user, this.MainPanel);
+            this.MainPanel.Controls.Clear();
+            this.MainPanel.Controls.Add(newCreditCardList);
+            listViewCreditCards.Items[selectedIndex].Selected = true;
+
         }
     }
 }
