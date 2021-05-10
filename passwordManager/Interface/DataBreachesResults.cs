@@ -45,7 +45,6 @@ namespace Interface
                 tableLayoutPanelPasswords.Controls.Add(lblExposedPassword, 0, passwordRowCount);
                 tableLayoutPanelPasswords.Controls.Add(btnModify, 1, passwordRowCount);
 
-                //tableLayoutPanelPasswords.RowStyles[passwordRowCount].Height = 30;
 
                 passwordRowCount++;
 
@@ -62,7 +61,6 @@ namespace Interface
 
                 tableLayoutPanelCreditCards.Controls.Add(lblExposedCreditCard, 0, creditCardRowCount);
 
-                //tableLayoutPanelCreditCards.RowStyles[creditCardRowCount].Height = 60;
 
                 creditCardRowCount++;
 
