@@ -17,8 +17,21 @@ namespace passwordManager
             this.ColorCount = new int[Enum.GetValues(typeof(ColorClassification)).Length];
         }
 
+        private string _masterKey;
+
         public bool Status { get; set; }
-        public string MasterKey { get; set; }
+        public string MasterKey
+        {
+            get { return this._masterKey; }
+            set
+            {
+                if (!this.ValidateMasterKey(value))
+                    throw new InvalidMasterKeyException();
+                else
+                    this._masterKey = value;
+
+            }
+        }
         public List<Category> Categories { get; set; }
         public List<Account> Accounts { get; set; }
         public List<CreditCard> CreditCards { get; set; }
@@ -234,6 +247,14 @@ namespace passwordManager
             else
                 throw new InvalidAccountPasswordException();
             
+        }
+
+        public bool ValidateMasterKey(string masterKey)
+        {
+            if (masterKey.Length >= 5 && masterKey.Length <= 25)
+                return true;
+            else
+                return false;
         }
     }
 }

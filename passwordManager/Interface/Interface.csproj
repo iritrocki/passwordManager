@@ -108,6 +108,12 @@
     <Compile Include="PasswordStrength.Designer.cs">
       <DependentUpon>PasswordStrength.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModifyMasterKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModifyMasterKey.Designer.cs">
+      <DependentUpon>ModifyMasterKey.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreditCardList.resx">
       <DependentUpon>CreditCardList.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataBreachesResults.resx">
       <DependentUpon>DataBreachesResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyMasterKey.resx">
+      <DependentUpon>ModifyMasterKey.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

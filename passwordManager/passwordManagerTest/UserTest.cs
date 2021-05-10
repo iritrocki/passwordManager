@@ -329,6 +329,24 @@ namespace passwordManagerTest
             u.TryRemoveCreditCard(cc);
         }
 
+        
+        
+
+        [TestMethod]
+        public void tryCreateValidMasterkey()
+        {
+            User u = new User();
+            u.MasterKey = "holaSoyUnaMasterKey";
+            Assert.IsTrue(u.ValidateMasterKey(u.MasterKey));
+        }
+        [ExpectedException(typeof(InvalidMasterKeyException))]
+        [TestMethod]
+        public void tryCreateInvalidMasterKeyTest()
+        {
+            User u = new User();
+            u.MasterKey = "hola";
+        }
+
         [TestMethod]
         public void SignInTest()
         {
@@ -858,5 +876,6 @@ namespace passwordManagerTest
             u.TryModifyCreditCard(u.CreditCards[0], modifiedItau);
         }
 
+      
     }
 }

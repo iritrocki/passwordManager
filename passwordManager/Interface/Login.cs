@@ -14,7 +14,7 @@ namespace Interface
 {
     public partial class Login : Form
     {
-        private User user;   
+        private User user;
         public Login()
         {
             InitializeComponent();
@@ -29,14 +29,22 @@ namespace Interface
         private void btnAcceptMasterKey_Click(object sender, EventArgs e)
         {
             string input = txtMasterKey.Text;
-            if (user == null)
+            if (user == null || user.MasterKey == null)
             {
-                this.user = new User();
-                this.user.MasterKey = input;
-                user.Status = true;
-                Form mainWindow = new MainWindow(user);
-                mainWindow.Show();
-                this.Visible = false;
+                try
+                {
+                    this.user = new User();
+                    this.user.MasterKey = input;
+                    user.Status = true;
+                    Form mainWindow = new MainWindow(user);
+                    mainWindow.Show();
+                    this.Visible = false;
+                }catch(InvalidMasterKeyException exc)
+                {
+                    lblError.Text = "La contraseña debe tener entre 5 y 25 caracteres";
+                    txtMasterKey.Text = "";
+                }
+                
                 
                 
                 
@@ -57,5 +65,7 @@ namespace Interface
                 }
             }
         }
+
+        
     }
 }

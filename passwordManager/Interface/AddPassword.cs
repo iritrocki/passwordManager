@@ -71,6 +71,10 @@ namespace Interface
             {
                 lblError.Text = exc.Message;
             }
+            catch (InvalidNullInputExcpetion exc)
+            {
+                lblError.Text = exc.Message;
+            }
         }
 
         private Account CreateNewAccount()
@@ -80,16 +84,22 @@ namespace Interface
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string notes = txtNotes.Text;
-            Account newAccount = new Account()
+            if (category != null)
             {
-                Category = category,
-                Site = site,
-                Username = username,
-                Password = password,
-                Note = notes,
-                Modification = DateTime.Now
-            };
-            return newAccount;
+                Account newAccount = new Account()
+                {
+                    Category = category,
+                    Site = site,
+                    Username = username,
+                    Password = password,
+                    Note = notes,
+                    Modification = DateTime.Now
+                };
+                return newAccount;
+            }
+            else
+                throw new InvalidNullInputExcpetion();
+            
         }
 
         private void btnGeneratePassword_Click(object sender, EventArgs e)
