@@ -171,9 +171,9 @@
     <EmbeddedResource Include="DataBreachesResults.resx">
       <DependentUpon>DataBreachesResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModifyMasterKey.resx">
+    <!--<EmbeddedResource Include="ModifyMasterKey.resx">
       <DependentUpon>ModifyMasterKey.cs</DependentUpon>
-    </EmbeddedResource>
+    </EmbeddedResource>-->
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
