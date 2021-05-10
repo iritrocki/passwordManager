@@ -163,5 +163,8 @@ namespace passwordManager
             return string.Format("[{0}] [{1}] [{2}]", this.Name, this.Company, this.Number);
         }
 
+        ~CreditCard(){ }
+
+
     }
 }

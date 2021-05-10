@@ -108,6 +108,7 @@
     <Compile Include="PasswordStrength.Designer.cs">
       <DependentUpon>PasswordStrength.cs</DependentUpon>
     </Compile>
+
     <Compile Include="DetailedPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>

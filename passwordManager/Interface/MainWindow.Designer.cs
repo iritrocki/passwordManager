@@ -159,6 +159,7 @@ namespace Interface
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.Name = "MainWindow";
             this.Text = "Gestor de contraseñas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

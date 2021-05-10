@@ -174,7 +174,7 @@ namespace passwordManager
             return string.Format("[{0}] [{1}] [{2}]", this.Category.Name, this.Site, this.Username);
         }
 
-
+        ~Account() { }
 
     }
 }

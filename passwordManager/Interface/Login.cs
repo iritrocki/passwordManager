@@ -66,6 +66,9 @@ namespace Interface
             }
         }
 
-        
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
