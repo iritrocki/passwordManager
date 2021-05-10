@@ -73,6 +73,9 @@ namespace Interface
             pnlMainUserControl.Controls.Add(changeMasterkey);
         }
 
-        
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
