@@ -33,7 +33,7 @@ namespace Interface
             {
                 user.ChangeMasterKey(actualPassword,newPassword);
                 lblFeedBackModification.ForeColor = System.Drawing.Color.Green;
-                lblFeedBackModification.Text = "La clave maestra ha sifo modificada correctamente";
+                lblFeedBackModification.Text = "La clave maestra ha sido modificada correctamente";
 
             }catch(InvalidMasterKeyException exc)
             {

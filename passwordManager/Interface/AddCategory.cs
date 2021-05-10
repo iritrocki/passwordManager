@@ -32,6 +32,7 @@ namespace Interface
             this.user = u;
             this.modificationCategory = m;
             this.MainPanel = main;
+            txtCategoryName.Text = m.Name;
             lblCategoryError.Text = "";
         }
 
