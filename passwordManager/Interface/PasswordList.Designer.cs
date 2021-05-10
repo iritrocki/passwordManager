@@ -79,6 +79,7 @@ namespace Interface
             this.listViewPasswords.TabIndex = 5;
             this.listViewPasswords.UseCompatibleStateImageBehavior = false;
             this.listViewPasswords.View = System.Windows.Forms.View.Details;
+            this.listViewPasswords.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewPasswords_MouseDoubleClick);
             // 
             // chCategory
             // 
