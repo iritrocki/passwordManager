@@ -26,6 +26,7 @@ namespace passwordManager
 
         public bool ValidateName(string unString)
         {
+            
             if (unString.Length >= 3 && unString.Length <= 15)
                 return true;
             return false;

@@ -71,6 +71,10 @@ namespace Interface
             {
                 lblCreditCardError.Text = exc.Message;
             }
+            catch(InvalidNullInputExcpetion exc)
+            {
+                lblCreditCardError.Text = exc.Message;
+            }
         }
 
         private CreditCard CreateNewCreditCard()
@@ -83,18 +87,26 @@ namespace Interface
             int expirationMonth = GetExpirationDate(txtCreditCardExpiration.Text, MONTH);
             int expirationYear = GetExpirationDate(txtCreditCardExpiration.Text, YEAR);
             string notes = txtCreditCardNotes.Text;
-
-            CreditCard newCreditCard = new CreditCard()
+            if(category != null)
             {
-                Name = name,
-                Company = company,
-                Number = number,
-                Code = code,
-                ExpirationMonth = expirationMonth,
-                ExpirationYear = expirationYear,
-                Category = category
-            };
-            return newCreditCard;
+                CreditCard newCreditCard = new CreditCard()
+                {
+                    Name = name,
+                    Company = company,
+                    Number = number,
+                    Code = code,
+                    ExpirationMonth = expirationMonth,
+                    ExpirationYear = expirationYear,
+                    Category = category
+                };
+                return newCreditCard;
+            }
+            else
+            {
+                throw new InvalidNullInputExcpetion();
+            }
+            
+           
         }
     }
 }
