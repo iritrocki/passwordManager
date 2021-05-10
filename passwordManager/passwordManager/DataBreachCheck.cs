@@ -78,6 +78,6 @@ namespace passwordManager
             return !((int)digit >= 48 && (int)digit <= 57);
         }
 
-        
+        ~DataBreachCheck() { }
     }
 }
