@@ -36,6 +36,10 @@ namespace Interface
             txtPassword.PasswordChar = '*';
             lblError.Text = "";
             this.mainPanel = main;
+            txtSite.Text = string.Format("{0}", a.Site);
+            txtNotes.Text = string.Format("{0}", a.Note);
+            txtUsername.Text = string.Format("{0}", a.Username);
+            //comboBoxCategories.SelectedIndex = comboBoxCategories.Items.IndexOf(comboBoxCategories.Item));
             ChargeComboBox();
         }
 

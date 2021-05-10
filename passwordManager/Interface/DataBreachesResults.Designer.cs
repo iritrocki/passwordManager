@@ -50,7 +50,7 @@ namespace Interface
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 99);
+            this.label1.Location = new System.Drawing.Point(9, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(293, 16);
             this.label1.TabIndex = 1;
@@ -60,7 +60,7 @@ namespace Interface
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 234);
+            this.label2.Location = new System.Drawing.Point(9, 234);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(263, 16);
             this.label2.TabIndex = 2;
@@ -68,28 +68,28 @@ namespace Interface
             // 
             // tableLayoutPanelPasswords
             // 
+            this.tableLayoutPanelPasswords.AutoSize = true;
             this.tableLayoutPanelPasswords.ColumnCount = 2;
-            this.tableLayoutPanelPasswords.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.05323F));
-            this.tableLayoutPanelPasswords.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.94677F));
-            this.tableLayoutPanelPasswords.Location = new System.Drawing.Point(32, 128);
+            this.tableLayoutPanelPasswords.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanelPasswords.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanelPasswords.Location = new System.Drawing.Point(12, 129);
             this.tableLayoutPanelPasswords.Name = "tableLayoutPanelPasswords";
             this.tableLayoutPanelPasswords.RowCount = 2;
-            this.tableLayoutPanelPasswords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPasswords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPasswords.Size = new System.Drawing.Size(526, 41);
+            this.tableLayoutPanelPasswords.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelPasswords.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelPasswords.Size = new System.Drawing.Size(581, 41);
             this.tableLayoutPanelPasswords.TabIndex = 3;
             // 
             // tableLayoutPanelCreditCards
             // 
-            this.tableLayoutPanelCreditCards.ColumnCount = 2;
-            this.tableLayoutPanelCreditCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.05323F));
-            this.tableLayoutPanelCreditCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.94677F));
-            this.tableLayoutPanelCreditCards.Location = new System.Drawing.Point(32, 264);
+            this.tableLayoutPanelCreditCards.ColumnCount = 1;
+            this.tableLayoutPanelCreditCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.80608F));
+            this.tableLayoutPanelCreditCards.Location = new System.Drawing.Point(12, 264);
             this.tableLayoutPanelCreditCards.Name = "tableLayoutPanelCreditCards";
             this.tableLayoutPanelCreditCards.RowCount = 2;
             this.tableLayoutPanelCreditCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelCreditCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelCreditCards.Size = new System.Drawing.Size(526, 41);
+            this.tableLayoutPanelCreditCards.Size = new System.Drawing.Size(581, 41);
             this.tableLayoutPanelCreditCards.TabIndex = 4;
             // 
             // DataBreachesResults

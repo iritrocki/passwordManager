@@ -54,6 +54,7 @@ namespace Interface
             {
                 Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
                 user.TryRemoveAccount(selectedAccount);
+                chargePasswordsToList();
 
             }catch(Exception exc)
             {

@@ -18,19 +18,30 @@ namespace Interface
         private const int YEAR = 1;
         private User user;
         private CreditCard modificationCreditCard;
-        public AddCreditCard(User u)
+        private Panel mainPanel;
+        public AddCreditCard(User u, Panel p)
         {
             
             InitializeComponent();
             lblCreditCardError.Text = "";
             this.user = u;
+            this.mainPanel = p;
             ChargeComboBox();
         }
-        public AddCreditCard(User u, CreditCard creditCard)
+        public AddCreditCard(User u, Panel p, CreditCard creditCard)
         {
             InitializeComponent();
+            lblCreditCardError.Text = "";
             this.user = u;
+            this.mainPanel = p;
             this.modificationCreditCard = creditCard;
+            txtCreditCardName.Text =  creditCard.Name;
+            txtCreditCardCompany.Text = creditCard.Company;
+            txtCreditCardCode.Text = creditCard.Code;
+            txtCreditCardNumber.Text = creditCard.Number;
+            txtCreditCardExpiration.Text = string.Format("{0}/{1}", creditCard.ExpirationMonth, creditCard.ExpirationYear);
+            txtCreditCardNotes.Text = creditCard.Notes;
+
             ChargeComboBox();
         }
 
@@ -39,7 +50,6 @@ namespace Interface
 
             comboBoxCreditCardCategory.DataSource = user.Categories;
             comboBoxCreditCardCategory.DisplayMember = "Name";
-            /*comboBoxCreditCardCategory.Items.Add(string.Format("{0}",category.Name));*/
 
         }
 
@@ -66,6 +76,9 @@ namespace Interface
                 {
                     user.TryModifyCreditCard(modificationCreditCard, newCreditCard);
                 }
+                mainPanel.Controls.Clear();
+                UserControl creditCardList = new CreditCardList(user, mainPanel);
+                mainPanel.Controls.Add(creditCardList);
             }
             catch (InvalidCreditCardException exc)
             {
@@ -89,6 +102,7 @@ namespace Interface
             string notes = txtCreditCardNotes.Text;
             if(category != null)
             {
+
                 CreditCard newCreditCard = new CreditCard()
                 {
                     Name = name,
