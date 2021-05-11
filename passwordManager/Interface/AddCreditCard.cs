@@ -111,7 +111,8 @@ namespace Interface
                     Code = code,
                     ExpirationMonth = expirationMonth,
                     ExpirationYear = expirationYear,
-                    Category = category
+                    Category = category,
+                    Notes = notes
                 };
                 return newCreditCard;
             }

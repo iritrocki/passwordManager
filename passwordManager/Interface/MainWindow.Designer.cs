@@ -43,7 +43,7 @@ namespace Interface
             // btnPasswordList
             // 
             this.btnPasswordList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnPasswordList.Location = new System.Drawing.Point(14, 69);
+            this.btnPasswordList.Location = new System.Drawing.Point(14, 148);
             this.btnPasswordList.Margin = new System.Windows.Forms.Padding(2);
             this.btnPasswordList.Name = "btnPasswordList";
             this.btnPasswordList.Size = new System.Drawing.Size(146, 50);
@@ -55,7 +55,7 @@ namespace Interface
             // btnCreditCardList
             // 
             this.btnCreditCardList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCreditCardList.Location = new System.Drawing.Point(14, 146);
+            this.btnCreditCardList.Location = new System.Drawing.Point(14, 222);
             this.btnCreditCardList.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreditCardList.Name = "btnCreditCardList";
             this.btnCreditCardList.Size = new System.Drawing.Size(146, 50);
@@ -67,7 +67,7 @@ namespace Interface
             // btnCategoryList
             // 
             this.btnCategoryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCategoryList.Location = new System.Drawing.Point(14, 221);
+            this.btnCategoryList.Location = new System.Drawing.Point(14, 73);
             this.btnCategoryList.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategoryList.Name = "btnCategoryList";
             this.btnCategoryList.Size = new System.Drawing.Size(146, 50);

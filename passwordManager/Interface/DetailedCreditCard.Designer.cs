@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.pnlPasswordEdit = new System.Windows.Forms.Panel();
+            this.lblDetailExpiration = new System.Windows.Forms.Label();
+            this.lblDetailCode = new System.Windows.Forms.Label();
+            this.lblExpiration = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
             this.lblDetailNotes = new System.Windows.Forms.Label();
             this.lblDetailCompany = new System.Windows.Forms.Label();
             this.lblDetailName = new System.Windows.Forms.Label();
@@ -40,10 +44,6 @@
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblCreditCardDetails = new System.Windows.Forms.Label();
-            this.lblCode = new System.Windows.Forms.Label();
-            this.lblExpiration = new System.Windows.Forms.Label();
-            this.lblDetailCode = new System.Windows.Forms.Label();
-            this.lblDetailExpiration = new System.Windows.Forms.Label();
             this.pnlPasswordEdit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,15 +64,51 @@
             this.pnlPasswordEdit.Controls.Add(this.lblCompany);
             this.pnlPasswordEdit.Controls.Add(this.lblCategory);
             this.pnlPasswordEdit.Controls.Add(this.lblName);
-            this.pnlPasswordEdit.Location = new System.Drawing.Point(22, 88);
+            this.pnlPasswordEdit.Location = new System.Drawing.Point(21, 70);
             this.pnlPasswordEdit.Name = "pnlPasswordEdit";
-            this.pnlPasswordEdit.Size = new System.Drawing.Size(560, 315);
+            this.pnlPasswordEdit.Size = new System.Drawing.Size(560, 344);
             this.pnlPasswordEdit.TabIndex = 10;
+            // 
+            // lblDetailExpiration
+            // 
+            this.lblDetailExpiration.AutoSize = true;
+            this.lblDetailExpiration.Location = new System.Drawing.Point(188, 97);
+            this.lblDetailExpiration.Name = "lblDetailExpiration";
+            this.lblDetailExpiration.Size = new System.Drawing.Size(0, 13);
+            this.lblDetailExpiration.TabIndex = 22;
+            // 
+            // lblDetailCode
+            // 
+            this.lblDetailCode.AutoSize = true;
+            this.lblDetailCode.Location = new System.Drawing.Point(188, 55);
+            this.lblDetailCode.Name = "lblDetailCode";
+            this.lblDetailCode.Size = new System.Drawing.Size(0, 13);
+            this.lblDetailCode.TabIndex = 21;
+            // 
+            // lblExpiration
+            // 
+            this.lblExpiration.AutoSize = true;
+            this.lblExpiration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblExpiration.Location = new System.Drawing.Point(21, 92);
+            this.lblExpiration.Name = "lblExpiration";
+            this.lblExpiration.Size = new System.Drawing.Size(100, 18);
+            this.lblExpiration.TabIndex = 20;
+            this.lblExpiration.Text = "Vencimiento";
+            // 
+            // lblCode
+            // 
+            this.lblCode.AutoSize = true;
+            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblCode.Location = new System.Drawing.Point(21, 51);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(62, 18);
+            this.lblCode.TabIndex = 19;
+            this.lblCode.Text = "Codigo";
             // 
             // lblDetailNotes
             // 
             this.lblDetailNotes.AutoSize = true;
-            this.lblDetailNotes.Location = new System.Drawing.Point(188, 272);
+            this.lblDetailNotes.Location = new System.Drawing.Point(188, 263);
             this.lblDetailNotes.Name = "lblDetailNotes";
             this.lblDetailNotes.Size = new System.Drawing.Size(0, 13);
             this.lblDetailNotes.TabIndex = 18;
@@ -80,7 +116,7 @@
             // lblDetailCompany
             // 
             this.lblDetailCompany.AutoSize = true;
-            this.lblDetailCompany.Location = new System.Drawing.Point(188, 230);
+            this.lblDetailCompany.Location = new System.Drawing.Point(188, 221);
             this.lblDetailCompany.Name = "lblDetailCompany";
             this.lblDetailCompany.Size = new System.Drawing.Size(0, 13);
             this.lblDetailCompany.TabIndex = 17;
@@ -88,7 +124,7 @@
             // lblDetailName
             // 
             this.lblDetailName.AutoSize = true;
-            this.lblDetailName.Location = new System.Drawing.Point(188, 189);
+            this.lblDetailName.Location = new System.Drawing.Point(188, 180);
             this.lblDetailName.Name = "lblDetailName";
             this.lblDetailName.Size = new System.Drawing.Size(0, 13);
             this.lblDetailName.TabIndex = 16;
@@ -96,7 +132,7 @@
             // lblDetailCategory
             // 
             this.lblDetailCategory.AutoSize = true;
-            this.lblDetailCategory.Location = new System.Drawing.Point(188, 149);
+            this.lblDetailCategory.Location = new System.Drawing.Point(188, 140);
             this.lblDetailCategory.Name = "lblDetailCategory";
             this.lblDetailCategory.Size = new System.Drawing.Size(0, 13);
             this.lblDetailCategory.TabIndex = 15;
@@ -104,7 +140,7 @@
             // lblDetailNumber
             // 
             this.lblDetailNumber.AutoSize = true;
-            this.lblDetailNumber.Location = new System.Drawing.Point(188, 23);
+            this.lblDetailNumber.Location = new System.Drawing.Point(188, 14);
             this.lblDetailNumber.Name = "lblDetailNumber";
             this.lblDetailNumber.Size = new System.Drawing.Size(0, 13);
             this.lblDetailNumber.TabIndex = 14;
@@ -113,7 +149,7 @@
             // 
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.Location = new System.Drawing.Point(21, 267);
+            this.lblNotes.Location = new System.Drawing.Point(21, 258);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(53, 18);
             this.lblNotes.TabIndex = 13;
@@ -123,7 +159,7 @@
             // 
             this.lblNumber.AutoSize = true;
             this.lblNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumber.Location = new System.Drawing.Point(21, 18);
+            this.lblNumber.Location = new System.Drawing.Point(21, 9);
             this.lblNumber.Name = "lblNumber";
             this.lblNumber.Size = new System.Drawing.Size(68, 18);
             this.lblNumber.TabIndex = 12;
@@ -133,7 +169,7 @@
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompany.Location = new System.Drawing.Point(21, 225);
+            this.lblCompany.Location = new System.Drawing.Point(21, 216);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(41, 18);
             this.lblCompany.TabIndex = 11;
@@ -143,7 +179,7 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(21, 144);
+            this.lblCategory.Location = new System.Drawing.Point(21, 135);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(81, 18);
             this.lblCategory.TabIndex = 10;
@@ -153,7 +189,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(21, 184);
+            this.lblName.Location = new System.Drawing.Point(21, 175);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(68, 18);
             this.lblName.TabIndex = 8;
@@ -163,48 +199,12 @@
             // 
             this.lblCreditCardDetails.AutoSize = true;
             this.lblCreditCardDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardDetails.Location = new System.Drawing.Point(43, 44);
+            this.lblCreditCardDetails.Location = new System.Drawing.Point(42, 26);
             this.lblCreditCardDetails.Name = "lblCreditCardDetails";
             this.lblCreditCardDetails.Size = new System.Drawing.Size(198, 24);
             this.lblCreditCardDetails.TabIndex = 9;
             this.lblCreditCardDetails.Text = "Detalles de la tarjeta";
             this.lblCreditCardDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCode
-            // 
-            this.lblCode.AutoSize = true;
-            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblCode.Location = new System.Drawing.Point(21, 60);
-            this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(62, 18);
-            this.lblCode.TabIndex = 19;
-            this.lblCode.Text = "Codigo";
-            // 
-            // lblExpiration
-            // 
-            this.lblExpiration.AutoSize = true;
-            this.lblExpiration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblExpiration.Location = new System.Drawing.Point(21, 101);
-            this.lblExpiration.Name = "lblExpiration";
-            this.lblExpiration.Size = new System.Drawing.Size(100, 18);
-            this.lblExpiration.TabIndex = 20;
-            this.lblExpiration.Text = "Vencimiento";
-            // 
-            // lblDetailCode
-            // 
-            this.lblDetailCode.AutoSize = true;
-            this.lblDetailCode.Location = new System.Drawing.Point(188, 64);
-            this.lblDetailCode.Name = "lblDetailCode";
-            this.lblDetailCode.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailCode.TabIndex = 21;
-            // 
-            // lblDetailExpiration
-            // 
-            this.lblDetailExpiration.AutoSize = true;
-            this.lblDetailExpiration.Location = new System.Drawing.Point(188, 106);
-            this.lblDetailExpiration.Name = "lblDetailExpiration";
-            this.lblDetailExpiration.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailExpiration.TabIndex = 22;
             // 
             // DetailedCreditCard
             // 
