@@ -67,23 +67,24 @@
             // 
             // txtActualPassword
             // 
-            this.txtActualPassword.Location = new System.Drawing.Point(202, 111);
+            this.txtActualPassword.Location = new System.Drawing.Point(272, 111);
             this.txtActualPassword.Name = "txtActualPassword";
-            this.txtActualPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtActualPassword.Size = new System.Drawing.Size(161, 20);
             this.txtActualPassword.TabIndex = 3;
             // 
             // txtNewPassword
             // 
-            this.txtNewPassword.Location = new System.Drawing.Point(202, 177);
+            this.txtNewPassword.Location = new System.Drawing.Point(272, 177);
             this.txtNewPassword.Name = "txtNewPassword";
-            this.txtNewPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtNewPassword.Size = new System.Drawing.Size(161, 20);
             this.txtNewPassword.TabIndex = 4;
             // 
             // btnModifyMasterkey
             // 
-            this.btnModifyMasterkey.Location = new System.Drawing.Point(142, 224);
+            this.btnModifyMasterkey.AutoSize = true;
+            this.btnModifyMasterkey.Location = new System.Drawing.Point(188, 256);
             this.btnModifyMasterkey.Name = "btnModifyMasterkey";
-            this.btnModifyMasterkey.Size = new System.Drawing.Size(75, 23);
+            this.btnModifyMasterkey.Size = new System.Drawing.Size(72, 26);
             this.btnModifyMasterkey.TabIndex = 5;
             this.btnModifyMasterkey.Text = "Modificar";
             this.btnModifyMasterkey.UseVisualStyleBackColor = true;

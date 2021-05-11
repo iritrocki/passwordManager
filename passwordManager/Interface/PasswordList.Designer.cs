@@ -43,10 +43,11 @@ namespace Interface
             // 
             // btnModifyPassword
             // 
-            this.btnModifyPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnModifyPassword.AutoSize = true;
+            this.btnModifyPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifyPassword.Location = new System.Drawing.Point(447, 389);
             this.btnModifyPassword.Name = "btnModifyPassword";
-            this.btnModifyPassword.Size = new System.Drawing.Size(87, 28);
+            this.btnModifyPassword.Size = new System.Drawing.Size(96, 34);
             this.btnModifyPassword.TabIndex = 7;
             this.btnModifyPassword.Text = "Modificar";
             this.btnModifyPassword.UseVisualStyleBackColor = true;
@@ -54,10 +55,11 @@ namespace Interface
             // 
             // btnAddNewPassword
             // 
-            this.btnAddNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnAddNewPassword.AutoSize = true;
+            this.btnAddNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewPassword.Location = new System.Drawing.Point(259, 389);
             this.btnAddNewPassword.Name = "btnAddNewPassword";
-            this.btnAddNewPassword.Size = new System.Drawing.Size(87, 28);
+            this.btnAddNewPassword.Size = new System.Drawing.Size(88, 34);
             this.btnAddNewPassword.TabIndex = 6;
             this.btnAddNewPassword.Text = "Agregar";
             this.btnAddNewPassword.UseVisualStyleBackColor = true;
@@ -114,10 +116,11 @@ namespace Interface
             // 
             // btnErasePassword
             // 
-            this.btnErasePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnErasePassword.AutoSize = true;
+            this.btnErasePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnErasePassword.Location = new System.Drawing.Point(354, 389);
             this.btnErasePassword.Name = "btnErasePassword";
-            this.btnErasePassword.Size = new System.Drawing.Size(87, 28);
+            this.btnErasePassword.Size = new System.Drawing.Size(88, 34);
             this.btnErasePassword.TabIndex = 8;
             this.btnErasePassword.Text = "Eliminar";
             this.btnErasePassword.UseVisualStyleBackColor = true;

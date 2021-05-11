@@ -67,10 +67,11 @@ namespace Interface
             // 
             // btnAddNewCategory
             // 
-            this.btnAddNewCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAddNewCategory.Location = new System.Drawing.Point(353, 355);
+            this.btnAddNewCategory.AutoSize = true;
+            this.btnAddNewCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewCategory.Location = new System.Drawing.Point(345, 352);
             this.btnAddNewCategory.Name = "btnAddNewCategory";
-            this.btnAddNewCategory.Size = new System.Drawing.Size(87, 28);
+            this.btnAddNewCategory.Size = new System.Drawing.Size(88, 34);
             this.btnAddNewCategory.TabIndex = 2;
             this.btnAddNewCategory.Text = "Agregar";
             this.btnAddNewCategory.UseVisualStyleBackColor = true;
@@ -78,10 +79,11 @@ namespace Interface
             // 
             // btnModifyCategory
             // 
-            this.btnModifyCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnModifyCategory.Location = new System.Drawing.Point(446, 355);
+            this.btnModifyCategory.AutoSize = true;
+            this.btnModifyCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifyCategory.Location = new System.Drawing.Point(438, 352);
             this.btnModifyCategory.Name = "btnModifyCategory";
-            this.btnModifyCategory.Size = new System.Drawing.Size(87, 28);
+            this.btnModifyCategory.Size = new System.Drawing.Size(96, 34);
             this.btnModifyCategory.TabIndex = 3;
             this.btnModifyCategory.Text = "Modificar";
             this.btnModifyCategory.UseVisualStyleBackColor = true;
