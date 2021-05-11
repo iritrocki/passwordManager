@@ -61,7 +61,7 @@
             // btnAcceptNewCreditCard
             // 
             this.btnAcceptNewCreditCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAcceptNewCreditCard.Location = new System.Drawing.Point(488, 401);
+            this.btnAcceptNewCreditCard.Location = new System.Drawing.Point(489, 403);
             this.btnAcceptNewCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnAcceptNewCreditCard.Name = "btnAcceptNewCreditCard";
             this.btnAcceptNewCreditCard.Size = new System.Drawing.Size(87, 28);
@@ -74,7 +74,7 @@
             // 
             this.lblCreditCardName.AutoSize = true;
             this.lblCreditCardName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardName.Location = new System.Drawing.Point(102, 110);
+            this.lblCreditCardName.Location = new System.Drawing.Point(102, 98);
             this.lblCreditCardName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardName.Name = "lblCreditCardName";
             this.lblCreditCardName.Size = new System.Drawing.Size(65, 20);
@@ -85,7 +85,7 @@
             // 
             this.lblCreditCardCompany.AutoSize = true;
             this.lblCreditCardCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardCompany.Location = new System.Drawing.Point(102, 147);
+            this.lblCreditCardCompany.Location = new System.Drawing.Point(102, 135);
             this.lblCreditCardCompany.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardCompany.Name = "lblCreditCardCompany";
             this.lblCreditCardCompany.Size = new System.Drawing.Size(39, 20);
@@ -96,7 +96,7 @@
             // 
             this.lblCreditCardNumber.AutoSize = true;
             this.lblCreditCardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardNumber.Location = new System.Drawing.Point(102, 181);
+            this.lblCreditCardNumber.Location = new System.Drawing.Point(102, 169);
             this.lblCreditCardNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardNumber.Name = "lblCreditCardNumber";
             this.lblCreditCardNumber.Size = new System.Drawing.Size(65, 20);
@@ -107,7 +107,7 @@
             // 
             this.lblCreditCardCode.AutoSize = true;
             this.lblCreditCardCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardCode.Location = new System.Drawing.Point(102, 218);
+            this.lblCreditCardCode.Location = new System.Drawing.Point(102, 206);
             this.lblCreditCardCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardCode.Name = "lblCreditCardCode";
             this.lblCreditCardCode.Size = new System.Drawing.Size(59, 20);
@@ -118,7 +118,7 @@
             // 
             this.lblCreditCardExpiration.AutoSize = true;
             this.lblCreditCardExpiration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardExpiration.Location = new System.Drawing.Point(102, 260);
+            this.lblCreditCardExpiration.Location = new System.Drawing.Point(102, 248);
             this.lblCreditCardExpiration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardExpiration.Name = "lblCreditCardExpiration";
             this.lblCreditCardExpiration.Size = new System.Drawing.Size(97, 20);
@@ -129,7 +129,7 @@
             // 
             this.lblCreditCardNotes.AutoSize = true;
             this.lblCreditCardNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardNotes.Location = new System.Drawing.Point(102, 300);
+            this.lblCreditCardNotes.Location = new System.Drawing.Point(102, 288);
             this.lblCreditCardNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardNotes.Name = "lblCreditCardNotes";
             this.lblCreditCardNotes.Size = new System.Drawing.Size(51, 20);
@@ -139,7 +139,7 @@
             // comboBoxCreditCardCategory
             // 
             this.comboBoxCreditCardCategory.FormattingEnabled = true;
-            this.comboBoxCreditCardCategory.Location = new System.Drawing.Point(249, 72);
+            this.comboBoxCreditCardCategory.Location = new System.Drawing.Point(249, 60);
             this.comboBoxCreditCardCategory.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCreditCardCategory.Name = "comboBoxCreditCardCategory";
             this.comboBoxCreditCardCategory.Size = new System.Drawing.Size(220, 21);
@@ -147,7 +147,7 @@
             // 
             // txtCreditCardName
             // 
-            this.txtCreditCardName.Location = new System.Drawing.Point(249, 113);
+            this.txtCreditCardName.Location = new System.Drawing.Point(249, 101);
             this.txtCreditCardName.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreditCardName.Name = "txtCreditCardName";
             this.txtCreditCardName.Size = new System.Drawing.Size(220, 20);
@@ -155,7 +155,7 @@
             // 
             // txtCreditCardCompany
             // 
-            this.txtCreditCardCompany.Location = new System.Drawing.Point(249, 150);
+            this.txtCreditCardCompany.Location = new System.Drawing.Point(249, 138);
             this.txtCreditCardCompany.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreditCardCompany.Name = "txtCreditCardCompany";
             this.txtCreditCardCompany.Size = new System.Drawing.Size(220, 20);
@@ -163,7 +163,7 @@
             // 
             // txtCreditCardNumber
             // 
-            this.txtCreditCardNumber.Location = new System.Drawing.Point(249, 183);
+            this.txtCreditCardNumber.Location = new System.Drawing.Point(249, 171);
             this.txtCreditCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreditCardNumber.Name = "txtCreditCardNumber";
             this.txtCreditCardNumber.Size = new System.Drawing.Size(220, 20);
@@ -171,7 +171,7 @@
             // 
             // txtCreditCardCode
             // 
-            this.txtCreditCardCode.Location = new System.Drawing.Point(249, 220);
+            this.txtCreditCardCode.Location = new System.Drawing.Point(249, 208);
             this.txtCreditCardCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreditCardCode.Name = "txtCreditCardCode";
             this.txtCreditCardCode.Size = new System.Drawing.Size(220, 20);
@@ -179,7 +179,7 @@
             // 
             // txtCreditCardExpiration
             // 
-            this.txtCreditCardExpiration.Location = new System.Drawing.Point(249, 263);
+            this.txtCreditCardExpiration.Location = new System.Drawing.Point(249, 251);
             this.txtCreditCardExpiration.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreditCardExpiration.Name = "txtCreditCardExpiration";
             this.txtCreditCardExpiration.Size = new System.Drawing.Size(220, 20);
@@ -187,7 +187,7 @@
             // 
             // txtCreditCardNotes
             // 
-            this.txtCreditCardNotes.Location = new System.Drawing.Point(249, 304);
+            this.txtCreditCardNotes.Location = new System.Drawing.Point(249, 292);
             this.txtCreditCardNotes.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreditCardNotes.Multiline = true;
             this.txtCreditCardNotes.Name = "txtCreditCardNotes";
@@ -198,7 +198,7 @@
             // 
             this.lblCreditCardCategory.AutoSize = true;
             this.lblCreditCardCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardCategory.Location = new System.Drawing.Point(102, 72);
+            this.lblCreditCardCategory.Location = new System.Drawing.Point(102, 60);
             this.lblCreditCardCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardCategory.Name = "lblCreditCardCategory";
             this.lblCreditCardCategory.Size = new System.Drawing.Size(73, 20);
@@ -209,7 +209,7 @@
             // 
             this.lblCreditCardError.AutoSize = true;
             this.lblCreditCardError.ForeColor = System.Drawing.Color.Red;
-            this.lblCreditCardError.Location = new System.Drawing.Point(103, 401);
+            this.lblCreditCardError.Location = new System.Drawing.Point(76, 379);
             this.lblCreditCardError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardError.Name = "lblCreditCardError";
             this.lblCreditCardError.Size = new System.Drawing.Size(29, 13);

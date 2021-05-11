@@ -39,16 +39,17 @@
             this.chCompany = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chExpiration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblDoubleClickExplaination = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCreditCardList
             // 
             this.lblCreditCardList.AutoSize = true;
-            this.lblCreditCardList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardList.Location = new System.Drawing.Point(25, 35);
+            this.lblCreditCardList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreditCardList.Location = new System.Drawing.Point(25, 12);
             this.lblCreditCardList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreditCardList.Name = "lblCreditCardList";
-            this.lblCreditCardList.Size = new System.Drawing.Size(163, 20);
+            this.lblCreditCardList.Size = new System.Drawing.Size(186, 24);
             this.lblCreditCardList.TabIndex = 0;
             this.lblCreditCardList.Text = "Listado de Tarjetas";
             // 
@@ -143,9 +144,19 @@
             this.chExpiration.Text = "Vencimiento";
             this.chExpiration.Width = 135;
             // 
+            // lblDoubleClickExplaination
+            // 
+            this.lblDoubleClickExplaination.AutoSize = true;
+            this.lblDoubleClickExplaination.Location = new System.Drawing.Point(26, 54);
+            this.lblDoubleClickExplaination.Name = "lblDoubleClickExplaination";
+            this.lblDoubleClickExplaination.Size = new System.Drawing.Size(241, 13);
+            this.lblDoubleClickExplaination.TabIndex = 11;
+            this.lblDoubleClickExplaination.Text = "Para ver el detalle de una tarjeta haga doble click";
+            // 
             // CreditCardList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.lblDoubleClickExplaination);
             this.Controls.Add(this.btnDeleteCreditCard);
             this.Controls.Add(this.lblErrorCreditCard);
             this.Controls.Add(this.btnModifyCreditCard);
@@ -172,5 +183,6 @@
         private System.Windows.Forms.Label lblErrorCreditCard;
         private System.Windows.Forms.Button btnDeleteCreditCard;
         private System.Windows.Forms.Button btnModifyCreditCard;
+        private System.Windows.Forms.Label lblDoubleClickExplaination;
     }
 }

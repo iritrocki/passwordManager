@@ -39,13 +39,14 @@ namespace Interface
             this.lblPasswordList = new System.Windows.Forms.Label();
             this.btnErasePassword = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
+            this.lblDoubleClickExplaination = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnModifyPassword
             // 
             this.btnModifyPassword.AutoSize = true;
             this.btnModifyPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyPassword.Location = new System.Drawing.Point(447, 389);
+            this.btnModifyPassword.Location = new System.Drawing.Point(469, 387);
             this.btnModifyPassword.Name = "btnModifyPassword";
             this.btnModifyPassword.Size = new System.Drawing.Size(96, 34);
             this.btnModifyPassword.TabIndex = 7;
@@ -57,7 +58,7 @@ namespace Interface
             // 
             this.btnAddNewPassword.AutoSize = true;
             this.btnAddNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewPassword.Location = new System.Drawing.Point(259, 389);
+            this.btnAddNewPassword.Location = new System.Drawing.Point(281, 387);
             this.btnAddNewPassword.Name = "btnAddNewPassword";
             this.btnAddNewPassword.Size = new System.Drawing.Size(88, 34);
             this.btnAddNewPassword.TabIndex = 6;
@@ -75,7 +76,7 @@ namespace Interface
             this.chLastMod});
             this.listViewPasswords.GridLines = true;
             this.listViewPasswords.HideSelection = false;
-            this.listViewPasswords.Location = new System.Drawing.Point(32, 92);
+            this.listViewPasswords.Location = new System.Drawing.Point(29, 90);
             this.listViewPasswords.Name = "listViewPasswords";
             this.listViewPasswords.Size = new System.Drawing.Size(536, 252);
             this.listViewPasswords.TabIndex = 5;
@@ -106,10 +107,10 @@ namespace Interface
             // lblPasswordList
             // 
             this.lblPasswordList.AutoSize = true;
-            this.lblPasswordList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordList.Location = new System.Drawing.Point(28, 40);
+            this.lblPasswordList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordList.Location = new System.Drawing.Point(25, 14);
             this.lblPasswordList.Name = "lblPasswordList";
-            this.lblPasswordList.Size = new System.Drawing.Size(200, 20);
+            this.lblPasswordList.Size = new System.Drawing.Size(228, 24);
             this.lblPasswordList.TabIndex = 4;
             this.lblPasswordList.Text = "Listado de Contraseñas";
             this.lblPasswordList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -118,7 +119,7 @@ namespace Interface
             // 
             this.btnErasePassword.AutoSize = true;
             this.btnErasePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnErasePassword.Location = new System.Drawing.Point(354, 389);
+            this.btnErasePassword.Location = new System.Drawing.Point(376, 387);
             this.btnErasePassword.Name = "btnErasePassword";
             this.btnErasePassword.Size = new System.Drawing.Size(88, 34);
             this.btnErasePassword.TabIndex = 8;
@@ -130,15 +131,25 @@ namespace Interface
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(29, 358);
+            this.lblError.Location = new System.Drawing.Point(26, 356);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(29, 13);
             this.lblError.TabIndex = 9;
             this.lblError.Text = "Error";
             // 
+            // lblDoubleClickExplaination
+            // 
+            this.lblDoubleClickExplaination.AutoSize = true;
+            this.lblDoubleClickExplaination.Location = new System.Drawing.Point(26, 58);
+            this.lblDoubleClickExplaination.Name = "lblDoubleClickExplaination";
+            this.lblDoubleClickExplaination.Size = new System.Drawing.Size(265, 13);
+            this.lblDoubleClickExplaination.TabIndex = 10;
+            this.lblDoubleClickExplaination.Text = "Para ver el detalle de una contraseña haga doble click";
+            // 
             // PasswordList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.lblDoubleClickExplaination);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnErasePassword);
             this.Controls.Add(this.btnModifyPassword);
@@ -164,5 +175,6 @@ namespace Interface
         private System.Windows.Forms.ColumnHeader chUsername;
         private System.Windows.Forms.ColumnHeader chLastMod;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblDoubleClickExplaination;
     }
 }
