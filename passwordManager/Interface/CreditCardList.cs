@@ -111,7 +111,6 @@ namespace Interface
             UserControl newCreditCardList = new CreditCardList(this.user, this.MainPanel);
             this.MainPanel.Controls.Clear();
             this.MainPanel.Controls.Add(newCreditCardList);
-            listViewCreditCards.Items[selectedIndex].Selected = true;
 
         }
     }
