@@ -81,7 +81,7 @@
             // lblRedPassword
             // 
             this.lblRedPassword.AutoSize = true;
-            this.lblRedPassword.Location = new System.Drawing.Point(87, 160);
+            this.lblRedPassword.Location = new System.Drawing.Point(88, 155);
             this.lblRedPassword.Name = "lblRedPassword";
             this.lblRedPassword.Size = new System.Drawing.Size(29, 13);
             this.lblRedPassword.TabIndex = 3;
@@ -90,7 +90,7 @@
             // lblOrangePasswords
             // 
             this.lblOrangePasswords.AutoSize = true;
-            this.lblOrangePasswords.Location = new System.Drawing.Point(87, 206);
+            this.lblOrangePasswords.Location = new System.Drawing.Point(88, 200);
             this.lblOrangePasswords.Name = "lblOrangePasswords";
             this.lblOrangePasswords.Size = new System.Drawing.Size(44, 13);
             this.lblOrangePasswords.TabIndex = 4;
@@ -99,7 +99,7 @@
             // lblYellowPasswords
             // 
             this.lblYellowPasswords.AutoSize = true;
-            this.lblYellowPasswords.Location = new System.Drawing.Point(88, 249);
+            this.lblYellowPasswords.Location = new System.Drawing.Point(88, 243);
             this.lblYellowPasswords.Name = "lblYellowPasswords";
             this.lblYellowPasswords.Size = new System.Drawing.Size(43, 13);
             this.lblYellowPasswords.TabIndex = 5;
@@ -108,7 +108,7 @@
             // lblLightGreenPassword
             // 
             this.lblLightGreenPassword.AutoSize = true;
-            this.lblLightGreenPassword.Location = new System.Drawing.Point(88, 292);
+            this.lblLightGreenPassword.Location = new System.Drawing.Point(88, 286);
             this.lblLightGreenPassword.Name = "lblLightGreenPassword";
             this.lblLightGreenPassword.Size = new System.Drawing.Size(62, 13);
             this.lblLightGreenPassword.TabIndex = 6;
@@ -117,7 +117,7 @@
             // lblDarkGreenPassword
             // 
             this.lblDarkGreenPassword.AutoSize = true;
-            this.lblDarkGreenPassword.Location = new System.Drawing.Point(88, 333);
+            this.lblDarkGreenPassword.Location = new System.Drawing.Point(88, 328);
             this.lblDarkGreenPassword.Name = "lblDarkGreenPassword";
             this.lblDarkGreenPassword.Size = new System.Drawing.Size(72, 13);
             this.lblDarkGreenPassword.TabIndex = 7;
@@ -125,6 +125,7 @@
             // 
             // btnViewRed
             // 
+            this.btnViewRed.AutoSize = true;
             this.btnViewRed.Location = new System.Drawing.Point(400, 150);
             this.btnViewRed.Name = "btnViewRed";
             this.btnViewRed.Size = new System.Drawing.Size(65, 23);
@@ -135,7 +136,8 @@
             // 
             // btnViewOrange
             // 
-            this.btnViewOrange.Location = new System.Drawing.Point(400, 196);
+            this.btnViewOrange.AutoSize = true;
+            this.btnViewOrange.Location = new System.Drawing.Point(400, 195);
             this.btnViewOrange.Name = "btnViewOrange";
             this.btnViewOrange.Size = new System.Drawing.Size(65, 23);
             this.btnViewOrange.TabIndex = 9;
@@ -145,7 +147,8 @@
             // 
             // btnViewYellow
             // 
-            this.btnViewYellow.Location = new System.Drawing.Point(401, 239);
+            this.btnViewYellow.AutoSize = true;
+            this.btnViewYellow.Location = new System.Drawing.Point(400, 238);
             this.btnViewYellow.Name = "btnViewYellow";
             this.btnViewYellow.Size = new System.Drawing.Size(65, 23);
             this.btnViewYellow.TabIndex = 10;
@@ -155,7 +158,8 @@
             // 
             // btnViewLightGreen
             // 
-            this.btnViewLightGreen.Location = new System.Drawing.Point(401, 282);
+            this.btnViewLightGreen.AutoSize = true;
+            this.btnViewLightGreen.Location = new System.Drawing.Point(400, 281);
             this.btnViewLightGreen.Name = "btnViewLightGreen";
             this.btnViewLightGreen.Size = new System.Drawing.Size(65, 23);
             this.btnViewLightGreen.TabIndex = 11;
@@ -165,7 +169,8 @@
             // 
             // btnViewDarkGreen
             // 
-            this.btnViewDarkGreen.Location = new System.Drawing.Point(401, 323);
+            this.btnViewDarkGreen.AutoSize = true;
+            this.btnViewDarkGreen.Location = new System.Drawing.Point(400, 323);
             this.btnViewDarkGreen.Name = "btnViewDarkGreen";
             this.btnViewDarkGreen.Size = new System.Drawing.Size(65, 23);
             this.btnViewDarkGreen.TabIndex = 12;
@@ -176,42 +181,47 @@
             // lblNumberRed
             // 
             this.lblNumberRed.AutoSize = true;
-            this.lblNumberRed.Location = new System.Drawing.Point(274, 155);
+            this.lblNumberRed.Location = new System.Drawing.Point(283, 155);
             this.lblNumberRed.Name = "lblNumberRed";
-            this.lblNumberRed.Size = new System.Drawing.Size(0, 13);
+            this.lblNumberRed.Size = new System.Drawing.Size(13, 13);
             this.lblNumberRed.TabIndex = 13;
+            this.lblNumberRed.Text = "0";
             // 
             // lblNumberOrange
             // 
             this.lblNumberOrange.AutoSize = true;
-            this.lblNumberOrange.Location = new System.Drawing.Point(274, 201);
+            this.lblNumberOrange.Location = new System.Drawing.Point(283, 200);
             this.lblNumberOrange.Name = "lblNumberOrange";
-            this.lblNumberOrange.Size = new System.Drawing.Size(0, 13);
+            this.lblNumberOrange.Size = new System.Drawing.Size(13, 13);
             this.lblNumberOrange.TabIndex = 14;
+            this.lblNumberOrange.Text = "0";
             // 
             // lblNumberYellow
             // 
             this.lblNumberYellow.AutoSize = true;
-            this.lblNumberYellow.Location = new System.Drawing.Point(277, 248);
+            this.lblNumberYellow.Location = new System.Drawing.Point(283, 243);
             this.lblNumberYellow.Name = "lblNumberYellow";
-            this.lblNumberYellow.Size = new System.Drawing.Size(0, 13);
+            this.lblNumberYellow.Size = new System.Drawing.Size(13, 13);
             this.lblNumberYellow.TabIndex = 15;
+            this.lblNumberYellow.Text = "0";
             // 
             // lblNumberLightGreen
             // 
             this.lblNumberLightGreen.AutoSize = true;
-            this.lblNumberLightGreen.Location = new System.Drawing.Point(277, 291);
+            this.lblNumberLightGreen.Location = new System.Drawing.Point(283, 286);
             this.lblNumberLightGreen.Name = "lblNumberLightGreen";
-            this.lblNumberLightGreen.Size = new System.Drawing.Size(0, 13);
+            this.lblNumberLightGreen.Size = new System.Drawing.Size(13, 13);
             this.lblNumberLightGreen.TabIndex = 16;
+            this.lblNumberLightGreen.Text = "0";
             // 
             // lblNumberDarkGreen
             // 
             this.lblNumberDarkGreen.AutoSize = true;
-            this.lblNumberDarkGreen.Location = new System.Drawing.Point(280, 332);
+            this.lblNumberDarkGreen.Location = new System.Drawing.Point(283, 328);
             this.lblNumberDarkGreen.Name = "lblNumberDarkGreen";
-            this.lblNumberDarkGreen.Size = new System.Drawing.Size(0, 13);
+            this.lblNumberDarkGreen.Size = new System.Drawing.Size(13, 13);
             this.lblNumberDarkGreen.TabIndex = 17;
+            this.lblNumberDarkGreen.Text = "0";
             // 
             // PasswordStrength
             // 

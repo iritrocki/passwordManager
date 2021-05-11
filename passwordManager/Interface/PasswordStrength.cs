@@ -15,11 +15,16 @@ namespace Interface
     {
         private User user;
         private Panel mainPanel;
-        public PasswordStrength(User u,Panel p)
+        public PasswordStrength(User u, Panel p)
         {
+            InitializeComponent();
             this.user = u;
             this.mainPanel = p;
-            InitializeComponent();
+            lblNumberRed.Text = "";
+            lblNumberYellow.Text = "";
+            lblNumberOrange.Text = "";
+            lblNumberLightGreen.Text = "";
+            lblNumberDarkGreen.Text = "";
             ChargeLabels();
         }
 

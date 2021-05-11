@@ -65,6 +65,7 @@
             // 
             // btnDeleteCreditCard
             // 
+            this.btnDeleteCreditCard.AutoSize = true;
             this.btnDeleteCreditCard.Location = new System.Drawing.Point(480, 388);
             this.btnDeleteCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteCreditCard.Name = "btnDeleteCreditCard";
@@ -76,6 +77,7 @@
             // 
             // btnModifyCreditCard
             // 
+            this.btnModifyCreditCard.AutoSize = true;
             this.btnModifyCreditCard.Location = new System.Drawing.Point(378, 388);
             this.btnModifyCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnModifyCreditCard.Name = "btnModifyCreditCard";
@@ -87,6 +89,7 @@
             // 
             // btnAddCreditCard
             // 
+            this.btnAddCreditCard.AutoSize = true;
             this.btnAddCreditCard.Location = new System.Drawing.Point(276, 388);
             this.btnAddCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddCreditCard.Name = "btnAddCreditCard";
@@ -148,7 +151,6 @@
             this.Controls.Add(this.btnAddCreditCard);
             this.Controls.Add(this.lblCreditCardList);
             this.Controls.Add(this.listViewCreditCards);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreditCardList";
             this.Size = new System.Drawing.Size(604, 446);
             this.ResumeLayout(false);
