@@ -20,14 +20,18 @@ namespace Interface
             InitializeComponent();
             this.user = u;
             this.mainPanel = p;
+            ClearLabels();
+            ChargeLabels();
+        }
+
+        public void ClearLabels()
+        {
             lblNumberRed.Text = "";
             lblNumberYellow.Text = "";
             lblNumberOrange.Text = "";
             lblNumberLightGreen.Text = "";
             lblNumberDarkGreen.Text = "";
-            ChargeLabels();
         }
-
        public void ChargeLabels()
         {
             lblNumberRed.Text = string.Format("{0}", user.ColorCount[(int)ColorClassification.Red-1]);

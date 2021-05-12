@@ -14,17 +14,17 @@ namespace Interface
     public partial class CategoryList : UserControl
     {
         private User user;
-        private Panel MainPanel;
+        private Panel mainPanel;
         public CategoryList(User u, Panel MainPanel)
         {
             InitializeComponent();
             this.user = u;
-            this.MainPanel = MainPanel;
+            this.mainPanel = MainPanel;
             lblError.Text = "";
-            chargeListItems();
+            ChargeListItems();
         }
 
-        public void chargeListItems()
+        public void ChargeListItems()
         {
             foreach(Category c in user.Categories)
             {
@@ -36,9 +36,9 @@ namespace Interface
 
         private void btnAddNewCategory_Click(object sender, EventArgs e)
         {
-            this.MainPanel.Controls.Clear();
-            UserControl categoryEditWindow = new AddCategory(user, MainPanel);
-            this.MainPanel.Controls.Add(categoryEditWindow);
+            this.mainPanel.Controls.Clear();
+            UserControl categoryEditWindow = new AddCategory(user, mainPanel);
+            this.mainPanel.Controls.Add(categoryEditWindow);
         }
 
         private void btnModifyCategory_Click(object sender, EventArgs e)
@@ -46,9 +46,9 @@ namespace Interface
             try
             {
                 Category selectedItem = (Category)listViewCategoryList.SelectedItems[0].Tag;
-                this.MainPanel.Controls.Clear();
-                UserControl categoryEditWindow = new AddCategory(user, selectedItem, MainPanel);
-                this.MainPanel.Controls.Add(categoryEditWindow);
+                this.mainPanel.Controls.Clear();
+                UserControl categoryEditWindow = new AddCategory(user, selectedItem, mainPanel);
+                this.mainPanel.Controls.Add(categoryEditWindow);
 
             }catch(Exception exc)
             {

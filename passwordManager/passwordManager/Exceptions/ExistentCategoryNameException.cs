@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public ExistentCategoryNameException()
         {
-            this.message = "Ya existe una categoria con ese nombre.";
+            this.message = "Ya existe una categoría con ese nombre.";
         }
     }
 }

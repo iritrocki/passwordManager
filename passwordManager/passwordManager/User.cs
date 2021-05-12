@@ -62,108 +62,114 @@ namespace passwordManager
                 throw new InvalidMasterKeyException();
         }
 
-        public void TryAddCategory(Category c)
+        public void TryAddCategory(Category category)
         {
-            foreach(Category n in this.Categories)
+            foreach(Category cat in this.Categories)
             {
-                CategoryComparison(c.Name, n.Name);
+                CategoryComparison(category.Name, cat.Name);
             }
-            this.Categories.Add(c);
+            this.Categories.Add(category);
         }
 
 
-        public void TryModifyCategory(Category toChange, string v)
+        public void TryModifyCategory(Category toChange, string name)
         {
-            foreach(Category c in this.Categories)
+            foreach(Category category in this.Categories)
             {
-                if(toChange != c)
+                if(toChange != category)
                 {
-                    CategoryComparison(c.Name, v);
+                    CategoryComparison(category.Name, name);
                 }
             }
-            toChange.ModifyCategory(v);
+            toChange.ModifyCategory(name);
         }
 
-        private static void CategoryComparison(String c, String n)
+        private static void CategoryComparison(String name1, String name2)
         {
-            if (c.ToUpper() == n.ToUpper())
+            if (name1.ToUpper() == name2.ToUpper())
             {
                 throw new ExistentCategoryNameException();
             }
         }
 
-        public void TryAddAccount(Account a)
+        public void TryAddAccount(Account accountToAdd)
         {
-            foreach (Account acc in this.Accounts)
+            foreach (Account account in this.Accounts)
             {
-                AccountsComparison(acc, a);
+                AccountsComparison(account, accountToAdd);
 
             }
-            this.Accounts.Add(a);
-            this.ColorCount[(int)a.Classification-1]++;
+            this.Accounts.Add(accountToAdd);
+            this.ColorCount[(int)accountToAdd.Classification-1]++;
         }
 
-        public void TryModifyAccount(Account account, Account modificationAccount)
+        public void TryModifyAccount(Account actualAccount, Account modificationAccount)
         {
-            foreach (Account acc in this.Accounts)
+            foreach (Account account in this.Accounts)
             {
-                if (account != acc)
+                if (actualAccount != account)
                 {
-                    AccountsComparison(acc, modificationAccount);
+                    AccountsComparison(account, modificationAccount);
                 }
             }
-            account.ModifyAccount(modificationAccount);
+            ColorClassification actualColor = actualAccount.Classification;
+            this.ColorCount[(int)actualColor - 1]--;
+            actualAccount.ModifyAccount(modificationAccount);
+            ColorClassification modificationColor = modificationAccount.Classification;
+            this.ColorCount[(int)modificationColor - 1]++;
+
+
         }
 
-        private void AccountsComparison(Account a, Account b)
+        private void AccountsComparison(Account account1, Account account2)
         {
-            if (a.Equals(b))
+            if (account1.Equals(account2))
                 throw new ExistentAccountException();
         }
 
-        public void TryRemoveAccount(Account a)
+        public void TryRemoveAccount(Account accountToRemove)
         {
-            if (this.Accounts.Contains(a))
+            if (this.Accounts.Contains(accountToRemove))
             {
-                this.Accounts.Remove(a);
-                this.ColorCount[(int)a.Classification-1]--;
+                this.Accounts.Remove(accountToRemove);
+                this.ColorCount[(int)accountToRemove.Classification-1]--;
             }
             else
                 throw new InexistentAccountException();
         }
 
-        public void TryAddCreditCard(CreditCard cc)
+        public void TryAddCreditCard(CreditCard creditCardToAdd)
         {
-            foreach(CreditCard c in this.CreditCards)
+            foreach(CreditCard card in this.CreditCards)
             {
-                CreditCardComparison(cc, c);
+                CreditCardComparison(creditCardToAdd, card);
             }
-            this.CreditCards.Add(cc);
+            this.CreditCards.Add(creditCardToAdd);
         }
 
         
 
-        public void TryModifyCreditCard(CreditCard creditCard, CreditCard modifiedCreditCard)
+        public void TryModifyCreditCard(CreditCard actualCreditCard, CreditCard modifiedCreditCard)
         {
-            foreach(CreditCard c in this.CreditCards)
+            foreach(CreditCard card in this.CreditCards)
             {
-                if (c != creditCard)
-                    CreditCardComparison(c, modifiedCreditCard);
+                if (card != actualCreditCard)
+                    CreditCardComparison(card, modifiedCreditCard);
             }
-            creditCard.ModifyCreditCard(modifiedCreditCard);
+            actualCreditCard.ModifyCreditCard(modifiedCreditCard);
         }
 
-        private static void CreditCardComparison(CreditCard cc, CreditCard c)
+        private static void CreditCardComparison(CreditCard creditCard1, CreditCard creditCard2)
         {
-            if (c.Equals(cc))
+            if (creditCard1.Equals(creditCard2))
                 throw new ExistentCreditCardException();
         }
 
-        public void TryRemoveCreditCard(CreditCard cc)
+        public void TryRemoveCreditCard(CreditCard creditCardToRemove)
         {
-            if (this.CreditCards.Contains(cc))
+            if (this.CreditCards.Contains(creditCardToRemove))
             {
-                this.CreditCards.Remove(cc);
+                this.CreditCards.Remove(creditCardToRemove);
             }
             else
                 throw new InexistentCreditCardException();
@@ -186,7 +192,7 @@ namespace passwordManager
             {
                 if (upper || lower || digits || specials)
                 {
-                    int cont = 0;
+                    int count = 0;
                     string password = "";
                     List<int> ASCII_numbers = new List<int>();
                     Random rdm = new Random();
@@ -195,7 +201,7 @@ namespace passwordManager
                         ASCII_numbers.AddRange(Enumerable.Range(65, (91 - 65)));
                         int asciiLetterCode = rdm.Next(65, 91);
                         password = password.Insert(0, ((char)asciiLetterCode).ToString());
-                        cont++;
+                        count++;
                     }
                     if (lower)
                     {
@@ -203,7 +209,7 @@ namespace passwordManager
                         int asciiLetterCode = rdm.Next(97, 123);
                         int position = rdm.Next(0, password.Length);
                         password = password.Insert(position, ((char)asciiLetterCode).ToString());
-                        cont++;
+                        count++;
                     }
                     if (digits)
                     {
@@ -211,7 +217,7 @@ namespace passwordManager
                         int asciiLetterCode = rdm.Next(48, 58);
                         int position = rdm.Next(0, password.Length);
                         password = password.Insert(position, ((char)asciiLetterCode).ToString());
-                        cont++;
+                        count++;
                     }
                     if (specials)
                     {
@@ -227,16 +233,16 @@ namespace passwordManager
                         int position = rdm.Next(0, password.Length);
 
                         password = password.Insert(position, ((char)asciiLetterCode).ToString());
-                        cont++;
+                        count++;
                     }
-                    for (int i = cont; i < length; i++)
+                    for (int i = count; i < length; i++)
                     {
 
                         int index = rdm.Next(0, ASCII_numbers.Count);
                         int asciiLetterCode = ASCII_numbers[index];
-                        int position = rdm.Next(0, (cont - 1));
+                        int position = rdm.Next(0, (count - 1));
                         password = password.Insert(position, ((char)asciiLetterCode).ToString());
-                        cont++;
+                        count++;
                     }
 
                     return password;

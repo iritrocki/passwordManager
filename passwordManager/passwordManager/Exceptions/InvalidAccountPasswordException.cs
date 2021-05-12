@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public InvalidAccountPasswordException()
         {
-            this.message = "La contrasena debe tener entre 5 y 25 caracteres.";
+            this.message = "La contraseña debe tener entre 5 y 25 caracteres.";
         }
     }
 }

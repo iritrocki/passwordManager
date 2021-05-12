@@ -96,23 +96,23 @@ namespace passwordManager
         public DateTime Modification { get; set; }
         public ColorClassification Classification { get; set; }
 
-        public bool ValidateUsernameAndPassword(string s)
+        public bool ValidateUsernameAndPassword(string password)
         {
-            if (s.Length >= 5 && s.Length <= 25)
+            if (password.Length >= 5 && password.Length <= 25)
                 return true;
             return false;
         }
 
-        public bool ValidateSite(string v)
+        public bool ValidateSite(string site)
         {
-            if (v.Length >= 3 && v.Length <= 25)
+            if (site.Length >= 3 && site.Length <= 25)
                 return true;
             return false;
         }
 
-        public bool ValidateNotes(string v)
+        public bool ValidateNotes(string note)
         {
-            if (v.Length > 250)
+            if (note.Length > 250)
                 return false;
             return true;
         }
@@ -122,9 +122,9 @@ namespace passwordManager
             return base.Equals(obj as Account);
         }
 
-        public bool Equals(Account a)
+        public bool Equals(Account account)
         {
-            return this.Username == a.Username && this.Site == a.Site;
+            return this.Username == account.Username && this.Site == account.Site;
         }
 
         

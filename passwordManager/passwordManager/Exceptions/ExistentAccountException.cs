@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public ExistentAccountException()
         {
-            this.message = "Ya existe una contrasena para el usuario y sitio ingresados.";
+            this.message = "Ya existe una contraseña para el usuario y sitio ingresados.";
         }
     }
 }

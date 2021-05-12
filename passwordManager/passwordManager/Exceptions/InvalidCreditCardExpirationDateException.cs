@@ -13,7 +13,7 @@ namespace passwordManager.Exceptions
         }
         public InvalidCreditCardExpirationDateException()
         {
-            this.message = "La fecha de vencimiento no es valida.";
+            this.message = "La fecha de vencimiento no es válida.";
         }
 
     }

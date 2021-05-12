@@ -333,15 +333,16 @@ namespace passwordManagerTest
         
 
         [TestMethod]
-        public void tryCreateValidMasterkey()
+        public void TryCreateValidMasterKeyTest()
         {
             User u = new User();
             u.MasterKey = "holaSoyUnaMasterKey";
             Assert.IsTrue(u.ValidateMasterKey(u.MasterKey));
         }
+
         [ExpectedException(typeof(InvalidMasterKeyException))]
         [TestMethod]
-        public void tryCreateInvalidMasterKeyTest()
+        public void TryCreateInvalidMasterKeyTest()
         {
             User u = new User();
             u.MasterKey = "hola";
@@ -446,7 +447,6 @@ namespace passwordManagerTest
             Assert.AreEqual(0, u.ColorCount[(int)a.Classification]);
         }
 
-        //FALTA BAJAR Y SUBIR COUNT DE COLORES CUANDO SE MODIFICA PASSWORD
         
         [TestMethod]
         public void FilterByColorLengthTest()

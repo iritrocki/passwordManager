@@ -14,44 +14,44 @@ namespace passwordManager
         public List<CreditCard> ExposedCreditCards { get; set; }
         public IDataBreachesAdapter TypeOfConversion { get; set; }
 
-        public void CheckDataBreaches(IDataBreachesAdapter typeOfConverter, User u)
+        public void CheckDataBreaches(IDataBreachesAdapter typeOfConverter, User user)
         {
             List<string> dataConvertida = typeOfConverter.AdaptData();
 
-            this.CheckDataBreachesExposure(u, dataConvertida);
+            this.CheckDataBreachesExposure(user, dataConvertida);
 
         }
 
-        public void CheckDataBreachesExposure(User u, List<string> data)
+        public void CheckDataBreachesExposure(User user, List<string> data)
         {
-            foreach(string str in data)
+            foreach(string line in data)
             {
-                if (!this.IsCreditCardNumber(str))
+                if (!this.IsCreditCardNumber(line))
                 {
-                    PasswordComparison(u, str);
+                    PasswordComparison(user, line);
                 }
                 else
                 {
-                    CreditCardNumberComparison(u, str);
+                    CreditCardNumberComparison(user, line);
                 }
             }
         }
 
-        private void CreditCardNumberComparison(User u, string str)
+        private void CreditCardNumberComparison(User user, string exposed)
         {
-            foreach (CreditCard cc in u.CreditCards)
+            foreach (CreditCard creditCard in user.CreditCards)
             {
-                if (str == cc.Number)
-                    ExposedCreditCards.Add(cc);
+                if (exposed == creditCard.Number)
+                    ExposedCreditCards.Add(creditCard);
             }
         }
 
-        private void PasswordComparison(User u, string str)
+        private void PasswordComparison(User user, string password)
         {
-            foreach (Account acc in u.Accounts)
+            foreach (Account account in user.Accounts)
             {
-                if (str == acc.Password)
-                    ExposedPasswords.Add(acc);
+                if (password == account.Password)
+                    ExposedPasswords.Add(account);
             }
         }
 

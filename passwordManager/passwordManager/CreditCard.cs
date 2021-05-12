@@ -105,13 +105,23 @@ namespace passwordManager
         public bool ValidateCode(string code)
         {
             if (code.Length == 3 || code.Length == 4)
+            {
+                foreach(char i in code)
+                {
+                    if((int)i < 48 || (int)i > 57)
+                    {
+                        return false;
+                    }
+
+                }
                 return true;
+            }
             return false;
         }
 
-        public bool ValidateText(string v)
+        public bool ValidateText(string text)
         {
-            if (v.Length >= 3 && v.Length <= 25)
+            if (text.Length >= 3 && text.Length <= 25)
                 return true;
             return false;
         }
@@ -142,9 +152,9 @@ namespace passwordManager
             return base.Equals(obj as CreditCard);
         }
 
-        public bool Equals(CreditCard c)
+        public bool Equals(CreditCard creditCard)
         {
-            return this.Number == c.Number;
+            return this.Number == creditCard.Number;
         }
 
         public void ModifyCreditCard(CreditCard newCreditCard)
