@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public invalidCategoryNameException()
         {
-            this.message = "El nombre de la categoria debe tener entre 3 y 15 caracteres.";
+            this.message = "El nombre de la categoría debe tener entre 3 y 15 caracteres.";
         }
     }
 }

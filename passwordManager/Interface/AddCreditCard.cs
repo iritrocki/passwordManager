@@ -92,6 +92,7 @@ namespace Interface
 
         private CreditCard CreateNewCreditCard()
         {
+            
             Category category = comboBoxCreditCardCategory.SelectedItem as Category;
             string name = txtCreditCardName.Text;
             string company = txtCreditCardCompany.Text;
@@ -100,6 +101,7 @@ namespace Interface
             int expirationMonth = GetExpirationDate(txtCreditCardExpiration.Text, MONTH);
             int expirationYear = GetExpirationDate(txtCreditCardExpiration.Text, YEAR);
             string notes = txtCreditCardNotes.Text;
+
             if(category != null)
             {
 
@@ -120,8 +122,13 @@ namespace Interface
             {
                 throw new InvalidNullInputExcpetion();
             }
+
             
            
         }
+
+        
     }
+
+    
 }

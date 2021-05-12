@@ -7,9 +7,9 @@ namespace passwordManager
     {
         public Category() { }
 
-        public Category(string v)
+        public Category(string name)
         {
-            this.Name = v;
+            this.Name = name;
         }
         private string _name;
         public string Name
@@ -24,10 +24,10 @@ namespace passwordManager
 
         }
 
-        public bool ValidateName(string unString)
+        public bool ValidateName(string name)
         {
             
-            if (unString.Length >= 3 && unString.Length <= 15)
+            if (name.Length >= 3 && name.Length <= 15)
                 return true;
             return false;
         }

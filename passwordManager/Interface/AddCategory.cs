@@ -16,13 +16,13 @@ namespace Interface
     {
         private User user;
         private Category modificationCategory;
-        private Panel MainPanel;
+        private Panel mainPanel;
 
         public AddCategory(User u, Panel main)
         {
             InitializeComponent();
             this.user = u;
-            this.MainPanel = main;
+            this.mainPanel = main;
             lblCategoryError.Text = "";
         }
 
@@ -31,7 +31,7 @@ namespace Interface
             InitializeComponent();
             this.user = u;
             this.modificationCategory = m;
-            this.MainPanel = main;
+            this.mainPanel = main;
             txtCategoryName.Text = m.Name;
             lblCategoryError.Text = "";
         }
@@ -54,9 +54,9 @@ namespace Interface
             {
                 Category newCategory = new Category(txtCategoryName.Text);
                 user.TryAddCategory(newCategory);
-                this.MainPanel.Controls.Clear();
-                UserControl categoryList = new CategoryList(user, MainPanel);
-                this.MainPanel.Controls.Add(categoryList);
+                this.mainPanel.Controls.Clear();
+                UserControl categoryList = new CategoryList(user, mainPanel);
+                this.mainPanel.Controls.Add(categoryList);
 
             }catch(Exception exc){
                 if(exc is invalidCategoryNameException || exc is ExistentCategoryNameException)
@@ -75,9 +75,9 @@ namespace Interface
             try
             {
                 user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
-                this.MainPanel.Controls.Clear();
-                UserControl categoryList = new CategoryList(user, MainPanel);
-                this.MainPanel.Controls.Add(categoryList);
+                this.mainPanel.Controls.Clear();
+                UserControl categoryList = new CategoryList(user, mainPanel);
+                this.mainPanel.Controls.Add(categoryList);
             }
             catch (Exception exc)
             {

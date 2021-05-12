@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public InvalidMasterKeyException()
         {
-            this.message = "La contrasena ingresada es incorrecta";
+            this.message = "La contraseña ingresada es incorrecta";
         }
     }
 }

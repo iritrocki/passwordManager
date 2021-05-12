@@ -13,7 +13,7 @@ namespace passwordManager.Exceptions
         }
         public InvalidCreditCardCompanyException()
         {
-            this.message = "La compania debe tener entre 3 y 25 caracteres.";
+            this.message = "La companía debe tener entre 3 y 25 caracteres.";
         }
     }
 }

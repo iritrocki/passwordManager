@@ -27,14 +27,6 @@ namespace Interface
             ChargeLabels();
         }
 
-        public void ChargeLabels()
-        {
-            lblDetailPassword.Text = myAccount.Password;
-            lblDetailCategory.Text = myAccount.Category.Name;
-            lblDetailSite.Text = myAccount.Site;
-            lblDetailUsername.Text = myAccount.Username;
-            lblDetailNotes.Text = myAccount.Note;
-        }
         public void ClearLabels()
         {
             lblDetailPassword.Text = "";
@@ -43,5 +35,14 @@ namespace Interface
             lblDetailUsername.Text = "";
             lblDetailNotes.Text = "";
         }
+        public void ChargeLabels()
+        {
+            lblDetailPassword.Text = myAccount.Password;
+            lblDetailCategory.Text = myAccount.Category.Name;
+            lblDetailSite.Text = myAccount.Site;
+            lblDetailUsername.Text = myAccount.Username;
+            lblDetailNotes.Text = myAccount.Note;
+        }
+        
     }
 }

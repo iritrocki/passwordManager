@@ -54,7 +54,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validateInvalidNumberTest()
+        public void ValidateInvalidShorterNumberTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsFalse(c.ValidateNumber("1874 4153"));
@@ -62,7 +62,7 @@ namespace passwordManagerTest
 
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
         [TestMethod]
-        public void invalidNumberTest()
+        public void InvalidNumberTest()
         {
             CreditCard c = new CreditCard();
             c.Number = "9234 34";
@@ -70,14 +70,14 @@ namespace passwordManagerTest
 
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
         [TestMethod]
-        public void invalidNumberNotDigitsTest()
+        public void InvalidNumberNotDigitsTest()
         {
             CreditCard c = new CreditCard();
             c.Number = "a132 bdfd 2345 slf2";
         }
 
         [TestMethod]
-        public void createNewCreditCardWithCodeTest()
+        public void CreateNewCreditCardWithCodeTest()
         {
             CreditCard c = new CreditCard();
             c.Code = "492";
@@ -85,14 +85,14 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validateValidCodeTest()
+        public void ValidateValidCodeTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsTrue(c.ValidateCode("183"));
         }
 
         [TestMethod]
-        public void validateInvalidCodeTest()
+        public void ValidateInvalidCodeTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsFalse(c.ValidateCode("19"));
@@ -114,14 +114,14 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void tooShortNameTest()
+        public void TooShortNameTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsFalse(c.ValidateText("AE"));
         }
 
         [TestMethod]
-        public void validNameTest()
+        public void ValidNameTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsTrue(c.ValidateText("Visa Gold"));
@@ -129,7 +129,7 @@ namespace passwordManagerTest
 
         [ExpectedException(typeof(InvalidCreditCardNameException))]
         [TestMethod]
-        public void invalidNameTest()
+        public void InvalidNameTest()
         {
             CreditCard c = new CreditCard();
             c.Name = "AE";
@@ -137,14 +137,14 @@ namespace passwordManagerTest
 
         [ExpectedException(typeof(InvalidCreditCardCompanyException))]
         [TestMethod]
-        public void invalidCompanyTest()
+        public void InvalidCompanyTest()
         {
             CreditCard c = new CreditCard();
             c.Company = "AE";
         }
 
         [TestMethod]
-        public void createNewCreditCardWithExpirationMonthTest()
+        public void CreateNewCreditCardWithExpirationMonthTest()
         {
             CreditCard c = new CreditCard();
             c.ExpirationMonth = 4;
@@ -152,7 +152,7 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void createNewCreditCardWithExpirationYearTest()
+        public void CreateNewCreditCardWithExpirationYearTest()
         {
             CreditCard c = new CreditCard();
             c.ExpirationYear = 2024;
@@ -160,28 +160,28 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validExpirationMonthTest()
+        public void ValidExpirationMonthTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsTrue(c.ValidateExpirationMonth(3));
         }
 
         [TestMethod]
-        public void invalidExpirationMonthTest()
+        public void InvalidExpirationMonthTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsFalse(c.ValidateExpirationMonth(-5));
         }
 
         [TestMethod]
-        public void validExpirationYearTest()
+        public void ValidExpirationYearTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsTrue(c.ValidateExpirationYear(2024));
         }
 
         [TestMethod]
-        public void invalidExpirationYearTest()
+        public void InvalidExpirationYearTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsFalse(c.ValidateExpirationYear(20240));
@@ -189,7 +189,7 @@ namespace passwordManagerTest
 
         [ExpectedException(typeof(InvalidCreditCardExpirationDateException))]
         [TestMethod]
-        public void invalidMonthExpirationDateTest()
+        public void InvalidMonthExpirationDateTest()
         {
             CreditCard c = new CreditCard();
             c.ExpirationMonth = -2;
@@ -198,14 +198,14 @@ namespace passwordManagerTest
 
         [ExpectedException(typeof(InvalidCreditCardExpirationDateException))]
         [TestMethod]
-        public void invalidYearExpirationDateTest()
+        public void InvalidYearExpirationDateTest()
         {
             CreditCard c = new CreditCard();
             c.ExpirationYear = 1;
         }
 
         [TestMethod]
-        public void createNewCreditCardWithNotesTest()
+        public void CreateNewCreditCardWithNotesTest()
         {
             CreditCard c = new CreditCard();
             c.Notes = "Limite 400k USD";
@@ -213,14 +213,14 @@ namespace passwordManagerTest
         }
 
         [TestMethod]
-        public void validNotesTest()
+        public void ValidNotesTest()
         {
             CreditCard c = new CreditCard();
             Assert.IsTrue(c.ValidateNotes(""));
         }
 
         [TestMethod]
-        public void invalidNotesTest()
+        public void InvalidNotesTest()
         {
             CreditCard c = new CreditCard();
             //El siguiente string contiene mas de 250 caracteres.
@@ -236,14 +236,14 @@ namespace passwordManagerTest
         }
         
         [TestMethod]
-        public void createCreditCardAsDataUnitTest()
+        public void CreateCreditCardAsDataUnitTest()
         {
             DataUnit c = new CreditCard();
             Assert.IsNotNull(c);
         }
 
         [TestMethod]
-        public void createCreditCardWithCategoryTest()
+        public void CreateCreditCardWithCategoryTest()
         {
             Category cat = new Category("Trabajo");
             DataUnit c = new CreditCard();

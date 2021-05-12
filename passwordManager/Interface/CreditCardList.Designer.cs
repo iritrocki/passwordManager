@@ -117,7 +117,7 @@
             this.listViewCreditCards.TabIndex = 0;
             this.listViewCreditCards.UseCompatibleStateImageBehavior = false;
             this.listViewCreditCards.View = System.Windows.Forms.View.Details;
-            this.listViewCreditCards.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewCreditCards_MouseClick);
+            this.listViewCreditCards.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewCreditCards_MouseDoubleClick);
             // 
             // chCategory
             // 

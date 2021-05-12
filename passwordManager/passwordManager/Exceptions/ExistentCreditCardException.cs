@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public ExistentCreditCardException()
         {
-            this.message = "Ya existe una tarjeta con ese numero.";
+            this.message = "Ya existe una tarjeta con ese número.";
         }
     }
 }

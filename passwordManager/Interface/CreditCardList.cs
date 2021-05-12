@@ -84,7 +84,7 @@ namespace Interface
         }
         
 
-        private void listViewCreditCards_MouseClick(object sender, MouseEventArgs e)
+        private void listViewCreditCards_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace Interface
                 this.MainPanel.Controls.Clear();
                 timer = new System.Windows.Forms.Timer();
                 this.MainPanel.Controls.Add(thirtySecondsCard);
-                timer.Interval = 5000;
+                timer.Interval = 30000;
                 timer.Tick += new EventHandler(timer_Event);
                 timer.Start();
             }

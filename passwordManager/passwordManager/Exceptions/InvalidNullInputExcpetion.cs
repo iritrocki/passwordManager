@@ -15,7 +15,7 @@ namespace passwordManager.Exceptions
 
         public InvalidNullInputExcpetion()
         {
-            this.message = "La categoria no puede ser nula";
+            this.message = "La categoría no puede ser nula";
         }
     }
 }
