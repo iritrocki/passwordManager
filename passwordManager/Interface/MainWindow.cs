@@ -69,7 +69,7 @@ namespace Interface
         private void btnChangeMasterKey_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl changeMasterkey = new ModifyMasterKey(user, pnlMainUserControl);
+            UserControl changeMasterkey = new ModifyMasterKey(user);
             pnlMainUserControl.Controls.Add(changeMasterkey);
         }
 

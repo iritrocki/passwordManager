@@ -43,7 +43,7 @@ namespace Interface
             // btnPasswordList
             // 
             this.btnPasswordList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnPasswordList.Location = new System.Drawing.Point(14, 148);
+            this.btnPasswordList.Location = new System.Drawing.Point(14, 143);
             this.btnPasswordList.Margin = new System.Windows.Forms.Padding(2);
             this.btnPasswordList.Name = "btnPasswordList";
             this.btnPasswordList.Size = new System.Drawing.Size(146, 50);
@@ -55,7 +55,7 @@ namespace Interface
             // btnCreditCardList
             // 
             this.btnCreditCardList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCreditCardList.Location = new System.Drawing.Point(14, 222);
+            this.btnCreditCardList.Location = new System.Drawing.Point(14, 216);
             this.btnCreditCardList.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreditCardList.Name = "btnCreditCardList";
             this.btnCreditCardList.Size = new System.Drawing.Size(146, 50);
@@ -79,10 +79,10 @@ namespace Interface
             // btnPasswordStrength
             // 
             this.btnPasswordStrength.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnPasswordStrength.Location = new System.Drawing.Point(14, 299);
+            this.btnPasswordStrength.Location = new System.Drawing.Point(14, 291);
             this.btnPasswordStrength.Margin = new System.Windows.Forms.Padding(2);
             this.btnPasswordStrength.Name = "btnPasswordStrength";
-            this.btnPasswordStrength.Size = new System.Drawing.Size(146, 50);
+            this.btnPasswordStrength.Size = new System.Drawing.Size(146, 72);
             this.btnPasswordStrength.TabIndex = 4;
             this.btnPasswordStrength.Text = "Reporte de fortaleza de contraseñas";
             this.btnPasswordStrength.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@ namespace Interface
             // btnCheckDataBreaches
             // 
             this.btnCheckDataBreaches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCheckDataBreaches.Location = new System.Drawing.Point(14, 383);
+            this.btnCheckDataBreaches.Location = new System.Drawing.Point(14, 389);
             this.btnCheckDataBreaches.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckDataBreaches.Name = "btnCheckDataBreaches";
             this.btnCheckDataBreaches.Size = new System.Drawing.Size(146, 50);
