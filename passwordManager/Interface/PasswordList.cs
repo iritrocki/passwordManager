@@ -88,7 +88,7 @@ namespace Interface
             try
             {
                 Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
-                UserControl thirtySecondsPassword = new DetailedPassword(this.user, this.mainPanel, selectedAccount);
+                UserControl thirtySecondsPassword = new DetailedPassword(selectedAccount);
                 this.mainPanel.Controls.Clear();
                 timer = new System.Windows.Forms.Timer();
                 this.mainPanel.Controls.Add(thirtySecondsPassword);
@@ -102,7 +102,7 @@ namespace Interface
             }
            
         }
-        public void timer_Event(Object source, EventArgs e)
+        public void timer_Event(object source, EventArgs e)
         {
             timer.Stop();
             UserControl newPasswordList = new PasswordList(this.user, this.mainPanel, this.accountsToShow);

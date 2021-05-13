@@ -15,12 +15,10 @@ namespace Interface
     public partial class ModifyMasterKey : UserControl
     {
         private User user;
-        private Panel mainPanel;
-        public ModifyMasterKey(User u,Panel p)
+        public ModifyMasterKey(User u)
         {
             InitializeComponent();
             this.user = u;
-            this.mainPanel = p;
             lblFeedBackModification.Text = "";
         }
 

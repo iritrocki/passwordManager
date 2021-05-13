@@ -13,14 +13,10 @@ namespace Interface
 {
     public partial class DetailedCreditCard : UserControl
     {
-        private User user;
-        private Panel mainPanel;
         private CreditCard myCreditCard;
-        public DetailedCreditCard(User u, Panel p, CreditCard cc)
+        public DetailedCreditCard(CreditCard cc)
         {
             InitializeComponent();
-            this.user = u;
-            this.mainPanel = p;
             this.myCreditCard = cc;
             ClearLabels();
             ChargeLabels();

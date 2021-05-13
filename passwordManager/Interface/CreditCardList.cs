@@ -14,14 +14,14 @@ namespace Interface
     public partial class CreditCardList : UserControl
     {
         private User user;
-        private Panel MainPanel;
+        private Panel mainPanel;
         private System.Windows.Forms.Timer timer;
         public CreditCardList(User u,Panel p)
         {
             InitializeComponent();
             lblErrorCreditCard.Text = "";
             this.user = u;
-            this.MainPanel = p;
+            this.mainPanel = p;
             ChargeCreditCardsToList();
         }
 
@@ -50,9 +50,9 @@ namespace Interface
 
         private void btnAddCreditCard_Click(object sender, EventArgs e)
         {
-            UserControl creditCardEditWindow = new AddCreditCard(user, MainPanel);
-            this.MainPanel.Controls.Clear();
-            this.MainPanel.Controls.Add(creditCardEditWindow);
+            UserControl creditCardEditWindow = new AddCreditCard(user, mainPanel);
+            this.mainPanel.Controls.Clear();
+            this.mainPanel.Controls.Add(creditCardEditWindow);
         }
 
         private void btnModifyCreditCard_Click(object sender, EventArgs e)
@@ -60,9 +60,9 @@ namespace Interface
             try
             {
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                UserControl creditCardEditWindow = new AddCreditCard(user, MainPanel, selectedCreditCard);
-                this.MainPanel.Controls.Clear();
-                this.MainPanel.Controls.Add(creditCardEditWindow);
+                UserControl creditCardEditWindow = new AddCreditCard(user, mainPanel, selectedCreditCard);
+                this.mainPanel.Controls.Clear();
+                this.mainPanel.Controls.Add(creditCardEditWindow);
             }
             catch (Exception exc)
             {
@@ -89,10 +89,10 @@ namespace Interface
             try
             {
                 CreditCard selectedCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                UserControl thirtySecondsCard = new DetailedCreditCard(this.user, this.MainPanel, selectedCard);
-                this.MainPanel.Controls.Clear();
+                UserControl thirtySecondsCard = new DetailedCreditCard(selectedCard);
+                this.mainPanel.Controls.Clear();
                 timer = new System.Windows.Forms.Timer();
-                this.MainPanel.Controls.Add(thirtySecondsCard);
+                this.mainPanel.Controls.Add(thirtySecondsCard);
                 timer.Interval = 30000;
                 timer.Tick += new EventHandler(timer_Event);
                 timer.Start();
@@ -104,13 +104,13 @@ namespace Interface
             
         }
 
-        public void timer_Event(Object source, EventArgs e)
+        public void timer_Event(object source, EventArgs e)
         {
             timer.Stop();
             
-            UserControl newCreditCardList = new CreditCardList(this.user, this.MainPanel);
-            this.MainPanel.Controls.Clear();
-            this.MainPanel.Controls.Add(newCreditCardList);
+            UserControl newCreditCardList = new CreditCardList(this.user, this.mainPanel);
+            this.mainPanel.Controls.Clear();
+            this.mainPanel.Controls.Add(newCreditCardList);
 
         }
     }

@@ -13,15 +13,11 @@ namespace Interface
 {
     public partial class DetailedPassword : UserControl
     {
-        private User user;
-        private Panel mainPanel;
         private Account myAccount;
 
-        public DetailedPassword(User u,Panel p,Account acc)
+        public DetailedPassword(Account acc)
         {
             InitializeComponent();
-            this.user = u;
-            this.mainPanel = p;
             this.myAccount = acc;
             ClearLabels();
             ChargeLabels();
