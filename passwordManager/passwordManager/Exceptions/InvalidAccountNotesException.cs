@@ -14,7 +14,7 @@ namespace passwordManager.Exceptions
 
         public InvalidAccountNotesException()
         {
-            this.message = "El sitio debe tener entre 3 y 25 caracteres.";
+            this.message = "Las notas exceden los 250 caracteres permitidos.";
         }
     }
 }

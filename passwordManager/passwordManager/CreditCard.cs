@@ -166,6 +166,7 @@ namespace passwordManager
             this.ExpirationMonth = newCreditCard.ExpirationMonth;
             this.ExpirationYear = newCreditCard.ExpirationYear;
             this.Code = newCreditCard.Code;
+            this.Category = newCreditCard.Category;
         }
 
         public override string ToString()

@@ -167,6 +167,7 @@ namespace passwordManager
             this.Site = newAccount.Site;
             this.Note = newAccount.Note;
             this.Modification = DateTime.Now;
+            this.Category = newAccount.Category;
         }
 
         public override string ToString()
