@@ -110,8 +110,8 @@ namespace Interface
                 bool digits = checkBoxDigits.Checked;
                 bool specials = checkBoxSpecials.Checked;
                 int length = (int)upDownLenght.Value;
-                string generatedPassword = user.GeneratePassword(length, upper, lower, digits, specials);
-                txtPassword.Text = generatedPassword;
+                //string generatedPassword = user.GeneratePassword(length, upper, lower, digits, specials);
+                //txtPassword.Text = generatedPassword;
             }
             catch (InvalidAccountException exception)
             {
