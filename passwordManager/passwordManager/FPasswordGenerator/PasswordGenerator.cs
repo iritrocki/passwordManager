@@ -45,7 +45,7 @@ namespace passwordManager
             }
         }
 
-        public void AddMandatoryRequirementsToPassword()
+        private void AddMandatoryRequirementsToPassword()
         {
             foreach(PasswordRequirement req in _requirements)
             {
@@ -62,7 +62,7 @@ namespace passwordManager
            }
         }
 
-        public void InsertInRandomStringPosition(char character)
+        private void InsertInRandomStringPosition(char character)
         {
             Random rdm = new Random();
             int position = rdm.Next(0, this.Password.Length);
