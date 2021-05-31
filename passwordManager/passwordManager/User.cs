@@ -71,7 +71,6 @@ namespace passwordManager
             this.Categories.Add(category);
         }
 
-
         public void TryModifyCategory(Category toChange, string name)
         {
             foreach(Category category in this.Categories)

@@ -38,27 +38,7 @@ namespace passwordManagerTest
             Assert.AreEqual("4551 7820 1874 4153", c.Number);
         }
 
-        [TestMethod]
-        public void ValidateValidNumberTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateNumber("4551 7820 1874 4153"));
-        }
-
-
-        [TestMethod]
-        public void ValidateInvalidNumberTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsFalse(c.ValidateNumber("4a51 7a20 18r4 4153"));
-        }
-
-        [TestMethod]
-        public void ValidateInvalidShorterNumberTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsFalse(c.ValidateNumber("1874 4153"));
-        }
+        
 
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
         [TestMethod]
@@ -84,26 +64,7 @@ namespace passwordManagerTest
             Assert.AreEqual("492", c.Code);
         }
 
-        [TestMethod]
-        public void ValidateValidCodeTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateCode("183"));
-        }
-
-        [TestMethod]
-        public void ValidateInvalidCodeTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsFalse(c.ValidateCode("19"));
-        }
-
-        [TestMethod]
-        public void ValidCodeFourDigitsTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateCode("1845"));
-        }
+        
 
         [ExpectedException(typeof(InvalidCreditCardCodeException))]
         [TestMethod]
@@ -113,19 +74,6 @@ namespace passwordManagerTest
             c.Code = "938475";
         }
 
-        [TestMethod]
-        public void TooShortNameTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsFalse(c.ValidateText("AE"));
-        }
-
-        [TestMethod]
-        public void ValidNameTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateText("Visa Gold"));
-        }
 
         [ExpectedException(typeof(InvalidCreditCardNameException))]
         [TestMethod]
@@ -159,33 +107,6 @@ namespace passwordManagerTest
             Assert.AreEqual(2024, c.ExpirationYear);
         }
 
-        [TestMethod]
-        public void ValidExpirationMonthTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateExpirationMonth(3));
-        }
-
-        [TestMethod]
-        public void InvalidExpirationMonthTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsFalse(c.ValidateExpirationMonth(-5));
-        }
-
-        [TestMethod]
-        public void ValidExpirationYearTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateExpirationYear(2024));
-        }
-
-        [TestMethod]
-        public void InvalidExpirationYearTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsFalse(c.ValidateExpirationYear(20240));
-        }
 
         [ExpectedException(typeof(InvalidCreditCardExpirationDateException))]
         [TestMethod]
@@ -210,21 +131,6 @@ namespace passwordManagerTest
             CreditCard c = new CreditCard();
             c.Notes = "Limite 400k USD";
             Assert.AreEqual("Limite 400k USD", c.Notes);
-        }
-
-        [TestMethod]
-        public void ValidNotesTest()
-        {
-            CreditCard c = new CreditCard();
-            Assert.IsTrue(c.ValidateNotes(""));
-        }
-
-        [TestMethod]
-        public void InvalidNotesTest()
-        {
-            CreditCard c = new CreditCard();
-            //El siguiente string contiene mas de 250 caracteres.
-            Assert.IsFalse(c.ValidateNotes("asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb"));
         }
 
         [ExpectedException(typeof(InvalidCreditCardNotesException))]
@@ -391,6 +297,40 @@ namespace passwordManagerTest
             };
             Assert.AreEqual("[Itau volar] [Visa] [1234 5678 2345 5342]", newItau.ToString());
         }
+
+        [TestMethod]
+        public void SetExpirationDateMonthComparisonTest()
+        {
+            CreditCard newCreditCard = new CreditCard();
+            newCreditCard.SetExpirationDate("02/2022");
+            Assert.AreEqual(2, newCreditCard.ExpirationMonth);
+        }
+
+        [TestMethod]
+        public void SetExpirationDateYearComparisonTest()
+        {
+            CreditCard newCreditCard = new CreditCard();
+            newCreditCard.SetExpirationDate("02/2022");
+            Assert.AreEqual(2022, newCreditCard.ExpirationYear);
+        }
+
+        [ExpectedException(typeof(InvalidCreditCardExpirationDateException))]
+        [TestMethod]
+        public void WrongSetExpirationDateTest()
+        {
+            CreditCard newCreditCard = new CreditCard();
+            newCreditCard.SetExpirationDate("22/2022");
+        }
+
+        [ExpectedException(typeof(InvalidCreditCardExpirationDateException))]
+        [TestMethod]
+        public void InvalidFormatSetExpirationDateTest()
+        {
+            CreditCard newCreditCard = new CreditCard();
+            newCreditCard.SetExpirationDate("02-2022");
+        }
+
+
     }
 
 }

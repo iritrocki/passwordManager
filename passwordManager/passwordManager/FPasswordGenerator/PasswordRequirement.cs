@@ -50,7 +50,7 @@ namespace passwordManager
             foreach (char n in password)
             {
                 int asciiValue = (int)n;
-                if (asciiValue >= range.Item1 && asciiValue <= range.Item2)
+                if (asciiValue >= range.Item1 && asciiValue < range.Item2)
                     return true;
             }
             return false;
