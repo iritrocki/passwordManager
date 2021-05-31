@@ -17,20 +17,13 @@ namespace passwordManager
             get { return this._name; }
             set
             {
-                if (!this.ValidateName(value))
+                if (!Validator.ValidateStringLength(value, (3, 15)))
                     throw new invalidCategoryNameException();
                 this._name = value;
             }
 
         }
 
-        public bool ValidateName(string name)
-        {
-            
-            if (name.Length >= 3 && name.Length <= 15)
-                return true;
-            return false;
-        }
 
         public void ModifyCategory(string newName)
         {

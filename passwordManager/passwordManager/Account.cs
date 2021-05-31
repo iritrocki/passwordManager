@@ -21,19 +21,11 @@ namespace passwordManager
         private string _site;
         private string _note;
         private DateTime _modification;
-        public Validator Validator { get; set; }
-
-
-        public Account()
-        {
-            this.Validator = new Validator();
-        }
-
         public string Username { 
             get { return this._username; }
             set 
             {
-                if (!this.Validator.ValidateStringLength(value, (5, 25)))
+                if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidAccountUsernameException();
                 this._username = value;
             } }
@@ -41,7 +33,7 @@ namespace passwordManager
             get { return this._password; } 
             set
             {
-                if (!this.Validator.ValidateStringLength(value, (5, 25)))
+                if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidAccountPasswordException();
                 ClassifyColor(value);
                 this._password = value;
@@ -95,7 +87,7 @@ namespace passwordManager
         public string Site {
             get { return this._site; }
             set {
-                if (!this.Validator.ValidateStringLength(value, (3, 25)))
+                if (!Validator.ValidateStringLength(value, (3, 25)))
                     throw new InvalidAccountSiteException();
                 this._site = value;
             } 
@@ -104,7 +96,7 @@ namespace passwordManager
         public string Note {
             get { return this._note; }
             set {
-                if (!this.Validator.ValidateStringLength(value, (0, 250)))
+                if (!Validator.ValidateStringLength(value, (0, 250)))
                     throw new InvalidAccountNotesException();
                 this._note = value;
             }

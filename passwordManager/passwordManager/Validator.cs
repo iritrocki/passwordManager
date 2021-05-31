@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace passwordManager
 {
-    public class Validator
+    public static class Validator
     {
-        public bool ValidateStringLength(string s, (int,int) range)
+        public static bool ValidateStringLength(string s, (int,int) range)
         {
             if (s.Length >= range.Item1 && s.Length <= range.Item2)
                 return true;
             return false;
         }
 
-        public bool ValidateCreditCardNumber(string number)
+        public static bool ValidateCreditCardNumber(string number)
         {
             foreach (char character in number)
             {
@@ -39,12 +39,12 @@ namespace passwordManager
 
         
 
-        private bool IsASpace(char character)
+        public static bool IsASpace(char character)
         {
             return (int)character == 32;
         }
 
-        public bool ValidateCreditCardCode(string code)
+        public static bool ValidateCreditCardCode(string code)
         {
             if (code.Length == 3 || code.Length == 4)
             {
@@ -61,21 +61,21 @@ namespace passwordManager
             return false;
         }
 
-        public bool ValidateExpirationYear(int year)
-        {
-            if (year > 1000 && year < 10000)
-                return true;
-            return false;
-        }
-
-        public bool ValidateExpirationMonth(int month)
+        public static bool ValidateExpirationMonth(int month)
         {
             if (month >= 1 && month <= 12)
                 return true;
             return false;
         }
 
-        public bool ValidateExpirationDateInput(string date)
+        public static bool ValidateExpirationYear(int year)
+        {
+            if (year > 1000 && year < 10000)
+                return true;
+            return false;
+        }
+
+        public static bool ValidateExpirationDateInput(string date)
         {
             foreach (char character in date)
             {
@@ -90,12 +90,12 @@ namespace passwordManager
             return true;
         }
 
-        private bool IsASlash(char character)
+        public static bool IsASlash(char character)
         {
             return (int)character == 47;
         }
 
-        private bool IsADigit(char character)
+        public static bool IsADigit(char character)
         {
             return (int)character >= 48 && (int)character <= 57;
         }

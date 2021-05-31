@@ -12,19 +12,14 @@ namespace passwordManager
         private int _expirationMonth;
         private int _expirationYear;
         private string _notes;
-        public Validator Validator { get; set; }
-
-        public CreditCard()
-        {
-            Validator = new Validator();
-        }
+        
 
         public string Name
         {
             get { return this._name; }
             set
             {
-                if (!this.Validator.ValidateStringLength(value, (3, 25)))
+                if (!Validator.ValidateStringLength(value, (3, 25)))
                     throw new InvalidCreditCardNameException();
                 this._name = value;
             }
@@ -33,7 +28,7 @@ namespace passwordManager
             get { return this._company; }
             set
             {
-                if (!this.Validator.ValidateStringLength(value, (3, 25)))
+                if (!Validator.ValidateStringLength(value, (3, 25)))
                     throw new InvalidCreditCardCompanyException();
                 this._company = value;
             }
@@ -43,7 +38,7 @@ namespace passwordManager
             get { return this._number; }
             set
             {
-                if (!this.Validator.ValidateCreditCardNumber(value))
+                if (!Validator.ValidateCreditCardNumber(value))
                     throw new InvalidCreditCardNumberException();
                 this._number = value;
             }
@@ -53,7 +48,7 @@ namespace passwordManager
             get {return this._code;}
             set
             {
-                if (!this.Validator.ValidateCreditCardCode(value))
+                if (!Validator.ValidateCreditCardCode(value))
                     throw new InvalidCreditCardCodeException();
                 this._code = value;
             }
@@ -63,7 +58,7 @@ namespace passwordManager
             get { return this._expirationMonth; }
             set 
             {
-                if (!this.Validator.ValidateExpirationMonth(value))
+                if (!Validator.ValidateExpirationMonth(value))
                     throw new InvalidCreditCardExpirationDateException();
                 this._expirationMonth = value;
             }
@@ -72,7 +67,7 @@ namespace passwordManager
             get { return this._expirationYear; }
             set
             {
-                if (!this.Validator.ValidateExpirationYear(value))
+                if (!Validator.ValidateExpirationYear(value))
                     throw new InvalidCreditCardExpirationDateException();
                 this._expirationYear = value;
             }
@@ -92,7 +87,7 @@ namespace passwordManager
         public string Notes {
             get {return this._notes; }
             set {
-               if (!this.Validator.ValidateStringLength(value, (0,250)))
+               if (!Validator.ValidateStringLength(value, (0,250)))
                     throw new InvalidCreditCardNotesException();
                 this._notes = value;
             } 
