@@ -25,7 +25,7 @@ namespace passwordManager
             get { return this._username; }
             set 
             {
-                if (!this.ValidateUsernameAndPassword(value))
+                if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidAccountUsernameException();
                 this._username = value;
             } }
@@ -33,7 +33,7 @@ namespace passwordManager
             get { return this._password; } 
             set
             {
-                if (!this.ValidateUsernameAndPassword(value))
+                if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidAccountPasswordException();
                 ClassifyColor(value);
                 this._password = value;
@@ -43,6 +43,10 @@ namespace passwordManager
 
         private void ClassifyColor(string password)
         {
+            PasswordRequirement upper = new NeedUpperCase();
+            PasswordRequirement lower = new NeedLowerCase();
+            PasswordRequirement digits = new NeedDigits();
+            PasswordRequirement specials = new NeedSpecials();
             if (password.Length < 8)
                 this.Classification = ColorClassification.Red;
             else if (password.Length <= 14)
@@ -56,7 +60,7 @@ namespace passwordManager
                 }
                 else if (cuantity == 2)
                 {
-                    if (this.ContainsLowerCase(password) && this.ContainsUpperCase(password)) this.Classification = ColorClassification.LightGreen;
+                    if (lower.ContainsRequirement(password) && upper.ContainsRequirement(password)) this.Classification = ColorClassification.LightGreen;
                     else this.Classification = ColorClassification.Yellow;
                 }
                 else if (cuantity == 3) this.Classification = ColorClassification.LightGreen;
@@ -68,10 +72,14 @@ namespace passwordManager
         private int TypesOfCharacters(string password)
         {
             int count = 0;
-            if (this.ContainsUpperCase(password)) count++;
-            if (this.ContainsLowerCase(password)) count++;
-            if (this.ContainsDigits(password)) count++;
-            if (this.ContainsSpecials(password)) count++;
+            PasswordRequirement upper = new NeedUpperCase();
+            PasswordRequirement lower = new NeedLowerCase();
+            PasswordRequirement digits = new NeedDigits();
+            PasswordRequirement specials = new NeedSpecials();
+            if (upper.ContainsRequirement(password)) count++;
+            if (lower.ContainsRequirement(password)) count++;
+            if (digits.ContainsRequirement(password)) count++;
+            if (specials.ContainsRequirement(password)) count++;
 
             return count;
         }
@@ -79,7 +87,7 @@ namespace passwordManager
         public string Site {
             get { return this._site; }
             set {
-                if (!this.ValidateSite(value))
+                if (!Validator.ValidateStringLength(value, (3, 25)))
                     throw new InvalidAccountSiteException();
                 this._site = value;
             } 
@@ -88,7 +96,7 @@ namespace passwordManager
         public string Note {
             get { return this._note; }
             set {
-                if (!this.ValidateNotes(value))
+                if (!Validator.ValidateStringLength(value, (0, 250)))
                     throw new InvalidAccountNotesException();
                 this._note = value;
             }
@@ -96,26 +104,6 @@ namespace passwordManager
         public DateTime Modification { get; set; }
         public ColorClassification Classification { get; set; }
 
-        public bool ValidateUsernameAndPassword(string password)
-        {
-            if (password.Length >= 5 && password.Length <= 25)
-                return true;
-            return false;
-        }
-
-        public bool ValidateSite(string site)
-        {
-            if (site.Length >= 3 && site.Length <= 25)
-                return true;
-            return false;
-        }
-
-        public bool ValidateNotes(string note)
-        {
-            if (note.Length > 250)
-                return false;
-            return true;
-        }
 
         public override bool Equals(object obj)
         {
@@ -127,38 +115,6 @@ namespace passwordManager
             return this.Username == account.Username && this.Site == account.Site;
         }
 
-        
-
-        public bool ContainsUpperCase(string password)
-        {
-            return ContainsCharBetweenAsciiValues(password, 65, 90);
-        }
-
-        public bool ContainsLowerCase(string password)
-        {
-            return ContainsCharBetweenAsciiValues(password, 97, 122);
-        }
-        
-        public bool ContainsSpecials(string password)
-        {
-            return ContainsCharBetweenAsciiValues(password, 32, 47) || ContainsCharBetweenAsciiValues(password, 58, 64) || ContainsCharBetweenAsciiValues(password, 91, 96) || ContainsCharBetweenAsciiValues(password, 123, 126);
-        }
-
-        public bool ContainsDigits(string password)
-        {
-            return ContainsCharBetweenAsciiValues(password, 48, 57);
-        }
-
-        private static bool ContainsCharBetweenAsciiValues(string password, int value1, int value2)
-        {
-            foreach (char n in password)
-            {
-                int asciiValue = (int)n;
-                if (asciiValue >= value1 && asciiValue <= value2)
-                    return true;
-            }
-            return false;
-        }
 
         public void ModifyAccount(Account newAccount)
         {

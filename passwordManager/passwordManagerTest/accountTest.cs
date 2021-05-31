@@ -27,19 +27,6 @@ namespace passwordManagerTest
             Assert.AreEqual("juanpe123", a.Username);
         }
 
-        [TestMethod]
-        public void AppropiateUsernameTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ValidateUsernameAndPassword("juanpe123"));
-        }
-
-        [TestMethod]
-        public void InappropiateUsernameTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ValidateUsernameAndPassword("jprs"));
-        }
 
         [ExpectedException(typeof(InvalidAccountUsernameException))]
         [TestMethod]
@@ -58,20 +45,6 @@ namespace passwordManagerTest
         }
 
 
-        [TestMethod]
-        public void AppropiatePasswordTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ValidateUsernameAndPassword("123495"));
-        }
-
-        [TestMethod]
-        public void InappropiatePasswordTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ValidateUsernameAndPassword("000"));
-        }
-
         [ExpectedException(typeof(InvalidAccountPasswordException))]
         [TestMethod]
         public void InvalidPasswordTest()
@@ -88,20 +61,6 @@ namespace passwordManagerTest
             Assert.AreEqual("Instagram", a.Site);
         }
 
-        [TestMethod]
-        public void ValidSiteTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ValidateSite("Instagram"));
-        }
-        
-        [TestMethod]
-        public void InvalidSiteTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ValidateSite("FB"));
-        }
-
         [ExpectedException(typeof(InvalidAccountSiteException))]
         [TestMethod]
         public void TooLongSiteTest()
@@ -109,7 +68,6 @@ namespace passwordManagerTest
             Account a = new Account();
             a.Site = "www.maniakdenim.com/maniakbrava";
         }
-
 
         [TestMethod]
         public void AssignNoteTest()
@@ -119,27 +77,14 @@ namespace passwordManagerTest
             Assert.AreEqual("Cuenta personal", a.Note);
         }
 
-        [TestMethod]
-        public void ValidNotesTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ValidateNotes(""));
-        }
-
-        [TestMethod]
-        public void InvalidNotesTest()
-        {
-            Account a = new Account();
-            //El siguiente string contiene mas de 250 caracteres.
-            Assert.IsFalse(a.ValidateNotes("asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb"));
-        }
+        
 
         [ExpectedException(typeof(InvalidAccountNotesException))]
         [TestMethod]
         public void TooLongNotesTest()
         {
             Account a = new Account();
-            a.Note = "asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb";
+            a.Note = "Este string contiene mas de 250 caracteres --> asdfghjk lpoqdcnsdjncka csn v,as dfv, as vaskhcb;ashkbcwehjld;cwe ckfshbv;d;fkdfvw;kjnwroiwuf bvldfhubvjdshfbvl dfbvldj hfbvlja shfbvdjs lahfbvl dfhbv;iafbv;ae ivhbae;fibhvldfjhbvldjsfbhv fvfvfvafibhvasljfv asvashbas dlvjcb safjlvlshi asljdvb ajv jbv qj vehrbfje rvlejbr velhrleiblehrbf rflrefhb";
         }
 
         [TestMethod]
@@ -208,61 +153,6 @@ namespace passwordManagerTest
             Assert.AreNotEqual(ColorClassification.Orange, a.Classification);
         }
 
-        [TestMethod]
-        public void ContainsUpperCaseTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ContainsUpperCase("1Aa/t?er2345764"));
-        }
-
-        [TestMethod]
-        public void NoUpperCaseTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ContainsUpperCase("12a/t?er2345764"));
-        }
-
-        [TestMethod]
-        public void ContainsLowerCaseTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ContainsLowerCase("1Aa/t?er2345764"));
-        }
-
-        [TestMethod]
-        public void NoLowerCaseTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ContainsLowerCase("12A/T?ITR2345764"));
-        }
-
-        [TestMethod]
-        public void ContainsDigitsTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ContainsDigits("1Aa/t?er2345764"));
-        }
-
-        [TestMethod]
-        public void NoDigitsTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ContainsDigits("A/T?ITRksjdb"));
-        }
-
-        [TestMethod]
-        public void ContainsSpecialsTest()
-        {
-            Account a = new Account();
-            Assert.IsTrue(a.ContainsSpecials("1Aa/t?er2345764"));
-        }
-
-        [TestMethod]
-        public void NoSpecialsTest()
-        {
-            Account a = new Account();
-            Assert.IsFalse(a.ContainsSpecials("A3143TITRksjdb"));
-        }
 
         [TestMethod]
         public void YellowPasswordOnlyUpperCaseClassificationTest()

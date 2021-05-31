@@ -12,12 +12,14 @@ namespace passwordManager
         private int _expirationMonth;
         private int _expirationYear;
         private string _notes;
+        
+
         public string Name
         {
             get { return this._name; }
             set
             {
-                if (!this.ValidateText(value))
+                if (!Validator.ValidateStringLength(value, (3, 25)))
                     throw new InvalidCreditCardNameException();
                 this._name = value;
             }
@@ -26,7 +28,7 @@ namespace passwordManager
             get { return this._company; }
             set
             {
-                if (!this.ValidateText(value))
+                if (!Validator.ValidateStringLength(value, (3, 25)))
                     throw new InvalidCreditCardCompanyException();
                 this._company = value;
             }
@@ -36,7 +38,7 @@ namespace passwordManager
             get { return this._number; }
             set
             {
-                if (!this.ValidateNumber(value))
+                if (!Validator.ValidateCreditCardNumber(value))
                     throw new InvalidCreditCardNumberException();
                 this._number = value;
             }
@@ -46,7 +48,7 @@ namespace passwordManager
             get {return this._code;}
             set
             {
-                if (!this.ValidateCode(value))
+                if (!Validator.ValidateCreditCardCode(value))
                     throw new InvalidCreditCardCodeException();
                 this._code = value;
             }
@@ -56,7 +58,7 @@ namespace passwordManager
             get { return this._expirationMonth; }
             set 
             {
-                if (!this.ValidateExpirationMonth(value))
+                if (!Validator.ValidateExpirationMonth(value))
                     throw new InvalidCreditCardExpirationDateException();
                 this._expirationMonth = value;
             }
@@ -65,86 +67,30 @@ namespace passwordManager
             get { return this._expirationYear; }
             set
             {
-                if (!this.ValidateExpirationYear(value))
+                if (!Validator.ValidateExpirationYear(value))
                     throw new InvalidCreditCardExpirationDateException();
                 this._expirationYear = value;
             }
         }
 
+        public void SetExpirationDate(string date)
+        {
+            
+            if (!Validator.ValidateExpirationDateInput(date))
+                throw new InvalidCreditCardExpirationDateException();
+            string[] expirationDate = date.Split('/');
+            this.ExpirationMonth = Int32.Parse(expirationDate[0]);
+            this.ExpirationYear = Int32.Parse(expirationDate[1]);
+            
+        }
+
         public string Notes {
             get {return this._notes; }
             set {
-               if (!this.ValidateNotes(value))
+               if (!Validator.ValidateStringLength(value, (0,250)))
                     throw new InvalidCreditCardNotesException();
                 this._notes = value;
-            } }
-
-        public bool ValidateNumber(string number)
-        {
-            string[] subs = number.Split(' ');
-            int caracteres = 0;
-            foreach (string s in subs)
-            {
-                caracteres += s.Length;
-                foreach (char digit in s)
-                {
-                    if (NotADigit(digit))
-                        return false;
-                }
-            }
-            if (caracteres != 16)
-                return false;
-            return true;
-        }
-
-        private static bool NotADigit(char digit)
-        {
-            return !((int)digit >= 48 && (int)digit <= 57);
-        }
-
-        public bool ValidateCode(string code)
-        {
-            if (code.Length == 3 || code.Length == 4)
-            {
-                foreach(char i in code)
-                {
-                    if((int)i < 48 || (int)i > 57)
-                    {
-                        return false;
-                    }
-
-                }
-                return true;
-            }
-            return false;
-        }
-
-        public bool ValidateText(string text)
-        {
-            if (text.Length >= 3 && text.Length <= 25)
-                return true;
-            return false;
-        }
-
-        public bool ValidateExpirationYear(int year)
-        {
-            if(year > 1000 && year < 10000)
-                return true;
-            return false;
-        }
-
-        public bool ValidateExpirationMonth(int month)
-        {
-            if (month >= 1 && month <= 12)
-                return true;
-            return false;
-        }
-
-        public bool ValidateNotes(string note)
-        {
-            if (note.Length > 250)
-                return false;
-            return true;
+            } 
         }
 
         public override bool Equals(object obj)

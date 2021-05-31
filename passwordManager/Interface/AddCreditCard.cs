@@ -14,8 +14,8 @@ namespace Interface
 {
     public partial class AddCreditCard : UserControl
     {
-        private const int MONTH = 0;
-        private const int YEAR = 1;
+        const int MONTH = 0;
+        const int YEAR = 1;
         private User user;
         private CreditCard modificationCreditCard;
         private Panel mainPanel;
@@ -54,16 +54,8 @@ namespace Interface
         }
 
 
-        public int GetExpirationDate(string date, int index)
-        {
-            string[] expirationDate = date.Split('/');
-            int integer = Int32.Parse(expirationDate[index]);
-            return integer;
-        }
-
         private void btnAcceptNewCreditCard_Click(object sender, EventArgs e)
         {
-
             try
             {
                 CreditCard newCreditCard = CreateNewCreditCard();
@@ -98,8 +90,7 @@ namespace Interface
             string company = txtCreditCardCompany.Text;
             string number = txtCreditCardNumber.Text;
             string code = txtCreditCardCode.Text;
-            int expirationMonth = GetExpirationDate(txtCreditCardExpiration.Text, MONTH);
-            int expirationYear = GetExpirationDate(txtCreditCardExpiration.Text, YEAR);
+            string date = txtCreditCardExpiration.Text;
             string notes = txtCreditCardNotes.Text;
 
             if(category != null)
@@ -111,11 +102,10 @@ namespace Interface
                     Company = company,
                     Number = number,
                     Code = code,
-                    ExpirationMonth = expirationMonth,
-                    ExpirationYear = expirationYear,
                     Category = category,
                     Notes = notes
                 };
+                newCreditCard.SetExpirationDate(date);
                 return newCreditCard;
             }
             else
