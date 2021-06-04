@@ -108,7 +108,6 @@
     <Compile Include="PasswordStrength.Designer.cs">
       <DependentUpon>PasswordStrength.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DetailedPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -207,6 +206,10 @@
     <ProjectReference Include="..\passwordManager\passwordManager.csproj">
       <Project>{A243701B-4E2A-4A87-B96C-EBC5D151A782}</Project>
       <Name>passwordManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{293864a8-cab0-4af4-851d-536a393ca985}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

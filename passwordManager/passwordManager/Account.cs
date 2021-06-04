@@ -21,6 +21,9 @@ namespace passwordManager
         private string _site;
         private string _note;
         private DateTime _modification;
+
+        public int Id { get; set; }
+
         public string Username { 
             get { return this._username; }
             set 
