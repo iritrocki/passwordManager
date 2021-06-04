@@ -17,6 +17,9 @@ namespace passwordManager
             this.ColorCount = new int[Enum.GetValues(typeof(ColorClassification)).Length];
         }
 
+        public int Id { get; set; }
+
+
         private string _masterKey;
 
         public bool Status { get; set; }

@@ -12,7 +12,8 @@ namespace passwordManager
         private int _expirationMonth;
         private int _expirationYear;
         private string _notes;
-        
+
+        public int Id { get; set; }
 
         public string Name
         {
