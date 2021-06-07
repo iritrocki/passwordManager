@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 
 namespace Interface
 {
@@ -54,6 +55,8 @@ namespace Interface
             {
                 Category newCategory = new Category(txtCategoryName.Text);
                 user.TryAddCategory(newCategory);
+                IDataAccess<Category> dac = new DataAccessCategory();
+                dac.Add(newCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);
                 this.mainPanel.Controls.Add(categoryList);
@@ -75,6 +78,8 @@ namespace Interface
             try
             {
                 user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
+                IDataAccess<Category> dac = new DataAccessCategory();
+                dac.Modify(modificationCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);
                 this.mainPanel.Controls.Add(categoryList);

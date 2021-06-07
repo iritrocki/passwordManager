@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessCategory.cs" />
     <Compile Include="DataAccessAccount.cs" />
     <Compile Include="IDataAccess.cs" />
     <Compile Include="Migrations\202106041902314_AddDataBase.cs" />
