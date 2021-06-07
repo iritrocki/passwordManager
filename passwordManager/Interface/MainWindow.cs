@@ -55,8 +55,8 @@ namespace Interface
         private void btnCheckDataBreaches_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl dataBreaches = new DataBreaches(user, pnlMainUserControl);
-            pnlMainUserControl.Controls.Add(dataBreaches);
+            UserControl dataBreachesOptions = new DataBreachesOptions(user, pnlMainUserControl);
+            pnlMainUserControl.Controls.Add(dataBreachesOptions);
         }
 
         private void btnPasswordStrength_Click(object sender, EventArgs e)
