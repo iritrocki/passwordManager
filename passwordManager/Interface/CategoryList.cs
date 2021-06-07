@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
+using Repository;
 
 namespace Interface
 {
@@ -26,7 +27,8 @@ namespace Interface
 
         public void ChargeListItems()
         {
-            foreach(Category c in user.Categories)
+            IDataAccess<Category> dac = new DataAccessCategory();
+            foreach(Category c in (List<Category>)dac.GetAll())
             {
                 ListViewItem listItem = new ListViewItem(string.Format("{0}", c.Name), 0);
                 listItem.Tag = c;
