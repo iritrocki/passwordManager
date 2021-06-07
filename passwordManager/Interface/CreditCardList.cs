@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
+using Repository;
 
 namespace Interface
 {
@@ -27,11 +28,13 @@ namespace Interface
 
         public void ChargeCreditCardsToList()
         {
-            this.user.CreditCards.Sort(delegate (CreditCard x, CreditCard y) {
+            IDataAccess<CreditCard> dacc = new DataAccessCreditCard();
+            List<CreditCard> creditCards = (List<CreditCard>)dacc.GetAll();
+            creditCards.Sort(delegate (CreditCard x, CreditCard y) {
                 return x.Category.Name.CompareTo(y.Category.Name);
             });
             listViewCreditCards.Items.Clear();
-            foreach (CreditCard cc in user.CreditCards)
+            foreach (CreditCard cc in creditCards)
             {
                 string shownCCNumber = CreditCardNumberShown(cc.Number);
                 string[] row = new string[] { cc.Category.Name, cc.Name, cc.Company, shownCCNumber, string.Format("{0}/{1}", cc.ExpirationMonth, cc.ExpirationYear) };
@@ -74,7 +77,9 @@ namespace Interface
         {
             try{
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                user.TryRemoveCreditCard(selectedCreditCard);
+                //user.TryRemoveCreditCard(selectedCreditCard);
+                IDataAccess<CreditCard> dacc = new DataAccessCreditCard();
+                dacc.Delete(selectedCreditCard);
                 ChargeCreditCardsToList();
             }
             catch (Exception exc)

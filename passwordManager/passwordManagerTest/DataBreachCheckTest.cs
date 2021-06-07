@@ -106,9 +106,9 @@ namespace passwordManagerTest
             u.TryAddAccount(linkedIn);
             u.TryAddAccount(github);
             u.TryAddAccount(github2);
-            u.TryAddCreditCard(itau);
-            u.TryAddCreditCard(santander);
-            u.TryAddCreditCard(americanExpress);
+            u.UniqueCreditCardCheck(itau);
+            u.UniqueCreditCardCheck(santander);
+            u.UniqueCreditCardCheck(americanExpress);
 
         }
 
