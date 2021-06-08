@@ -1,4 +1,5 @@
 ﻿using passwordManager;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,8 @@ namespace Interface
         private void btnPasswordList_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl passwordList = new PasswordList(user, pnlMainUserControl,user.Accounts);
+            IDataAccess<Account> daa = new DataAccessAccount();
+            UserControl passwordList = new PasswordList(user, pnlMainUserControl, (List<Account>)daa.GetAll());
             pnlMainUserControl.Controls.Add(passwordList);
         }
 

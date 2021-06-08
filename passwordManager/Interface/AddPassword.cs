@@ -54,18 +54,21 @@ namespace Interface
         {
             try
             {
+                IDataAccess<Account> daa = new DataAccessAccount();
                 Account newAccount = CreateNewAccount();
                 if (modificationAccount == null)
                 {
-                    user.TryAddAccount(newAccount);
+                    user.UniqueAccountCheck(newAccount);
+                    daa.Add(newAccount);
                     
                 }
                 else
                 {
                     user.TryModifyAccount(this.modificationAccount, newAccount);
+                    daa.Modify(modificationAccount);
                 }
                 mainPanel.Controls.Clear();
-                UserControl passwordList = new PasswordList(user, mainPanel, user.Accounts);
+                UserControl passwordList = new PasswordList(user, mainPanel, (List<Account>)daa.GetAll());
                 mainPanel.Controls.Add(passwordList);
 
             }catch(InvalidAccountException exc)
@@ -107,19 +110,69 @@ namespace Interface
         {
             try
             {
-                bool upper = checkBoxUpper.Checked;
-                bool lower = checkBoxLower.Checked;
-                bool digits = checkBoxDigits.Checked;
-                bool specials = checkBoxSpecials.Checked;
+                List<PasswordRequirement> passwordRequirements = checkRequirementsNeeded();
                 int length = (int)upDownLenght.Value;
-                //string generatedPassword = user.GeneratePassword(length, upper, lower, digits, specials);
-                //txtPassword.Text = generatedPassword;
+                PasswordGenerator passwordGenerator = new PasswordGenerator(length, passwordRequirements);
+                txtPassword.Text = passwordGenerator.Password;
             }
             catch (InvalidAccountException exception)
             {
                 lblError.Text = exception.Message;
             }
 
+        }
+        private List<PasswordRequirement> checkRequirementsNeeded()
+        {
+            List<PasswordRequirement> passwordRequirements = new List<PasswordRequirement>();
+            UpperCaseCheckbox(passwordRequirements);
+            LowerCaseCheckbox(passwordRequirements);
+            DigitsCheckbox(passwordRequirements);
+            SpecialsCheckbox(passwordRequirements);
+            return passwordRequirements;
+        }
+
+
+
+        private void SpecialsCheckbox(List<PasswordRequirement> passwordRequirements)
+        {
+            if (checkBoxSpecials.Checked)
+            {
+                NeedSpecials specials = new NeedSpecials();
+                passwordRequirements.Add(specials);
+            }
+        }
+
+
+
+        private void DigitsCheckbox(List<PasswordRequirement> passwordRequirements)
+        {
+            if (checkBoxDigits.Checked)
+            {
+                NeedDigits digits = new NeedDigits();
+                passwordRequirements.Add(digits);
+            }
+        }
+
+
+
+        private void LowerCaseCheckbox(List<PasswordRequirement> passwordRequirements)
+        {
+            if (checkBoxLower.Checked)
+            {
+                NeedLowerCase lower = new NeedLowerCase();
+                passwordRequirements.Add(lower);
+            }
+        }
+
+
+
+        private void UpperCaseCheckbox(List<PasswordRequirement> passwordRequirements)
+        {
+            if (checkBoxUpper.Checked)
+            {
+                NeedUpperCase upper = new NeedUpperCase();
+                passwordRequirements.Add(upper);
+            }
         }
     }
 }

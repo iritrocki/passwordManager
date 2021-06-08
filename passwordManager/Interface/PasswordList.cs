@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using passwordManager;
+using Repository;
 
 namespace Interface
 {
@@ -30,7 +31,7 @@ namespace Interface
 
         private void chargePasswordsToList()
         {
-            this.user.Accounts.Sort(delegate (Account x, Account y) {
+            this.accountsToShow.Sort(delegate (Account x, Account y) {
                 return x.Category.Name.CompareTo(y.Category.Name);
             });
             listViewPasswords.Items.Clear();
@@ -55,10 +56,13 @@ namespace Interface
             try
             {
                 Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
-                user.TryRemoveAccount(selectedAccount);
+                IDataAccess<Account> daa = new DataAccessAccount();
+                daa.Delete(selectedAccount);
+                this.accountsToShow.Remove(selectedAccount);
                 chargePasswordsToList();
 
-            }catch(Exception exc)
+            }
+            catch(Exception exc)
             {
                 lblError.Text = "Debe seleccionar una contraseña para eliminar.";
             }

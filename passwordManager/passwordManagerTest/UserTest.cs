@@ -118,7 +118,7 @@ namespace passwordManagerTest
                 Site="Instagram", 
                 Modification=DateTime.Now, 
                 Category=c};
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             Assert.AreEqual(1, u.Accounts.Count);
         }
 
@@ -137,7 +137,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = c
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
         }
 
         [TestMethod]
@@ -154,7 +154,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = c
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             u.TryRemoveAccount(a);
             Assert.AreEqual(0, u.Accounts.Count);
         }
@@ -423,7 +423,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = u.Categories[0]
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             Assert.AreEqual(1, u.ColorCount[(int)a.Classification-1]);
         }
 
@@ -442,7 +442,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = u.Categories[0]
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             u.TryRemoveAccount(a);
             Assert.AreEqual(0, u.ColorCount[(int)a.Classification]);
         }
@@ -463,7 +463,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = u.Categories[0]
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             Assert.AreEqual(1, u.FilterBy(a.Classification).Count());
         }
 
@@ -482,7 +482,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = u.Categories[0]
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             Assert.AreEqual(a, u.FilterBy(a.Classification)[0]);
         }
 
@@ -501,7 +501,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = u.Categories[0]
             };
-            u.TryAddAccount(a);
+            u.UniqueAccountCheck(a);
             Assert.AreEqual(0, u.FilterBy(ColorClassification.Red).Count());
         }
 
@@ -626,7 +626,7 @@ namespace passwordManagerTest
                 Modification = DateTime.Now,
                 Category = u.Categories[1]
             };
-            u.TryAddAccount(linkedIn);
+            u.UniqueAccountCheck(linkedIn);
         }
 
         [ExpectedException(typeof(ExistentCreditCardException))]

@@ -102,10 +102,10 @@ namespace passwordManagerTest
             u.TryAddCategory(facultad);
             u.TryAddCategory(trabajo);
             u.TryAddCategory(personal);
-            u.TryAddAccount(instagram);
-            u.TryAddAccount(linkedIn);
-            u.TryAddAccount(github);
-            u.TryAddAccount(github2);
+            u.UniqueAccountCheck(instagram);
+            u.UniqueAccountCheck(linkedIn);
+            u.UniqueAccountCheck(github);
+            u.UniqueAccountCheck(github2);
             u.UniqueCreditCardCheck(itau);
             u.UniqueCreditCardCheck(santander);
             u.UniqueCreditCardCheck(americanExpress);
