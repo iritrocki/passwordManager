@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 
 namespace Interface
 {
@@ -44,8 +45,8 @@ namespace Interface
 
         public void ChargeComboBox()
         {
-
-            comboBoxCategories.DataSource = this.user.Categories;
+            IDataAccess<Category> dac = new DataAccessCategory();
+            comboBoxCategories.DataSource = dac.GetAll();
             comboBoxCategories.DisplayMember = "Name";
         }
 

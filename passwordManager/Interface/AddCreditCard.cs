@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 
 namespace Interface
 {
@@ -47,8 +48,8 @@ namespace Interface
 
         public void ChargeComboBox()
         {
-
-            comboBoxCreditCardCategory.DataSource = user.Categories;
+            IDataAccess<Category> dac = new DataAccessCategory();
+            comboBoxCreditCardCategory.DataSource = dac.GetAll();
             comboBoxCreditCardCategory.DisplayMember = "Name";
 
         }
@@ -59,14 +60,16 @@ namespace Interface
             try
             {
                 CreditCard newCreditCard = CreateNewCreditCard();
-
+                IDataAccess<CreditCard> dacc = new DataAccessCreditCard();
                 if (modificationCreditCard == null)
                 {
-                    user.TryAddCreditCard(newCreditCard);
+                    user.UniqueCreditCardCheck(newCreditCard);
+                    dacc.Add(newCreditCard);
                 }
                 else
                 {
                     user.TryModifyCreditCard(modificationCreditCard, newCreditCard);
+                    dacc.Modify(modificationCreditCard);
                 }
                 mainPanel.Controls.Clear();
                 UserControl creditCardList = new CreditCardList(user, mainPanel);
