@@ -14,7 +14,6 @@ namespace passwordManager
             this.Categories = new List<Category>();
             this.Accounts = new List<Account>();
             this.CreditCards = new List<CreditCard>();
-            this.ColorCount = new int[Enum.GetValues(typeof(ColorClassification)).Length];
         }
 
         public int Id { get; set; }
@@ -38,7 +37,6 @@ namespace passwordManager
         public List<Category> Categories { get; set; }
         public List<Account> Accounts { get; set; }
         public List<CreditCard> CreditCards { get; set; }
-        public int[] ColorCount { get; set; }
 
         public void SignIn(string input)
         {
@@ -101,7 +99,6 @@ namespace passwordManager
                 AccountsComparison(account, accountToAdd);
 
             }
-            this.ColorCount[(int)accountToAdd.Classification-1]++;
         }
 
         public void TryModifyAccount(Account actualAccount, Account modificationAccount)
@@ -113,11 +110,7 @@ namespace passwordManager
                     AccountsComparison(account, modificationAccount);
                 }
             }
-            ColorClassification actualColor = actualAccount.Classification;
-            this.ColorCount[(int)actualColor - 1]--;
             actualAccount.ModifyAccount(modificationAccount);
-            ColorClassification modificationColor = modificationAccount.Classification;
-            this.ColorCount[(int)modificationColor - 1]++;
         }
 
         private void AccountsComparison(Account account1, Account account2)
@@ -126,16 +119,6 @@ namespace passwordManager
                 throw new ExistentAccountException();
         }
 
-        //public void TryRemoveAccount(Account accountToRemove)
-        //{
-        //    if (this.Accounts.Contains(accountToRemove))
-        //    {
-        //        this.ColorCount[(int)accountToRemove.Classification-1]--;
-        //    }
-        //    else
-        //        throw new InexistentAccountException();
-        //}
-
         public void UniqueCreditCardCheck(CreditCard creditCardToAdd)
         {
             foreach(CreditCard card in this.CreditCards)
@@ -143,8 +126,6 @@ namespace passwordManager
                 CreditCardComparison(creditCardToAdd, card);
             }
         }
-
-        
 
         public void TryModifyCreditCard(CreditCard actualCreditCard, CreditCard modifiedCreditCard)
         {
@@ -162,17 +143,6 @@ namespace passwordManager
                 throw new ExistentCreditCardException();
         }
         
-        public List<Account> FilterBy(ColorClassification classification)
-        {
-            List<Account> filteredAccounts = new List<Account>();
-            foreach(Account a in this.Accounts)
-            {
-                if (a.Classification == classification)
-                    filteredAccounts.Add(a);
-            }
-            return filteredAccounts;
-        }
-
 
         public bool ValidateMasterKey(string masterKey)
         {
