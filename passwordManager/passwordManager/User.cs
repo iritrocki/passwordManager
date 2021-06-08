@@ -165,16 +165,6 @@ namespace passwordManager
             if (creditCard1.Equals(creditCard2))
                 throw new ExistentCreditCardException();
         }
-
-        //public void TryRemoveCreditCard(CreditCard creditCardToRemove)
-        //{
-        //    if (this.CreditCards.Contains(creditCardToRemove))
-        //    {
-        //        this.CreditCards.Remove(creditCardToRemove);
-        //    }
-        //    else
-        //        throw new InexistentCreditCardException();
-        //}
         
         public List<Account> FilterBy(ColorClassification classification)
         {

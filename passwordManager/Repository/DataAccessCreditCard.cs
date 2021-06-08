@@ -13,6 +13,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
+                context.Categories.Attach(entity.Category);
                 context.CreditCards.Add(entity);
                 context.SaveChanges();
             }
@@ -32,7 +33,8 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.CreditCards.FirstOrDefault(c => c.Id == entity.Id);
+                
+                return context.CreditCards.Include("Category").FirstOrDefault(c => c.Id == entity.Id);
             }
         }
 
@@ -40,7 +42,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.CreditCards.ToList();
+                return context.CreditCards.Include("Category").ToList();
             }
         }
 

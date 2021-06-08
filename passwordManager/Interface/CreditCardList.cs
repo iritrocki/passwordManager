@@ -37,7 +37,9 @@ namespace Interface
             foreach (CreditCard cc in creditCards)
             {
                 string shownCCNumber = CreditCardNumberShown(cc.Number);
-                string[] row = new string[] { cc.Category.Name, cc.Name, cc.Company, shownCCNumber, string.Format("{0}/{1}", cc.ExpirationMonth, cc.ExpirationYear) };
+                IDataAccess<Category> dac = new DataAccessCategory();
+                Category c = dac.Get(cc.Category);
+                string[] row = new string[] { c.Name, cc.Name, cc.Company, shownCCNumber, string.Format("{0}/{1}", cc.ExpirationMonth, cc.ExpirationYear) };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = cc;
                 listViewCreditCards.Items.Add(item);
@@ -47,8 +49,7 @@ namespace Interface
         private static string CreditCardNumberShown(string creditCardNumber)
         {
             string last4Digits = creditCardNumber.Substring(14);
-            string shownCCNumber = string.Format("XXXX XXXX XXXX {0}", last4Digits);
-            return shownCCNumber;
+            return string.Format("XXXX XXXX XXXX {0}", last4Digits);
         }
 
         private void btnAddCreditCard_Click(object sender, EventArgs e)
