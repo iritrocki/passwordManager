@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessCreditCard.cs" />
     <Compile Include="DataAccessCategory.cs" />
     <Compile Include="DataAccessAccount.cs" />
     <Compile Include="IDataAccess.cs" />

@@ -136,13 +136,12 @@ namespace passwordManager
         //        throw new InexistentAccountException();
         //}
 
-        public void TryAddCreditCard(CreditCard creditCardToAdd)
+        public void UniqueCreditCardCheck(CreditCard creditCardToAdd)
         {
             foreach(CreditCard card in this.CreditCards)
             {
                 CreditCardComparison(creditCardToAdd, card);
             }
-            this.CreditCards.Add(creditCardToAdd);
         }
 
         
@@ -161,16 +160,6 @@ namespace passwordManager
         {
             if (creditCard1.Equals(creditCard2))
                 throw new ExistentCreditCardException();
-        }
-
-        public void TryRemoveCreditCard(CreditCard creditCardToRemove)
-        {
-            if (this.CreditCards.Contains(creditCardToRemove))
-            {
-                this.CreditCards.Remove(creditCardToRemove);
-            }
-            else
-                throw new InexistentCreditCardException();
         }
         
         public List<Account> FilterBy(ColorClassification classification)

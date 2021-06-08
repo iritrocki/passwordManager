@@ -243,7 +243,7 @@ namespace passwordManagerTest
                 Notes = "Tarjeta sin limite",
                 Category = c
             };
-            u.TryAddCreditCard(cc);
+            u.UniqueCreditCardCheck(cc);
             Assert.AreEqual(1, u.CreditCards.Count);
         }
 
@@ -304,7 +304,7 @@ namespace passwordManagerTest
                 Notes = "Tarjeta sin limite",
                 Category = c
             };
-            u.TryAddCreditCard(cc);
+            u.UniqueCreditCardCheck(cc);
             u.TryRemoveCreditCard(cc);
             Assert.AreEqual(0, u.CreditCards.Count);
         }
@@ -644,7 +644,7 @@ namespace passwordManagerTest
                 Notes = "Limite 50k dolares",
                 Category = u.Categories[0]
             };
-            u.TryAddCreditCard(cc);
+            u.UniqueCreditCardCheck(cc);
         }
 
         [TestMethod]
