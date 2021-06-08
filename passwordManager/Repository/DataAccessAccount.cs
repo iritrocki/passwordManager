@@ -13,6 +13,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
+                context.Categories.Attach(entity.Category);
                 context.Accounts.Add(entity);
                 context.SaveChanges();
             }
@@ -32,7 +33,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.Accounts.FirstOrDefault(a => a.Id == entity.Id);
+                return context.Accounts.Include("Category").FirstOrDefault(a => a.Id == entity.Id);
             }
         }
 
@@ -40,7 +41,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.Accounts.ToList();
+                return context.Accounts.Include("Category").ToList();
             }
         }
 

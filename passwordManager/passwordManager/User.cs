@@ -94,14 +94,13 @@ namespace passwordManager
             }
         }
 
-        public void TryAddAccount(Account accountToAdd)
+        public void UniqueAccountCheck(Account accountToAdd)
         {
             foreach (Account account in this.Accounts)
             {
                 AccountsComparison(account, accountToAdd);
 
             }
-            this.Accounts.Add(accountToAdd);
             this.ColorCount[(int)accountToAdd.Classification-1]++;
         }
 
@@ -119,8 +118,6 @@ namespace passwordManager
             actualAccount.ModifyAccount(modificationAccount);
             ColorClassification modificationColor = modificationAccount.Classification;
             this.ColorCount[(int)modificationColor - 1]++;
-
-
         }
 
         private void AccountsComparison(Account account1, Account account2)
@@ -129,16 +126,15 @@ namespace passwordManager
                 throw new ExistentAccountException();
         }
 
-        public void TryRemoveAccount(Account accountToRemove)
-        {
-            if (this.Accounts.Contains(accountToRemove))
-            {
-                this.Accounts.Remove(accountToRemove);
-                this.ColorCount[(int)accountToRemove.Classification-1]--;
-            }
-            else
-                throw new InexistentAccountException();
-        }
+        //public void TryRemoveAccount(Account accountToRemove)
+        //{
+        //    if (this.Accounts.Contains(accountToRemove))
+        //    {
+        //        this.ColorCount[(int)accountToRemove.Classification-1]--;
+        //    }
+        //    else
+        //        throw new InexistentAccountException();
+        //}
 
         public void TryAddCreditCard(CreditCard creditCardToAdd)
         {
