@@ -5,16 +5,10 @@ using System.Linq;
 
 namespace passwordManager
 {
-    public enum ColorClassification
-    {
-        Red = 1,
-        Orange = 2,
-        Yellow = 3,
-        LightGreen = 4,
-        DarkGreen = 5
-    }
+    
     public class Account : DataUnit
     {
+        public Account() { }
         
         private string _username;
         private string _password;
@@ -31,60 +25,19 @@ namespace passwordManager
                 if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidAccountUsernameException();
                 this._username = value;
-            } }
+            } 
+        }
+
         public string Password {
             get { return this._password; } 
             set
             {
                 if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidAccountPasswordException();
-                ClassifyColor(value);
+                this.Classification = ColorClassificator.ClassifyColor(value);
                 this._password = value;
 
             }
-        }
-
-        private void ClassifyColor(string password)
-        {
-            PasswordRequirement upper = new NeedUpperCase();
-            PasswordRequirement lower = new NeedLowerCase();
-            PasswordRequirement digits = new NeedDigits();
-            PasswordRequirement specials = new NeedSpecials();
-            if (password.Length < 8)
-                this.Classification = ColorClassification.Red;
-            else if (password.Length <= 14)
-                this.Classification = ColorClassification.Orange;
-            else
-            {
-                int cuantity = TypesOfCharacters(password);
-                if (cuantity == 1)
-                {
-                    this.Classification = ColorClassification.Yellow;
-                }
-                else if (cuantity == 2)
-                {
-                    if (lower.ContainsRequirement(password) && upper.ContainsRequirement(password)) this.Classification = ColorClassification.LightGreen;
-                    else this.Classification = ColorClassification.Yellow;
-                }
-                else if (cuantity == 3) this.Classification = ColorClassification.LightGreen;
-                else this.Classification = ColorClassification.DarkGreen;
-            }
-
-        }
-
-        private int TypesOfCharacters(string password)
-        {
-            int count = 0;
-            PasswordRequirement upper = new NeedUpperCase();
-            PasswordRequirement lower = new NeedLowerCase();
-            PasswordRequirement digits = new NeedDigits();
-            PasswordRequirement specials = new NeedSpecials();
-            if (upper.ContainsRequirement(password)) count++;
-            if (lower.ContainsRequirement(password)) count++;
-            if (digits.ContainsRequirement(password)) count++;
-            if (specials.ContainsRequirement(password)) count++;
-
-            return count;
         }
 
         public string Site {
@@ -105,8 +58,8 @@ namespace passwordManager
             }
         }
         public DateTime Modification { get; set; }
-        public ColorClassification Classification { get; set; }
 
+        public ColorClassification Classification { get; set; }
 
         public override bool Equals(object obj)
         {
