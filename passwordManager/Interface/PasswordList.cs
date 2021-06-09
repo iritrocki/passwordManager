@@ -18,6 +18,7 @@ namespace Interface
         private User user;
         private Panel mainPanel;
         private List<Account> accountsToShow;
+        private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         private System.Windows.Forms.Timer timer;
         public PasswordList(User u, Panel p,List<Account> accountList)
         {
@@ -56,8 +57,7 @@ namespace Interface
             try
             {
                 Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
-                IDataAccess<Account> daa = new DataAccessAccount();
-                daa.Delete(selectedAccount);
+                this.dataAccessAccount.Delete(selectedAccount);
                 this.accountsToShow.Remove(selectedAccount);
                 chargePasswordsToList();
 

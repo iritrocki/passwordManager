@@ -16,6 +16,7 @@ namespace Interface
     {
         private User user;
         private Panel mainPanel;
+        private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         public PasswordStrength(User u, Panel p)
         {
             InitializeComponent();
@@ -35,8 +36,7 @@ namespace Interface
         }
        public void ChargeLabels()
         {
-            IDataAccess<Account> daa = new DataAccessAccount();
-            int[] colorCount = ColorClassificator.PasswordStrengthCount((List<Account>)daa.GetAll());
+            int[] colorCount = ColorClassificator.PasswordStrengthCount((List<Account>)dataAccessAccount.GetAll());
             lblNumberRed.Text = string.Format("{0}", colorCount[(int)ColorClassification.Red-1]);
             lblNumberOrange.Text = string.Format("{0}", colorCount[(int)ColorClassification.Orange-1]);
             lblNumberYellow.Text = string.Format("{0}", colorCount[(int)ColorClassification.Yellow-1]);
@@ -46,8 +46,7 @@ namespace Interface
 
         private void btnViewRed_Click(object sender, EventArgs e)
         {
-            IDataAccess<Account> daa = new DataAccessAccount();
-            List<Account> accounts = (List<Account>)daa.GetAll();
+            List<Account> accounts = (List<Account>)dataAccessAccount.GetAll();
             UserControl redPasswordsList = new PasswordList(user, mainPanel, ColorClassificator.FilterBy(ColorClassification.Red, accounts));
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(redPasswordsList);
@@ -55,8 +54,7 @@ namespace Interface
 
         private void btnViewOrange_Click(object sender, EventArgs e)
         {
-            IDataAccess<Account> daa = new DataAccessAccount();
-            List<Account> accounts = (List<Account>)daa.GetAll();
+            List<Account> accounts = (List<Account>)dataAccessAccount.GetAll();
             UserControl orangePasswordsList = new PasswordList(user, mainPanel, ColorClassificator.FilterBy(ColorClassification.Orange, accounts));
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(orangePasswordsList);
@@ -64,8 +62,7 @@ namespace Interface
 
         private void btnViewYellow_Click(object sender, EventArgs e)
         {
-            IDataAccess<Account> daa = new DataAccessAccount();
-            List<Account> accounts = (List<Account>)daa.GetAll();
+            List<Account> accounts = (List<Account>)dataAccessAccount.GetAll();
             UserControl yellowPasswordsList = new PasswordList(user, mainPanel, ColorClassificator.FilterBy(ColorClassification.Yellow, accounts));
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(yellowPasswordsList);
@@ -73,8 +70,7 @@ namespace Interface
 
         private void btnViewLightGreen_Click(object sender, EventArgs e)
         {
-            IDataAccess<Account> daa = new DataAccessAccount();
-            List<Account> accounts = (List<Account>)daa.GetAll();
+            List<Account> accounts = (List<Account>)dataAccessAccount.GetAll();
             UserControl lightGreenPasswordsList = new PasswordList(user, mainPanel, ColorClassificator.FilterBy(ColorClassification.LightGreen, accounts));
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(lightGreenPasswordsList);
@@ -82,8 +78,7 @@ namespace Interface
 
         private void btnViewDarkGreen_Click(object sender, EventArgs e)
         {
-            IDataAccess<Account> daa = new DataAccessAccount();
-            List<Account> accounts = (List<Account>)daa.GetAll();
+            List<Account> accounts = (List<Account>)dataAccessAccount.GetAll();
             UserControl darkGreenPasswordsList = new PasswordList(user, mainPanel, ColorClassificator.FilterBy(ColorClassification.DarkGreen, accounts));
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(darkGreenPasswordsList);
