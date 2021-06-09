@@ -18,6 +18,7 @@ namespace Interface
         private User user;
         private Account modificationAccount;
         private Panel mainPanel;
+        private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
 
         public AddPassword(User u, Panel main)
         {
@@ -45,8 +46,8 @@ namespace Interface
 
         public void ChargeComboBox()
         {
-            IDataAccess<Category> dac = new DataAccessCategory();
-            comboBoxCategories.DataSource = dac.GetAll();
+            IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
+            comboBoxCategories.DataSource = dataAccessCategory.GetAll();
             comboBoxCategories.DisplayMember = "Name";
         }
 
@@ -54,22 +55,21 @@ namespace Interface
         {
             try
             {
-                IDataAccess<Account> daa = new DataAccessAccount();
                 Account newAccount = CreateNewAccount();
                 if (modificationAccount == null)
                 {
                     user.UniqueAccountCheck(newAccount);
-                    daa.Add(newAccount);
+                    this.dataAccessAccount.Add(newAccount);
                     
                 }
                 else
                 {
                     user.TryModifyAccount(this.modificationAccount, newAccount);
-                    daa.Modify(modificationAccount);
+                    this.dataAccessAccount.Modify(modificationAccount);
                 }
-                mainPanel.Controls.Clear();
-                UserControl passwordList = new PasswordList(user, mainPanel, (List<Account>)daa.GetAll());
-                mainPanel.Controls.Add(passwordList);
+                this.mainPanel.Controls.Clear();
+                UserControl passwordList = new PasswordList(user, mainPanel, (List<Account>)dataAccessAccount.GetAll());
+                this.mainPanel.Controls.Add(passwordList);
 
             }catch(InvalidAccountException exc)
             {

@@ -16,6 +16,7 @@ namespace Interface
     {
         private User user;
         private Panel mainPanel;
+        private IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
         public CategoryList(User u, Panel MainPanel)
         {
             InitializeComponent();
@@ -27,8 +28,7 @@ namespace Interface
 
         public void ChargeListItems()
         {
-            IDataAccess<Category> dac = new DataAccessCategory();
-            foreach(Category c in (List<Category>)dac.GetAll())
+            foreach(Category c in (List<Category>)dataAccessCategory.GetAll())
             {
                 ListViewItem listItem = new ListViewItem(string.Format("{0}", c.Name), 0);
                 listItem.Tag = c;

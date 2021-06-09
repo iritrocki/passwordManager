@@ -18,7 +18,7 @@ namespace Interface
         private User user;
         private Category modificationCategory;
         private Panel mainPanel;
-        private IDataAccess<Category> dac = DataAccessManager.GetDataAccessCategory();
+        private IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
 
         public AddCategory(User u, Panel main)
         {
@@ -56,7 +56,7 @@ namespace Interface
             {
                 Category newCategory = new Category(txtCategoryName.Text);
                 user.TryAddCategory(newCategory);
-                this.dac.Add(newCategory);
+                this.dataAccessCategory.Add(newCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);
                 this.mainPanel.Controls.Add(categoryList);
@@ -78,7 +78,7 @@ namespace Interface
             try
             {
                 user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
-                this.dac.Modify(modificationCategory);
+                this.dataAccessCategory.Modify(modificationCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);
                 this.mainPanel.Controls.Add(categoryList);

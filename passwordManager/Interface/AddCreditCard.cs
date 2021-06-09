@@ -20,7 +20,7 @@ namespace Interface
         private User user;
         private CreditCard modificationCreditCard;
         private Panel mainPanel;
-        private IDataAccess<CreditCard> dacc = DataAccessManager.GetDataAccessCreditCard();
+        private IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
 
         public AddCreditCard(User u, Panel p)
         {
@@ -50,8 +50,8 @@ namespace Interface
 
         public void ChargeComboBox()
         {
-            IDataAccess<Category> dac = DataAccessManager.GetDataAccessCategory();
-            comboBoxCreditCardCategory.DataSource = dac.GetAll();
+            IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
+            comboBoxCreditCardCategory.DataSource = dataAccessCategory.GetAll();
             comboBoxCreditCardCategory.DisplayMember = "Name";
         }
 
@@ -64,12 +64,12 @@ namespace Interface
                 if (modificationCreditCard == null)
                 {
                     user.UniqueCreditCardCheck(newCreditCard);
-                    this.dacc.Add(newCreditCard);
+                    this.dataAccessCreditCard.Add(newCreditCard);
                 }
                 else
                 {
                     user.TryModifyCreditCard(modificationCreditCard, newCreditCard);
-                    this.dacc.Modify(modificationCreditCard);
+                    this.dataAccessCreditCard.Modify(modificationCreditCard);
                 }
                 mainPanel.Controls.Clear();
                 UserControl creditCardList = new CreditCardList(user, mainPanel);

@@ -16,6 +16,7 @@ namespace Interface
     {
         private User user;
         private Panel mainPanel;
+        private IDataAccess<CreditCard> dacc = DataAccessManager.GetDataAccessCreditCard();
         private System.Windows.Forms.Timer timer;
         public CreditCardList(User u,Panel p)
         {
@@ -28,7 +29,6 @@ namespace Interface
 
         public void ChargeCreditCardsToList()
         {
-            IDataAccess<CreditCard> dacc = new DataAccessCreditCard();
             List<CreditCard> creditCards = (List<CreditCard>)dacc.GetAll();
             creditCards.Sort(delegate (CreditCard x, CreditCard y) {
                 return x.Category.Name.CompareTo(y.Category.Name);
@@ -37,9 +37,7 @@ namespace Interface
             foreach (CreditCard cc in creditCards)
             {
                 string shownCCNumber = CreditCardNumberShown(cc.Number);
-                IDataAccess<Category> dac = new DataAccessCategory();
-                Category c = dac.Get(cc.Category);
-                string[] row = new string[] { c.Name, cc.Name, cc.Company, shownCCNumber, string.Format("{0}/{1}", cc.ExpirationMonth, cc.ExpirationYear) };
+                string[] row = new string[] { cc.Category.Name, cc.Name, cc.Company, shownCCNumber, string.Format("{0}/{1}", cc.ExpirationMonth, cc.ExpirationYear) };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = cc;
                 listViewCreditCards.Items.Add(item);
@@ -78,9 +76,7 @@ namespace Interface
         {
             try{
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                //user.TryRemoveCreditCard(selectedCreditCard);
-                IDataAccess<CreditCard> dacc = new DataAccessCreditCard();
-                dacc.Delete(selectedCreditCard);
+                this.dacc.Delete(selectedCreditCard);
                 ChargeCreditCardsToList();
             }
             catch (Exception exc)
