@@ -20,6 +20,7 @@ namespace Interface
         public Login()
         {
             InitializeComponent();
+            InitUser();
         }
 
         public Login(User u)
@@ -28,16 +29,29 @@ namespace Interface
             this.user = u;
         }
 
+        private void InitUser()
+        {
+            try
+            {
+                this.user = dataAccessUser.GetAll().First();
+            }
+            catch (Exception e)
+            {
+                this.user = null;
+            }
+        }
+
         private void btnAcceptMasterKey_Click(object sender, EventArgs e)
         {
             string input = txtMasterKey.Text;
-            if (user == null || user.MasterKey == null)
+            if (user == null || user.MasterKey == null /*dataAccessUser == null*/)
             {
                 try
                 {
                     this.user = new User();
                     this.user.MasterKey = input;
                     user.Status = true;
+                    dataAccessUser.Add(user);
                     Form mainWindow = new MainWindow(user);
                     mainWindow.Show();
                     this.Visible = false;
@@ -55,7 +69,7 @@ namespace Interface
             {
                 try
                 {
-                    
+
                     user.SignIn(input);
                     Form mainWindow = new MainWindow(user);
                     mainWindow.Show();
