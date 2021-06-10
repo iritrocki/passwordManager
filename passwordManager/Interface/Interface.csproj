@@ -238,11 +238,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\passwordManager\passwordManager.csproj">
-      <Project>{a243701b-4e2a-4a87-b96c-ebc5d151a782}</Project>
+      <Project>{A243701B-4E2A-4A87-B96C-EBC5D151A782}</Project>
       <Name>passwordManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{293864a8-cab0-4af4-851d-536a393ca985}</Project>
+      <Project>{293864A8-CAB0-4AF4-851D-536A393CA985}</Project>
       <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>

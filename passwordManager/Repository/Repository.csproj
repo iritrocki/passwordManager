@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccessDataBreaches.cs" />
+    <Compile Include="DataAccessUser.cs" />
     <Compile Include="DataAccessManager.cs" />
     <Compile Include="DataAccessCreditCard.cs" />
     <Compile Include="DataAccessCategory.cs" />
