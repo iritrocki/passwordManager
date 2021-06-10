@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202106100101228_dataBreachesMigration.designer.cs">
       <DependentUpon>202106100101228_dataBreachesMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106101356597_dataBreachChanges.cs" />
+    <Compile Include="Migrations\202106101356597_dataBreachChanges.designer.cs">
+      <DependentUpon>202106101356597_dataBreachChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PasswordManagerDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106100101228_dataBreachesMigration.resx">
       <DependentUpon>202106100101228_dataBreachesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106101356597_dataBreachChanges.resx">
+      <DependentUpon>202106101356597_dataBreachChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

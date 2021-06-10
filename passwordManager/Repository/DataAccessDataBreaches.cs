@@ -32,7 +32,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.DataBreaches.Include("ExposedCreditCards").Include("ExposedPasswords").FirstOrDefault(a => a.Id == entity.Id);
+                return context.DataBreaches.Include("ExposedCreditCards").Include("ExposedPasswords").Include("ExposedPasswords.Category").FirstOrDefault(a => a.Id == entity.Id);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.DataBreaches.Include("ExposedCreditCards").Include("ExposedPasswords").ToList();
+                return context.DataBreaches.Include("ExposedCreditCards").Include("ExposedPasswords").Include("ExposedPasswords.Category").ToList();
 
             }
         }

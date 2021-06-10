@@ -1,5 +1,5 @@
 ﻿using passwordManager;
-using passwordManager.FDataBreaches;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +17,10 @@ namespace Interface
         private string path;
         private Panel MainPanel;
         private User User;
+        IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
+        IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
+        IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
+
         public DataBreachFileUpload(User u, Panel panel)
         {
             InitializeComponent();
@@ -41,7 +45,8 @@ namespace Interface
         {
             IDataBreachesAdapter adapter = new TxtFileAdapter(this.path);
             DataBreachCheck dataBreachCheck = new DataBreachCheck();
-            dataBreachCheck.CheckDataBreaches(adapter, User);
+            dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
+            daDataBreaches.Add(dataBreachCheck);
             MainPanel.Controls.Clear();
             DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, MainPanel, User);
             MainPanel.Controls.Add(results);

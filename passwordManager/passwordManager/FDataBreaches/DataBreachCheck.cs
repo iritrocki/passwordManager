@@ -10,41 +10,51 @@ namespace passwordManager
         {
             ExposedPasswords = new List<Account>();
             ExposedCreditCards = new List<CreditCard>();
+            DataBreaches = new List<DataBreachLine>();
             this.Date = DateTime.Now;
         }
         public List<Account> ExposedPasswords { get; set; }
         public List<CreditCard> ExposedCreditCards { get; set; }
-        public List<string> DataBreaches { get; set; }
+        public List<DataBreachLine> DataBreaches { get; set; }
         public IDataBreachesAdapter TypeOfConversion { get; set; }
         public DateTime Date { get; set; }
         public int Id { get; set; }
 
-        public void CheckDataBreaches(IDataBreachesAdapter typeOfConverter)
+        public void CheckDataBreaches(IDataBreachesAdapter typeOfConverter, List<Account> accounts, List<CreditCard> creditCards)
         {
-            DataBreaches = typeOfConverter.AdaptData();
-            this.CheckDataBreachesExposure();
+            TypeOfConversion = typeOfConverter;
+            GetAdaptedData();
+            this.CheckDataBreachesExposure(accounts, creditCards);
         }
 
-        public void CheckDataBreachesExposure()
+        private void GetAdaptedData()
         {
-            
-           
-            foreach (string line in DataBreaches)
+            List<string> dataBreaches = TypeOfConversion.AdaptData();
+            foreach (string line in dataBreaches)
             {
-                if (!this.IsCreditCardNumber(line))
+                DataBreachLine dbLine = new DataBreachLine(line);
+                this.DataBreaches.Add(dbLine);
+
+            }
+        }
+
+        public void CheckDataBreachesExposure(List<Account> accounts, List<CreditCard> creditCards)
+        {
+            foreach (DataBreachLine line in DataBreaches)
+            {
+                if (!Validator.ValidateCreditCardNumber(line.Line))
                 {
-                    PasswordComparison(line);
+                    PasswordComparison(line.Line, accounts);
                 }
                 else
                 {
-                    CreditCardNumberComparison(line);
+                    CreditCardNumberComparison(line.Line, creditCards);
                 }
             }
         }
 
-        private void CreditCardNumberComparison(string exposed)
+        private void CreditCardNumberComparison(string exposed, List<CreditCard> creditCards)
         {
-            List<CreditCard> creditCards = (List<CreditCard>)DataAccessManager.GetDataAccessCreditCard().GetAll();
             foreach (CreditCard creditCard in creditCards)
             {
                 if (exposed == creditCard.Number)
@@ -52,9 +62,8 @@ namespace passwordManager
             }
         }
 
-        private void PasswordComparison(string password)
+        private void PasswordComparison(string password, List<Account> accounts)
         {
-            List<Account> accounts = (List<Account>)DataAccessManager.GetDataAccessAccount().GetAll();
             foreach (Account account in accounts)
             {
                 if (password == account.Password)
@@ -62,28 +71,6 @@ namespace passwordManager
             }
         }
 
-        public bool IsCreditCardNumber(string number)
-        {
-            string[] subs = number.Split(' ');
-            int caracteres = 0;
-            foreach (string s in subs)
-            {
-                caracteres += s.Length;
-                foreach(char digit in s)
-                {
-                    if (NotADigit(digit))
-                        return false;
-                }
-            }
-            if (caracteres != 16)
-                return false;
-            return true;
-        }
-
-        private static bool NotADigit(char digit)
-        {
-            return !((int)digit >= 48 && (int)digit <= 57);
-        }
 
         ~DataBreachCheck() { }
     }

@@ -34,6 +34,7 @@ namespace passwordManager
 
             }
         }
+
         public List<Category> Categories { get; set; }
         public List<Account> Accounts { get; set; }
         public List<CreditCard> CreditCards { get; set; }
