@@ -1,8 +1,9 @@
 ﻿using passwordManager;
+using Repository;
 using System;
 using System.Collections.Generic;
 
-namespace passwordManager
+namespace PasswordManagerLogic.FDataBreaches
 {
     public class DataBreachCheck
     {

@@ -178,7 +178,8 @@ namespace passwordManagerTest
         {
             DataBreachCheck db = new DataBreachCheck();
             List<string> data = new List<string>();
-            db.CheckDataBreachesExposure(u, data);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure();
             Assert.IsTrue(db.ExposedPasswords.Count == 0 && db.ExposedCreditCards.Count == 0);
         }
 
@@ -188,7 +189,8 @@ namespace passwordManagerTest
             DataBreachCheck db = new DataBreachCheck();
             List<string> data = new List<string>();
             data.Add("vsjkdjfjsdhjf");
-            db.CheckDataBreachesExposure(u, data);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure();
             Assert.IsTrue(db.ExposedPasswords.Contains(u.Accounts[0]));
         }
 
@@ -198,7 +200,8 @@ namespace passwordManagerTest
             DataBreachCheck db = new DataBreachCheck();
             List<string> data = new List<string>();
             data.Add("thisPasswordIsBrandNew123");
-            db.CheckDataBreachesExposure(u, data);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure();
             Assert.IsTrue(db.ExposedPasswords.Count == 0);
         }
 
@@ -240,7 +243,8 @@ namespace passwordManagerTest
             DataBreachCheck db = new DataBreachCheck();
             List<string> data = new List<string>();
             data.Add("1234 5678 2345 5342");
-            db.CheckDataBreachesExposure(u, data);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure();
             Assert.IsTrue(db.ExposedCreditCards.Contains(u.CreditCards[0]));
         }
 
@@ -250,7 +254,8 @@ namespace passwordManagerTest
             DataBreachCheck db = new DataBreachCheck();
             List<string> data = new List<string>();
             data.Add("thisPasswordIsBrandNew123");
-            db.CheckDataBreachesExposure(u, data);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure();
             Assert.IsTrue(db.ExposedCreditCards.Count == 0);
         }
 
@@ -263,7 +268,7 @@ namespace passwordManagerTest
 vsjkdjfjsdhjf
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, u);
+            db.CheckDataBreaches(plainText);
             Assert.IsTrue(db.ExposedPasswords.Count == 1 && db.ExposedCreditCards.Count == 1);
         }
 
@@ -276,7 +281,7 @@ password1298";
 vsjkdjfjsdhjf
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, u);
+            db.CheckDataBreaches(plainText);
             Assert.IsTrue(db.ExposedCreditCards.Contains(u.CreditCards[0]) && db.ExposedPasswords.Contains(u.Accounts[0]));
         }
 
