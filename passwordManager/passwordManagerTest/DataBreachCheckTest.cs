@@ -99,9 +99,9 @@ namespace passwordManagerTest
             };
 
             u = new User();
-            u.TryAddCategory(facultad);
-            u.TryAddCategory(trabajo);
-            u.TryAddCategory(personal);
+            u.UniqueCategoryCheck(facultad);
+            u.UniqueCategoryCheck(trabajo);
+            u.UniqueCategoryCheck(personal);
             u.UniqueAccountCheck(instagram);
             u.UniqueAccountCheck(linkedIn);
             u.UniqueAccountCheck(github);

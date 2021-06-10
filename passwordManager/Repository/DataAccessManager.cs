@@ -14,6 +14,7 @@ namespace Repository
         private static IDataAccess<Category> _dac = null;
         private static IDataAccess<Account> _daa = null;
         private static IDataAccess<CreditCard> _dacc = null;
+        private static IDataAccess<User> _dau = null;
 
         public static IDataAccess<Category> GetDataAccessCategory()
         {
@@ -40,6 +41,15 @@ namespace Repository
                 _dacc = new DataAccessCreditCard();
             }
             return _dacc;
+        }
+
+        public static IDataAccess<User> GetDataAccessUser()
+        {
+            if (_dau == null)
+            {
+                _dau = new DataAccessUser();
+            }
+            return _dau;
         }
     }
 }

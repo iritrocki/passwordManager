@@ -1,5 +1,6 @@
 ﻿using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace Interface
     public partial class Login : Form
     {
         private User user;
+        private IDataAccess<User> dataAccessUser = DataAccessManager.GetDataAccessUser();
         public Login()
         {
             InitializeComponent();
@@ -53,6 +55,7 @@ namespace Interface
             {
                 try
                 {
+                    
                     user.SignIn(input);
                     Form mainWindow = new MainWindow(user);
                     mainWindow.Show();

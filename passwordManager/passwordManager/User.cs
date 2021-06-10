@@ -63,13 +63,12 @@ namespace passwordManager
                 throw new InvalidMasterKeyException();
         }
 
-        public void TryAddCategory(Category category)
+        public void UniqueCategoryCheck(Category category)
         {
             foreach(Category cat in this.Categories)
             {
                 CategoryComparison(category.Name, cat.Name);
             }
-            this.Categories.Add(category);
         }
 
         public void TryModifyCategory(Category toChange, string name)

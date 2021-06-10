@@ -55,7 +55,7 @@ namespace passwordManagerTest
         {
             User u = new User();
             Category c = new Category("Facultad");
-            u.TryAddCategory(c);
+            u.UniqueCategoryCheck(c);
             Assert.AreEqual(1, u.Categories.Count);
         }
 
@@ -65,9 +65,9 @@ namespace passwordManagerTest
         {
             User u = new User();
             Category c = new Category("Facultad");
-            u.TryAddCategory(c);
+            u.UniqueCategoryCheck(c);
             Category c2 = new Category("Facultad");
-            u.TryAddCategory(c2);
+            u.UniqueCategoryCheck(c2);
         }
 
         [ExpectedException(typeof(ExistentCategoryNameException))]
@@ -76,9 +76,9 @@ namespace passwordManagerTest
         {
             User u = new User();
             Category c = new Category("Facultad");
-            u.TryAddCategory(c);
+            u.UniqueCategoryCheck(c);
             Category c2 = new Category("facultad");
-            u.TryAddCategory(c2);
+            u.UniqueCategoryCheck(c2);
         }
 
 
