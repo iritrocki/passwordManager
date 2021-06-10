@@ -1,5 +1,6 @@
 ﻿using passwordManager.Exceptions;
 using System;
+using System.Collections.Generic;
 
 namespace passwordManager
 {
@@ -14,6 +15,8 @@ namespace passwordManager
         private string _notes;
 
         public int Id { get; set; }
+
+        public List<DataBreachCheck> dataBreaches { get; set; }
 
         public string Name
         {

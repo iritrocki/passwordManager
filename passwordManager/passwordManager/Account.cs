@@ -18,6 +18,8 @@ namespace passwordManager
 
         public int Id { get; set; }
 
+        public List<DataBreachCheck> dataBreaches { get; set; }
+
         public string Username { 
             get { return this._username; }
             set 

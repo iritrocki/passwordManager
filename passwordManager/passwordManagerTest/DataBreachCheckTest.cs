@@ -12,6 +12,8 @@ namespace passwordManagerTest
     public class DataBreachCheckTest
     {
         User u;
+        List <Account> accounts;
+        List<CreditCard> creditCards;
 
         [TestInitialize]
         public void TestInitialize()
@@ -99,16 +101,25 @@ namespace passwordManagerTest
             };
 
             u = new User();
-            u.TryAddCategory(facultad);
-            u.TryAddCategory(trabajo);
-            u.TryAddCategory(personal);
-            u.UniqueAccountCheck(instagram);
-            u.UniqueAccountCheck(linkedIn);
-            u.UniqueAccountCheck(github);
-            u.UniqueAccountCheck(github2);
-            u.UniqueCreditCardCheck(itau);
-            u.UniqueCreditCardCheck(santander);
-            u.UniqueCreditCardCheck(americanExpress);
+            accounts = new List<Account>();
+            accounts.Add(instagram);
+            accounts.Add(linkedIn);
+            accounts.Add(github);
+            accounts.Add(github2);
+            creditCards = new List<CreditCard>();
+            creditCards.Add(itau);
+            creditCards.Add(santander);
+            creditCards.Add(americanExpress);
+            //u.TryAddCategory(facultad);
+            //u.TryAddCategory(trabajo);
+            //u.TryAddCategory(personal);
+            //u.UniqueAccountCheck(instagram);
+            //u.UniqueAccountCheck(linkedIn);
+            //u.UniqueAccountCheck(github);
+            //u.UniqueAccountCheck(github2);
+            //u.UniqueCreditCardCheck(itau);
+            //u.UniqueCreditCardCheck(santander);
+            //u.UniqueCreditCardCheck(americanExpress);
 
         }
 
@@ -177,8 +188,9 @@ namespace passwordManagerTest
         public void CheckEmptyStringListTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            List<string> data = new List<string>();
-            db.CheckDataBreachesExposure(u, data);
+            List<DataBreachLine> data = new List<DataBreachLine>();
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure(accounts, creditCards);
             Assert.IsTrue(db.ExposedPasswords.Count == 0 && db.ExposedCreditCards.Count == 0);
         }
 
@@ -186,9 +198,11 @@ namespace passwordManagerTest
         public void CheckDataBreachExposedGithubAccountTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            List<string> data = new List<string>();
-            data.Add("vsjkdjfjsdhjf");
-            db.CheckDataBreachesExposure(u, data);
+            List<DataBreachLine> data = new List<DataBreachLine>();
+            DataBreachLine d = new DataBreachLine("vsjkdjfjsdhjf");
+            data.Add(d);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure(accounts, creditCards);
             Assert.IsTrue(db.ExposedPasswords.Contains(u.Accounts[0]));
         }
 
@@ -196,9 +210,11 @@ namespace passwordManagerTest
         public void CheckDataBreachNoAccountExposedTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            List<string> data = new List<string>();
-            data.Add("thisPasswordIsBrandNew123");
-            db.CheckDataBreachesExposure(u, data);
+            List<DataBreachLine> data = new List<DataBreachLine>();
+            DataBreachLine d = new DataBreachLine("thisPasswordIsBrandNew123");
+            data.Add(d);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure(accounts, creditCards);
             Assert.IsTrue(db.ExposedPasswords.Count == 0);
         }
 
@@ -238,9 +254,11 @@ namespace passwordManagerTest
         public void CheckDataBreachExposedItauCreditCardTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            List<string> data = new List<string>();
-            data.Add("1234 5678 2345 5342");
-            db.CheckDataBreachesExposure(u, data);
+            List<DataBreachLine> data = new List<DataBreachLine>();
+            DataBreachLine d = new DataBreachLine("1234 5678 2345 5342");
+            data.Add(d);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure(accounts, creditCards);
             Assert.IsTrue(db.ExposedCreditCards.Contains(u.CreditCards[0]));
         }
 
@@ -248,9 +266,11 @@ namespace passwordManagerTest
         public void CheckDataBreachInvalidNumberNoCreditCardExposedTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            List<string> data = new List<string>();
-            data.Add("thisPasswordIsBrandNew123");
-            db.CheckDataBreachesExposure(u, data);
+            List<DataBreachLine> data = new List<DataBreachLine>();
+            DataBreachLine d = new DataBreachLine("thisPasswordIsBrandNew123");
+            data.Add(d);
+            db.DataBreaches = data;
+            db.CheckDataBreachesExposure(accounts, creditCards);
             Assert.IsTrue(db.ExposedCreditCards.Count == 0);
         }
 
@@ -263,7 +283,7 @@ namespace passwordManagerTest
 vsjkdjfjsdhjf
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, u);
+            db.CheckDataBreaches(plainText, accounts, creditCards);
             Assert.IsTrue(db.ExposedPasswords.Count == 1 && db.ExposedCreditCards.Count == 1);
         }
 
@@ -276,7 +296,7 @@ password1298";
 vsjkdjfjsdhjf
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, u);
+            db.CheckDataBreaches(plainText, accounts, creditCards);
             Assert.IsTrue(db.ExposedCreditCards.Contains(u.CreditCards[0]) && db.ExposedPasswords.Contains(u.Accounts[0]));
         }
 
