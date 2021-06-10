@@ -64,7 +64,7 @@ namespace passwordManager
                 throw new InvalidMasterKeyException();
         }
 
-        public void TryAddCategory(Category category)
+        public void UniqueCategoryCheck(Category category)
         {
             foreach(Category cat in this.Categories)
             {

@@ -55,7 +55,7 @@ namespace Interface
             try
             {
                 Category newCategory = new Category(txtCategoryName.Text);
-                user.TryAddCategory(newCategory);
+                user.UniqueCategoryCheck(newCategory);
                 this.dataAccessCategory.Add(newCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);
