@@ -8,7 +8,7 @@ namespace passwordManager
 {
     public static class Validator
     {
-        public static bool ValidateStringLength(string s, (int,int) range)
+        public static bool ValidateStringLength(string s, (int, int) range)
         {
             if (s.Length >= range.Item1 && s.Length <= range.Item2)
                 return true;
@@ -19,11 +19,11 @@ namespace passwordManager
         {
             foreach (char character in number)
             {
-                if (!(IsADigit(character)||IsASpace(character)))
+                if (!(IsADigit(character) || IsASpace(character)))
                     return false;
             }
             string[] subs = number.Split(' ');
-            if(subs.Length != 4)
+            if (subs.Length != 4)
             {
                 return false;
             }
@@ -31,13 +31,13 @@ namespace passwordManager
             {
                 if (s.Length != 4)
                     return false;
-                
+
             }
-            
+
             return true;
         }
 
-        
+
 
         public static bool IsASpace(char character)
         {
@@ -83,7 +83,7 @@ namespace passwordManager
                     return false;
             }
             string[] subs = date.Split('/');
-            if(subs.Length != 2)
+            if (subs.Length != 2)
             {
                 return false;
             }
@@ -102,3 +102,4 @@ namespace passwordManager
 
     }
 }
+

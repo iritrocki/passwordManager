@@ -148,7 +148,7 @@ namespace passwordManagerTest
         public void AddExposedPasswordToListTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            db.ExposedPasswords.Add(u.Accounts[0]);
+            db.ExposedPasswords.Add(accounts[0]);
             Assert.IsTrue(db.ExposedPasswords.Count == 1);
         }
 
@@ -180,7 +180,7 @@ namespace passwordManagerTest
         public void AddExposedCreditCardToListTest()
         {
             DataBreachCheck db = new DataBreachCheck();
-            db.ExposedCreditCards.Add(u.CreditCards[0]);
+            db.ExposedCreditCards.Add(creditCards[0]);
             Assert.IsTrue(db.ExposedCreditCards.Count == 1);
         }
 
@@ -203,7 +203,7 @@ namespace passwordManagerTest
             data.Add(d);
             db.DataBreaches = data;
             db.CheckDataBreachesExposure(accounts, creditCards);
-            Assert.IsTrue(db.ExposedPasswords.Contains(u.Accounts[0]));
+            Assert.IsTrue(db.ExposedPasswords.Contains(accounts[0]));
         }
 
         [TestMethod]
@@ -218,37 +218,6 @@ namespace passwordManagerTest
             Assert.IsTrue(db.ExposedPasswords.Count == 0);
         }
 
-        [TestMethod]
-        public void CheckTypeOfStringTest()
-        {
-            DataBreachCheck db = new DataBreachCheck();
-            string number = "1234 1234 1234 1234";
-            Assert.IsTrue(db.IsCreditCardNumber(number));
-        }
-
-        [TestMethod]
-        public void CheckTypeOfStringNotANumberTest()
-        {
-            DataBreachCheck db = new DataBreachCheck();
-            string number = "password123";
-            Assert.IsFalse(db.IsCreditCardNumber(number));
-        }
-
-        [TestMethod]
-        public void CheckTypeOfStringInvalidNumberTest()
-        {
-            DataBreachCheck db = new DataBreachCheck();
-            string number = "1234 1234 1234 123";
-            Assert.IsFalse(db.IsCreditCardNumber(number));
-        }
-
-        [TestMethod]
-        public void CheckTypeOfStringLettersInBetweenTest()
-        {
-            DataBreachCheck db = new DataBreachCheck();
-            string number = "1a34 b234 1234 1234";
-            Assert.IsFalse(db.IsCreditCardNumber(number));
-        }
 
         [TestMethod]
         public void CheckDataBreachExposedItauCreditCardTest()
@@ -259,7 +228,7 @@ namespace passwordManagerTest
             data.Add(d);
             db.DataBreaches = data;
             db.CheckDataBreachesExposure(accounts, creditCards);
-            Assert.IsTrue(db.ExposedCreditCards.Contains(u.CreditCards[0]));
+            Assert.IsTrue(db.ExposedCreditCards.Contains(creditCards[0]));
         }
 
         [TestMethod]
@@ -297,7 +266,7 @@ vsjkdjfjsdhjf
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
             db.CheckDataBreaches(plainText, accounts, creditCards);
-            Assert.IsTrue(db.ExposedCreditCards.Contains(u.CreditCards[0]) && db.ExposedPasswords.Contains(u.Accounts[0]));
+            Assert.IsTrue(db.ExposedCreditCards.Contains(creditCards[0]) && db.ExposedPasswords.Contains(accounts[0]));
         }
 
 

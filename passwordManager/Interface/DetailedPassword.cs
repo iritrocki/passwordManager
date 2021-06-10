@@ -25,7 +25,7 @@ namespace Interface
 
         public void ClearLabels()
         {
-            lblDetailPassword.Text = "";
+            txtDetailPassword.Text = "";
             lblDetailCategory.Text = "";
             lblDetailSite.Text = "";
             lblDetailUsername.Text = "";
@@ -33,7 +33,7 @@ namespace Interface
         }
         public void ChargeLabels()
         {
-            lblDetailPassword.Text = myAccount.Password;
+            txtDetailPassword.Text= myAccount.Password;
             lblDetailCategory.Text = myAccount.Category.Name;
             lblDetailSite.Text = myAccount.Site;
             lblDetailUsername.Text = myAccount.Username;

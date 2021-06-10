@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202106101356597_dataBreachChanges.designer.cs">
       <DependentUpon>202106101356597_dataBreachChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106101908536_userModified.cs" />
+    <Compile Include="Migrations\202106101908536_userModified.designer.cs">
+      <DependentUpon>202106101908536_userModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PasswordManagerDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,12 +80,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\passwordManager\passwordManager.csproj">
-      <Project>{a243701b-4e2a-4a87-b96c-ebc5d151a782}</Project>
-      <Name>passwordManager</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202106041902314_AddDataBase.resx">
@@ -93,6 +91,15 @@
     <EmbeddedResource Include="Migrations\202106101356597_dataBreachChanges.resx">
       <DependentUpon>202106101356597_dataBreachChanges.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106101908536_userModified.resx">
+      <DependentUpon>202106101908536_userModified.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\passwordManager\passwordManager.csproj">
+      <Project>{A243701B-4E2A-4A87-B96C-EBC5D151A782}</Project>
+      <Name>passwordManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
