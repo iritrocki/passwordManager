@@ -63,12 +63,12 @@ namespace Interface
                 CreditCard newCreditCard = CreateNewCreditCard();
                 if (modificationCreditCard == null)
                 {
-                    user.UniqueCreditCardCheck(newCreditCard);
+                    DataChecker.UniqueCreditCardCheck(newCreditCard, (List<CreditCard>)dataAccessCreditCard.GetAll());
                     this.dataAccessCreditCard.Add(newCreditCard);
                 }
                 else
                 {
-                    user.TryModifyCreditCard(modificationCreditCard, newCreditCard);
+                    Modificator.TryModifyCreditCard(modificationCreditCard, newCreditCard, (List<CreditCard>)dataAccessCreditCard.GetAll());
                     this.dataAccessCreditCard.Modify(modificationCreditCard);
                 }
                 mainPanel.Controls.Clear();

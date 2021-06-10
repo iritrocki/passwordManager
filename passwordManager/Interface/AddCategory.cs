@@ -55,7 +55,7 @@ namespace Interface
             try
             {
                 Category newCategory = new Category(txtCategoryName.Text);
-                user.UniqueCategoryCheck(newCategory);
+                DataChecker.UniqueCategoryCheck(newCategory, (List<Category>)dataAccessCategory.GetAll());
                 this.dataAccessCategory.Add(newCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);
@@ -77,7 +77,7 @@ namespace Interface
         {
             try
             {
-                user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
+                Modificator.TryModifyCategory(modificationCategory, txtCategoryName.Text, (List<Category>)dataAccessCategory.GetAll());
                 this.dataAccessCategory.Modify(modificationCategory);
                 this.mainPanel.Controls.Clear();
                 UserControl categoryList = new CategoryList(user, mainPanel);

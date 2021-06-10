@@ -58,13 +58,13 @@ namespace Interface
                 Account newAccount = CreateNewAccount();
                 if (modificationAccount == null)
                 {
-                    user.UniqueAccountCheck(newAccount);
+                    DataChecker.UniqueAccountCheck(newAccount, (List<Account>)dataAccessAccount.GetAll());
                     this.dataAccessAccount.Add(newAccount);
                     
                 }
                 else
                 {
-                    user.TryModifyAccount(this.modificationAccount, newAccount);
+                    Modificator.TryModifyAccount(this.modificationAccount, newAccount, (List<Account>)dataAccessAccount.GetAll());
                     this.dataAccessAccount.Modify(modificationAccount);
                 }
                 this.mainPanel.Controls.Clear();
