@@ -136,6 +136,12 @@
     <Compile Include="DataBreachFileUpload.Designer.cs">
       <DependentUpon>DataBreachFileUpload.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataBreachesHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachesHistory.Designer.cs">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
+    </Compile>
     <!--<Compile Include="ModifyMasterKey.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataBreachFileUpload.resx">
       <DependentUpon>DataBreachFileUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachesHistory.resx">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

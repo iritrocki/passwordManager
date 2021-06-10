@@ -86,6 +86,7 @@ namespace Interface
             this.btnViewHistoric.Text = "Ver";
             this.btnViewHistoric.UseMnemonic = false;
             this.btnViewHistoric.UseVisualStyleBackColor = true;
+            this.btnViewHistoric.Click += new System.EventHandler(this.btnViewHistoric_Click);
             // 
             // lblChequeo
             // 

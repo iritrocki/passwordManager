@@ -19,6 +19,8 @@ namespace Repository
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<DataBreachCheck> DataBreaches { get; set; }
+
         public PasswordManagerDBContext() : base("name=PasswordManagerDBContext") { }
         
     }

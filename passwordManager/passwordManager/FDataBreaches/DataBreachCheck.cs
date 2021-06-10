@@ -9,22 +9,24 @@ namespace passwordManager
         {
             ExposedPasswords = new List<Account>();
             ExposedCreditCards = new List<CreditCard>();
+            this.Date = DateTime.Now;
         }
         public List<Account> ExposedPasswords { get; set; }
         public List<CreditCard> ExposedCreditCards { get; set; }
+        public List<string> DataBreaches { get; set; }
         public IDataBreachesAdapter TypeOfConversion { get; set; }
+        public DateTime Date { get; set; }
+        public int Id { get; set; }
 
         public void CheckDataBreaches(IDataBreachesAdapter typeOfConverter, User user)
         {
-            List<string> dataConvertida = typeOfConverter.AdaptData();
-
-            this.CheckDataBreachesExposure(user, dataConvertida);
-
+            DataBreaches = typeOfConverter.AdaptData();
+            this.CheckDataBreachesExposure(user);
         }
 
-        public void CheckDataBreachesExposure(User user, List<string> data)
+        public void CheckDataBreachesExposure(User user)
         {
-            foreach(string line in data)
+            foreach(string line in DataBreaches)
             {
                 if (!this.IsCreditCardNumber(line))
                 {

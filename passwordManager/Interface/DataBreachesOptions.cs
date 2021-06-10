@@ -36,5 +36,12 @@ namespace Interface
             UserControl dataBreachesWithFiles = new DataBreachFileUpload(User, MainPanel);
             MainPanel.Controls.Add(dataBreachesWithFiles);
         }
+
+        private void btnViewHistoric_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+            UserControl historicPanel = new DataBreachesHistory(MainPanel);
+            MainPanel.Controls.Add(historicPanel);
+        }
     }
 }
