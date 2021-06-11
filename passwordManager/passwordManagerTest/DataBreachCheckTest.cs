@@ -110,16 +110,6 @@ namespace passwordManagerTest
             creditCards.Add(itau);
             creditCards.Add(santander);
             creditCards.Add(americanExpress);
-            //u.TryAddCategory(facultad);
-            //u.TryAddCategory(trabajo);
-            //u.TryAddCategory(personal);
-            //u.UniqueAccountCheck(instagram);
-            //u.UniqueAccountCheck(linkedIn);
-            //u.UniqueAccountCheck(github);
-            //u.UniqueAccountCheck(github2);
-            //u.UniqueCreditCardCheck(itau);
-            //u.UniqueCreditCardCheck(santander);
-            //u.UniqueCreditCardCheck(americanExpress);
 
         }
 
