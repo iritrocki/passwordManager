@@ -33,7 +33,7 @@ namespace Interface
             dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
             daDataBreaches.Add(dataBreachCheck);
             mainPanel.Controls.Clear();
-            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, mainPanel, user);
+            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, mainPanel);
             mainPanel.Controls.Add(results);
 
         }

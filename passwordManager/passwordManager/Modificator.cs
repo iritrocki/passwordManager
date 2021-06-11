@@ -12,7 +12,7 @@ namespace passwordManager
         {
             foreach (Category category in categories)
             {
-                if (toChange != category)
+                if (toChange.Id != category.Id)
                 {
                     DataChecker.CategoryComparison(category.Name, name);
                 }
@@ -24,7 +24,7 @@ namespace passwordManager
         {
             foreach (Account account in accounts)
             {
-                if (actualAccount != account)
+                if (actualAccount.Id != account.Id)
                 {
                     DataChecker.AccountsComparison(account, modificationAccount);
                 }
@@ -36,7 +36,7 @@ namespace passwordManager
         {
             foreach (CreditCard card in creditCards)
             {
-                if (card != actualCreditCard)
+                if (card.Id != actualCreditCard.Id)
                     DataChecker.CreditCardComparison(card, modifiedCreditCard);
             }
             actualCreditCard.ModifyCreditCard(modifiedCreditCard);

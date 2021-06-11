@@ -108,7 +108,7 @@ namespace Interface
         {
             timer.Stop();
             
-            UserControl newCreditCardList = new CreditCardList(this.user, this.mainPanel);
+            UserControl newCreditCardList = new CreditCardList(this.mainPanel);
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(newCreditCardList);
 

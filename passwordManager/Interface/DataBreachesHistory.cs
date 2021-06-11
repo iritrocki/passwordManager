@@ -40,7 +40,7 @@ namespace Interface
             {
                 DataBreachCheck selectedItem = (DataBreachCheck)listViewDateSelection.SelectedItems[0].Tag;
                 this.mainPanel.Controls.Clear();
-                UserControl resultsPanel = new DataBreachesResults(selectedItem.ExposedPasswords, selectedItem.ExposedCreditCards, mainPanel, u);
+                UserControl resultsPanel = new DataBreachesResults(selectedItem.ExposedPasswords, selectedItem.ExposedCreditCards, mainPanel);
                 this.mainPanel.Controls.Add(resultsPanel);
 
             }

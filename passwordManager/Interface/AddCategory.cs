@@ -77,7 +77,7 @@ namespace Interface
                 Modificator.TryModifyCategory(modificationCategory, txtCategoryName.Text, (List<Category>)dataAccessCategory.GetAll());
                 this.dataAccessCategory.Modify(modificationCategory);
                 this.mainPanel.Controls.Clear();
-                UserControl categoryList = new CategoryList(user, mainPanel);
+                UserControl categoryList = new CategoryList(mainPanel);
                 this.mainPanel.Controls.Add(categoryList);
             }
             catch (Exception exc)
