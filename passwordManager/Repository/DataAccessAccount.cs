@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +34,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.Accounts.Include("Category").FirstOrDefault(a => a.Id == entity.Id);
+                return context.Accounts.Include(c => c.Category).FirstOrDefault(a => a.Id == entity.Id);
             }
         }
 
@@ -41,7 +42,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.Accounts.Include("Category").ToList();
+                return context.Accounts.Include(c => c.Category).ToList();
             }
         }
 

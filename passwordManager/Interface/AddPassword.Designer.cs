@@ -291,7 +291,7 @@ namespace Interface
             // lblDataBreaches
             // 
             this.lblDataBreaches.AutoSize = true;
-            this.lblDataBreaches.Location = new System.Drawing.Point(354, 213);
+            this.lblDataBreaches.Location = new System.Drawing.Point(339, 222);
             this.lblDataBreaches.Name = "lblDataBreaches";
             this.lblDataBreaches.Size = new System.Drawing.Size(140, 13);
             this.lblDataBreaches.TabIndex = 24;
@@ -300,7 +300,7 @@ namespace Interface
             // lblDuplicated
             // 
             this.lblDuplicated.AutoSize = true;
-            this.lblDuplicated.Location = new System.Drawing.Point(207, 239);
+            this.lblDuplicated.Location = new System.Drawing.Point(339, 247);
             this.lblDuplicated.Name = "lblDuplicated";
             this.lblDuplicated.Size = new System.Drawing.Size(110, 13);
             this.lblDuplicated.TabIndex = 25;

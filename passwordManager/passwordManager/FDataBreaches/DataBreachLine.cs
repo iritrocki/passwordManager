@@ -12,6 +12,7 @@ namespace passwordManager
 
         public int Id { get; set; }
 
+        public DataBreachLine() { }
         public DataBreachLine(string line)
         {
             this.Line = line;
