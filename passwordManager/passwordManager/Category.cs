@@ -5,16 +5,10 @@ namespace passwordManager
 {
     public class Category
     {
-        public Category() { }
-
-        public Category(string name)
-        {
-            this.Name = name;
-        }
+        private string _name;
 
         public int Id { get; set; }
 
-        private string _name;
         public string Name
         {
             get { return this._name; }
@@ -27,6 +21,12 @@ namespace passwordManager
 
         }
 
+        public Category() { }
+
+        public Category(string name)
+        {
+            this.Name = name;
+        }
 
         public void ModifyCategory(string newName)
         {
