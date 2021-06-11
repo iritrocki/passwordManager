@@ -14,26 +14,24 @@ namespace Interface
     public partial class DataBreachesOptions : UserControl
     {
         private Panel MainPanel;
-        private User User;
 
-        public DataBreachesOptions(User u, Panel main)
+        public DataBreachesOptions(Panel main)
         {
             InitializeComponent();
             this.MainPanel = main;
-            this.User = u;
         }
 
         private void btnPlainText_Click(object sender, EventArgs e)
         {
             MainPanel.Controls.Clear();
-            UserControl dataBreaches = new DataBreaches(User, MainPanel);
+            UserControl dataBreaches = new DataBreaches(MainPanel);
             MainPanel.Controls.Add(dataBreaches);
         }
 
         private void btnTxtFile_Click(object sender, EventArgs e)
         {
             MainPanel.Controls.Clear();
-            UserControl dataBreachesWithFiles = new DataBreachFileUpload(User, MainPanel);
+            UserControl dataBreachesWithFiles = new DataBreachFileUpload(MainPanel);
             MainPanel.Controls.Add(dataBreachesWithFiles);
         }
 

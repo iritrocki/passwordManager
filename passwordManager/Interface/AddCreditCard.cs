@@ -17,25 +17,22 @@ namespace Interface
     {
         const int MONTH = 0;
         const int YEAR = 1;
-        private User user;
         private CreditCard modificationCreditCard;
         private Panel mainPanel;
         private IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
 
-        public AddCreditCard(User u, Panel p)
+        public AddCreditCard(Panel p)
         {
             
             InitializeComponent();
             lblCreditCardError.Text = "";
-            this.user = u;
             this.mainPanel = p;
             ChargeComboBox();
         }
-        public AddCreditCard(User u, Panel p, CreditCard creditCard)
+        public AddCreditCard( Panel p, CreditCard creditCard)
         {
             InitializeComponent();
             lblCreditCardError.Text = "";
-            this.user = u;
             this.mainPanel = p;
             this.modificationCreditCard = creditCard;
             txtCreditCardName.Text =  creditCard.Name;
@@ -72,7 +69,7 @@ namespace Interface
                     this.dataAccessCreditCard.Modify(modificationCreditCard);
                 }
                 mainPanel.Controls.Clear();
-                UserControl creditCardList = new CreditCardList(user, mainPanel);
+                UserControl creditCardList = new CreditCardList(mainPanel);
                 mainPanel.Controls.Add(creditCardList);
             }
             catch (InvalidCreditCardException exc)

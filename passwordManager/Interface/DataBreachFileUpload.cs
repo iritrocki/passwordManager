@@ -16,16 +16,14 @@ namespace Interface
     {
         private string path;
         private Panel MainPanel;
-        private User User;
         IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
         IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
 
-        public DataBreachFileUpload(User u, Panel panel)
+        public DataBreachFileUpload(Panel panel)
         {
             InitializeComponent();
             this.MainPanel = panel;
-            this.User = u;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -48,7 +46,7 @@ namespace Interface
             dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
             daDataBreaches.Add(dataBreachCheck);
             MainPanel.Controls.Clear();
-            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, MainPanel, User);
+            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, MainPanel);
             MainPanel.Controls.Add(results);
         }
     }

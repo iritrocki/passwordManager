@@ -14,13 +14,11 @@ namespace Interface
 {
     public partial class CategoryList : UserControl
     {
-        private User user;
         private Panel mainPanel;
         private IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
-        public CategoryList(User u, Panel MainPanel)
+        public CategoryList(Panel MainPanel)
         {
             InitializeComponent();
-            this.user = u;
             this.mainPanel = MainPanel;
             lblError.Text = "";
             ChargeListItems();
@@ -39,7 +37,7 @@ namespace Interface
         private void btnAddNewCategory_Click(object sender, EventArgs e)
         {
             this.mainPanel.Controls.Clear();
-            UserControl categoryEditWindow = new AddCategory(user, mainPanel);
+            UserControl categoryEditWindow = new AddCategory(mainPanel);
             this.mainPanel.Controls.Add(categoryEditWindow);
         }
 
@@ -49,7 +47,7 @@ namespace Interface
             {
                 Category selectedItem = (Category)listViewCategoryList.SelectedItems[0].Tag;
                 this.mainPanel.Controls.Clear();
-                UserControl categoryEditWindow = new AddCategory(user, selectedItem, mainPanel);
+                UserControl categoryEditWindow = new AddCategory(selectedItem, mainPanel);
                 this.mainPanel.Controls.Add(categoryEditWindow);
 
             }catch(Exception exc)

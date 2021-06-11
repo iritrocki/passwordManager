@@ -15,7 +15,6 @@ namespace Interface
     public partial class DataBreachesHistory : UserControl
     {
         private Panel mainPanel;
-        private User u;
         private IDataAccess<DataBreachCheck> dataAccessBreaches = DataAccessManager.GetDataAccessDataBreaches();
         public DataBreachesHistory(Panel panel)
         {

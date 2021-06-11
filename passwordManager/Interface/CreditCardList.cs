@@ -14,15 +14,13 @@ namespace Interface
 {
     public partial class CreditCardList : UserControl
     {
-        private User user;
         private Panel mainPanel;
         private IDataAccess<CreditCard> dacc = DataAccessManager.GetDataAccessCreditCard();
         private System.Windows.Forms.Timer timer;
-        public CreditCardList(User u,Panel p)
+        public CreditCardList(Panel p)
         {
             InitializeComponent();
             lblErrorCreditCard.Text = "";
-            this.user = u;
             this.mainPanel = p;
             ChargeCreditCardsToList();
         }
@@ -52,7 +50,7 @@ namespace Interface
 
         private void btnAddCreditCard_Click(object sender, EventArgs e)
         {
-            UserControl creditCardEditWindow = new AddCreditCard(user, mainPanel);
+            UserControl creditCardEditWindow = new AddCreditCard(mainPanel);
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(creditCardEditWindow);
         }
@@ -62,7 +60,7 @@ namespace Interface
             try
             {
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                UserControl creditCardEditWindow = new AddCreditCard(user, mainPanel, selectedCreditCard);
+                UserControl creditCardEditWindow = new AddCreditCard(mainPanel, selectedCreditCard);
                 this.mainPanel.Controls.Clear();
                 this.mainPanel.Controls.Add(creditCardEditWindow);
             }
