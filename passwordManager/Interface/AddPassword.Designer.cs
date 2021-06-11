@@ -51,6 +51,9 @@ namespace Interface
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtSite = new System.Windows.Forms.TextBox();
             this.lblSite = new System.Windows.Forms.Label();
+            this.lblDataBreaches = new System.Windows.Forms.Label();
+            this.lblDuplicated = new System.Windows.Forms.Label();
+            this.lblSecure = new System.Windows.Forms.Label();
             this.pnlPasswordEdit.SuspendLayout();
             this.pnlPasswordGenerator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownLenght)).BeginInit();
@@ -60,7 +63,7 @@ namespace Interface
             // 
             this.lblPasswordEdit.AutoSize = true;
             this.lblPasswordEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordEdit.Location = new System.Drawing.Point(19, 36);
+            this.lblPasswordEdit.Location = new System.Drawing.Point(19, 18);
             this.lblPasswordEdit.Name = "lblPasswordEdit";
             this.lblPasswordEdit.Size = new System.Drawing.Size(92, 20);
             this.lblPasswordEdit.TabIndex = 5;
@@ -70,6 +73,9 @@ namespace Interface
             // pnlPasswordEdit
             // 
             this.pnlPasswordEdit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPasswordEdit.Controls.Add(this.lblSecure);
+            this.pnlPasswordEdit.Controls.Add(this.lblDuplicated);
+            this.pnlPasswordEdit.Controls.Add(this.lblDataBreaches);
             this.pnlPasswordEdit.Controls.Add(this.lblError);
             this.pnlPasswordEdit.Controls.Add(this.pnlPasswordGenerator);
             this.pnlPasswordEdit.Controls.Add(this.txtNotes);
@@ -82,16 +88,16 @@ namespace Interface
             this.pnlPasswordEdit.Controls.Add(this.lblCategory);
             this.pnlPasswordEdit.Controls.Add(this.txtSite);
             this.pnlPasswordEdit.Controls.Add(this.lblSite);
-            this.pnlPasswordEdit.Location = new System.Drawing.Point(23, 80);
+            this.pnlPasswordEdit.Location = new System.Drawing.Point(23, 50);
             this.pnlPasswordEdit.Name = "pnlPasswordEdit";
-            this.pnlPasswordEdit.Size = new System.Drawing.Size(560, 315);
+            this.pnlPasswordEdit.Size = new System.Drawing.Size(560, 377);
             this.pnlPasswordEdit.TabIndex = 6;
             // 
             // lblError
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(13, 237);
+            this.lblError.Location = new System.Drawing.Point(13, 314);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(29, 13);
             this.lblError.TabIndex = 7;
@@ -108,14 +114,14 @@ namespace Interface
             this.pnlPasswordGenerator.Controls.Add(this.lblLenght);
             this.pnlPasswordGenerator.Controls.Add(this.upDownLenght);
             this.pnlPasswordGenerator.Controls.Add(this.txtPassword);
-            this.pnlPasswordGenerator.Location = new System.Drawing.Point(358, 8);
+            this.pnlPasswordGenerator.Location = new System.Drawing.Point(340, 8);
             this.pnlPasswordGenerator.Name = "pnlPasswordGenerator";
-            this.pnlPasswordGenerator.Size = new System.Drawing.Size(183, 216);
+            this.pnlPasswordGenerator.Size = new System.Drawing.Size(201, 202);
             this.pnlPasswordGenerator.TabIndex = 23;
             // 
             // btnGeneratePassword
             // 
-            this.btnGeneratePassword.Location = new System.Drawing.Point(65, 168);
+            this.btnGeneratePassword.Location = new System.Drawing.Point(76, 156);
             this.btnGeneratePassword.Name = "btnGeneratePassword";
             this.btnGeneratePassword.Size = new System.Drawing.Size(109, 37);
             this.btnGeneratePassword.TabIndex = 24;
@@ -127,7 +133,7 @@ namespace Interface
             // 
             this.checkBoxSpecials.AutoSize = true;
             this.checkBoxSpecials.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSpecials.Location = new System.Drawing.Point(19, 142);
+            this.checkBoxSpecials.Location = new System.Drawing.Point(19, 130);
             this.checkBoxSpecials.Name = "checkBoxSpecials";
             this.checkBoxSpecials.Size = new System.Drawing.Size(156, 20);
             this.checkBoxSpecials.TabIndex = 22;
@@ -138,7 +144,7 @@ namespace Interface
             // 
             this.checkBoxDigits.AutoSize = true;
             this.checkBoxDigits.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDigits.Location = new System.Drawing.Point(19, 116);
+            this.checkBoxDigits.Location = new System.Drawing.Point(19, 108);
             this.checkBoxDigits.Name = "checkBoxDigits";
             this.checkBoxDigits.Size = new System.Drawing.Size(119, 20);
             this.checkBoxDigits.TabIndex = 21;
@@ -149,7 +155,7 @@ namespace Interface
             // 
             this.checkBoxLower.AutoSize = true;
             this.checkBoxLower.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxLower.Location = new System.Drawing.Point(19, 90);
+            this.checkBoxLower.Location = new System.Drawing.Point(19, 86);
             this.checkBoxLower.Name = "checkBoxLower";
             this.checkBoxLower.Size = new System.Drawing.Size(146, 20);
             this.checkBoxLower.TabIndex = 20;
@@ -181,19 +187,20 @@ namespace Interface
             // 
             this.upDownLenght.Location = new System.Drawing.Point(65, 37);
             this.upDownLenght.Name = "upDownLenght";
-            this.upDownLenght.Size = new System.Drawing.Size(107, 20);
+            this.upDownLenght.Size = new System.Drawing.Size(120, 20);
             this.upDownLenght.TabIndex = 17;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(16, 7);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(156, 20);
+            this.txtPassword.Size = new System.Drawing.Size(169, 20);
             this.txtPassword.TabIndex = 16;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(99, 150);
+            this.txtNotes.Location = new System.Drawing.Point(85, 150);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(156, 60);
@@ -201,7 +208,7 @@ namespace Interface
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(99, 99);
+            this.txtUsername.Location = new System.Drawing.Point(85, 99);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(156, 20);
             this.txtUsername.TabIndex = 10;
@@ -209,7 +216,7 @@ namespace Interface
             // comboBoxCategories
             // 
             this.comboBoxCategories.FormattingEnabled = true;
-            this.comboBoxCategories.Location = new System.Drawing.Point(99, 8);
+            this.comboBoxCategories.Location = new System.Drawing.Point(85, 8);
             this.comboBoxCategories.Name = "comboBoxCategories";
             this.comboBoxCategories.Size = new System.Drawing.Size(156, 21);
             this.comboBoxCategories.TabIndex = 14;
@@ -218,7 +225,7 @@ namespace Interface
             // 
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblNotes.Location = new System.Drawing.Point(13, 150);
+            this.lblNotes.Location = new System.Drawing.Point(7, 150);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(48, 18);
             this.lblNotes.TabIndex = 13;
@@ -228,7 +235,7 @@ namespace Interface
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblPassword.Location = new System.Drawing.Point(267, 7);
+            this.lblPassword.Location = new System.Drawing.Point(249, 7);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(85, 18);
             this.lblPassword.TabIndex = 12;
@@ -238,7 +245,7 @@ namespace Interface
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblUsername.Location = new System.Drawing.Point(13, 101);
+            this.lblUsername.Location = new System.Drawing.Point(7, 101);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(60, 18);
             this.lblUsername.TabIndex = 11;
@@ -246,7 +253,7 @@ namespace Interface
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(432, 264);
+            this.btnAccept.Location = new System.Drawing.Point(432, 330);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(109, 37);
             this.btnAccept.TabIndex = 7;
@@ -258,7 +265,7 @@ namespace Interface
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblCategory.Location = new System.Drawing.Point(13, 11);
+            this.lblCategory.Location = new System.Drawing.Point(7, 11);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(72, 18);
             this.lblCategory.TabIndex = 10;
@@ -266,7 +273,7 @@ namespace Interface
             // 
             // txtSite
             // 
-            this.txtSite.Location = new System.Drawing.Point(99, 51);
+            this.txtSite.Location = new System.Drawing.Point(85, 51);
             this.txtSite.Name = "txtSite";
             this.txtSite.Size = new System.Drawing.Size(156, 20);
             this.txtSite.TabIndex = 9;
@@ -275,11 +282,41 @@ namespace Interface
             // 
             this.lblSite.AutoSize = true;
             this.lblSite.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblSite.Location = new System.Drawing.Point(13, 53);
+            this.lblSite.Location = new System.Drawing.Point(7, 53);
             this.lblSite.Name = "lblSite";
             this.lblSite.Size = new System.Drawing.Size(37, 18);
             this.lblSite.TabIndex = 8;
             this.lblSite.Text = "Sitio";
+            // 
+            // lblDataBreaches
+            // 
+            this.lblDataBreaches.AutoSize = true;
+            this.lblDataBreaches.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblDataBreaches.Location = new System.Drawing.Point(339, 219);
+            this.lblDataBreaches.Name = "lblDataBreaches";
+            this.lblDataBreaches.Size = new System.Drawing.Size(188, 18);
+            this.lblDataBreaches.TabIndex = 27;
+            this.lblDataBreaches.Text = "Aparece en un Data Breach";
+            // 
+            // lblDuplicated
+            // 
+            this.lblDuplicated.AutoSize = true;
+            this.lblDuplicated.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblDuplicated.Location = new System.Drawing.Point(339, 246);
+            this.lblDuplicated.Name = "lblDuplicated";
+            this.lblDuplicated.Size = new System.Drawing.Size(151, 18);
+            this.lblDuplicated.TabIndex = 28;
+            this.lblDuplicated.Text = "Contraseña duplicada";
+            // 
+            // lblSecure
+            // 
+            this.lblSecure.AutoSize = true;
+            this.lblSecure.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblSecure.Location = new System.Drawing.Point(339, 274);
+            this.lblSecure.Name = "lblSecure";
+            this.lblSecure.Size = new System.Drawing.Size(134, 18);
+            this.lblSecure.TabIndex = 29;
+            this.lblSecure.Text = "Contraseña segura";
             // 
             // AddPassword
             // 
@@ -322,5 +359,8 @@ namespace Interface
         private System.Windows.Forms.Label lblSite;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblDataBreaches;
+        private System.Windows.Forms.Label lblSecure;
+        private System.Windows.Forms.Label lblDuplicated;
     }
 }

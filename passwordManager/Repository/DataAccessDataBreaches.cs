@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,14 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
+                foreach(CreditCard cc in entity.ExposedCreditCards)
+                {
+                    context.CreditCards.Attach(cc);
+                }
+                foreach (Account a in entity.ExposedPasswords)
+                {
+                    context.Accounts.Attach(a);
+                }
                 context.DataBreaches.Add(entity);
                 context.SaveChanges();
             }
@@ -32,7 +41,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.DataBreaches.Include("ExposedCreditCards").Include("ExposedPasswords").Include("ExposedPasswords.Category").FirstOrDefault(a => a.Id == entity.Id);
+                return context.DataBreaches.Include(d=>d.ExposedCreditCards).Include(d=>d.ExposedPasswords).Include(d => d.ExposedPasswords.Select(p=>p.Category)).FirstOrDefault(a => a.Id == entity.Id);
             }
         }
 
@@ -40,7 +49,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.DataBreaches.Include("ExposedCreditCards").Include("ExposedPasswords").Include("ExposedPasswords.Category").ToList();
+                return context.DataBreaches.Include(d => d.ExposedCreditCards).Include(d => d.ExposedPasswords).Include(d => d.ExposedPasswords.Select(p => p.Category)).Include(d=>d.DataBreaches).ToList();
 
             }
         }
