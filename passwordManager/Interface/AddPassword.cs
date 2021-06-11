@@ -19,6 +19,7 @@ namespace Interface
         private Account modificationAccount;
         private Panel mainPanel;
         private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
+        private IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
 
         public AddPassword(User u, Panel main)
         {
@@ -26,6 +27,9 @@ namespace Interface
             this.user = u;
             txtPassword.PasswordChar = '*';
             lblError.Text = "";
+            lblDataBreaches.Text = "";
+            lblDuplicated.Text = "";
+            lblSecure.Text = "";
             this.mainPanel = main;
             ChargeComboBox();
         }
@@ -37,6 +41,9 @@ namespace Interface
             this.modificationAccount = a;
             txtPassword.PasswordChar = '*';
             lblError.Text = "";
+            lblDataBreaches.Text = "";
+            lblDuplicated.Text = "";
+            lblSecure.Text = "";
             this.mainPanel = main;
             txtSite.Text = string.Format("{0}", a.Site);
             txtNotes.Text = string.Format("{0}", a.Note);
@@ -174,5 +181,51 @@ namespace Interface
                 passwordRequirements.Add(upper);
             }
         }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "") 
+            {
+                lblDataBreaches.Text = "";
+                lblDuplicated.Text = "";
+                lblSecure.Text = "";
+            }else
+            {
+                PasswordAnalysis passwordAnalysis = new PasswordAnalysis((List<DataBreachCheck>)daDataBreaches.GetAll(), (List<Account>)dataAccessAccount.GetAll());
+                passwordAnalysis.RunAnalysis(txtPassword.Text);
+                if (passwordAnalysis.DataBreach)
+                {
+                    lblDataBreaches.Text = "Aparece en un Data Breach";
+                    lblDataBreaches.ForeColor = System.Drawing.Color.Orange;
+                }
+                else
+                {
+                    lblDataBreaches.Text = "No aparece en Data Breaches";
+                    lblDataBreaches.ForeColor = System.Drawing.Color.Green;
+                }
+                if (passwordAnalysis.Duplicated)
+                {
+                    lblDuplicated.Text = "Contraseña duplicada";
+                    lblDuplicated.ForeColor = System.Drawing.Color.Orange;
+                }
+                else
+                {
+                    lblDuplicated.Text = "Contraseña única";
+                    lblDuplicated.ForeColor = System.Drawing.Color.Green;
+                }
+                if (!passwordAnalysis.Secure)
+                {
+                    lblSecure.Text = "Contraseña insegura";
+                    lblSecure.ForeColor = System.Drawing.Color.Orange;
+                }
+                else
+                {
+                    lblSecure.Text = "Contraseña segura";
+                    lblSecure.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+        }
+
+
     }
 }

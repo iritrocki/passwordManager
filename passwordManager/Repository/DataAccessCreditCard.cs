@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +35,7 @@ namespace Repository
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
                 
-                return context.CreditCards.Include("Category").FirstOrDefault(c => c.Id == entity.Id);
+                return context.CreditCards.Include(c => c.Category).FirstOrDefault(c => c.Id == entity.Id);
             }
         }
 
@@ -42,7 +43,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.CreditCards.Include("Category").ToList();
+                return context.CreditCards.Include(c=>c.Category).ToList();
             }
         }
 
