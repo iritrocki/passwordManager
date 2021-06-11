@@ -15,16 +15,14 @@ namespace Interface
 {
     public partial class PasswordList : UserControl
     {
-        private User user;
         private Panel mainPanel;
         private List<Account> accountsToShow;
         private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         private System.Windows.Forms.Timer timer;
-        public PasswordList(User u, Panel p,List<Account> accountList)
+        public PasswordList(Panel p,List<Account> accountList)
         {
             InitializeComponent();
             lblError.Text = "";
-            this.user = u;
             this.mainPanel = p;
             this.accountsToShow = accountList;
             chargePasswordsToList();
@@ -47,7 +45,7 @@ namespace Interface
 
         private void btnAddNewPassword_Click(object sender, EventArgs e)
         {
-            UserControl passwordEditWindow = new AddPassword(user, this.mainPanel);
+            UserControl passwordEditWindow = new AddPassword(this.mainPanel);
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(passwordEditWindow);
         }
@@ -73,7 +71,7 @@ namespace Interface
             try
             {
                 Account selectedAccount = (Account)listViewPasswords.SelectedItems[0].Tag;
-                UserControl passwordEditWindow = new AddPassword(user, selectedAccount, this.mainPanel);
+                UserControl passwordEditWindow = new AddPassword(selectedAccount, this.mainPanel);
                 this.mainPanel.Controls.Clear();
                 this.mainPanel.Controls.Add(passwordEditWindow);
 
@@ -109,7 +107,7 @@ namespace Interface
         public void timer_Event(object source, EventArgs e)
         {
             timer.Stop();
-            UserControl newPasswordList = new PasswordList(this.user, this.mainPanel, this.accountsToShow);
+            UserControl newPasswordList = new PasswordList( this.mainPanel, this.accountsToShow);
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(newPasswordList);
 

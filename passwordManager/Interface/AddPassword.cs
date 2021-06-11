@@ -15,16 +15,14 @@ namespace Interface
 {
     public partial class AddPassword : UserControl
     {
-        private User user;
         private Account modificationAccount;
         private Panel mainPanel;
         private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         private IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
 
-        public AddPassword(User u, Panel main)
+        public AddPassword(Panel main)
         {
             InitializeComponent();
-            this.user = u;
             txtPassword.PasswordChar = '*';
             lblError.Text = "";
             lblDataBreaches.Text = "";
@@ -34,10 +32,9 @@ namespace Interface
             ChargeComboBox();
         }
 
-        public AddPassword(User u, Account a, Panel main)
+        public AddPassword(Account a, Panel main)
         {
             InitializeComponent();
-            this.user = u;
             this.modificationAccount = a;
             txtPassword.PasswordChar = '*';
             lblError.Text = "";
@@ -75,7 +72,7 @@ namespace Interface
                     this.dataAccessAccount.Modify(modificationAccount);
                 }
                 this.mainPanel.Controls.Clear();
-                UserControl passwordList = new PasswordList(user, mainPanel, (List<Account>)dataAccessAccount.GetAll());
+                UserControl passwordList = new PasswordList(mainPanel, (List<Account>)dataAccessAccount.GetAll());
                 this.mainPanel.Controls.Add(passwordList);
 
             }catch(InvalidAccountException exc)

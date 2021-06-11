@@ -14,13 +14,11 @@ namespace Interface
     public partial class DataBreachesResults : UserControl
     {
         private Panel mainPanel;
-        private User user;
-        public DataBreachesResults(List<Account> exposedPassword, List<CreditCard> exposedCreditCards, Panel mainPanel, User u)
+        public DataBreachesResults(List<Account> exposedPassword, List<CreditCard> exposedCreditCards, Panel mainPanel)
         {
             InitializeComponent();
             ChargeResults(exposedPassword, exposedCreditCards);
             this.mainPanel = mainPanel;
-            this.user = u;
         }
 
         private void ChargeResults(List<Account> exposedPassword, List<CreditCard> exposedCreditCards)
@@ -73,7 +71,7 @@ namespace Interface
             Button btnModify = (Button)sender;
             Account modificationAccount = (Account)btnModify.Tag;
             this.mainPanel.Controls.Clear();
-            UserControl passwordModifier = new AddPassword(user, modificationAccount, this.mainPanel);
+            UserControl passwordModifier = new AddPassword(modificationAccount, this.mainPanel);
             this.mainPanel.Controls.Add(passwordModifier);
         }
     }

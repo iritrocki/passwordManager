@@ -28,6 +28,7 @@ namespace passwordManager
                 this._name = value;
             }
         }
+        
         public string Company {
             get { return this._company; }
             set
@@ -37,6 +38,7 @@ namespace passwordManager
                 this._company = value;
             }
         }
+        
         public string Number
         {
             get { return this._number; }
@@ -47,6 +49,7 @@ namespace passwordManager
                 this._number = value;
             }
         }
+        
         public string Code
         {
             get {return this._code;}
@@ -55,6 +58,17 @@ namespace passwordManager
                 if (!Validator.ValidateCreditCardCode(value))
                     throw new InvalidCreditCardCodeException();
                 this._code = value;
+            }
+        }
+
+        public string Notes
+        {
+            get { return this._notes; }
+            set
+            {
+                if (!Validator.ValidateStringLength(value, (0, 250)))
+                    throw new InvalidCreditCardNotesException();
+                this._notes = value;
             }
         }
 
@@ -67,6 +81,7 @@ namespace passwordManager
                 this._expirationMonth = value;
             }
         }
+        
         public int ExpirationYear {
             get { return this._expirationYear; }
             set
@@ -77,6 +92,8 @@ namespace passwordManager
             }
         }
 
+        public CreditCard() { }
+
         public void SetExpirationDate(string date)
         {
             
@@ -86,15 +103,6 @@ namespace passwordManager
             this.ExpirationMonth = Int32.Parse(expirationDate[0]);
             this.ExpirationYear = Int32.Parse(expirationDate[1]);
             
-        }
-
-        public string Notes {
-            get {return this._notes; }
-            set {
-               if (!Validator.ValidateStringLength(value, (0,250)))
-                    throw new InvalidCreditCardNotesException();
-                this._notes = value;
-            } 
         }
 
         public override bool Equals(object obj)

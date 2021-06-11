@@ -26,7 +26,7 @@ namespace Interface
         private void btnCategoryList_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl categoryList = new CategoryList(user, pnlMainUserControl);
+            UserControl categoryList = new CategoryList(pnlMainUserControl);
             pnlMainUserControl.Controls.Add(categoryList);
         }
 
@@ -41,7 +41,7 @@ namespace Interface
         private void btnCreditCardList_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl creditCradList = new CreditCardList(user, pnlMainUserControl);
+            UserControl creditCradList = new CreditCardList(pnlMainUserControl);
             pnlMainUserControl.Controls.Add(creditCradList);
         }
 
@@ -49,7 +49,7 @@ namespace Interface
         {
             pnlMainUserControl.Controls.Clear();
             IDataAccess<Account> daa = new DataAccessAccount();
-            UserControl passwordList = new PasswordList(user, pnlMainUserControl, (List<Account>)daa.GetAll());
+            UserControl passwordList = new PasswordList( pnlMainUserControl, (List<Account>)daa.GetAll());
             pnlMainUserControl.Controls.Add(passwordList);
         }
 
@@ -57,14 +57,14 @@ namespace Interface
         private void btnCheckDataBreaches_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl dataBreachesOptions = new DataBreachesOptions(user, pnlMainUserControl);
+            UserControl dataBreachesOptions = new DataBreachesOptions( pnlMainUserControl);
             pnlMainUserControl.Controls.Add(dataBreachesOptions);
         }
 
         private void btnPasswordStrength_Click(object sender, EventArgs e)
         {
             pnlMainUserControl.Controls.Clear();
-            UserControl passwordStrength = new PasswordStrength(user, pnlMainUserControl);
+            UserControl passwordStrength = new PasswordStrength(pnlMainUserControl);
             pnlMainUserControl.Controls.Add(passwordStrength);
         }
 

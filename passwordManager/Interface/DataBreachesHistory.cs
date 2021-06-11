@@ -15,7 +15,6 @@ namespace Interface
     public partial class DataBreachesHistory : UserControl
     {
         private Panel mainPanel;
-        private User u;
         private IDataAccess<DataBreachCheck> dataAccessBreaches = DataAccessManager.GetDataAccessDataBreaches();
         public DataBreachesHistory(Panel panel)
         {
@@ -41,7 +40,7 @@ namespace Interface
             {
                 DataBreachCheck selectedItem = (DataBreachCheck)listViewDateSelection.SelectedItems[0].Tag;
                 this.mainPanel.Controls.Clear();
-                UserControl resultsPanel = new DataBreachesResults(selectedItem.ExposedPasswords, selectedItem.ExposedCreditCards, mainPanel, u);
+                UserControl resultsPanel = new DataBreachesResults(selectedItem.ExposedPasswords, selectedItem.ExposedCreditCards, mainPanel);
                 this.mainPanel.Controls.Add(resultsPanel);
 
             }

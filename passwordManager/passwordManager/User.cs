@@ -8,29 +8,30 @@ namespace passwordManager
 {
     public class User
     {
-        public User()
-        {
-            this.Status = false;
-        }
-
-        public int Id { get; set; }
-
-
         private string _masterKey;
-
+        
+        public int Id { get; set; }
+        
         public bool Status { get; set; }
+
         public string MasterKey
         {
             get { return this._masterKey; }
             set
             {
-                if (!Validator.ValidateStringLength(value, (5,25)))
+                if (!Validator.ValidateStringLength(value, (5, 25)))
                     throw new InvalidMasterKeyException();
                 else
                     this._masterKey = value;
 
             }
         }
+
+        public User()
+        {
+            this.Status = false;
+        }
+
         public void SignIn(string input)
         {
             if(input == this.MasterKey)

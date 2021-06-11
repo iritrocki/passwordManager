@@ -20,8 +20,6 @@ namespace passwordManager
         {
             PasswordRequirement upper = new NeedUpperCase();
             PasswordRequirement lower = new NeedLowerCase();
-            PasswordRequirement digits = new NeedDigits();
-            PasswordRequirement specials = new NeedSpecials();
             if (password.Length < 8)
                 return ColorClassification.Red;
             else if (password.Length <= 14)

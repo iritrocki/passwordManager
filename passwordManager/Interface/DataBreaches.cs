@@ -14,16 +14,14 @@ namespace Interface
 {
     public partial class DataBreaches : UserControl
     {
-        private User user;
         private Panel mainPanel;
         IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
         IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
 
-        public DataBreaches(User u, Panel main)
+        public DataBreaches(Panel main)
         {
             InitializeComponent();
-            this.user = u;
             this.mainPanel = main;
         }
 
@@ -35,7 +33,7 @@ namespace Interface
             dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
             daDataBreaches.Add(dataBreachCheck);
             mainPanel.Controls.Clear();
-            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, mainPanel, user);
+            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, mainPanel);
             mainPanel.Controls.Add(results);
 
         }

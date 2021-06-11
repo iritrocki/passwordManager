@@ -8,8 +8,6 @@ namespace passwordManager
     
     public class Account : DataUnit
     {
-        public Account() { }
-        
         private string _username;
         private string _password;
         private string _site;
@@ -18,7 +16,11 @@ namespace passwordManager
 
         public int Id { get; set; }
 
-        public List<DataBreachCheck> dataBreaches { get; set; }
+        public DateTime Modification { get; set; }
+
+        public ColorClassification Classification { get; set; }
+
+        public List<DataBreachCheck> DataBreaches { get; set; }
 
         public string Username { 
             get { return this._username; }
@@ -59,9 +61,9 @@ namespace passwordManager
                 this._note = value;
             }
         }
-        public DateTime Modification { get; set; }
+        
 
-        public ColorClassification Classification { get; set; }
+        public Account() { }
 
         public override bool Equals(object obj)
         {
