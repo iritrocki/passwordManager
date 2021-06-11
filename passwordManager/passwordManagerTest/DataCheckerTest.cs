@@ -125,6 +125,27 @@ namespace passwordManagerTest
             DataChecker.UniqueCategoryCheck(facu, categories);
         }
 
+        [TestMethod]
+
+        public void CheckDifferentCategoryNamesTest()
+        {
+            Category hobbie = new Category("Hobbies");
+
+            DataChecker.UniqueCategoryCheck(hobbie, categories);
+
+            Assert.IsTrue(true);
+        }
+
+
+        [ExpectedException(typeof(ExistentCategoryNameException))]
+        [TestMethod]
+        public void TryAddRepeatedCategoryCaseInsensitiveTest()
+        {
+            
+            Category c = new Category("facultad");
+            DataChecker.UniqueCategoryCheck(c,categories);
+        }
+
         [ExpectedException(typeof(ExistentAccountException))]
         [TestMethod]
         public void TryAddRepeatedAccountTest()
@@ -140,6 +161,26 @@ namespace passwordManagerTest
             };
             DataChecker.UniqueAccountCheck(linkedIn,accounts);
         }
+
+        [TestMethod]
+        public void CheckDifferentAccountTest()
+        {
+            Account twitter = new Account()
+            {
+                Username = "Jorge Gomez",
+                Password = "jorgitogo",
+                Note = "Soy nuevo en twitter",
+                Site = "twitter.com",
+                Modification = DateTime.Now,
+                Category = categories[1]
+            };
+
+            DataChecker.UniqueAccountCheck(twitter, accounts);
+
+            Assert.IsTrue(true);
+        }
+
+
 
         [ExpectedException(typeof(ExistentCreditCardException))]
         [TestMethod]
@@ -157,6 +198,27 @@ namespace passwordManagerTest
                 Category = categories[0]
             };
             DataChecker.UniqueCreditCardCheck(cc,creditCards);
+        }
+
+        [TestMethod]
+        
+        public void CheckDifferentCreditCardTest()
+        {
+            CreditCard cc = new CreditCard()
+            {
+                Name = "MasterCard Gold",
+                Company = "MasterCard",
+                Number = "1908 2948 0498 1289",
+                Code = "333",
+                ExpirationMonth = 3,
+                ExpirationYear = 2022,
+                Notes = "Limite 150k dolares",
+                Category = categories[0]
+            };
+
+            DataChecker.UniqueCreditCardCheck(cc,creditCards);
+
+            Assert.IsTrue(true);
         }
 
         [TestMethod]
