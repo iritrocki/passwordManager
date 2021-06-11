@@ -291,28 +291,31 @@ namespace Interface
             // lblDataBreaches
             // 
             this.lblDataBreaches.AutoSize = true;
-            this.lblDataBreaches.Location = new System.Drawing.Point(339, 222);
+            this.lblDataBreaches.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblDataBreaches.Location = new System.Drawing.Point(339, 219);
             this.lblDataBreaches.Name = "lblDataBreaches";
-            this.lblDataBreaches.Size = new System.Drawing.Size(140, 13);
-            this.lblDataBreaches.TabIndex = 24;
+            this.lblDataBreaches.Size = new System.Drawing.Size(188, 18);
+            this.lblDataBreaches.TabIndex = 27;
             this.lblDataBreaches.Text = "Aparece en un Data Breach";
             // 
             // lblDuplicated
             // 
             this.lblDuplicated.AutoSize = true;
-            this.lblDuplicated.Location = new System.Drawing.Point(339, 247);
+            this.lblDuplicated.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblDuplicated.Location = new System.Drawing.Point(339, 246);
             this.lblDuplicated.Name = "lblDuplicated";
-            this.lblDuplicated.Size = new System.Drawing.Size(110, 13);
-            this.lblDuplicated.TabIndex = 25;
+            this.lblDuplicated.Size = new System.Drawing.Size(151, 18);
+            this.lblDuplicated.TabIndex = 28;
             this.lblDuplicated.Text = "Contraseña duplicada";
             // 
             // lblSecure
             // 
             this.lblSecure.AutoSize = true;
-            this.lblSecure.Location = new System.Drawing.Point(370, 274);
+            this.lblSecure.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblSecure.Location = new System.Drawing.Point(339, 274);
             this.lblSecure.Name = "lblSecure";
-            this.lblSecure.Size = new System.Drawing.Size(96, 13);
-            this.lblSecure.TabIndex = 26;
+            this.lblSecure.Size = new System.Drawing.Size(134, 18);
+            this.lblSecure.TabIndex = 29;
             this.lblSecure.Text = "Contraseña segura";
             // 
             // AddPassword
@@ -356,8 +359,8 @@ namespace Interface
         private System.Windows.Forms.Label lblSite;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblDataBreaches;
         private System.Windows.Forms.Label lblSecure;
         private System.Windows.Forms.Label lblDuplicated;
-        private System.Windows.Forms.Label lblDataBreaches;
     }
 }

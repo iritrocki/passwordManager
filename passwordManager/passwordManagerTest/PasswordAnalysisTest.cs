@@ -216,7 +216,7 @@ asdfghjkl
         {
             PasswordAnalysis pa = new PasswordAnalysis(dataBreaches, accounts);
             string password = "aaaaa";
-            pa.SecureAnalysis(password);
+            pa.RunAnalysis(password);
             Assert.IsFalse(pa.Secure);
         }
 
@@ -225,7 +225,7 @@ asdfghjkl
         {
             PasswordAnalysis pa = new PasswordAnalysis(dataBreaches, accounts);
             string password = "aaBSJ124m";
-            pa.SecureAnalysis(password);
+            pa.RunAnalysis(password);
             Assert.IsFalse(pa.Secure);
         }
 
@@ -234,7 +234,7 @@ asdfghjkl
         {
             PasswordAnalysis pa = new PasswordAnalysis(dataBreaches, accounts);
             string password = "ksfskfnfkejnfjsn";
-            pa.SecureAnalysis(password);
+            pa.RunAnalysis(password);
             Assert.IsFalse(pa.Secure);
         }
 
@@ -243,7 +243,7 @@ asdfghjkl
         {
             PasswordAnalysis pa = new PasswordAnalysis(dataBreaches, accounts);
             string password = "ksBskAAfkejn123sn";
-            pa.SecureAnalysis(password);
+            pa.RunAnalysis(password);
             Assert.IsTrue(pa.Secure);
         }
 
@@ -252,7 +252,7 @@ asdfghjkl
         {
             PasswordAnalysis pa = new PasswordAnalysis(dataBreaches, accounts);
             string password = "k@AAsk*nf123jn?j/n";
-            pa.SecureAnalysis(password);
+            pa.RunAnalysis(password);
             Assert.IsTrue(pa.Secure);
         }
 

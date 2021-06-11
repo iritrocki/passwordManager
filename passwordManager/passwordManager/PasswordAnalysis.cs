@@ -65,7 +65,7 @@ namespace passwordManager
             }
         }
 
-        public void SecureAnalysis(string password)
+        private void SecureAnalysis(string password)
         {
             ColorClassification color = ColorClassificator.ClassifyColor(password);
             if(color == ColorClassification.LightGreen || color == ColorClassification.DarkGreen)
