@@ -6,12 +6,11 @@ namespace passwordManager
     public class AsciiRangeRandomNumber
     {
         private List<int> _asciiNumbers;
-        private Random _random;
+        private Random _random = RandomInstance.GetRandomInstance();
         public int Number { get; set; }
 
         public AsciiRangeRandomNumber(List<int> numbers)
         {
-            this._random = new Random();
             this._asciiNumbers = numbers;
             RandomizeNumber();
         }

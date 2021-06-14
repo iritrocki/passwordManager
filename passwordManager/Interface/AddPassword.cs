@@ -19,6 +19,7 @@ namespace Interface
         private Panel mainPanel;
         private IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
         private IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
+        private bool viewPassword;
 
         public AddPassword(Panel main)
         {
@@ -28,6 +29,7 @@ namespace Interface
             lblDataBreaches.Text = "";
             lblDuplicated.Text = "";
             lblSecure.Text = "";
+            this.viewPassword = false;
             this.mainPanel = main;
             ChargeComboBox();
         }
@@ -41,6 +43,7 @@ namespace Interface
             lblDataBreaches.Text = "";
             lblDuplicated.Text = "";
             lblSecure.Text = "";
+            this.viewPassword = false;
             this.mainPanel = main;
             txtSite.Text = string.Format("{0}", a.Site);
             txtNotes.Text = string.Format("{0}", a.Note);
@@ -135,8 +138,6 @@ namespace Interface
             return passwordRequirements;
         }
 
-
-
         private void SpecialsCheckbox(List<PasswordRequirement> passwordRequirements)
         {
             if (checkBoxSpecials.Checked)
@@ -145,8 +146,6 @@ namespace Interface
                 passwordRequirements.Add(specials);
             }
         }
-
-
 
         private void DigitsCheckbox(List<PasswordRequirement> passwordRequirements)
         {
@@ -157,8 +156,6 @@ namespace Interface
             }
         }
 
-
-
         private void LowerCaseCheckbox(List<PasswordRequirement> passwordRequirements)
         {
             if (checkBoxLower.Checked)
@@ -167,8 +164,6 @@ namespace Interface
                 passwordRequirements.Add(lower);
             }
         }
-
-
 
         private void UpperCaseCheckbox(List<PasswordRequirement> passwordRequirements)
         {
@@ -223,6 +218,19 @@ namespace Interface
             }
         }
 
-
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (!viewPassword)
+            {
+                txtPassword.PasswordChar = '\0';
+                btnView.Text = "Ocultar";
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+                btnView.Text = "Ver";
+            }
+            viewPassword = !viewPassword;
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace Interface
             this.lblDataBreaches = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.lblError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnVerify
@@ -61,6 +62,7 @@ namespace Interface
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(470, 20);
             this.txtPath.TabIndex = 6;
+            this.txtPath.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
             // 
             // btnBrowse
             // 
@@ -72,9 +74,20 @@ namespace Interface
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(57, 279);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(35, 13);
+            this.lblError.TabIndex = 8;
+            this.lblError.Text = "label1";
+            // 
             // DataBreachFileUpload
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.lblDataBreaches);
@@ -92,5 +105,6 @@ namespace Interface
         private System.Windows.Forms.Label lblDataBreaches;
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Label lblError;
     }
 }
