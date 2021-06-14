@@ -27,6 +27,15 @@ namespace Repository
             }
         }
 
+        public void Clear()
+        {
+            using (PasswordManagerDBContext context = new PasswordManagerDBContext())
+            {
+                context.DataBreaches.RemoveRange(context.DataBreaches);
+                context.SaveChanges();
+            }
+        }
+
         public void Delete(DataBreachCheck entity)
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())

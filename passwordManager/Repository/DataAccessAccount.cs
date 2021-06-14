@@ -19,6 +19,15 @@ namespace Repository
                 context.SaveChanges();
             }
         }
+        public void Clear()
+        {
+            using (PasswordManagerDBContext context = new PasswordManagerDBContext())
+            {
+                context.Accounts.RemoveRange(context.Accounts);
+                context.SaveChanges();
+            }
+        }
+
 
         public void Delete(Account entity)
         {

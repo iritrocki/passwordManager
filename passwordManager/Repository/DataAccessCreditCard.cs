@@ -20,6 +20,14 @@ namespace Repository
             }
         }
 
+        public void Clear()
+        {
+            using (PasswordManagerDBContext context = new PasswordManagerDBContext())
+            {
+                context.CreditCards.RemoveRange(context.CreditCards);
+                context.SaveChanges();
+            }
+        }
         public void Delete(CreditCard entity)
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
