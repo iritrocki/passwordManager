@@ -36,6 +36,7 @@ namespace Interface
             this.lblDataBreaches = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
             this.pnlPasswordGenerator = new System.Windows.Forms.Panel();
+            this.btnView = new System.Windows.Forms.Button();
             this.btnGeneratePassword = new System.Windows.Forms.Button();
             this.checkBoxSpecials = new System.Windows.Forms.CheckBox();
             this.checkBoxDigits = new System.Windows.Forms.CheckBox();
@@ -54,7 +55,6 @@ namespace Interface
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtSite = new System.Windows.Forms.TextBox();
             this.lblSite = new System.Windows.Forms.Label();
-            this.btnView = new System.Windows.Forms.Button();
             this.pnlPasswordEdit.SuspendLayout();
             this.pnlPasswordGenerator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownLenght)).BeginInit();
@@ -151,6 +151,17 @@ namespace Interface
             this.pnlPasswordGenerator.Size = new System.Drawing.Size(215, 243);
             this.pnlPasswordGenerator.TabIndex = 23;
             // 
+            // btnView
+            // 
+            this.btnView.AutoSize = true;
+            this.btnView.Location = new System.Drawing.Point(104, 40);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(100, 23);
+            this.btnView.TabIndex = 30;
+            this.btnView.Text = "Ver";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // btnGeneratePassword
             // 
             this.btnGeneratePassword.Location = new System.Drawing.Point(97, 197);
@@ -165,45 +176,49 @@ namespace Interface
             // 
             this.checkBoxSpecials.AutoSize = true;
             this.checkBoxSpecials.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSpecials.Location = new System.Drawing.Point(12, 169);
+            this.checkBoxSpecials.Location = new System.Drawing.Point(12, 174);
             this.checkBoxSpecials.Name = "checkBoxSpecials";
             this.checkBoxSpecials.Size = new System.Drawing.Size(156, 20);
             this.checkBoxSpecials.TabIndex = 22;
             this.checkBoxSpecials.Text = "Especiales (!,$,[,{,<,...)";
             this.checkBoxSpecials.UseVisualStyleBackColor = true;
+            this.checkBoxSpecials.CheckedChanged += new System.EventHandler(this.checkBoxSpecials_CheckedChanged);
             // 
             // checkBoxDigits
             // 
             this.checkBoxDigits.AutoSize = true;
             this.checkBoxDigits.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDigits.Location = new System.Drawing.Point(12, 147);
+            this.checkBoxDigits.Location = new System.Drawing.Point(12, 152);
             this.checkBoxDigits.Name = "checkBoxDigits";
             this.checkBoxDigits.Size = new System.Drawing.Size(119, 20);
             this.checkBoxDigits.TabIndex = 21;
             this.checkBoxDigits.Text = "Dígitos (0,1,2,...)";
             this.checkBoxDigits.UseVisualStyleBackColor = true;
+            this.checkBoxDigits.CheckedChanged += new System.EventHandler(this.checkBoxDigits_CheckedChanged);
             // 
             // checkBoxLower
             // 
             this.checkBoxLower.AutoSize = true;
             this.checkBoxLower.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxLower.Location = new System.Drawing.Point(12, 124);
+            this.checkBoxLower.Location = new System.Drawing.Point(12, 129);
             this.checkBoxLower.Name = "checkBoxLower";
             this.checkBoxLower.Size = new System.Drawing.Size(146, 20);
             this.checkBoxLower.TabIndex = 20;
             this.checkBoxLower.Text = "Minúsculas (a,b,c,...)";
             this.checkBoxLower.UseVisualStyleBackColor = true;
+            this.checkBoxLower.CheckedChanged += new System.EventHandler(this.checkBoxLower_CheckedChanged);
             // 
             // checkBoxUpper
             // 
             this.checkBoxUpper.AutoSize = true;
             this.checkBoxUpper.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxUpper.Location = new System.Drawing.Point(12, 102);
+            this.checkBoxUpper.Location = new System.Drawing.Point(12, 107);
             this.checkBoxUpper.Name = "checkBoxUpper";
             this.checkBoxUpper.Size = new System.Drawing.Size(155, 20);
             this.checkBoxUpper.TabIndex = 19;
             this.checkBoxUpper.Text = "Mayúsculas (A,B,C,...)";
             this.checkBoxUpper.UseVisualStyleBackColor = true;
+            this.checkBoxUpper.CheckedChanged += new System.EventHandler(this.checkBoxUpper_CheckedChanged);
             // 
             // lblLenght
             // 
@@ -221,6 +236,7 @@ namespace Interface
             this.upDownLenght.Name = "upDownLenght";
             this.upDownLenght.Size = new System.Drawing.Size(143, 20);
             this.upDownLenght.TabIndex = 17;
+            this.upDownLenght.ValueChanged += new System.EventHandler(this.upDownLenght_ValueChanged);
             // 
             // txtPassword
             // 
@@ -237,6 +253,7 @@ namespace Interface
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(156, 60);
             this.txtNotes.TabIndex = 15;
+            this.txtNotes.TextChanged += new System.EventHandler(this.txtNotes_TextChanged);
             // 
             // txtUsername
             // 
@@ -244,6 +261,7 @@ namespace Interface
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(156, 20);
             this.txtUsername.TabIndex = 10;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // comboBoxCategories
             // 
@@ -309,6 +327,7 @@ namespace Interface
             this.txtSite.Name = "txtSite";
             this.txtSite.Size = new System.Drawing.Size(156, 20);
             this.txtSite.TabIndex = 9;
+            this.txtSite.TextChanged += new System.EventHandler(this.txtSite_TextChanged);
             // 
             // lblSite
             // 
@@ -319,17 +338,6 @@ namespace Interface
             this.lblSite.Size = new System.Drawing.Size(37, 18);
             this.lblSite.TabIndex = 8;
             this.lblSite.Text = "Sitio";
-            // 
-            // btnView
-            // 
-            this.btnView.AutoSize = true;
-            this.btnView.Location = new System.Drawing.Point(104, 40);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(100, 23);
-            this.btnView.TabIndex = 30;
-            this.btnView.Text = "Ver";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // AddPassword
             // 

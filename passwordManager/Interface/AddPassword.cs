@@ -115,6 +115,7 @@ namespace Interface
 
         private void btnGeneratePassword_Click(object sender, EventArgs e)
         {
+            txtPassword.Text = "";
             try
             {
                 List<PasswordRequirement> passwordRequirements = checkRequirementsNeeded();
@@ -176,6 +177,7 @@ namespace Interface
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
+            lblError.Text = "";
             if (txtPassword.Text == "") 
             {
                 lblDataBreaches.Text = "";
@@ -231,6 +233,46 @@ namespace Interface
                 btnView.Text = "Ver";
             }
             viewPassword = !viewPassword;
+        }
+
+        private void txtSite_TextChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void txtNotes_TextChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void upDownLenght_ValueChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void checkBoxUpper_CheckedChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void checkBoxLower_CheckedChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void checkBoxDigits_CheckedChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+        }
+
+        private void checkBoxSpecials_CheckedChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
         }
     }
 }
