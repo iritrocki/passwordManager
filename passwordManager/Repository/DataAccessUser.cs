@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    class DataAccessUser : IDataAccess<User>
+    public class DataAccessUser : IDataAccess<User>
     {
         public void Add(User entity)
         {
@@ -18,6 +18,14 @@ namespace Repository
             }
         }
 
+        public void Clear()
+        {
+            using (PasswordManagerDBContext context = new PasswordManagerDBContext())
+            {
+                context.Users.RemoveRange(context.Users);
+                context.SaveChanges();
+            }
+        }
         public void Delete(User entity)
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
