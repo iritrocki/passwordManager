@@ -17,17 +17,20 @@ namespace passwordManagerTest
         List<CreditCard> creditCards = new List<CreditCard>();
 
         [TestInitialize]
-
         public void TestInitialize()
         {
 
             Category facultad = new Category("Facultad");
+            facultad.Id = 1;
             Category trabajo = new Category("Trabajo");
+            trabajo.Id = 2;
             Category personal = new Category("Personal");
+            personal.Id = 3;
 
 
             Account instagram = new Account()
             {
+                Id = 1,
                 Username = "JuanPe123",
                 Password = "vsjkdjfjsdhjf",
                 Note = "",
@@ -38,6 +41,7 @@ namespace passwordManagerTest
 
             Account linkedIn = new Account()
             {
+                Id = 2,
                 Username = "JuanPerez",
                 Password = "Ekjdy2345",
                 Note = "Soy nuevo en linked in",
@@ -48,6 +52,7 @@ namespace passwordManagerTest
 
             Account github = new Account()
             {
+                Id = 3,
                 Username = "JuanPerez123",
                 Password = "fvjnwqj42kfn",
                 Note = "Github para el laburo",
@@ -58,6 +63,7 @@ namespace passwordManagerTest
 
             Account github2 = new Account()
             {
+                Id = 4,
                 Username = "Juanchoperez",
                 Password = "DSVNsjfj?.>",
                 Note = "Github para la facu",
@@ -68,6 +74,7 @@ namespace passwordManagerTest
 
             CreditCard itau = new CreditCard()
             {
+                Id = 1,
                 Name = "Itau volar",
                 Company = "Visa",
                 Number = "1234 5678 2345 5342",
@@ -80,6 +87,7 @@ namespace passwordManagerTest
 
             CreditCard santander = new CreditCard()
             {
+                Id = 2,
                 Name = "Santander universidades",
                 Company = "Master Card",
                 Number = "4324 5342 5543 2345",
@@ -92,6 +100,7 @@ namespace passwordManagerTest
 
             CreditCard americanExpress = new CreditCard()
             {
+                Id = 3,
                 Name = "American Platinum",
                 Company = "American Express",
                 Number = "8945 2948 0498 1289",
@@ -262,6 +271,7 @@ namespace passwordManagerTest
         {
             Account modificationAccount = new Account()
             {
+                Id = 5,
                 Username = "JuanPerez",
                 Password = "Ekjdy2345",
                 Note = "Soy nuevo en linked in",
@@ -295,7 +305,7 @@ namespace passwordManagerTest
         [TestMethod]
         public void TryModifyToRepeatedCategoryTest()
         {
-            Modificator.TryModifyCategory(categories[0], "trabajo",categories);
+            Modificator.TryModifyCategory(categories[0], "Trabajo", categories);
 
         }
 
@@ -326,6 +336,7 @@ namespace passwordManagerTest
         {
             CreditCard modifiedItau = new CreditCard()
             {
+                Id = 4,
                 Name = "Itau volar",
                 Company = "Master Card",
                 Number = "8945 2948 0498 1289",

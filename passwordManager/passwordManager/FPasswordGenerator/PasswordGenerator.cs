@@ -10,6 +10,7 @@ namespace passwordManager
         private List<PasswordRequirement> _requirements;
         private int length;
         private List<int> _asciiNumbers;
+
         public string Password { get; set; }
 
         public PasswordGenerator(int length, List<PasswordRequirement> requirements)
@@ -64,7 +65,7 @@ namespace passwordManager
 
         private void InsertInRandomStringPosition(char character)
         {
-            Random rdm = new Random();
+            Random rdm = RandomInstance.GetRandomInstance();
             int position = rdm.Next(0, this.Password.Length);
             this.Password = this.Password.Insert(position, character.ToString());
         }

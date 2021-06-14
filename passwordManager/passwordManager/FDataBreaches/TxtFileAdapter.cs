@@ -1,4 +1,5 @@
-﻿using System;
+﻿using passwordManager.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,29 @@ namespace passwordManager
 {
     public class TxtFileAdapter : IDataBreachesAdapter
     { 
-        public string Path { get; set; }
+        public string dataBreach { get; set; }
+
+        public TxtFileAdapter() { }
         public TxtFileAdapter(string path)
         {
-            this.Path = path;
+            GetFileData(path);
+        }
+
+        private void GetFileData(string path)
+        {
+            try
+            {
+                this.dataBreach = System.IO.File.ReadAllText(path);
+            }
+            catch (Exception e)
+            {
+                throw new InvalidPathException();
+            }
         }
 
         public List<string> AdaptData()
         {
-            string entireText = System.IO.File.ReadAllText(this.Path);
-            List<string> adaptedText = entireText.Split('\t').ToList();
+            List<string> adaptedText = this.dataBreach.Split('\t').ToList();
             return adaptedText;
         }
     }

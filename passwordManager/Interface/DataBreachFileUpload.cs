@@ -1,4 +1,5 @@
 ﻿using passwordManager;
+using passwordManager.Exceptions;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Interface
         {
             InitializeComponent();
             this.MainPanel = panel;
+            lblError.Text = "";
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -41,13 +43,24 @@ namespace Interface
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
-            IDataBreachesAdapter adapter = new TxtFileAdapter(this.path);
-            DataBreachCheck dataBreachCheck = new DataBreachCheck();
-            dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
-            daDataBreaches.Add(dataBreachCheck);
-            MainPanel.Controls.Clear();
-            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, MainPanel);
-            MainPanel.Controls.Add(results);
+            try
+            {
+                IDataBreachesAdapter adapter = new TxtFileAdapter(this.path);
+                DataBreachCheck dataBreachCheck = new DataBreachCheck();
+                dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
+                daDataBreaches.Add(dataBreachCheck);
+                MainPanel.Controls.Clear();
+                DataBreachesResults results = new DataBreachesResults(dataBreachCheck, MainPanel);
+                MainPanel.Controls.Add(results);
+            }catch(InvalidPathException exc)
+            {
+                lblError.Text = exc.Message;
+            }
+        }
+
+        private void txtPath_TextChanged(object sender, EventArgs e)
+        {
+            lblError.Text = "";
         }
     }
 }
