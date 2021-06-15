@@ -17,6 +17,8 @@ namespace RepositoryTest
         {
             IDataAccess<Account> daAccounts = new DataAccessAccount();
             daAccounts.Clear();
+            IDataAccess<CreditCard> daCreditCards = new DataAccessCreditCard();
+            daCreditCards.Clear();
             testRepo = new DataAccessCategory();
             testRepo.Clear();
 
@@ -24,7 +26,7 @@ namespace RepositoryTest
 
 
         [TestMethod]
-        public void AddAccountTest()
+        public void AddCategoryTest()
         {
             Category c = new Category("Facultad");
             testRepo.Add(c);
@@ -43,7 +45,7 @@ namespace RepositoryTest
         }
 
         [TestMethod]
-        public void DeleteAccountTest()
+        public void DeleteCategoryTest()
         {
             Category c = new Category("Facultad");
             testRepo.Add(c);
@@ -54,7 +56,7 @@ namespace RepositoryTest
         }
 
         [TestMethod]
-        public void ModifyMasterKeyTest()
+        public void ModifyCategoryNameTest()
         {
             Category c = new Category("Facultad");
             testRepo.Add(c);

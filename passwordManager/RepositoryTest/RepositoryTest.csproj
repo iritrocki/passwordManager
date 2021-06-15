@@ -57,9 +57,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessCreditCardTest.cs" />
     <Compile Include="DataAccessCategoryTest.cs" />
     <Compile Include="DataAccessUserTest.cs" />
-    <Compile Include="DataAccesAccountTest.cs" />
+    <Compile Include="DataAccessAccountTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
