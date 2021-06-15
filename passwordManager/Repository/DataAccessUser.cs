@@ -31,7 +31,7 @@ namespace Repository
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
                 User userToDelete = context.Users.FirstOrDefault(u => u.Id == entity.Id);
-                context.Users.Remove(entity);
+                context.Users.Remove(userToDelete);
                 context.SaveChanges();
             }
         }

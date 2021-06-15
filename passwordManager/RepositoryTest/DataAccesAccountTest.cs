@@ -16,11 +16,12 @@ namespace RepositoryTest
         [TestInitialize]
         public void SetUp()
         {
+            daCategory = new DataAccessCategory();
             testRepo = new DataAccessAccount();
             testRepo.Clear();
-
-            daCategory = new DataAccessCategory();
             daCategory.Clear();
+
+            
             
         }
 
@@ -61,7 +62,7 @@ namespace RepositoryTest
             };
             testRepo.Add(instagram);
 
-            Assert.AreEqual(1, ((List<Account>)testRepo.GetAll()).Count());
+            Assert.AreEqual(1, testRepo.GetAll().Count());
         }
 
         [TestMethod]
