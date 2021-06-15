@@ -57,6 +57,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessDataBreachesTest.cs" />
     <Compile Include="DataAccessCreditCardTest.cs" />
     <Compile Include="DataAccessCategoryTest.cs" />
     <Compile Include="DataAccessUserTest.cs" />

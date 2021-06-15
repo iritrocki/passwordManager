@@ -14,14 +14,18 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                foreach(CreditCard cc in entity.ExposedCreditCards)
+                
+                foreach (CreditCard cc in entity.ExposedCreditCards)
                 {
                     context.CreditCards.Attach(cc);
                 }
                 foreach (Account a in entity.ExposedPasswords)
                 {
+                    context.Categories.Attach(a.Category);
                     context.Accounts.Attach(a);
+                    
                 }
+                
                 context.DataBreaches.Add(entity);
                 context.SaveChanges();
             }
@@ -31,6 +35,7 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
+                context.DataBreachLines.RemoveRange(context.DataBreachLines);
                 context.DataBreaches.RemoveRange(context.DataBreaches);
                 context.SaveChanges();
             }
@@ -40,7 +45,8 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                DataBreachCheck dataBreachToDelete = context.DataBreaches.FirstOrDefault(d => d.Id == entity.Id);
+                DataBreachCheck dataBreachToDelete = context.DataBreaches.Include(d => d.DataBreaches).FirstOrDefault(d => d.Id == entity.Id);
+                context.DataBreachLines.RemoveRange(dataBreachToDelete.DataBreaches);
                 context.DataBreaches.Remove(dataBreachToDelete);
                 context.SaveChanges();
             }
@@ -71,7 +77,11 @@ namespace Repository
 
                 dataBreachToModify.ExposedPasswords = entity.ExposedPasswords;
                 dataBreachToModify.ExposedCreditCards = entity.ExposedCreditCards;
-                dataBreachToModify.DataBreaches = entity.DataBreaches;
+                foreach(DataBreachLine line in entity.DataBreaches)
+                {
+                    DataBreachLine dataBreachLineToModify = context.DataBreachLines.FirstOrDefault(d => d.Id == line.Id);
+                    dataBreachLineToModify.Line = line.Line;
+                }
                 dataBreachToModify.TypeOfConversion = entity.TypeOfConversion;
                 dataBreachToModify.Date = entity.Date;
 
