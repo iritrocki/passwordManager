@@ -8,7 +8,7 @@ using System.Linq;
 namespace RepositoryTest
 {
     [TestClass]
-    public class DataAccesAccountTest
+    public class DataAccessAccountTest
     {
         private DataAccessAccount testRepo;
         private DataAccessCategory daCategory;
@@ -87,7 +87,7 @@ namespace RepositoryTest
         }
 
         [TestMethod]
-        public void ModifyMasterKeyTest()
+        public void ModifyUsernameTest()
         {
             Category c = new Category("Facultad");
             daCategory.Add(c);
