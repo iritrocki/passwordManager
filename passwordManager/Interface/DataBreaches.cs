@@ -15,8 +15,6 @@ namespace Interface
     public partial class DataBreaches : UserControl
     {
         private Panel mainPanel;
-        IDataAccess<Account> dataAccessAccount = DataAccessManager.GetDataAccessAccount();
-        IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
         IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
 
         public DataBreaches(Panel main)
@@ -30,7 +28,9 @@ namespace Interface
             string plainText = txtDataBreaches.Text;
             IDataBreachesAdapter adapter = new PlainTextAdapter(plainText);
             DataBreachCheck dataBreachCheck = new DataBreachCheck();
-            dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAll());
+            DataAccessCreditCard dataAccessCreditCard = new DataAccessCreditCard();
+            DataAccessAccount dataAccessAccount = new DataAccessAccount();
+            dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)dataAccessCreditCard.GetAllWithoutInclude());
             daDataBreaches.Add(dataBreachCheck);
             mainPanel.Controls.Clear();
             DataBreachesResults results = new DataBreachesResults(dataBreachCheck, mainPanel);

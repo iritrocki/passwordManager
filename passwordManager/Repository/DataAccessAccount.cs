@@ -69,6 +69,7 @@ namespace Repository
                 accountToModify.Site = entity.Site;
                 accountToModify.Username = entity.Username;
 
+                context.Categories.Attach(entity.Category);
                 context.SaveChanges();
 
 

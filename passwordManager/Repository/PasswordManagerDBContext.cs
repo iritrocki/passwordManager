@@ -21,6 +21,8 @@ namespace Repository
 
         public DbSet<DataBreachCheck> DataBreaches { get; set; }
 
+        public DbSet<DataBreachLine> DataBreachLines { get; set; }
+
         public PasswordManagerDBContext() : base("name=PasswordManagerDBContext") { }
         
     }

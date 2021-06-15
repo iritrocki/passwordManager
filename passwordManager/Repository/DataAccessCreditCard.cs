@@ -51,7 +51,15 @@ namespace Repository
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
             {
-                return context.CreditCards.Include(c=>c.Category).ToList();
+                return context.CreditCards.Include(c => c.Category).ToList();
+            }
+        }
+
+        public IEnumerable<CreditCard> GetAllWithoutInclude()
+        {
+            using (PasswordManagerDBContext context = new PasswordManagerDBContext())
+            {
+                return context.CreditCards.ToList();
             }
         }
 
@@ -70,6 +78,7 @@ namespace Repository
                 cardToModify.Notes = entity.Notes;
                 cardToModify.Number = entity.Number;
 
+                context.Categories.Attach(entity.Category);
                 context.SaveChanges();
             }
         }
