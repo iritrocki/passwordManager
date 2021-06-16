@@ -17,13 +17,12 @@ namespace Repository
                 
                 foreach (CreditCard cc in entity.ExposedCreditCards)
                 {
+                    cc.Category = null;
                     context.CreditCards.Attach(cc);
                 }
                 foreach (Account a in entity.ExposedPasswords)
                 {
-                    context.Categories.Attach(a.Category);
                     context.Accounts.Attach(a);
-                    
                 }
                 
                 context.DataBreaches.Add(entity);

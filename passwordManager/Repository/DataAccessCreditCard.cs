@@ -55,14 +55,6 @@ namespace Repository
             }
         }
 
-        public IEnumerable<CreditCard> GetAllWithoutInclude()
-        {
-            using (PasswordManagerDBContext context = new PasswordManagerDBContext())
-            {
-                return context.CreditCards.ToList();
-            }
-        }
-
         public void Modify(CreditCard entity)
         {
             using (PasswordManagerDBContext context = new PasswordManagerDBContext())
