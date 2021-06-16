@@ -18,6 +18,8 @@ namespace Interface
         private string path;
         private Panel MainPanel;
         IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
+        IDataAccess<Account> daAccounts = DataAccessManager.GetDataAccessAccount();
+        IDataAccess<CreditCard> daCreditCards = DataAccessManager.GetDataAccessCreditCard();
 
         public DataBreachFileUpload(Panel panel)
         {
@@ -45,9 +47,7 @@ namespace Interface
             {
                 IDataBreachesAdapter adapter = new TxtFileAdapter(this.path);
                 DataBreachCheck dataBreachCheck = new DataBreachCheck();
-                DataAccessCreditCard daCreditCard = new DataAccessCreditCard();
-                DataAccessAccount dataAccessAccount = new DataAccessAccount();
-                dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)dataAccessAccount.GetAll(), (List<CreditCard>)daCreditCard.GetAllWithoutInclude());
+                dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
                 daDataBreaches.Add(dataBreachCheck);
                 MainPanel.Controls.Clear();
                 DataBreachesResults results = new DataBreachesResults(dataBreachCheck, MainPanel);

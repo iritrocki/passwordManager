@@ -13,6 +13,7 @@ namespace RepositoryTest
         private DataAccessDataBreaches testRepo;
         private DataAccessAccount daAccounts;
         private DataAccessCreditCard daCreditCards;
+        private DataAccessCategory daCategories;
 
         [TestInitialize]
         public void SetUp()
@@ -23,7 +24,7 @@ namespace RepositoryTest
             daCreditCards = new DataAccessCreditCard();
             daCreditCards.Clear();
 
-            IDataAccess<Category> daCategories = new DataAccessCategory();
+            daCategories = new DataAccessCategory();
             daCategories.Clear();
 
             testRepo = new DataAccessDataBreaches();
@@ -115,7 +116,7 @@ namespace RepositoryTest
             DataBreachCheck db = new DataBreachCheck();
             string data = "";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(0, testRepo.Get(db).ExposedPasswords.Count());
 
@@ -129,7 +130,7 @@ namespace RepositoryTest
 apareceEnDataBreach
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(1, testRepo.Get(db).ExposedPasswords.Count());
 
@@ -144,7 +145,7 @@ apareceEnDataBreach
 apareceEnDataBreach2
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(2, testRepo.Get(db).ExposedPasswords.Count());
 
@@ -159,7 +160,7 @@ apareceEnDataBreach
 Ekjdy2345
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(2, testRepo.Get(db).ExposedPasswords.Count());
 
@@ -173,7 +174,7 @@ password1298";
 1234 5678 2345 5342
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(1, testRepo.Get(db).ExposedCreditCards.Count());
 
@@ -188,7 +189,7 @@ password1298";
 apareceEnDataBreach
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(2, testRepo.Get(db).ExposedPasswords.Count() + testRepo.Get(db).ExposedCreditCards.Count());
         }
@@ -202,7 +203,7 @@ password1298";
 apareceEnDataBreach
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(2, testRepo.Get(db).ExposedPasswords.Count() + testRepo.Get(db).ExposedCreditCards.Count());
 
@@ -217,7 +218,7 @@ password1298";
 1234 1234 1234 1234
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(2, testRepo.Get(db).ExposedCreditCards.Count());
 
@@ -232,10 +233,52 @@ password1298";
 4324 5342 5543 2345
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
             Assert.AreEqual(2, testRepo.Get(db).ExposedCreditCards.Count());
 
+        }
+
+        [TestMethod]
+        public void AddDataBreachCheckAccountIsNotDuplicatedTest()
+        {
+            DataBreachCheck db = new DataBreachCheck();
+            string data = @"thisPasswordIsBrandNew123
+1234 5678 2345 5342
+apareceEnDataBreach
+password1298";
+            IDataBreachesAdapter plainText = new PlainTextAdapter(data);
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
+            testRepo.Add(db);
+            Assert.AreEqual(3, daAccounts.GetAll().Count());
+        }
+
+        [TestMethod]
+        public void AddDataBreachCheckCreditCardIsNotDuplicatedTest()
+        {
+            DataBreachCheck db = new DataBreachCheck();
+            string data = @"thisPasswordIsBrandNew123
+1234 5678 2345 5342
+apareceEnDataBreach
+password1298";
+            IDataBreachesAdapter plainText = new PlainTextAdapter(data);
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
+            testRepo.Add(db);
+            Assert.AreEqual(3, daCreditCards.GetAll().Count());
+        }
+
+        [TestMethod]
+        public void AddDataBreachCheckCategorytIsNotDuplicatedTest()
+        {
+            DataBreachCheck db = new DataBreachCheck();
+            string data = @"thisPasswordIsBrandNew123
+1234 5678 2345 5342
+apareceEnDataBreach
+password1298";
+            IDataBreachesAdapter plainText = new PlainTextAdapter(data);
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
+            testRepo.Add(db);
+            Assert.AreEqual(2, daCategories.GetAll().Count());
         }
 
         [TestMethod]
@@ -257,7 +300,7 @@ password1298";
 apareceEnDataBreach
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
 
             testRepo.Delete(testRepo.GetAll().First());
@@ -274,7 +317,7 @@ password1298";
 apareceEnDataBreach
 password1298";
             IDataBreachesAdapter plainText = new PlainTextAdapter(data);
-            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAllWithoutInclude());
+            db.CheckDataBreaches(plainText, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
             testRepo.Add(db);
 
             DateTime newDate = DateTime.Now;
