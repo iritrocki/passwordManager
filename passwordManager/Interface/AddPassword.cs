@@ -129,7 +129,8 @@ namespace Interface
             }
 
         }
-        private List<PasswordRequirement> checkRequirementsNeeded()
+        
+        private List<PasswordRequirement> CheckRequirementsNeeded()
         {
             List<PasswordRequirement> passwordRequirements = new List<PasswordRequirement>();
             UpperCaseCheckbox(passwordRequirements);

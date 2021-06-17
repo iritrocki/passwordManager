@@ -35,6 +35,9 @@ namespace passwordManager
         
         public void RunAnalysis(string password)
         {
+            this.DataBreach = false;
+            this.Duplicated = false;
+            this.Secure = false;
             DataBreachAnalysis(password);
             DuplicatedPasswordAnalysis(password);
             SecureAnalysis(password);
