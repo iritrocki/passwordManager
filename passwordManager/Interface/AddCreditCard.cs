@@ -15,8 +15,6 @@ namespace Interface
 {
     public partial class AddCreditCard : UserControl
     {
-        const int MONTH = 0;
-        const int YEAR = 1;
         private CreditCard modificationCreditCard;
         private Panel mainPanel;
         private IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
@@ -29,6 +27,7 @@ namespace Interface
             this.mainPanel = p;
             ChargeComboBox();
         }
+        
         public AddCreditCard( Panel p, CreditCard creditCard)
         {
             InitializeComponent();
@@ -51,7 +50,6 @@ namespace Interface
             comboBoxCreditCardCategory.DataSource = dataAccessCategory.GetAll();
             comboBoxCreditCardCategory.DisplayMember = "Name";
         }
-
 
         private void btnAcceptNewCreditCard_Click(object sender, EventArgs e)
         {
@@ -116,8 +114,6 @@ namespace Interface
             
            
         }
-
-        
     }
 
     

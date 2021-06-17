@@ -15,8 +15,9 @@ namespace Interface
     public partial class CreditCardList : UserControl
     {
         private Panel mainPanel;
-        private IDataAccess<CreditCard> dacc = DataAccessManager.GetDataAccessCreditCard();
+        private IDataAccess<CreditCard> daCreditCard = DataAccessManager.GetDataAccessCreditCard();
         private System.Windows.Forms.Timer timer;
+        
         public CreditCardList(Panel p)
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Interface
 
         public void ChargeCreditCardsToList()
         {
-            List<CreditCard> creditCards = (List<CreditCard>)dacc.GetAll();
+            List<CreditCard> creditCards = (List<CreditCard>)daCreditCard.GetAll();
             creditCards.Sort(delegate (CreditCard x, CreditCard y) {
                 return x.Category.Name.CompareTo(y.Category.Name);
             });
@@ -74,7 +75,7 @@ namespace Interface
         {
             try{
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                this.dacc.Delete(selectedCreditCard);
+                this.daCreditCard.Delete(selectedCreditCard);
                 ChargeCreditCardsToList();
             }
             catch (Exception exc)
@@ -83,7 +84,6 @@ namespace Interface
             }
         }
         
-
         private void listViewCreditCards_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             try

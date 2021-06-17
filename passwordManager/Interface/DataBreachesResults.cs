@@ -15,6 +15,7 @@ namespace Interface
     {
         private Panel mainPanel;
         private DataBreachCheck dataBreachCheck;
+        
         public DataBreachesResults(DataBreachCheck dataBreachCheck, Panel mainPanel)
         {
             InitializeComponent();

@@ -16,6 +16,7 @@ namespace Interface
     {
         private Panel mainPanel;
         private IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
+        
         public CategoryList(Panel MainPanel)
         {
             InitializeComponent();
