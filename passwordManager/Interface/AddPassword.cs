@@ -118,7 +118,7 @@ namespace Interface
             txtPassword.Text = "";
             try
             {
-                List<PasswordRequirement> passwordRequirements = checkRequirementsNeeded();
+                List<PasswordRequirement> passwordRequirements = CheckRequirementsNeeded();
                 int length = (int)upDownLenght.Value;
                 PasswordGenerator passwordGenerator = new PasswordGenerator(length, passwordRequirements);
                 txtPassword.Text = passwordGenerator.Password;
