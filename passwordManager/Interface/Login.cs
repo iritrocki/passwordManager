@@ -44,7 +44,7 @@ namespace Interface
         private void btnAcceptMasterKey_Click(object sender, EventArgs e)
         {
             string input = txtMasterKey.Text;
-            if (user == null || user.MasterKey == null /*dataAccessUser == null*/)
+            if (user == null || user.MasterKey == null)
             {
                 try
                 {
@@ -60,9 +60,6 @@ namespace Interface
                     lblError.Text = "La contraseña debe tener entre 5 y 25 caracteres";
                     txtMasterKey.Text = "";
                 }
-                
-                
-                
                 
             }
             else

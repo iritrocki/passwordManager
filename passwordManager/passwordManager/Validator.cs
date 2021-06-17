@@ -37,8 +37,6 @@ namespace passwordManager
             return true;
         }
 
-
-
         public static bool IsASpace(char character)
         {
             return (int)character == 32;

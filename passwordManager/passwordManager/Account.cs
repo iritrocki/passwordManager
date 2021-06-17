@@ -12,7 +12,6 @@ namespace passwordManager
         private string _password;
         private string _site;
         private string _note;
-        private DateTime _modification;
 
         public int Id { get; set; }
 
@@ -74,7 +73,6 @@ namespace passwordManager
         {
             return this.Username == account.Username && this.Site == account.Site;
         }
-
 
         public void ModifyAccount(Account newAccount)
         {
