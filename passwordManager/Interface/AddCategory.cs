@@ -9,27 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 
 namespace Interface
 {
     public partial class AddCategory : UserControl
     {
-        private User user;
         private Category modificationCategory;
         private Panel mainPanel;
+        private IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
 
-        public AddCategory(User u, Panel main)
+        public AddCategory(Panel main)
         {
             InitializeComponent();
-            this.user = u;
             this.mainPanel = main;
             lblCategoryError.Text = "";
         }
 
-        public AddCategory(User u, Category m, Panel main)
+        public AddCategory( Category m, Panel main)
         {
             InitializeComponent();
-            this.user = u;
             this.modificationCategory = m;
             this.mainPanel = main;
             txtCategoryName.Text = m.Name;
@@ -53,9 +52,10 @@ namespace Interface
             try
             {
                 Category newCategory = new Category(txtCategoryName.Text);
-                user.TryAddCategory(newCategory);
+                DataChecker.UniqueCategoryCheck(newCategory, (List<Category>)dataAccessCategory.GetAll());
+                this.dataAccessCategory.Add(newCategory);
                 this.mainPanel.Controls.Clear();
-                UserControl categoryList = new CategoryList(user, mainPanel);
+                UserControl categoryList = new CategoryList(mainPanel);
                 this.mainPanel.Controls.Add(categoryList);
 
             }catch(Exception exc){
@@ -74,9 +74,10 @@ namespace Interface
         {
             try
             {
-                user.TryModifyCategory(modificationCategory, txtCategoryName.Text);
+                Modificator.TryModifyCategory(modificationCategory, txtCategoryName.Text, (List<Category>)dataAccessCategory.GetAll());
+                this.dataAccessCategory.Modify(modificationCategory);
                 this.mainPanel.Controls.Clear();
-                UserControl categoryList = new CategoryList(user, mainPanel);
+                UserControl categoryList = new CategoryList(mainPanel);
                 this.mainPanel.Controls.Add(categoryList);
             }
             catch (Exception exc)

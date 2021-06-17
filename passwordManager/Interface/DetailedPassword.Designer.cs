@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.pnlPasswordEdit = new System.Windows.Forms.Panel();
+            this.lblDetailNotes = new System.Windows.Forms.Label();
+            this.lblDetailUsername = new System.Windows.Forms.Label();
+            this.lblDetailSite = new System.Windows.Forms.Label();
+            this.lblDetailCategory = new System.Windows.Forms.Label();
             this.lblNotes = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblSite = new System.Windows.Forms.Label();
             this.lblPasswordEdit = new System.Windows.Forms.Label();
-            this.lblDetailPassword = new System.Windows.Forms.Label();
-            this.lblDetailCategory = new System.Windows.Forms.Label();
-            this.lblDetailSite = new System.Windows.Forms.Label();
-            this.lblDetailUsername = new System.Windows.Forms.Label();
-            this.lblDetailNotes = new System.Windows.Forms.Label();
+            this.txtDetailPassword = new System.Windows.Forms.TextBox();
             this.pnlPasswordEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlPasswordEdit
             // 
             this.pnlPasswordEdit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPasswordEdit.Controls.Add(this.txtDetailPassword);
             this.pnlPasswordEdit.Controls.Add(this.lblDetailNotes);
             this.pnlPasswordEdit.Controls.Add(this.lblDetailUsername);
             this.pnlPasswordEdit.Controls.Add(this.lblDetailSite);
             this.pnlPasswordEdit.Controls.Add(this.lblDetailCategory);
-            this.pnlPasswordEdit.Controls.Add(this.lblDetailPassword);
             this.pnlPasswordEdit.Controls.Add(this.lblNotes);
             this.pnlPasswordEdit.Controls.Add(this.lblPassword);
             this.pnlPasswordEdit.Controls.Add(this.lblUsername);
@@ -60,6 +60,38 @@
             this.pnlPasswordEdit.Name = "pnlPasswordEdit";
             this.pnlPasswordEdit.Size = new System.Drawing.Size(560, 315);
             this.pnlPasswordEdit.TabIndex = 8;
+            // 
+            // lblDetailNotes
+            // 
+            this.lblDetailNotes.AutoSize = true;
+            this.lblDetailNotes.Location = new System.Drawing.Point(188, 232);
+            this.lblDetailNotes.Name = "lblDetailNotes";
+            this.lblDetailNotes.Size = new System.Drawing.Size(0, 13);
+            this.lblDetailNotes.TabIndex = 18;
+            // 
+            // lblDetailUsername
+            // 
+            this.lblDetailUsername.AutoSize = true;
+            this.lblDetailUsername.Location = new System.Drawing.Point(188, 184);
+            this.lblDetailUsername.Name = "lblDetailUsername";
+            this.lblDetailUsername.Size = new System.Drawing.Size(0, 13);
+            this.lblDetailUsername.TabIndex = 17;
+            // 
+            // lblDetailSite
+            // 
+            this.lblDetailSite.AutoSize = true;
+            this.lblDetailSite.Location = new System.Drawing.Point(188, 135);
+            this.lblDetailSite.Name = "lblDetailSite";
+            this.lblDetailSite.Size = new System.Drawing.Size(0, 13);
+            this.lblDetailSite.TabIndex = 16;
+            // 
+            // lblDetailCategory
+            // 
+            this.lblDetailCategory.AutoSize = true;
+            this.lblDetailCategory.Location = new System.Drawing.Point(188, 93);
+            this.lblDetailCategory.Name = "lblDetailCategory";
+            this.lblDetailCategory.Size = new System.Drawing.Size(0, 13);
+            this.lblDetailCategory.TabIndex = 15;
             // 
             // lblNotes
             // 
@@ -122,45 +154,13 @@
             this.lblPasswordEdit.Text = "Detalles de la contraseña";
             this.lblPasswordEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblDetailPassword
+            // txtDetailPassword
             // 
-            this.lblDetailPassword.AutoSize = true;
-            this.lblDetailPassword.Location = new System.Drawing.Point(185, 51);
-            this.lblDetailPassword.Name = "lblDetailPassword";
-            this.lblDetailPassword.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailPassword.TabIndex = 14;
-            // 
-            // lblDetailCategory
-            // 
-            this.lblDetailCategory.AutoSize = true;
-            this.lblDetailCategory.Location = new System.Drawing.Point(188, 93);
-            this.lblDetailCategory.Name = "lblDetailCategory";
-            this.lblDetailCategory.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailCategory.TabIndex = 15;
-            // 
-            // lblDetailSite
-            // 
-            this.lblDetailSite.AutoSize = true;
-            this.lblDetailSite.Location = new System.Drawing.Point(188, 135);
-            this.lblDetailSite.Name = "lblDetailSite";
-            this.lblDetailSite.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailSite.TabIndex = 16;
-            // 
-            // lblDetailUsername
-            // 
-            this.lblDetailUsername.AutoSize = true;
-            this.lblDetailUsername.Location = new System.Drawing.Point(188, 184);
-            this.lblDetailUsername.Name = "lblDetailUsername";
-            this.lblDetailUsername.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailUsername.TabIndex = 17;
-            // 
-            // lblDetailNotes
-            // 
-            this.lblDetailNotes.AutoSize = true;
-            this.lblDetailNotes.Location = new System.Drawing.Point(188, 232);
-            this.lblDetailNotes.Name = "lblDetailNotes";
-            this.lblDetailNotes.Size = new System.Drawing.Size(0, 13);
-            this.lblDetailNotes.TabIndex = 18;
+            this.txtDetailPassword.Location = new System.Drawing.Point(191, 47);
+            this.txtDetailPassword.Name = "txtDetailPassword";
+            this.txtDetailPassword.ReadOnly = true;
+            this.txtDetailPassword.Size = new System.Drawing.Size(216, 20);
+            this.txtDetailPassword.TabIndex = 19;
             // 
             // DetailedPassword
             // 
@@ -183,12 +183,12 @@
         private System.Windows.Forms.Label lblDetailUsername;
         private System.Windows.Forms.Label lblDetailSite;
         private System.Windows.Forms.Label lblDetailCategory;
-        private System.Windows.Forms.Label lblDetailPassword;
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblSite;
         private System.Windows.Forms.Label lblPasswordEdit;
+        private System.Windows.Forms.TextBox txtDetailPassword;
     }
 }

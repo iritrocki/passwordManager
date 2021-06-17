@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 
 namespace Interface
 {
     public partial class ModifyMasterKey : UserControl
     {
         private User user;
+        private IDataAccess<User> dataAccessUser = DataAccessManager.GetDataAccessUser();
+
         public ModifyMasterKey(User u)
         {
             InitializeComponent();
@@ -30,6 +33,7 @@ namespace Interface
             try
             {
                 user.ChangeMasterKey(actualPassword,newPassword);
+                dataAccessUser.Modify(user);
                 lblFeedBackModification.ForeColor = System.Drawing.Color.Green;
                 lblFeedBackModification.Text = "La clave maestra ha sido modificada correctamente";
 
@@ -42,5 +46,7 @@ namespace Interface
             }
             
         }
+
+        
     }
 }

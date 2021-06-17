@@ -8,30 +8,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
+using Repository;
 
 namespace Interface
 {
     public partial class CreditCardList : UserControl
     {
-        private User user;
         private Panel mainPanel;
+        private IDataAccess<CreditCard> daCreditCard = DataAccessManager.GetDataAccessCreditCard();
         private System.Windows.Forms.Timer timer;
-        public CreditCardList(User u,Panel p)
+        
+        public CreditCardList(Panel p)
         {
             InitializeComponent();
             lblErrorCreditCard.Text = "";
-            this.user = u;
             this.mainPanel = p;
             ChargeCreditCardsToList();
         }
 
         public void ChargeCreditCardsToList()
         {
-            this.user.CreditCards.Sort(delegate (CreditCard x, CreditCard y) {
+            List<CreditCard> creditCards = (List<CreditCard>)daCreditCard.GetAll();
+            creditCards.Sort(delegate (CreditCard x, CreditCard y) {
                 return x.Category.Name.CompareTo(y.Category.Name);
             });
             listViewCreditCards.Items.Clear();
-            foreach (CreditCard cc in user.CreditCards)
+            foreach (CreditCard cc in creditCards)
             {
                 string shownCCNumber = CreditCardNumberShown(cc.Number);
                 string[] row = new string[] { cc.Category.Name, cc.Name, cc.Company, shownCCNumber, string.Format("{0}/{1}", cc.ExpirationMonth, cc.ExpirationYear) };
@@ -44,13 +46,12 @@ namespace Interface
         private static string CreditCardNumberShown(string creditCardNumber)
         {
             string last4Digits = creditCardNumber.Substring(14);
-            string shownCCNumber = string.Format("XXXX XXXX XXXX {0}", last4Digits);
-            return shownCCNumber;
+            return string.Format("XXXX XXXX XXXX {0}", last4Digits);
         }
 
         private void btnAddCreditCard_Click(object sender, EventArgs e)
         {
-            UserControl creditCardEditWindow = new AddCreditCard(user, mainPanel);
+            UserControl creditCardEditWindow = new AddCreditCard(mainPanel);
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(creditCardEditWindow);
         }
@@ -60,7 +61,7 @@ namespace Interface
             try
             {
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                UserControl creditCardEditWindow = new AddCreditCard(user, mainPanel, selectedCreditCard);
+                UserControl creditCardEditWindow = new AddCreditCard(mainPanel, selectedCreditCard);
                 this.mainPanel.Controls.Clear();
                 this.mainPanel.Controls.Add(creditCardEditWindow);
             }
@@ -74,7 +75,7 @@ namespace Interface
         {
             try{
                 CreditCard selectedCreditCard = (CreditCard)listViewCreditCards.SelectedItems[0].Tag;
-                user.TryRemoveCreditCard(selectedCreditCard);
+                this.daCreditCard.Delete(selectedCreditCard);
                 ChargeCreditCardsToList();
             }
             catch (Exception exc)
@@ -83,7 +84,6 @@ namespace Interface
             }
         }
         
-
         private void listViewCreditCards_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             try
@@ -108,7 +108,7 @@ namespace Interface
         {
             timer.Stop();
             
-            UserControl newCreditCardList = new CreditCardList(this.user, this.mainPanel);
+            UserControl newCreditCardList = new CreditCardList(this.mainPanel);
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(newCreditCardList);
 

@@ -82,7 +82,7 @@
             // btnModifyMasterkey
             // 
             this.btnModifyMasterkey.AutoSize = true;
-            this.btnModifyMasterkey.Location = new System.Drawing.Point(188, 256);
+            this.btnModifyMasterkey.Location = new System.Drawing.Point(182, 254);
             this.btnModifyMasterkey.Name = "btnModifyMasterkey";
             this.btnModifyMasterkey.Size = new System.Drawing.Size(72, 26);
             this.btnModifyMasterkey.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             this.lblFeedBackModification.AutoSize = true;
             this.lblFeedBackModification.ForeColor = System.Drawing.Color.Red;
-            this.lblFeedBackModification.Location = new System.Drawing.Point(52, 261);
+            this.lblFeedBackModification.Location = new System.Drawing.Point(49, 304);
             this.lblFeedBackModification.Name = "lblFeedBackModification";
             this.lblFeedBackModification.Size = new System.Drawing.Size(0, 13);
             this.lblFeedBackModification.TabIndex = 6;

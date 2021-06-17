@@ -30,30 +30,21 @@ namespace passwordManagerTest
             Assert.AreEqual("Facultad", c.Name);
         }
 
-        
-
-        [TestMethod]
-        public void ValidateInvalidNameTest()
-        {
-            Category c = new Category();
-            string unString = "ho";
-            Assert.IsFalse(c.ValidateName(unString));
-        }
-
         [TestMethod]
         public void ValidateValidNameTest()
         {
             Category c = new Category();
-            string unString = "Ort";
-            Assert.IsTrue(c.ValidateName(unString));
+            c.Name = "Ort";
+            Assert.AreEqual("Ort", c.Name);
         }
 
+        [ExpectedException(typeof(invalidCategoryNameException))]
         [TestMethod]
         public void ValidateLongerThanValidLengthTest()
         {
             Category c = new Category();
             string unString = "supercalifragilisticoespialidoso";
-            Assert.IsFalse(c.ValidateName(unString));
+            c.Name = unString;
         }
 
 

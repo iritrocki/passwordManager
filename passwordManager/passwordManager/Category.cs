@@ -5,31 +5,27 @@ namespace passwordManager
 {
     public class Category
     {
-        public Category() { }
-
-        public Category(string name)
-        {
-            this.Name = name;
-        }
         private string _name;
+
+        public int Id { get; set; }
+
         public string Name
         {
             get { return this._name; }
             set
             {
-                if (!this.ValidateName(value))
+                if (!Validator.ValidateStringLength(value, (3, 15)))
                     throw new invalidCategoryNameException();
                 this._name = value;
             }
 
         }
 
-        public bool ValidateName(string name)
+        public Category() { }
+
+        public Category(string name)
         {
-            
-            if (name.Length >= 3 && name.Length <= 15)
-                return true;
-            return false;
+            this.Name = name;
         }
 
         public void ModifyCategory(string newName)

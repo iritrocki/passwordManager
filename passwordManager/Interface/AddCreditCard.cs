@@ -9,30 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 
 namespace Interface
 {
     public partial class AddCreditCard : UserControl
     {
-        private const int MONTH = 0;
-        private const int YEAR = 1;
-        private User user;
         private CreditCard modificationCreditCard;
         private Panel mainPanel;
-        public AddCreditCard(User u, Panel p)
+        private IDataAccess<CreditCard> dataAccessCreditCard = DataAccessManager.GetDataAccessCreditCard();
+
+        public AddCreditCard(Panel p)
         {
             
             InitializeComponent();
             lblCreditCardError.Text = "";
-            this.user = u;
             this.mainPanel = p;
             ChargeComboBox();
         }
-        public AddCreditCard(User u, Panel p, CreditCard creditCard)
+        
+        public AddCreditCard( Panel p, CreditCard creditCard)
         {
             InitializeComponent();
             lblCreditCardError.Text = "";
-            this.user = u;
             this.mainPanel = p;
             this.modificationCreditCard = creditCard;
             txtCreditCardName.Text =  creditCard.Name;
@@ -47,37 +46,28 @@ namespace Interface
 
         public void ChargeComboBox()
         {
-
-            comboBoxCreditCardCategory.DataSource = user.Categories;
+            IDataAccess<Category> dataAccessCategory = DataAccessManager.GetDataAccessCategory();
+            comboBoxCreditCardCategory.DataSource = dataAccessCategory.GetAll();
             comboBoxCreditCardCategory.DisplayMember = "Name";
-
-        }
-
-
-        public int GetExpirationDate(string date, int index)
-        {
-            string[] expirationDate = date.Split('/');
-            int integer = Int32.Parse(expirationDate[index]);
-            return integer;
         }
 
         private void btnAcceptNewCreditCard_Click(object sender, EventArgs e)
         {
-
             try
             {
                 CreditCard newCreditCard = CreateNewCreditCard();
-
                 if (modificationCreditCard == null)
                 {
-                    user.TryAddCreditCard(newCreditCard);
+                    DataChecker.UniqueCreditCardCheck(newCreditCard, (List<CreditCard>)dataAccessCreditCard.GetAll());
+                    this.dataAccessCreditCard.Add(newCreditCard);
                 }
                 else
                 {
-                    user.TryModifyCreditCard(modificationCreditCard, newCreditCard);
+                    Modificator.TryModifyCreditCard(modificationCreditCard, newCreditCard, (List<CreditCard>)dataAccessCreditCard.GetAll());
+                    this.dataAccessCreditCard.Modify(modificationCreditCard);
                 }
                 mainPanel.Controls.Clear();
-                UserControl creditCardList = new CreditCardList(user, mainPanel);
+                UserControl creditCardList = new CreditCardList(mainPanel);
                 mainPanel.Controls.Add(creditCardList);
             }
             catch (InvalidCreditCardException exc)
@@ -98,8 +88,7 @@ namespace Interface
             string company = txtCreditCardCompany.Text;
             string number = txtCreditCardNumber.Text;
             string code = txtCreditCardCode.Text;
-            int expirationMonth = GetExpirationDate(txtCreditCardExpiration.Text, MONTH);
-            int expirationYear = GetExpirationDate(txtCreditCardExpiration.Text, YEAR);
+            string date = txtCreditCardExpiration.Text;
             string notes = txtCreditCardNotes.Text;
 
             if(category != null)
@@ -111,11 +100,10 @@ namespace Interface
                     Company = company,
                     Number = number,
                     Code = code,
-                    ExpirationMonth = expirationMonth,
-                    ExpirationYear = expirationYear,
                     Category = category,
                     Notes = notes
                 };
+                newCreditCard.SetExpirationDate(date);
                 return newCreditCard;
             }
             else
@@ -126,8 +114,6 @@ namespace Interface
             
            
         }
-
-        
     }
 
     

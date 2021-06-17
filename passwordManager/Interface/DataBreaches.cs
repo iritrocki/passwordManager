@@ -8,17 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using passwordManager;
+using Repository;
 
 namespace Interface
 {
     public partial class DataBreaches : UserControl
     {
-        private User user;
         private Panel mainPanel;
-        public DataBreaches(User u, Panel main)
+        IDataAccess<DataBreachCheck> daDataBreaches = DataAccessManager.GetDataAccessDataBreaches();
+        IDataAccess<Account> daAccounts = DataAccessManager.GetDataAccessAccount();
+        IDataAccess<CreditCard> daCreditCards = DataAccessManager.GetDataAccessCreditCard();
+
+        public DataBreaches(Panel main)
         {
             InitializeComponent();
-            this.user = u;
             this.mainPanel = main;
         }
 
@@ -27,9 +30,10 @@ namespace Interface
             string plainText = txtDataBreaches.Text;
             IDataBreachesAdapter adapter = new PlainTextAdapter(plainText);
             DataBreachCheck dataBreachCheck = new DataBreachCheck();
-            dataBreachCheck.CheckDataBreaches(adapter, user);
+            dataBreachCheck.CheckDataBreaches(adapter, (List<Account>)daAccounts.GetAll(), (List<CreditCard>)daCreditCards.GetAll());
+            daDataBreaches.Add(dataBreachCheck);
             mainPanel.Controls.Clear();
-            DataBreachesResults results = new DataBreachesResults(dataBreachCheck.ExposedPasswords, dataBreachCheck.ExposedCreditCards, mainPanel, user);
+            DataBreachesResults results = new DataBreachesResults(dataBreachCheck, mainPanel);
             mainPanel.Controls.Add(results);
 
         }

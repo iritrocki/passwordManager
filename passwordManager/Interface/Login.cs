@@ -1,5 +1,6 @@
 ﻿using passwordManager;
 using passwordManager.Exceptions;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,29 @@ namespace Interface
     public partial class Login : Form
     {
         private User user;
+        private IDataAccess<User> dataAccessUser = DataAccessManager.GetDataAccessUser();
         public Login()
         {
             InitializeComponent();
+            InitUser();
         }
 
         public Login(User u)
         {
             InitializeComponent();
             this.user = u;
+        }
+
+        private void InitUser()
+        {
+            try
+            {
+                this.user = dataAccessUser.GetAll().First();
+            }
+            catch (Exception e)
+            {
+                this.user = null;
+            }
         }
 
         private void btnAcceptMasterKey_Click(object sender, EventArgs e)
@@ -36,6 +51,7 @@ namespace Interface
                     this.user = new User();
                     this.user.MasterKey = input;
                     user.Status = true;
+                    dataAccessUser.Add(user);
                     Form mainWindow = new MainWindow(user);
                     mainWindow.Show();
                     this.Visible = false;
@@ -45,14 +61,12 @@ namespace Interface
                     txtMasterKey.Text = "";
                 }
                 
-                
-                
-                
             }
             else
             {
                 try
                 {
+
                     user.SignIn(input);
                     Form mainWindow = new MainWindow(user);
                     mainWindow.Show();

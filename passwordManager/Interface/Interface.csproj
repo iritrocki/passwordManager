@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +47,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Login.cs">
@@ -108,7 +112,6 @@
     <Compile Include="PasswordStrength.Designer.cs">
       <DependentUpon>PasswordStrength.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DetailedPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +123,24 @@
     </Compile>
     <Compile Include="DetailedCreditCard.Designer.cs">
       <DependentUpon>DetailedCreditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBreachesOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachesOptions.Designer.cs">
+      <DependentUpon>DataBreachesOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBreachFileUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachFileUpload.Designer.cs">
+      <DependentUpon>DataBreachFileUpload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBreachesHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachesHistory.Designer.cs">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
     </Compile>
     <!--<Compile Include="ModifyMasterKey.cs">
       <SubType>UserControl</SubType>
@@ -190,6 +211,15 @@
     <EmbeddedResource Include="DetailedCreditCard.resx">
       <DependentUpon>DetailedCreditCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachesOptions.resx">
+      <DependentUpon>DataBreachesOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachFileUpload.resx">
+      <DependentUpon>DataBreachFileUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachesHistory.resx">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -204,9 +234,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\passwordManager\passwordManager.csproj">
       <Project>{A243701B-4E2A-4A87-B96C-EBC5D151A782}</Project>
       <Name>passwordManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{293864A8-CAB0-4AF4-851D-536A393CA985}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
